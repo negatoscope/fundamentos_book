@@ -61,8 +61,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python_by_example';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -155,6 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Setting up Your Python Environment</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">An Introductory Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="learn_more.html">Learn More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math.html">Math and equations</a></li>
 </ul>
 
     </div>
@@ -398,7 +398,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="an-introductory-example">
+  <section id="an-introductory-example">
 <span id="python-by-example"></span><h1>An Introductory Example<a class="headerlink" href="#an-introductory-example" title="Permalink to this heading">#</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
@@ -413,14 +413,14 @@ structures.</p>
 <section id="the-task-plotting-a-white-noise-process">
 <h2>The Task: Plotting a White Noise Process<a class="headerlink" href="#the-task-plotting-a-white-noise-process" title="Permalink to this heading">#</a></h2>
 <p>Suppose we want to simulate and plot the white noise process
-<span class="math notranslate nohighlight">\(\epsilon_0, \epsilon_1, \ldots, \epsilon_T\)</span>, where each draw
-<span class="math notranslate nohighlight">\(\epsilon_t\)</span> is independent standard normal.</p>
+$\epsilon_0, \epsilon_1, \ldots, \epsilon_T$, where each draw
+$\epsilon_t$ is independent standard normal.</p>
 <p>In other words, we want to generate figures that look something like
 this:</p>
 <figure class="align-default">
 <img alt="../_images/test_program_1_updated.png" src="../_images/test_program_1_updated.png" />
 </figure>
-<p>(Here <span class="math notranslate nohighlight">\(t\)</span> is on the horizontal axis and <span class="math notranslate nohighlight">\(\epsilon_t\)</span> is on the vertical
+<p>(Here $t$ is on the horizontal axis and $\epsilon_t$ is on the vertical
 axis.)</p>
 <p>We’ll do this in several different ways, each time learning something
 more about Python.</p>
@@ -641,11 +641,11 @@ semantics in a familiar setting.</p>
 <ul class="simple">
 <li><p>The first line sets the desired length of the time series.</p></li>
 <li><p>The next line creates an empty <em>list</em> called <code class="docutils literal notranslate"><span class="pre">ϵ_values</span></code> that will
-store the <span class="math notranslate nohighlight">\(\epsilon_t\)</span> values as we generate them.</p></li>
+store the $\epsilon_t$ values as we generate them.</p></li>
 <li><p>The statement <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">empty</span> <span class="pre">list</span></code> is a <em>comment</em>, and is ignored by
 Python’s interpreter.</p></li>
 <li><p>The next three lines are the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, which repeatedly draws a
-new random number <span class="math notranslate nohighlight">\(\epsilon_t\)</span> and appends it to the end of the list
+new random number $\epsilon_t$ and appends it to the end of the list
 <code class="docutils literal notranslate"><span class="pre">ϵ_values</span></code>.</p></li>
 <li><p>The last two lines generate the plot and display it to the user.</p></li>
 </ul>
@@ -896,12 +896,12 @@ a <code class="docutils literal notranslate"><span class="pre">while</span></cod
 <p>Let’s do one more application before we turn to exercises.</p>
 <p>In this application, we plot the balance of a bank account over time.</p>
 <p>There are no withdraws over the time period, the last date of which is
-denoted by <span class="math notranslate nohighlight">\(T\)</span>.</p>
-<p>The initial balance is <span class="math notranslate nohighlight">\(b_0\)</span> and the interest rate is <span class="math notranslate nohighlight">\(r\)</span>.</p>
-<p>The balance updates from period <span class="math notranslate nohighlight">\(t\)</span> to <span class="math notranslate nohighlight">\(t+1\)</span> according to</p>
+denoted by $T$.</p>
+<p>The initial balance is $b_0$ and the interest rate is $r$.</p>
+<p>The balance updates from period $t$ to $t+1$ according to</p>
 <div class="math notranslate nohighlight" id="equation-ilom">
 <span class="eqno">(1)<a class="headerlink" href="#equation-ilom" title="Permalink to this equation">#</a></span>\[    b_{t+1} = (1 + r) b_t\]</div>
-<p>In the code below, we generate and plot the sequence <span class="math notranslate nohighlight">\(b_0, b_1, \ldots, b_T\)</span>
+<p>In the code below, we generate and plot the sequence $b_0, b_1, \ldots, b_T$
 generated by <a class="reference internal" href="#equation-ilom">(1)</a>.</p>
 <p>Instead of using a Python list to store this sequence, we will use a
 NumPy array.</p>
@@ -941,14 +941,13 @@ continuing, since they present new concepts we will need.</p>
 <section id="exercise-1">
 <h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
 <p>Your first task is to simulate and plot the correlated time series</p>
-<div class="math notranslate nohighlight">
-\[
-x_{t+1} = \alpha \, x_t + \epsilon_{t+1}
+<p>$$
+x_{t+1} = \alpha , x_t + \epsilon_{t+1}
 \quad \text{where} \quad
 x_0 = 0
 \quad \text{and} \quad t = 0,\ldots,T
-\]</div>
-<p>The sequence of shocks <span class="math notranslate nohighlight">\(\{\epsilon_t\}\)</span> is assumed to be IID and
+$$</p>
+<p>The sequence of shocks ${\epsilon_t}$ is assumed to be IID and
 standard normal.</p>
 <p>In your solution, restrict your import statements to</p>
 <div class="cell docutils container">
@@ -959,14 +958,14 @@ standard normal.</p>
 </div>
 </div>
 </div>
-<p>Set <span class="math notranslate nohighlight">\(T=200\)</span> and <span class="math notranslate nohighlight">\(\alpha = 0.9\)</span>.</p>
+<p>Set $T=200$ and $\alpha = 0.9$.</p>
 </section>
 <section id="exercise-2">
 <h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
 <p>Starting with your solution to exercise 2, plot three simulated time
-series, one for each of the cases <span class="math notranslate nohighlight">\(\alpha=0\)</span>, <span class="math notranslate nohighlight">\(\alpha=0.8\)</span> and
-<span class="math notranslate nohighlight">\(\alpha=0.98\)</span>.</p>
-<p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to step through the <span class="math notranslate nohighlight">\(\alpha\)</span> values.</p>
+series, one for each of the cases $\alpha=0$, $\alpha=0.8$ and
+$\alpha=0.98$.</p>
+<p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to step through the $\alpha$ values.</p>
 <p>If you can, add a legend, to help distinguish between the three time
 series.</p>
 <p>Hints:</p>
@@ -981,16 +980,15 @@ evaluates to <code class="docutils literal notranslate"><span class="pre">'foo42
 <section id="exercise-3">
 <h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h3>
 <p>Similar to the previous exercises, plot the time series</p>
-<div class="math notranslate nohighlight">
-\[
-x_{t+1} = \alpha \, |x_t| + \epsilon_{t+1}
+<p>$$
+x_{t+1} = \alpha , |x_t| + \epsilon_{t+1}
 \quad \text{where} \quad
 x_0 = 0
 \quad \text{and} \quad t = 0,\ldots,T
-\]</div>
-<p>Use <span class="math notranslate nohighlight">\(T=200\)</span>, <span class="math notranslate nohighlight">\(\alpha = 0.9\)</span> and <span class="math notranslate nohighlight">\(\{\epsilon_t\}\)</span> as before.</p>
+$$</p>
+<p>Use $T=200$, $\alpha = 0.9$ and ${\epsilon_t}$ as before.</p>
 <p>Search online for a function that can be used to compute the absolute
-value <span class="math notranslate nohighlight">\(|x_t|\)</span>.</p>
+value $|x_t|$.</p>
 </section>
 <section id="exercise-4">
 <h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this heading">#</a></h3>
@@ -1032,7 +1030,7 @@ function to compute the absolute value.</p>
 <section id="exercise-5">
 <span id="pbe-ex3"></span><h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this heading">#</a></h3>
 <p>Here’s a harder exercise, that takes some thought and planning.</p>
-<p>The task is to compute an approximation to <span class="math notranslate nohighlight">\(\pi\)</span> using <a class="reference external" href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a>.</p>
+<p>The task is to compute an approximation to $\pi$ using <a class="reference external" href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a>.</p>
 <p>Use no imports besides</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1043,13 +1041,13 @@ function to compute the absolute value.</p>
 </div>
 <p>Your hints are as follows:</p>
 <ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(U\)</span> is a bivariate uniform random variable on the unit square
-<span class="math notranslate nohighlight">\((0, 1)^2\)</span>, then the probability that <span class="math notranslate nohighlight">\(U\)</span> lies in a subset <span class="math notranslate nohighlight">\(B\)</span> of
-<span class="math notranslate nohighlight">\((0,1)^2\)</span> is equal to the area of <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(U_1,\ldots,U_n\)</span> are IID copies of <span class="math notranslate nohighlight">\(U\)</span>, then, as <span class="math notranslate nohighlight">\(n\)</span> gets large,
-the fraction that falls in <span class="math notranslate nohighlight">\(B\)</span>, converges to the probability of
-landing in <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
-<li><p>For a circle, <span class="math notranslate nohighlight">\(area = \pi * radius^2\)</span>.</p></li>
+<li><p>If $U$ is a bivariate uniform random variable on the unit square
+$(0, 1)^2$, then the probability that $U$ lies in a subset $B$ of
+$(0,1)^2$ is equal to the area of $B$.</p></li>
+<li><p>If $U_1,\ldots,U_n$ are IID copies of $U$, then, as $n$ gets large,
+the fraction that falls in $B$, converges to the probability of
+landing in $B$.</p></li>
+<li><p>For a circle, $area = \pi * radius^2$.</p></li>
 </ul>
 </section>
 </section>
@@ -1176,12 +1174,12 @@ landing in <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
 <section id="id5">
 <h3>Exercise 5<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>Consider the circle of diameter 1 embedded in the unit square.</p>
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be its area and let <span class="math notranslate nohighlight">\(r=1/2\)</span> be its radius.</p>
-<p>If we know <span class="math notranslate nohighlight">\(\pi\)</span> then we can compute <span class="math notranslate nohighlight">\(A\)</span> via <span class="math notranslate nohighlight">\(A = \pi r^2\)</span>.</p>
-<p>But here the point is to compute <span class="math notranslate nohighlight">\(\pi\)</span>, which we can do by
-<span class="math notranslate nohighlight">\(\pi = A / r^2\)</span>.</p>
+<p>Let $A$ be its area and let $r=1/2$ be its radius.</p>
+<p>If we know $\pi$ then we can compute $A$ via $A = \pi r^2$.</p>
+<p>But here the point is to compute $\pi$, which we can do by
+$\pi = A / r^2$.</p>
 <p>Summary: If we can estimate the area of a circle with diameter 1, then
-dividing by <span class="math notranslate nohighlight">\(r^2 = (1/2)^2 = 1/4\)</span> gives an estimate of <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+dividing by $r^2 = (1/2)^2 = 1/4$ gives an estimate of $\pi$.</p>
 <p>We estimate the area by sampling bivariate uniforms and looking at the
 fraction that falls into the circle.</p>
 <div class="cell docutils container">
