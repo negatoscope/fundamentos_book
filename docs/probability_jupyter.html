@@ -1,0 +1,646 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introducción a la probabilidad{#probability} &#8212; Scientific Python QuickStart</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/probability_jupyter';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Introducción a la probabilidad{#probability}" href="probability.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/qe-logo-large.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/qe-logo-large.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="about_py.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Setting up Your Python Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_by_example.html">An Introductory Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="learn_more.html">Learn More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook1.html">Jupyter Notebook Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability.html">Introducción a la probabilidad{#probability}</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introducción a la probabilidad{#probability}</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/negatoscope/fundamentos_book/master?urlpath=tree/mini_book/docs/probability_jupyter.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/probability_jupyter.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introducción a la probabilidad{#probability}</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica-probstats">¿Cómo de diferentes son la probabilidad y la estadística?{#probstats}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-significa-la-probabilidad-probmeaning">¿Qué significa la probabilidad?{#probmeaning}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-frecuentista">La visión frecuentista</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;ggplot2&quot;)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="c1"># Load the data</span>
+<span class="nf">data</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="n">mtcars</span><span class="p">[,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;mpg&quot;</span><span class="p">,</span> <span class="s">&quot;cyl&quot;</span><span class="p">,</span> <span class="s">&quot;wt&quot;</span><span class="p">)]</span>
+<span class="c1"># Convert cyl to a factor variable</span>
+<span class="n">df</span><span class="o">$</span><span class="n">cyl</span> <span class="o">&lt;-</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">cyl</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>mpg</th><th scope=col>cyl</th><th scope=col>wt</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>Mazda RX4</th><td>21.0</td><td>6</td><td>2.620</td></tr>
+	<tr><th scope=row>Mazda RX4 Wag</th><td>21.0</td><td>6</td><td>2.875</td></tr>
+	<tr><th scope=row>Datsun 710</th><td>22.8</td><td>4</td><td>2.320</td></tr>
+	<tr><th scope=row>Hornet 4 Drive</th><td>21.4</td><td>6</td><td>3.215</td></tr>
+	<tr><th scope=row>Hornet Sportabout</th><td>18.7</td><td>8</td><td>3.440</td></tr>
+	<tr><th scope=row>Valiant</th><td>18.1</td><td>6</td><td>3.460</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<section id="introduccion-a-la-probabilidad-probability">
+<h1>Introducción a la probabilidad{#probability}<a class="headerlink" href="#introduccion-a-la-probabilidad-probability" title="Permalink to this heading">#</a></h1>
+<p>Para muchas personas, cuando piensan en estadística se les viene esto a la mente: calcular promedios, recopilar datos, elaborar gráficos y ponerlos todos en un informe en algún lugar. Mas o menos como coleccionar sellos o cucharillas, pero con números. Sin embargo, las estadística cubre mucho más que eso. De hecho, la estadística descriptiva es una de las partes más pequeñas de la estadística, y una de las menos poderosas (en cuanto a las conclusiones que puede aportar). La parte más importante y más útil de la estadística es aquella que que permite hacer <em>inferencias</em>  sobre los datos.</p>
+<p>Una vez contemplada las estadística en estos términos, -que la estadística está ahí para ayudarnos a hacer inferencias a partir de datos- podemos ver ejemplos de ella en todas partes. Por ejemplo, aquí hay un pequeño extracto de un periódico mexicano:</p>
+<blockquote>
+<div><p>“Tengo un trabajo difícil”, dijo el Presidente mexicano en respuesta a una encuesta que encontró que su gobierno ha pasado de gozar los mayores índices de popularidad en la historia (&gt;70%) a un 38 por ciento.
+Este tipo de comentarios suele pasar como completamente irrelevante en los periódicos o en la vida cotidiana, pero pensemos brevemento sobre lo que implica. Una compañía encuestadora ha realizado una encuesta, presumiblemente una muy grande porque tiene los medios y puede permitírselo. Imaginemos que llamaron a 1.000 votantes al azar, y 380 (38%) de ellos afirmaron que tenían la intención de votar por el Presidente. En las últimas elecciones federals, la Instituto Electoral Mexicano confirmó la participación de 56.611.027 votantes; por lo tanto, las opiniones de los 56.610.027 votantes restantes (aproximadamente el 99.998%  de los votantes) siguen siendo desconocidas para la encuestadora (y para nosotros). Aún suponiendo que nadie mintió en la encuesta, lo único que podemos decir con un 100% de seguridad es que el verdadero voto primario al Presidente está en algún lugar entre 380/56.611.027 (aproximadamente el 0.0007%) y 56.610.307/56.611.027 (alrededor del 99.9987%), lo cual no aporta mucho. Entonces, ¿sobre qué base es legítimo para la empresa encuestadora, el periódico y el lectores concluir que la intención de voto al Presidente mexicano fue de sólo el 38%?</p>
+</div></blockquote>
+<p>La respuesta a la pregunta es bastante obvia: si llamo a 1.000 personas al azar, y 380 de ellas dicen tienen la intención de votar por el Presidente, entonces parece muy poco probable que estas sean las <em>únicas</em> 380 personas del todo el público votante que realmente tiene la intención de hacerlo. En otras palabras, suponemos que los datos recopilados por la empresa encuestadora son bastante representativos de la población en general. ¿Pero qué tan representativo? ¿Nos sorprendería descubrir que la verdadera intención de voto es en realidad del 34%? ¿39%? ¿57%? En este punto nuestración intuición comienza a romperse un poco. Nadie se sorprendería si fuese el 34%, y todos lo harían con un 57%, pero es un poco difícil decir si el 39% es plausible. Necesitamos herramientas más poderosas que solo el mirar los números y adivinar.</p>
+<p><strong><em>La estadística inferencial</em></strong>  proporciona las herramientas que necesitamos para responder a este tipo de preguntas, y ya que este tipo de preguntas se encuentran en el corazón del quehacer científico, ocupan una parte sustancial de cada curso introductorio sobre estadística y métodos de investigación. Sin embargo, la teoría sobre la estadística inferencial está construida sobre la <strong><em>teoría de probabilidad</em></strong>.  Y es a la teoría de la probabilidad a la que ahora debemos prestar atención. La discusión de la teoría de la probabilidad en esta asignatura será básicamente de fondo: no hay mucho contenido estadístico <em>per se</em> en este capítulo. Sin embargo, debido a que gran parte de la estadística se sustenta en la teoría de la probabilidad, merece la pena ir cubriendo algunos de los conceptos básicos.</p>
+<section id="como-de-diferentes-son-la-probabilidad-y-la-estadistica-probstats">
+<h2>¿Cómo de diferentes son la probabilidad y la estadística?{#probstats}<a class="headerlink" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica-probstats" title="Permalink to this heading">#</a></h2>
+<p>Antes de comenzar a hablar sobre la teoría de la probabilidad, es útil pensar un momento en la relación que existe entre probabilidad y estadística. Las dos disciplinas están estrechamente relacionadas, pero no son idénticas. La teoría de la probabilidad es “la doctrina de las posibilidades”. Es una rama de las matemáticas que te dice con qué frecuencia sucederán diferentes tipos de eventos. Por ejemplo, todas estas preguntas son cosas que puedes responder usando la teoría de la probabilidad:</p>
+<ul class="simple">
+<li><p>¿Cuáles son las probabilidades de que al lanzar una moneda salga cara 10 veces seguidas?</p></li>
+<li><p>Si lanzo dos dados de seis caras, ¿qué probabilidad hay de que tire dos seises?</p></li>
+<li><p>¿Qué probabilidad hay de que cinco cartas extraídas de un mazo perfectamente barajado sean todas de corazones?</p></li>
+<li><p>¿Cuál es la probabilidad de que gane la lotería?</p></li>
+</ul>
+<p>Hay que tener en cuenta que todas estas preguntas tienen algo en común. En cada caso, existe y se conoce una “verdad sobre el mundo”, y la pregunta se refiere más bien al “qué tipo de eventos” sucederán. En la primera pregunta que <em>sé</em> que la moneda es justa (no es más pesada por uno de los lados, sesgando el resultado), por lo que hay un 50% de probabilidad de que cualquier lanzamiento de moneda salga cara. En la segunda pregunta, <em>sé</em> que la probabilidad de sacar un 6 en un solo dado es de 1 en 6. En la tercera pregunta <em>sé</em> que la baraja se baraja correctamente (no hay un acomodo de cartas). Y en la cuarta pregunta, <em>sé</em> que la lotería sigue unas reglas específicas. El punto clave aquí es que las preguntas probabilísticas comienzan con un <strong><em>modelo</em></strong> conocido del mundo, y usamos ese modelo para hacer algunos cálculos. El modelo subyacente puede ser bastante simple. Por ejemplo, en el ejemplo de lanzar monedas, podemos escribir el modelo de esta manera:
+$$
+P(\mbox{cara}) = 0.5
+$$
+que puedes leer como “la probabilidad de que salga cara es 0.5”. Como veremos más adelante, de la misma manera que los porcentajes son números que van del 0% al 100%, las probabilidades son solo números que van del 0 al 1. Cuando usamos este modelo de probabilidad para responder a la primera pregunta, en realidad no sé exactamente qué va a ocurrir. Tal vez obtenga 10 caras, como dice la pregunta. Pero quizás salgan sólo tres caras. Esta es la clave: con la teoría de la probabilidad, se conoce el <em>modelo</em>, pero no los <em>datos</em>.</p>
+<p>Hemos visto lo que es la probabilidad. ¿Qué hay de la estadística? Las preguntas en estadística funcionan al revés. En estadística, nosotros <em>no</em> sabemos la verdad sobre el mundo. Todo lo que tenemos son los datos, y es a partir de esos datos que queremos <em>aprender</em> sobre la verdad del mundo. Las preguntas estadísticas tienden a parecerse más a estas:</p>
+<ul class="simple">
+<li><p>Si mi amigo lanza una moneda 10 veces y obtiene 10 caras, ¿me está engañando?</p></li>
+<li><p>Si las primeras cinco cartas de la parte superior del mazo son todas de corazones, ¿qué tan probable es que se haya barajado el mazo?</p></li>
+<li><p>Si el hijo del comisionado de la lotería gana la lotería, ¿qué tan probable es que el sorteo esté amañado?</p></li>
+</ul>
+<p>Esta vez, lo único que tenemos son datos. Lo que <em>sé</em>  es que vi a mi amigo lanzar la moneda 10 veces y salió cara en cada una de las veces. Y lo que quiero es <strong><em>inferir</em></strong> si debería concluir que lo que acabo de ver es en realidad una moneda justa lanzada 10 veces seguidas, o si debería sospechar que mi amigo me está jugando una mala pasada. Los datos que tengo se ven así (cada C es una cara):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span>
+</pre></div>
+</div>
+<p>y lo que estoy tratando de hacer es averiguar en qué “modelo de verdad del mundo” debería confiar. Si la moneda es justa, entonces el modelo que debo aceptar es uno que diga que la probabilidad de que salga cara es 0.5; es decir,  $P(\mbox{cara}) = 0.5$. Si la moneda no es justa, entonces debo concluir que la probabilidad de que salga cara <em>no</em> es 0.5, lo cual escribiríamos como $P(\mbox{cara}) \neq 0.5$. En otras palabras, el objetivo de la inferencia estadística es decidir cual de estos modelos de probabilidad es el correcto. Vemos pues, que una pregunta en estadística no es la misma que una pregunta en probabilidad, pero están íntimamente conectados entre sí. Es por ello que una buena introducción a la teoría estadística comenzará con una discusión sobre qué es la probabilidad y cómo funciona.</p>
+</section>
+<section id="que-significa-la-probabilidad-probmeaning">
+<h2>¿Qué significa la probabilidad?{#probmeaning}<a class="headerlink" href="#que-significa-la-probabilidad-probmeaning" title="Permalink to this heading">#</a></h2>
+<p>Comencemos con la primera de estas preguntas. ¿Qué es la “probabilidad”? Puede parecer sorprendente, pero mientras que los estadísticos y matemáticos (en su mayoría) están de acuerdo sobre cuáles son las <em>reglas</em> de la probabilidad, hay mucho menos consenso sobre lo que realmente <em>significa</em> la palabra. Parece extraño porque todos usemos con soltura palabras como “posibilidad”, “probabilidad”, “posible” y “probable”, y además no parece que deba ser una pregunta difícil de responder. Si tuvieramos que explicar el concepto de “probabilidad” a un niño de cinco años, podríamos hacerlo sin muchos problemas. Pero si alguna vez lo has intentando en la vida real, podrías terminar esa conversación sintiendo que no lo has hecho muy bien y que (como con muchos conceptos cotidianos) resulta que <em>realmente</em> no sabemos de qué se trata.</p>
+<section id="la-vision-frecuentista">
+<h3>La visión frecuentista<a class="headerlink" href="#la-vision-frecuentista" title="Permalink to this heading">#</a></h3>
+<p>El primero de los dos enfoques principales a la teoría de la probabilidad, y el más dominante en estadística, se le conoce como la <strong><em>visión frecuentista</em></strong>, y define a la probabilidad como una <strong>_ frecuencia a largo plazo_</strong>. Supongamos que queremos intentar lanzar una moneda justa, una y otra vez. Por definición, esta es una moneda que tiene una $P(Cara) = 0.5$. ¿Qué resultado podremos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así (donde C es cara y X cruz):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">C</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">parse</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">srcfile</span> <span class="o">=</span> <span class="n">src</span><span class="p">):</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span> <span class="n">unexpected</span> <span class="s1">&#39;,&#39;</span>
+<span class="mi">1</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span>
+     <span class="o">^</span>
+<span class="ne">Traceback</span>:
+</pre></div>
+</div>
+</div>
+</div>
+<p>En este caso, en 11 de los 20 lanzamientos (55%) salió cara. Ahora supongamos que he ido guardando un registro con el número de caras (que llamaré $N_C$) que han salido, a lo largo de las primeras $N$ lanzadas de moneda, además de calcular la proporción de caras $N_C / N$ con cada registro. Este es el resultado que obtendría:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="n">`Número de lanzamientos`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span> <span class="p">,</span> <span class="m">2</span> <span class="p">,</span> <span class="m">3</span> <span class="p">,</span> <span class="m">4</span> <span class="p">,</span> <span class="m">5</span> <span class="p">,</span> <span class="m">6</span> <span class="p">,</span> <span class="m">7</span> <span class="p">,</span> <span class="m">8</span> <span class="p">,</span> <span class="m">9</span> <span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">11</span> <span class="p">,</span> <span class="m">12</span> <span class="p">,</span> <span class="m">13</span> <span class="p">,</span> <span class="m">14</span> <span class="p">,</span> <span class="m">15</span> <span class="p">,</span> <span class="m">16</span> <span class="p">,</span> <span class="m">17</span> <span class="p">,</span> <span class="m">18</span> <span class="p">,</span> <span class="m">19</span> <span class="p">,</span> <span class="m">20</span><span class="p">),</span>
+<span class="n">`Número de caras`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span> <span class="m">0</span> <span class="p">,</span> <span class="m">1</span> <span class="p">,</span> <span class="m">2</span> <span class="p">,</span> <span class="m">3</span> <span class="p">,</span> <span class="m">4</span> <span class="p">,</span> <span class="m">4</span> <span class="p">,</span> <span class="m">4</span> <span class="p">,</span> <span class="m">5</span> <span class="p">,</span> <span class="m">6</span> <span class="p">,</span> <span class="m">7</span><span class="p">,</span>  <span class="m">8</span>  <span class="p">,</span>  <span class="m">8</span> <span class="p">,</span>  <span class="m">9</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">11</span> <span class="p">),</span> 
+<span class="n">`Proporción`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span> <span class="n">.</span><span class="m">00</span> <span class="p">,</span> <span class="n">.</span><span class="m">50</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span> <span class="n">.</span><span class="m">75</span> <span class="p">,</span> <span class="n">.</span><span class="m">80</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span> <span class="n">.</span><span class="m">57</span> <span class="p">,</span> <span class="n">.</span><span class="m">63</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span> <span class="n">.</span><span class="m">70</span><span class="p">,</span> <span class="n">.</span><span class="m">73</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span> <span class="n">.</span><span class="m">69</span> <span class="p">,</span> <span class="n">.</span><span class="m">71</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span>  <span class="n">.</span><span class="m">63</span> <span class="p">,</span> <span class="n">.</span><span class="m">59</span> <span class="p">,</span> <span class="n">.</span><span class="m">56</span> <span class="p">,</span> <span class="n">.</span><span class="m">53</span> <span class="p">,</span> <span class="n">.</span><span class="m">55</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| Número.de.lanzamientos| Número.de.caras| Proporción|
+|----------------------:|---------------:|----------:|
+|                      1|               0|       0.00|
+|                      2|               1|       0.50|
+|                      3|               2|       0.67|
+|                      4|               3|       0.75|
+|                      5|               4|       0.80|
+|                      6|               4|       0.67|
+|                      7|               4|       0.57|
+|                      8|               5|       0.63|
+|                      9|               6|       0.67|
+|                     10|               7|       0.70|
+|                     11|               8|       0.73|
+|                     12|               8|       0.67|
+|                     13|               9|       0.69|
+|                     14|              10|       0.71|
+|                     15|              10|       0.67|
+|                     16|              10|       0.63|
+|                     17|              10|       0.59|
+|                     18|              10|       0.56|
+|                     19|              10|       0.53|
+|                     20|              11|       0.55|
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tengamos en cuenta que al comienzo de esta secuencia, la <em>proporción</em> de caras fluctúa enormemente, comenzando en .00 y subiendo tan alto como .80. Conforme aumenta el número de lanzamientos, uno tiene la impresión de que este efecto se amortigua un poco, mientras que los valores se aproximan cada vez más a la respuesta “correcta” de .50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzar una moneda justa una y otra vez, y a medida que $N$ crece  (se acerca al infinito, denotado como $N\rightarrow \infty$), la proporción de caras convergerá en el 50%. Tecnicismos matemáticos aparte, cualitativamente hablando, es así es como los frecuentistas definen la probabilidad. Desafortunadamente, no tengo un número infinito de monedas, o la paciencia infinita requerida para lanzar una moneda un número infinito de veces. Sin embargo, existen los ordenadores, y los ordenadores se destacan por la ejecución repetitiva de tareas sin sentido como esta. Entonces, al simular 1.000 lanzamientos de moneda y repetir este procesos 4 veces (para darle solidez a los resultados), podemos ver qué sucede con la proporción $N_C / N$ a medida que $N$ aumenta. Los resultados se muestran en la Figura &#64;ref(fig:frequentistprobability) aunque también puedes hacer tú la simulación haciendo click <a class="reference external" href="https://leudave.shinyapps.io/cara_cruz/">aquí</a>. Podemos apreciar que la <em>proporción de caras observadas</em> deja de fluctuar conforme aumenta el número de lanzamientos; cuando lo hace, el número que finalmente obtenemos es el verdadera probabilidad de salga cara.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
+<span class="n">eps</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+<span class="n">colour</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">12</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">8</span>
+	<span class="n">def.par</span> <span class="o">&lt;-</span> <span class="nf">par</span><span class="p">(</span><span class="n">no.readonly</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+	<span class="nf">layout</span><span class="p">(</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span> <span class="p">)</span>
+	<span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">4</span> <span class="p">)</span> <span class="p">{</span>
+		
+		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span> <span class="nf">runif</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">.</span><span class="m">5</span> <span class="p">)</span>
+		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">cumsum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">)</span>
+		<span class="nf">plot</span><span class="p">(</span> <span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">.</span><span class="m">3</span><span class="p">,</span><span class="n">.</span><span class="m">7</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span>
+			<span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Número de lanzadas&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Proporción de caras&quot;</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span>
+			<span class="p">)</span> 
+		<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">emphGrey</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+		
+	<span class="p">}</span>
+	<span class="nf">par</span><span class="p">(</span><span class="n">def.par</span><span class="p">)</span><span class="c1">#- reset to default</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a9bb47f0d1a006fc430a2d41c17050077eecd89b810dd2b6742b4bc536e22a67.png" src="../_images/a9bb47f0d1a006fc430a2d41c17050077eecd89b810dd2b6742b4bc536e22a67.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "negatoscope/fundamentos_book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="probability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introducción a la probabilidad{#probability}</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica-probstats">¿Cómo de diferentes son la probabilidad y la estadística?{#probstats}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-significa-la-probabilidad-probmeaning">¿Qué significa la probabilidad?{#probmeaning}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-frecuentista">La visión frecuentista</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas J. Sargent and John Stachurski
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
