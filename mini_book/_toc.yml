@@ -7,3 +7,4 @@ sections:
 - file: docs/learn_more
 - file: docs/notebook1
 - file: docs/probability
+- file: docs/probability_jupyter
