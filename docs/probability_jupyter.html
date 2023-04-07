@@ -65,7 +65,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/probability_jupyter';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Jupyter Notebook Example" href="notebook1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -474,19 +473,20 @@ que puedes leer como “la probabilidad de que salga cara es 0.5”. Como veremo
 <p>El primero de los dos enfoques principales a la teoría de la probabilidad, y el más dominante en estadística, se le conoce como la <strong><em>visión frecuentista</em></strong>, y define a la probabilidad como una <strong>_ frecuencia a largo plazo_</strong>. Supongamos que queremos intentar lanzar una moneda justa, una y otra vez. Por definición, esta es una moneda que tiene una $P(Cara) = 0.5$. ¿Qué resultado podremos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así (donde C es cara y X cruz):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">C</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">```</span>
+<span class="n">X,C,C,C,C,X,X,C,C,C,C,X,C,C,X,X,X,X,X,C</span>
+<span class="n">```</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">parse</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">srcfile</span> <span class="o">=</span> <span class="n">src</span><span class="p">):</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span> <span class="n">unexpected</span> <span class="s1">&#39;,&#39;</span>
-<span class="mi">1</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span>
-     <span class="o">^</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">parse</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">srcfile</span> <span class="o">=</span> <span class="n">src</span><span class="p">):</span> <span class="n">attempt</span> <span class="n">to</span> <span class="n">use</span> <span class="n">zero</span><span class="o">-</span><span class="n">length</span> <span class="n">variable</span> <span class="n">name</span>
 <span class="ne">Traceback</span>:
 </pre></div>
 </div>
 </div>
 </div>
+<p>X,C,C,C,C,X,X,C,C,C,C,X,C,C,X,X,X,X,X,C</p>
 <p>En este caso, en 11 de los 20 lanzamientos (55%) salió cara. Ahora supongamos que he ido guardando un registro con el número de caras (que llamaré $N_C$) que han salido, a lo largo de las primeras $N$ lanzadas de moneda, además de calcular la proporción de caras $N_C / N$ con cada registro. Este es el resultado que obtendría:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1075,15 +1075,6 @@ Al igual que con la distribución binomial, he incluido la fórmula para la dist
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="notebook1.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Jupyter Notebook Example</p>
-      </div>
-    </a>
 </div></div>
   
 </div>

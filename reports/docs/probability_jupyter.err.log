@@ -17,16 +17,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+```
 X,C,C,C,C,X,X,C,C,C,C,X,C,C,X,X,X,X,X,C
+```
 ------------------
 
-Error in parse(text = x, srcfile = src): <text>:1:2: unexpected ','
-1: X,
-     ^
+Error in parse(text = x, srcfile = src): attempt to use zero-length variable name
 Traceback:
 
-ERROR: Error in parse(text = x, srcfile = src): <text>:1:2: unexpected ','
-1: X,
-     ^
+ERROR: Error in parse(text = x, srcfile = src): attempt to use zero-length variable name
 
 
