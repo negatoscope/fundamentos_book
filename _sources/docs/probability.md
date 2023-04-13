@@ -132,7 +132,7 @@ Un hecho comprobado sobre mi vida es que sólo tengo 5 pares de pantalones: tres
 Bien, ahora que tenemos un espacio muestral (un armario), que está construido a partir de muchas posibles eventos elementales (pantalones), lo que queremos hacer es asignar una **_probabilidad_**  a cada uno de estos eventos elementales. Para un evento $X$, la probabilidad de ese evento $P(X)$ es un número que se encuentra entre 0 y 1. Cuanto mayor sea el valor de $P(X)$, más probable será que ocurra el evento. Entonces, por ejemplo, si $P(X) = 0$, significa que el evento $X$ es imposible (es decir, nunca uso esos pantalones). Por otro lado, si  $P(X) = 1$ significa que el evento $X$ es seguro que ocurra (es decir, siempre uso esos pantalones). Los valores de probabilidad intermedios, significan que a veces uso esos pantalones (y a veces no). Por ejemplo, una $P(X) = 0.5$ significa que uso esos pantalones la mitad de las veces.  
 
 Llegados a este punto, lo siguiente que debemos entender es que "algo siempre sucede ". Cada vez que me pongo unos pantalones, realmente termino usando esos pantalones. Lo que esto significa en términos probabilísticos, es que las probabilidades de todos los eventos elementales siempre suman 1. Esto se conoce como la **_ley de probabilidad total_**. Si se cumplen estos requisitos (tenemos número $X$ de pantalones, cada par con una probabilidad $P(X)$ de usarlos que en total suman 1), entonces lo que tenemos es una **_distribución de probabilidad_**.Veamos un ejemplo de distribución de probabilidad
-```{r echo=FALSE}
+```{code-cell} r
 knitr::kable(data.frame(stringsAsFactors=FALSE,
 `Pantalones` = c(  "Nombre" , "Probabilidad" ), 
 `V. azules` = c(  "$X_1$" , "$P(X_1) = .5$" ),
@@ -144,7 +144,7 @@ knitr::kable(data.frame(stringsAsFactors=FALSE,
 
 Cada uno de estos eventos tiene una probabilidad que se encuentra entre 0 y 1, y si sumamos la probabilidad de todos eventos, suman 1. Incluso podemos dibujar un gráfico de barras para visualizar esta distribución, como se muestra en la Figura \@ref(fig:pantsprob). 
 
-```{r pantsprob, fig.cap="Demostración visual de la distribución de probabilidad de los \"pantalones\". Existen 5 \"eventos elementales\", que se corresponden con mis 5 pares de pantalones. Cada evento tiene una probabilidad de ocurrir: esta probabilidad es un número entre 0 y 1. La suma de estas probabilidades es 1.", echo=FALSE}
+```{code-cell} r
 probabilities <- c( .5, .3, .1, 0, .1)
 	eventNames <- c( "V. azules", "V. grises", "V. negros", 
 					 "Traje negro", "Chándal azul" )
@@ -170,7 +170,7 @@ y, dado que las probabilidades de los vaqueros azules, grises y negros son respe
 
 Todo esto parece obvio y simple. Sin embargo, a partir de estos simples comienzos, es posible construir algunas herramientas matemáticas más complejas y poderosas. En la siguiente Tabla se muestran algunas de las otras reglas que deben de cumplirse para poder calcular probabilidades. 
 
-```{r probrules, echo=FALSE}
+```{code-cell} r
 knitr::kable(data.frame(stringsAsFactors=FALSE,
 `Castellano` = c("No $A$", "$A$ o $B$", "$A$ y $B$"),
 `Notacion` = c("$P(\\neg A)$", "$P(A \\cup B)$", "$P(A \\cap B)$"),
@@ -197,13 +197,13 @@ $$
   
 Aunque no utilizaremos las fórmulas para hacer cálculos formalmente, dejaré la fórmula de la distribución binomial en la Tabla \@ref(tab:distformulas), ya que puede ser útil si se quieren entender temas más avanzados con algo de profundidad. Por lo pronto, analizaremos como se ve una distribución binomial (puedes hacerlo tú mismo si entras [aquí](https://leudave.shinyapps.io/distribuciones/)). La Figura \@ref(fig:binomial1) dibuja la probabilidad binomial para todos los valores posibles de $X$ de nuestro experimento de lanzamiento de dados, partiendo desde $X=0$  (ninguna sale calavera) hasta $X=20$ (salen todas calaveras). Hay que tener en cuenta que esto es básicamente un gráfico de barras, al igual que la gráfica de la "probabilidad de pantalones" de la Figura \@ref(fig:pantsprob). En el eje horizontal tenemos todos los eventos posibles, y en el eje vertical podemos leer la probabilidad de que ocurra cada uno de esos eventos. Por lo tanto, la probabilidad de que salgan 4 calaveras al tirar 20 dados es de aproximadamente 0,20 (la respuesta exacta es 0,2022036, como veremos en un momento). En otras palabras, esperaría que ese evento suceda aproximadamente el 20\% de las veces que se lleve a cabo este experimento.
 
-```{r distformulas, echo=FALSE}
+```{code-cell} r
 knitr::kable(data.frame(stringsAsFactors=FALSE, Binomial = c("$P(X | \\theta, N) = \\displaystyle\\frac{N!}{X! (N-X)!}  \\theta^X (1-\\theta)^{N-X}$"), 
                         Normal = c("$p(X | \\mu, \\sigma) = \\displaystyle\\frac{1}{\\sqrt{2\\pi}\\sigma} \\exp \\left( -\\frac{(X - \\mu)^2}{2\\sigma^2} \\right)$ ")), caption = "Fórmulas para las distribuciones binomial y normal. En la ecuación de la binomial, $X!$ es una función factorial (es decir, multiplica todos los números enteros de  1 hasta $X$), y en la de la distribución normal \"exp\" se refiere a una función exponencial.") 
 ```
 
 
-```{r binomial1, fig.cap=" La distribución binomial con parámetro de tamaño de $N=20$ y una probabilidad de éxito de $theta = 1/6$. Cada barra vertical representa la probabilidad de un resultado específico (un valor posible de $X$). Ya que esta es una distribución de probabilidad, cada una de las probabilidades debe ser un número entre 0 y 1, y la altura de las barras también deben sumar 1.", echo=FALSE}
+```{code-cell} r
 # plots the three examples of a binomial distribution
 # needed for printing
 width <- 8
@@ -229,7 +229,7 @@ binomPlot( n=20, p=1/6, xlab="Número de calaveras observadas" )
   Para darte una idea de cómo cambia la distribución binomial cuando modificamos los valores de $\theta$ y $N$, supongamos que en lugar de tirar dados, en realidad estoy lanzando monedas. Esta vez, mi experimento implica lanzar una moneda justa repetidamente, y el resultado que me interesa es la cantidad de caras que observo. En este escenario, la probabilidad de éxito ahora es de $\theta = 1/2$. Supongamos que tirara la moneda $N=20$  veces. En este ejemplo, he cambiado la probabilidad de éxito, pero mantuve el tamaño de la muestra del experimento. ¿Qué efecto tiene este cambio en nuestra distribución binomial? Bueno, como la Figura \@ref(fig:binomial2a)  muestra, el efecto principal fue el desplazamiento de toda la distribución hacia la derecha, como era de esperar. ¿Y si lanzamos una moneda $N=100$ veces? En este caso obtendremos algo como lo de la Figura \@ref(fig:binomial2b). La distribución se mantiene aproximadamente en el medio, pero hay un poco más de variabilidad en los posibles resultados.
 
 
-```{r binomial2a, fig.cap="Dos distribuciones binomiales, que involucran un escenario en el que lanzo una moneda justa, donde la probabilidad de éxito es $theta = 1/2$. Asumimos que estoy lanzando la moneda $N=20$ veces.", echo=FALSE}
+```{code-cell} r
   # plots the three examples of a binomial distribution
   	# needed for printing
   	width <- 8
@@ -249,7 +249,7 @@ binomPlot( n=20, p=1/6, xlab="Número de calaveras observadas" )
   	binomPlot( n=20, p=1/2, xlab="Número de caras observadas" )
 ```
 
-```{r binomial2b, fig.cap="Dos distribuciones binomiales, que involucran un escenario en el lanzo una moneda justa, donde la probabilidad de éxito subyacente es $theta = 1/2$. Asumimos que estoy lanzando la moneda $N=100$ veces.", echo=FALSE}
+```{code-cell} r
   # plots the three examples of a binomial distribution
   	# needed for printing
   	width <- 8
@@ -286,7 +286,7 @@ $$
 Vamos intentar descifrar lo que significa que una variable esté normalmente distribuida. Echemos un vistazo a la Figura \@ref(fig:normdist), que muestra una distribución normal con media $\mu = 0$ y desviación estándar $\sigma = 1$. Con un poco de imaginación, podemos apreciar de dónde viene el nombre “curva de campana”. A diferencia de los gráficos sobre la distribución binomial, la imagen de la distribución normal en la Figura \@ref(fig:normdist) muestra una curva suave en lugar de barras "tipo histograma". Esto no es arbitrario: la distribución normal es continua, mientras que la distribución binomial es discreta. Por ejemplo, en el experimento de tiro de dados de la sección anterior, es posible obtener 3 calaveras o 4 calaveras, mientras que un valor intermedio como 3.9 es imposible de obtener. Este hecho se ve reflejado en la Figura \@ref(fig:binomial1), donde tenemos una barra ubicada en $X=3$ y otra en $X=4$, pero entre ellas no hay nada. En cambio, los valores continuos no tienen esta restricción. Por ejemplo, supongamos que estamos hablando del tiempo. La temperatura de un día primavera podría ser de 23 grados, 24 grados, 23.9 grados o cualquier cosa intermedia, ya que la temperatura es una variable continua, por lo que una distribución normal podría ser la herramienta apropiada para describir las diferentes temperaturas en los días de primavera.^[En la práctica, la distribución normal es tan útil que las personas tienden a usarla incluso cuando la variable no es continua. Siempre que haya suficientes categorías (por ejemplo, respuestas de escala Likert de un cuestionario), suele ser frecuente el uso de la distribución normal.] 
 
 
-```{r normdist, fig.cap=" Distribución normal con media $mu = 0$ y desviación estándar $sigma = 1$. El eje $x$ corresponde con el valor de alguna variable, y el eje $y$ nos dice qué tan probable es que observemos ese valor. Sin embargo, vemos como el eje $y$ se denomina \"Densidad de Probabilidad\" y no \"Probabilidad\". La altura de la curva no representa como tal la probabilidad de observar un valor particular de $x$. Sin embargo, las alturas nos informan sobre qué valores de $x$ son más probables (¡los más altos!).", echo=FALSE}
+```{code-cell} r
 # plots the standard normal
 # needed for printing
 width <- 8
@@ -302,7 +302,7 @@ plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado
 
 Una vez visto esto, vamos a analizar cómo funciona una distribución normal. En primer lugar, veamos qué es lo que sucede cuando jugamos con los parámetros de la distribución (puedes hacerlo tú mismo si entras en este enlace). La Figura \@ref(fig:normmean) muestra distribuciones normales que tienen medias diferentes, pero con la misma desviación estándar. Como es de esperar, todas estas distribuciones tienen la misma "anchura". La unica diferencia entre ellas es que se han desplazado hacia la izquierda o hacia la derecha. En todos los demás aspectos son idénticas. Por el contrario, si aumentamos la desviación estándar mientras mantenemos la media constante, el pico de la distribución permanece en el mismo lugar, pero la distribución se amplía, como podemos ver en la Figura \@ref(fig:normsd). Sin embargo, cuando ampliamos la distribución, la altura del pico disminuye. Esto *tiene* que suceder: de la misma forma que las alturas de las barras de una distribución binomial discreta tienen que *sumar* 1, el total del *área bajo la curva* de una distribución normal debe ser igual a 1. 
 
-```{r normmean, fig.cap="Gráfica que demuestra lo que sucede cuando se cambia la media de una distribución normal. La línea sólida representa una distribución normal con media de $mu=4$.  La línea discontinua muestra una distribución normal con una media de $mu=7$.  En ambos casos, la desviación estándar es de $sigma=1$. Vemos como las dos distribuciones tienen la misma forma, pero la distribución con la línea discontinua se desplaza hacia la derecha.", echo=FALSE}
+```{code-cell} r
 # draw the plot
 xval <- seq(0,11,.01)
 yval.1 <- dnorm( xval, 4, 1)
@@ -314,7 +314,7 @@ lines(	xval, yval.2, lwd=3, col=ifelse(colour,emphCol,"black"), lty=2 )
 ```
 
 
-```{r normsd, fig.cap="Una ilustración de lo que sucede cuando cambia la desviación estándar de una distribución normal. Ambas distribuciones tienen una media de $mu=5$, pero diferentes desviaciones estándar. La línea continua dibuja una distribución con una desviación estándar $sigma=1$, y la línea discontinua muestra una distribución con desviación estándar de $sigma=2$. Como consecuencia, ambas distribuciones están centradas en el mismo lugar, pero la distribución con la línea discontinua es más ancha que la otra.", echo=FALSE}
+```{code-cell} r
 # draw the plot
 xval <- seq(0,10,.01)
 yval.1 <- dnorm( xval, 5, 1)
@@ -327,7 +327,7 @@ lines(	xval, yval.2, lwd=3, col=ifelse(colour,emphCol,"black"), lty=2 )
 
 Antes de seguir adelante, quiero señalar una característica importante de la distribución normal. Independientemente de los valores de la media y la desviación estándar, un 68.3\% del área de la curva cae dentro de 1 desviación estándar sobre la media. Del mismo modo, el 95.4\% de la distribución cae dentro de 2 desviaciones estándar sobre la media, y el 99.7\% de la distribución está dentro de 3 desviaciones estándar. Esta idea se ilustra en las Figuras \@ref(fig:sdnorm1) y \@ref(fig:sdnorm2).
 
-```{r sdnorm1, fig.cap="El área bajo la curva indica la probabilidad de que una observación se encuentre dentro de un rango determinado. Las línea continua traza una distribución normal con media $mu=0$ y desviación estándar $sigma=1$. El área sombreada ilustra el \'área bajo la curva'\ para dos casos importantes. En el panel a, podemos ver que hay es un  68.3% de probabilidad de que una observación caiga dentro de 1 desviación estándar sobre la media. En el panel b, vemos que existe una probabilidad del 95.4% de que una observación se encuentre dentro de 2 desviaciones estándar sobre la media.", echo=FALSE}
+```{code-cell} r
 par(mfrow=c(1,2))
 plotOne <- function( a,b ) {
   plot.new()
@@ -355,7 +355,7 @@ par(mfrow=c(1,1))
 ```
 
 
-```{r sdnorm2, fig.cap="Dos ejemplos más sobre el concepto del 'área bajo la curva'. Existe un 15.9% de probabilidad de que una observación se encuentre 1 desviación estándar o menos por debajo de la media (panel a), y una probabilidad del 34.1% de que una observación sea mayor que una desviación estándar por debajo de la media pero menor que la media (panel b). Si sumamos estos dos valores, obtendremos 15.9% + 34.1% = 50%. Para datos que estén normalmente distribuidos, existe un 50% de probabilidad de que una observación caiga por debajo de la media. Esto implica que existe un 50% de probabilidad de que caiga por encima de la media.", echo=FALSE}
+```{code-cell} r
 par(mfrow=c(1,2))
 plotOne(-1,0)
 plotOne(-50,-1)
@@ -383,7 +383,7 @@ Para finalizar, volveremos con la fórmula para $p(x)$ que vimos anteriormente. 
 
 La distribución normal es la distribución más utilizada por los estadísticos (por razones que se discutirán más adelante), y la distribución binomial es útil muchos escenarios. Sin embargo, existen otros tipos de distribuciones de probabilidad. Revisaremos brevemente 3 de ellas: la distribución $t$, la distribución $\chi^2$ y la distribución $F$.  La **_distribución $t$_** es una distribución continua que se parece mucho a una distribución normal, pero que tiene colas más pesadas (ver Figura \@ref(fig:tdist)). Esta distribución tiende a surgir en situaciones en las que piensa que los datos siguen una distribución normal, pero no se conoce la media o la desviación estándar. 
 
-```{r tdist, fig.cap="Una distribución $t$ con 3 grados de libertad (línea continua). Se asemeja a una distribución normal, pero no es igual (línea discontinua). Ten en cuenta que las \"colas\" de la distribución $t$ son más \"pesadas\"  (es decir, se extienden más hacia afuera, conteniendo más valores que se alejan de la media) que las colas de la distribución normal.", echo=FALSE}
+```{code-cell} r
 xval <- seq(-5,5,.01)
 yval <- dt( xval, df=3)
 plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
@@ -394,7 +394,7 @@ lines( xval, dnorm(xval,0,1), lty=2, col=emphGrey)
 
 - La **_distribución $\chi^2$_** es otra distribución que podemos encontrar con cierta frecuencia. Es habitual encontrarla cuando hacemos análisis de datos categóricos. Los valores de una distribución $\chi^2$ se consiguen al elevar al cuadrado los valores de una variable distribuída normalmente y luego sumarlos (un procedimiento denominado "suma de cuadrados"). Después veremos porqué es útil hacer una "suma de cuadrados". La apariencia de una distribución $\chi^2$ la puedes encontrar en la Figura \@ref(fig:chisqdist). 
 
-```{r chisqdist, fig.cap="Una distribución $chi^2$ con 3 grados de libertad (3 repeticiones, lo explicaremos más adelante). Observa que los valores siempre deben ser mayores que cero (los valores se elevan al cuadrado y se suman), y que la distribución es bastante sesgada (en este caso hacia la derecha). Estas son las características clave de una distribución chi-cuadrado.", echo=FALSE}
+```{code-cell} r
 xval <- seq(0,10,.01)
 yval <- dchisq( xval, df=3)
 plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
@@ -404,7 +404,7 @@ plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado
 
 - La **_distribución $F$_** se parece un poco a la distribución $\chi^2$ y surge cada vez que necesitamos comparar dos distribuciones $\chi^2$ entre sí. Es decir, si queremos comparar dos "sumas de cuadrados" diferentes, nos encontraremos con una distribución $F$. Aún no hemos visto un ejemplo de todo lo que implica una suma de cuadrados, pero lo veremos cuando hablemos sobre ANOVAs, donde nos encontraremos nuevamente con la distribución $F$. 
 
-```{r Fdist, fig.cap="Una distribución $F$ con 3 y 5 grados de libertad. Cualitativamente hablando, es similar a una distribución de chi-cuadrado, pero por lo general el significado no es el mismo.", echo=FALSE}
+```{code-cell} r
 # draw the plot
 xval <- seq(0,10,.01)
 yval <- df( xval, df1=3, df2=5)
@@ -418,7 +418,7 @@ Debido a que estas distribuciones están estrechamente relacionadas con la distr
 
 Esta "Muestra A" es una variable que contiene 1,000 números que se distribuyen normalmente y tienen una media de 0 y desviación estándar de 1. En la Figura \@ref(fig:distnormal) podemos ver un histograma con la distribución de los valores organizados por columnas, así como una línea negra sólida que representa la distribución verdadera de los datos (es decir, una distribución normal con valores infinitos con media 0 y desviación estándar 1). Así podemos comparar los datos recién generados con los de una distribución normal verdadera. 
 
-```{r distnormal, echo=FALSE, fig.cap="Distribución normal de la Muestra A (histograma), junto con la distribución normal verdadera (línea sólida)"}
+```{code-cell} r
 # generate the data 
 n <- 1000
 normal.a <- rnorm( n )
@@ -445,7 +445,7 @@ axis(1)
 
 En la Figura anterior podemos observar cómo han sido generados muchos valores distribuidos normalmente que luego han sido comparados con la  distribución de probabilidad verdadera (línea sólida). Supongamos que ahora queremos una distribución chi-cuadrada con 3 grados de libertad. Como hemos mencionado anteriormente, una distribución chi-cuadrada con $k$ grados de libertad es es el resultado de tomar $k$ variables (o muestras) normalmente distribuidas (con media 0 y desviación estándar 1), elevarlas al cuadrado y sumarlas. Como queremos una distribución de chi-cuadrada con 3 grados de libertad, además de nuestra "Muestra A", necesitamos dos conjuntos más de valores (también distribuidos normalmente). A estas nuevas dos variables las llamaremos "Muestra B" y "Muestra C":
 
-```{r distchi, echo=FALSE, fig.cap="Distribución chi-cuadrada. Incluye a las Muestras A, B y C (3 grados de libertad)"}
+```{code-cell} r
 # generate the data 
 n <- 1000
 normal.a <- rnorm( n )
@@ -475,7 +475,7 @@ Podemos extender esta demostración y tratar de entender el origen de la distrib
 
 Si tomamos un conjunto de variables normalmente distribuidas (pensemos ahora en una "Muestra D") y las dividimos por (la raíz cuadrada de) nuestra variable chi-cuadrada "escalada" que tenía $k=3$ grados de libertad, la operación dará como resultado una distribución $t$ con 3 grados de libertad. Si trazamos el histograma de esta nueva distribución $t$, observaremos algo parecido al de la Figura \@ref(fig:distt). 
 
-```{r distt, echo=FALSE, fig.cap="Distribución t. Es el resultado de dividir una distribución normal (en este caso la Muestra D) entre una variable chi-cuadrada escalada"}
+```{code-cell} r
 # generate the data 
 n <- 1000
 normal.a <- rnorm( n )
@@ -502,7 +502,7 @@ axis(1)
 
 Del mismo modo, podemos obtener una distribución $F$ al dividir dos distribuciones chi-cuadrada "escaladas". Supongamos, por ejemplo, que deseamos generar datos que sigan una distribución $F$ con 3 y 20 grados de libertad (es decir, con 3 y 20 variables respectivamente). La división de los valores de ambas distribuciones nos da como resultado una nueva variable `F.3.20` y su distribución es la que se muestra en la Figura \@ref(fig:distf).
 
-```{r distf, echo=FALSE, fig.cap="Distribución F. En este ejemplo hipotético, se compara la distribución chi-cuadrada de 3 grados de libertad previa con otra distribución chi-cuadrada con 20 grados de libertad (es decir, que incluye 20 muestras o variables)"}
+```{code-cell} r
 # generate the data 
 n <- 1000
 normal.a <- rnorm( n )
