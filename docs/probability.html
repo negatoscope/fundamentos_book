@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Introducción a la probabilidad, pero con R &#8212; Scientific Python QuickStart</title>
+    <title>Introducción a la probabilidad &#8212; Scientific Python QuickStart</title>
   
   
   
@@ -61,6 +61,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/probability';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -154,7 +155,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_by_example.html">An Introductory Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="learn_more.html">Learn More</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebook1.html">Jupyter Notebook Example</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introducción a la probabilidad, pero con R</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introducción a la probabilidad</a></li>
 <li class="toctree-l1"><a class="reference internal" href="probability_jupyter.html">Introducción a la probabilidad</a></li>
 </ul>
 
@@ -358,7 +359,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introducción a la probabilidad, pero con R</h1>
+    <h1>Introducción a la probabilidad</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -368,7 +369,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica-probstats">¿Cómo de diferentes son la probabilidad y la estadística?{#probstats}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica">¿Cómo de diferentes son la probabilidad y la estadística?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-significa-la-probabilidad-probmeaning">¿Qué significa la probabilidad?{#probmeaning}</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-frecuentista">La visión frecuentista</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-bayesiana">La visión bayesiana</a></li>
@@ -400,8 +401,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="introduccion-a-la-probabilidad-pero-con-r">
-<span id="probability"></span><h1>Introducción a la probabilidad, pero con R<a class="headerlink" href="#introduccion-a-la-probabilidad-pero-con-r" title="Permalink to this heading">#</a></h1>
+  <section id="introduccion-a-la-probabilidad">
+<span id="probability"></span><h1>Introducción a la probabilidad<a class="headerlink" href="#introduccion-a-la-probabilidad" title="Permalink to this heading">#</a></h1>
 <p>Para muchas personas, cuando piensan en estadística se les viene esto a la mente: calcular promedios, recopilar datos, elaborar gráficos y ponerlos todos en un informe en algún lugar. Mas o menos como coleccionar sellos o cucharillas, pero con números. Sin embargo, las estadística cubre mucho más que eso. De hecho, la estadística descriptiva es una de las partes más pequeñas de la estadística, y una de las menos poderosas (en cuanto a las conclusiones que puede aportar). La parte más importante y más útil de la estadística es aquella que que permite hacer <em>inferencias</em>  sobre los datos.</p>
 <p>Una vez contemplada las estadística en estos términos, -que la estadística está ahí para ayudarnos a hacer inferencias a partir de datos- podemos ver ejemplos de ella en todas partes. Por ejemplo, aquí hay un pequeño extracto de un periódico mexicano:</p>
 <blockquote>
@@ -410,8 +411,8 @@ Este tipo de comentarios suele pasar como completamente irrelevante en los peri�
 </div></blockquote>
 <p>La respuesta a la pregunta es bastante obvia: si llamo a 1.000 personas al azar, y 380 de ellas dicen tienen la intención de votar por el Presidente, entonces parece muy poco probable que estas sean las <em>únicas</em> 380 personas del todo el público votante que realmente tiene la intención de hacerlo. En otras palabras, suponemos que los datos recopilados por la empresa encuestadora son bastante representativos de la población en general. ¿Pero qué tan representativo? ¿Nos sorprendería descubrir que la verdadera intención de voto es en realidad del 34%? ¿39%? ¿57%? En este punto nuestración intuición comienza a romperse un poco. Nadie se sorprendería si fuese el 34%, y todos lo harían con un 57%, pero es un poco difícil decir si el 39% es plausible. Necesitamos herramientas más poderosas que solo el mirar los números y adivinar.</p>
 <p><strong><em>La estadística inferencial</em></strong>  proporciona las herramientas que necesitamos para responder a este tipo de preguntas, y ya que este tipo de preguntas se encuentran en el corazón del quehacer científico, ocupan una parte sustancial de cada curso introductorio sobre estadística y métodos de investigación. Sin embargo, la teoría sobre la estadística inferencial está construida sobre la <strong><em>teoría de probabilidad</em></strong>.  Y es a la teoría de la probabilidad a la que ahora debemos prestar atención. La discusión de la teoría de la probabilidad en esta asignatura será básicamente de fondo: no hay mucho contenido estadístico <em>per se</em> en este capítulo. Sin embargo, debido a que gran parte de la estadística se sustenta en la teoría de la probabilidad, merece la pena ir cubriendo algunos de los conceptos básicos.</p>
-<section id="como-de-diferentes-son-la-probabilidad-y-la-estadistica-probstats">
-<h2>¿Cómo de diferentes son la probabilidad y la estadística?{#probstats}<a class="headerlink" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica-probstats" title="Permalink to this heading">#</a></h2>
+<section id="como-de-diferentes-son-la-probabilidad-y-la-estadistica">
+<h2>¿Cómo de diferentes son la probabilidad y la estadística?<a class="headerlink" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica" title="Permalink to this heading">#</a></h2>
 <p>Antes de comenzar a hablar sobre la teoría de la probabilidad, es útil pensar un momento en la relación que existe entre probabilidad y estadística. Las dos disciplinas están estrechamente relacionadas, pero no son idénticas. La teoría de la probabilidad es “la doctrina de las posibilidades”. Es una rama de las matemáticas que te dice con qué frecuencia sucederán diferentes tipos de eventos. Por ejemplo, todas estas preguntas son cosas que puedes responder usando la teoría de la probabilidad:</p>
 <ul class="simple">
 <li><p>¿Cuáles son las probabilidades de que al lanzar una moneda salga cara 10 veces seguidas?</p></li>
@@ -419,11 +420,13 @@ Este tipo de comentarios suele pasar como completamente irrelevante en los peri�
 <li><p>¿Qué probabilidad hay de que cinco cartas extraídas de un mazo perfectamente barajado sean todas de corazones?</p></li>
 <li><p>¿Cuál es la probabilidad de que gane la lotería?</p></li>
 </ul>
-<p>Hay que tener en cuenta que todas estas preguntas tienen algo en común. En cada caso, existe y se conoce una “verdad sobre el mundo”, y la pregunta se refiere más bien al “qué tipo de eventos” sucederán. En la primera pregunta que <em>sé</em> que la moneda es justa (no es más pesada por uno de los lados, sesgando el resultado), por lo que hay un 50% de probabilidad de que cualquier lanzamiento de moneda salga cara. En la segunda pregunta, <em>sé</em> que la probabilidad de sacar un 6 en un solo dado es de 1 en 6. En la tercera pregunta <em>sé</em> que la baraja se baraja correctamente (no hay un acomodo de cartas). Y en la cuarta pregunta, <em>sé</em> que la lotería sigue unas reglas específicas. El punto clave aquí es que las preguntas probabilísticas comienzan con un <strong><em>modelo</em></strong> conocido del mundo, y usamos ese modelo para hacer algunos cálculos. El modelo subyacente puede ser bastante simple. Por ejemplo, en el ejemplo de lanzar monedas, podemos escribir el modelo de esta manera:
-$$
+<p>Hay que tener en cuenta que todas estas preguntas tienen algo en común. En cada caso, existe y se conoce una “verdad sobre el mundo”, y la pregunta se refiere más bien al “qué tipo de eventos” sucederán. En la primera pregunta que <em>sé</em> que la moneda es justa (no es más pesada por uno de los lados, sesgando el resultado), por lo que hay un 50% de probabilidad de que cualquier lanzamiento de moneda salga cara. En la segunda pregunta, <em>sé</em> que la probabilidad de sacar un 6 en un solo dado es de 1 en 6. En la tercera pregunta <em>sé</em> que la baraja se baraja correctamente (no hay un acomodo de cartas). Y en la cuarta pregunta, <em>sé</em> que la lotería sigue unas reglas específicas. El punto clave aquí es que las preguntas probabilísticas comienzan con un <strong><em>modelo</em></strong> conocido del mundo, y usamos ese modelo para hacer algunos cálculos. El modelo subyacente puede ser bastante simple. Por ejemplo, en el ejemplo de lanzar monedas, podemos escribir el modelo de esta manera:</p>
+<p>$$
 P(\mbox{cara}) = 0.5
-$$
-que puedes leer como “la probabilidad de que salga cara es 0.5”. Como veremos más adelante, de la misma manera que los porcentajes son números que van del 0% al 100%, las probabilidades son solo números que van del 0 al 1. Cuando usamos este modelo de probabilidad para responder a la primera pregunta, en realidad no sé exactamente qué va a ocurrir. Tal vez obtenga 10 caras, como dice la pregunta. Pero quizás salgan sólo tres caras. Esta es la clave: con la teoría de la probabilidad, se conoce el <em>modelo</em>, pero no los <em>datos</em>.</p>
+$$</p>
+<div class="math notranslate nohighlight">
+\[P(\mbox{cara}) = 0.5\]</div>
+<p>que puedes leer como “la probabilidad de que salga cara es 0.5”. Como veremos más adelante, de la misma manera que los porcentajes son números que van del 0% al 100%, las probabilidades son solo números que van del 0 al 1. Cuando usamos este modelo de probabilidad para responder a la primera pregunta, en realidad no sé exactamente qué va a ocurrir. Tal vez obtenga 10 caras, como dice la pregunta. Pero quizás salgan sólo tres caras. Esta es la clave: con la teoría de la probabilidad, se conoce el <em>modelo</em>, pero no los <em>datos</em>.</p>
 <p>Hemos visto lo que es la probabilidad. ¿Qué hay de la estadística? Las preguntas en estadística funcionan al revés. En estadística, nosotros <em>no</em> sabemos la verdad sobre el mundo. Todo lo que tenemos son los datos, y es a partir de esos datos que queremos <em>aprender</em> sobre la verdad del mundo. Las preguntas estadísticas tienden a parecerse más a estas:</p>
 <ul class="simple">
 <li><p>Si mi amigo lanza una moneda 10 veces y obtiene 10 caras, ¿me está engañando?</p></li>
@@ -1114,7 +1117,7 @@ Al igual que con la distribución binomial, he incluido la fórmula para la dist
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica-probstats">¿Cómo de diferentes son la probabilidad y la estadística?{#probstats}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica">¿Cómo de diferentes son la probabilidad y la estadística?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-significa-la-probabilidad-probmeaning">¿Qué significa la probabilidad?{#probmeaning}</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-frecuentista">La visión frecuentista</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-bayesiana">La visión bayesiana</a></li>

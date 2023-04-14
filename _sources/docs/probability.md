@@ -11,7 +11,7 @@ kernelspec:
 
 (probability)=
 
-# Introducción a la probabilidad, pero con R
+# Introducción a la probabilidad
 
 Para muchas personas, cuando piensan en estadística se les viene esto a la mente: calcular promedios, recopilar datos, elaborar gráficos y ponerlos todos en un informe en algún lugar. Mas o menos como coleccionar sellos o cucharillas, pero con números. Sin embargo, las estadística cubre mucho más que eso. De hecho, la estadística descriptiva es una de las partes más pequeñas de la estadística, y una de las menos poderosas (en cuanto a las conclusiones que puede aportar). La parte más importante y más útil de la estadística es aquella que que permite hacer *inferencias*  sobre los datos. 
 
@@ -24,7 +24,7 @@ La respuesta a la pregunta es bastante obvia: si llamo a 1.000 personas al azar,
 
 **_La estadística inferencial_**  proporciona las herramientas que necesitamos para responder a este tipo de preguntas, y ya que este tipo de preguntas se encuentran en el corazón del quehacer científico, ocupan una parte sustancial de cada curso introductorio sobre estadística y métodos de investigación. Sin embargo, la teoría sobre la estadística inferencial está construida sobre la **_teoría de probabilidad_**.  Y es a la teoría de la probabilidad a la que ahora debemos prestar atención. La discusión de la teoría de la probabilidad en esta asignatura será básicamente de fondo: no hay mucho contenido estadístico *per se* en este capítulo. Sin embargo, debido a que gran parte de la estadística se sustenta en la teoría de la probabilidad, merece la pena ir cubriendo algunos de los conceptos básicos.
 
-## ¿Cómo de diferentes son la probabilidad y la estadística?{#probstats}
+## ¿Cómo de diferentes son la probabilidad y la estadística?
 
 Antes de comenzar a hablar sobre la teoría de la probabilidad, es útil pensar un momento en la relación que existe entre probabilidad y estadística. Las dos disciplinas están estrechamente relacionadas, pero no son idénticas. La teoría de la probabilidad es "la doctrina de las posibilidades". Es una rama de las matemáticas que te dice con qué frecuencia sucederán diferentes tipos de eventos. Por ejemplo, todas estas preguntas son cosas que puedes responder usando la teoría de la probabilidad:
 
@@ -34,9 +34,15 @@ Antes de comenzar a hablar sobre la teoría de la probabilidad, es útil pensar 
 - ¿Cuál es la probabilidad de que gane la lotería?
 
 Hay que tener en cuenta que todas estas preguntas tienen algo en común. En cada caso, existe y se conoce una "verdad sobre el mundo", y la pregunta se refiere más bien al "qué tipo de eventos" sucederán. En la primera pregunta que *sé* que la moneda es justa (no es más pesada por uno de los lados, sesgando el resultado), por lo que hay un 50% de probabilidad de que cualquier lanzamiento de moneda salga cara. En la segunda pregunta, *sé* que la probabilidad de sacar un 6 en un solo dado es de 1 en 6. En la tercera pregunta *sé* que la baraja se baraja correctamente (no hay un acomodo de cartas). Y en la cuarta pregunta, *sé* que la lotería sigue unas reglas específicas. El punto clave aquí es que las preguntas probabilísticas comienzan con un **_modelo_** conocido del mundo, y usamos ese modelo para hacer algunos cálculos. El modelo subyacente puede ser bastante simple. Por ejemplo, en el ejemplo de lanzar monedas, podemos escribir el modelo de esta manera:
+
 $$
 P(\mbox{cara}) = 0.5
 $$
+
+```{math}
+P(\mbox{cara}) = 0.5
+```
+
 que puedes leer como "la probabilidad de que salga cara es 0.5". Como veremos más adelante, de la misma manera que los porcentajes son números que van del 0\% al 100\%, las probabilidades son solo números que van del 0 al 1. Cuando usamos este modelo de probabilidad para responder a la primera pregunta, en realidad no sé exactamente qué va a ocurrir. Tal vez obtenga 10 caras, como dice la pregunta. Pero quizás salgan sólo tres caras. Esta es la clave: con la teoría de la probabilidad, se conoce el *modelo*, pero no los *datos*.
 
 Hemos visto lo que es la probabilidad. ¿Qué hay de la estadística? Las preguntas en estadística funcionan al revés. En estadística, nosotros *no* sabemos la verdad sobre el mundo. Todo lo que tenemos son los datos, y es a partir de esos datos que queremos *aprender* sobre la verdad del mundo. Las preguntas estadísticas tienden a parecerse más a estas:  
@@ -46,9 +52,11 @@ Hemos visto lo que es la probabilidad. ¿Qué hay de la estadística? Las pregun
 - Si el hijo del comisionado de la lotería gana la lotería, ¿qué tan probable es que el sorteo esté amañado?
 
 Esta vez, lo único que tenemos son datos. Lo que *sé*  es que vi a mi amigo lanzar la moneda 10 veces y salió cara en cada una de las veces. Y lo que quiero es **_inferir_** si debería concluir que lo que acabo de ver es en realidad una moneda justa lanzada 10 veces seguidas, o si debería sospechar que mi amigo me está jugando una mala pasada. Los datos que tengo se ven así (cada C es una cara):
+
 ```
 C C C C C C C C C C C
 ```
+
 y lo que estoy tratando de hacer es averiguar en qué "modelo de verdad del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debo aceptar es uno que diga que la probabilidad de que salga cara es 0.5; es decir,  $P(\mbox{cara}) = 0.5$. Si la moneda no es justa, entonces debo concluir que la probabilidad de que salga cara *no* es 0.5, lo cual escribiríamos como $P(\mbox{cara}) \neq 0.5$. En otras palabras, el objetivo de la inferencia estadística es decidir cual de estos modelos de probabilidad es el correcto. Vemos pues, que una pregunta en estadística no es la misma que una pregunta en probabilidad, pero están íntimamente conectados entre sí. Es por ello que una buena introducción a la teoría estadística comenzará con una discusión sobre qué es la probabilidad y cómo funciona.
 
 ## ¿Qué significa la probabilidad?{#probmeaning}
