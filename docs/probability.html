@@ -61,7 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/probability';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -424,8 +423,6 @@ Este tipo de comentarios suele pasar como completamente irrelevante en los peri�
 <p>$$
 P(\mbox{cara}) = 0.5
 $$</p>
-<div class="math notranslate nohighlight">
-\[P(\mbox{cara}) = 0.5\]</div>
 <p>que puedes leer como “la probabilidad de que salga cara es 0.5”. Como veremos más adelante, de la misma manera que los porcentajes son números que van del 0% al 100%, las probabilidades son solo números que van del 0 al 1. Cuando usamos este modelo de probabilidad para responder a la primera pregunta, en realidad no sé exactamente qué va a ocurrir. Tal vez obtenga 10 caras, como dice la pregunta. Pero quizás salgan sólo tres caras. Esta es la clave: con la teoría de la probabilidad, se conoce el <em>modelo</em>, pero no los <em>datos</em>.</p>
 <p>Hemos visto lo que es la probabilidad. ¿Qué hay de la estadística? Las preguntas en estadística funcionan al revés. En estadística, nosotros <em>no</em> sabemos la verdad sobre el mundo. Todo lo que tenemos son los datos, y es a partir de esos datos que queremos <em>aprender</em> sobre la verdad del mundo. Las preguntas estadísticas tienden a parecerse más a estas:</p>
 <ul class="simple">
@@ -437,7 +434,7 @@ $$</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span>
 </pre></div>
 </div>
-<p>y lo que estoy tratando de hacer es averiguar en qué “modelo de verdad del mundo” debería confiar. Si la moneda es justa, entonces el modelo que debo aceptar es uno que diga que la probabilidad de que salga cara es 0.5; es decir,  $P(\mbox{cara}) = 0.5$. Si la moneda no es justa, entonces debo concluir que la probabilidad de que salga cara <em>no</em> es 0.5, lo cual escribiríamos como $P(\mbox{cara}) \neq 0.5$. En otras palabras, el objetivo de la inferencia estadística es decidir cual de estos modelos de probabilidad es el correcto. Vemos pues, que una pregunta en estadística no es la misma que una pregunta en probabilidad, pero están íntimamente conectados entre sí. Es por ello que una buena introducción a la teoría estadística comenzará con una discusión sobre qué es la probabilidad y cómo funciona.</p>
+<p>y lo que estoy tratando de hacer es averiguar en qué “modelo de verdad del mundo” debería confiar. Si la moneda es justa, entonces el modelo que debo aceptar es uno que diga que la probabilidad de que salga cara es 0.5; es decir, $P(\mbox{cara})=0.5$. Si la moneda no es justa, entonces debo concluir que la probabilidad de que salga cara <em>no</em> es 0.5, lo cual escribiríamos como $P(\mbox{cara})\neq 0.5$ $P(\mbox{cara})\neq0.5$. En otras palabras, el objetivo de la inferencia estadística es decidir cual de estos modelos de probabilidad es el correcto. Vemos pues, que una pregunta en estadística no es la misma que una pregunta en probabilidad, pero están íntimamente conectados entre sí. Es por ello que una buena introducción a la teoría estadística comenzará con una discusión sobre qué es la probabilidad y cómo funciona.</p>
 </section>
 <section id="que-significa-la-probabilidad-probmeaning">
 <h2>¿Qué significa la probabilidad?{#probmeaning}<a class="headerlink" href="#que-significa-la-probabilidad-probmeaning" title="Permalink to this heading">#</a></h2>
