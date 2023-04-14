@@ -222,6 +222,7 @@ y, dado que las probabilidades de los vaqueros azules, grises y negros son respe
 Todo esto parece obvio y simple. Sin embargo, a partir de estos simples comienzos, es posible construir algunas herramientas matemáticas más complejas y poderosas. En la siguiente Tabla se muestran algunas de las otras reglas que deben de cumplirse para poder calcular probabilidades. 
 
 ```{code-cell} r
+:tags: ["remove-cell"]
 knitr::kable(data.frame(stringsAsFactors=FALSE,
 `Castellano` = c("No $A$", "$A$ o $B$", "$A$ y $B$"),
 `Notacion` = c("$P(\\neg A)$", "$P(A \\cup B)$", "$P(A \\cap B)$"),
@@ -246,23 +247,31 @@ Como hemos visto, las distribuciones de probabilidad pueden variar enormemente, 
 La teoría de la probabilidad se creó originalmente para intentar describir cómo funcionaban los juegos de azar, por lo que parece adecuado que nuestra discusión sobre la **_distribución binomial_**  involucre una discusión sobre tirar dados y lanzar monedas. Imaginemos el siguiente "experimento": tengo en mi poder 20 dados iguales de seis caras. En una de las caras de cada dado hay una imagen de una calavera; las otras cinco caras están en blanco. Si tiro los 20 dados, ¿cuál es la probabilidad de que obtenga exactamente 4 calaveras? Asumiendo que los dados son justos, sabemos que la probabilidad de que en un dado salga la calavera es de de 1 en 6; dicho de otra forma, la probabilidad de que salga calavera en un solo dado es de aproximadamente $.167$. Esta información es suficiente para poder responder a nuestra pregunta anterior, así que veamos cómo hacerlo. 
 
 Primero, pondremos algunos nombres a los eventos con su respectiva notación. Dejaremos que $N$ denote el número de dados que se tiran en nuestro experimento; a esto se le conoce como el **_parámetro de tamaño_** de nuestra distribución binomial. También usaremos $\theta$ para referirnos a la probabilidad de que al tirar un solo dado salga calavera, una cantidad que generalmente se denomina como la **_probabilidad de éxito_** del binomio.^[Hay que tener en cuenta que el término "éxito" es bastante arbitrario, y en realidad no implica que el resultado sea algo deseado. Si $\theta$ se refiriera a la probabilidad de que un pasajero se lesione en un accidente de autobús, seguiría siendo una probabilidad de éxito, aunque en realidad no queremos que la gente salga lastimada] Finalmente, usaremos $X$ para referirnos a los resultados de nuestro experimento, es decir, la cantidad de calaveras que obtengo cuando lanzo los dados. Dado que el valor real de $X$ se debe al azar, nos podemos referir a ella como una **_variable aleatoria_**. En cualquier caso, ahora que tenemos toda esta terminología y notación, podemos utilizarlos para exponer el problema que planteábamos en el párrafo anterior con mayor precisión. La cantidad que queremos calcular es la probabilidad de que $X = 4$ sabiendo que $\theta = .167$ y $N=20$. La "forma" general de esta probabilidad que me interesa calcular podría escribirse como,
+
 $$
   P(X \ | \ \theta, N)
 $$
+
 donde estamos interesados en el caso específico donde $X=4$, $\theta = .167$ y $N=20$. Hace falta un elemento de notación más antes de continuar con la solución del problema. Si yo quiero decir que $X$ se genera aleatoriamente a partir de una distribución binomial con los parámetros $\theta$ y $N$, la notación que usaría para expresarlo sería la siguiente:
-  $$
+
+$$
   X \sim \mbox{Binomial}(\theta, N)
 $$ 
   
-Aunque no utilizaremos las fórmulas para hacer cálculos formalmente, dejaré la fórmula de la distribución binomial en la Tabla \@ref(tab:distformulas), ya que puede ser útil si se quieren entender temas más avanzados con algo de profundidad. Por lo pronto, analizaremos como se ve una distribución binomial (puedes hacerlo tú mismo si entras [aquí](https://leudave.shinyapps.io/distribuciones/)). La Figura \@ref(fig:binomial1) dibuja la probabilidad binomial para todos los valores posibles de $X$ de nuestro experimento de lanzamiento de dados, partiendo desde $X=0$  (ninguna sale calavera) hasta $X=20$ (salen todas calaveras). Hay que tener en cuenta que esto es básicamente un gráfico de barras, al igual que la gráfica de la "probabilidad de pantalones" de la Figura \@ref(fig:pantsprob). En el eje horizontal tenemos todos los eventos posibles, y en el eje vertical podemos leer la probabilidad de que ocurra cada uno de esos eventos. Por lo tanto, la probabilidad de que salgan 4 calaveras al tirar 20 dados es de aproximadamente 0,20 (la respuesta exacta es 0,2022036, como veremos en un momento). En otras palabras, esperaría que ese evento suceda aproximadamente el 20\% de las veces que se lleve a cabo este experimento.
+Aunque no utilizaremos las fórmulas para hacer cálculos formalmente, dejaré la fórmula de la distribución binomial en la Tabla \@ref(tab:distformulas), ya que puede ser útil si se quieren entender temas más avanzados con algo de profundidad. Por lo pronto, analizaremos como se ve una distribución binomial (puedes hacerlo tú mismo si entras [aquí](https://leudave.shinyapps.io/distribuciones/)). La `Figura 1.3` dibuja la probabilidad binomial para todos los valores posibles de $X$ de nuestro experimento de lanzamiento de dados, partiendo desde $X=0$  (ninguna sale calavera) hasta $X=20$ (salen todas calaveras). Hay que tener en cuenta que esto es básicamente un gráfico de barras, al igual que la gráfica de la "probabilidad de pantalones" de la `Figura 1.2`. En el eje horizontal tenemos todos los eventos posibles, y en el eje vertical podemos leer la probabilidad de que ocurra cada uno de esos eventos. Por lo tanto, la probabilidad de que salgan 4 calaveras al tirar 20 dados es de aproximadamente 0,20 (la respuesta exacta es 0,2022036, como veremos en un momento). En otras palabras, esperaría que ese evento suceda aproximadamente el 20\% de las veces que se lleve a cabo este experimento.
 
 ```{code-cell} r
+:tags: ["remove-cell"]
 knitr::kable(data.frame(stringsAsFactors=FALSE, Binomial = c("$P(X | \\theta, N) = \\displaystyle\\frac{N!}{X! (N-X)!}  \\theta^X (1-\\theta)^{N-X}$"), 
                         Normal = c("$p(X | \\mu, \\sigma) = \\displaystyle\\frac{1}{\\sqrt{2\\pi}\\sigma} \\exp \\left( -\\frac{(X - \\mu)^2}{2\\sigma^2} \\right)$ ")), caption = "Fórmulas para las distribuciones binomial y normal. En la ecuación de la binomial, $X!$ es una función factorial (es decir, multiplica todos los números enteros de  1 hasta $X$), y en la de la distribución normal \"exp\" se refiere a una función exponencial.") 
 ```
-
+`Tabla 2. Fórmulas para las distribuciones binomial y normal. En la ecuación de la binomial, $X!$ es una función factorial (es decir, multiplica todos los números enteros de  1 hasta $X$), y en la de la distribución normal \"exp\" se refiere a una función exponencial.`
+|Binomial                                                                               |Normal                                                                                                                  |
+|:--------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|
+|$P(X &#124; \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}$ |$p(X &#124; \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)$ |
 
 ```{code-cell} r
+:tags: ["hide-input"]
 # plots the three examples of a binomial distribution
 # needed for printing
 width <- 8
@@ -284,11 +293,13 @@ binomPlot <- function( n,p, ... ) {
 # skulls image...
 binomPlot( n=20, p=1/6, xlab="Número de calaveras observadas" )
 ```
+`Figura 1.3: La distribución binomial con parámetro de tamaño de N=20 y una probabilidad de éxito de theta=1/6. Cada barra vertical representa la probabilidad de un resultado específico (un valor posible de X). Ya que esta es una distribución de probabilidad, cada una de las probabilidades debe ser un número entre 0 y 1, y la altura de las barras también deben sumar 1.`
 
-  Para darte una idea de cómo cambia la distribución binomial cuando modificamos los valores de $\theta$ y $N$, supongamos que en lugar de tirar dados, en realidad estoy lanzando monedas. Esta vez, mi experimento implica lanzar una moneda justa repetidamente, y el resultado que me interesa es la cantidad de caras que observo. En este escenario, la probabilidad de éxito ahora es de $\theta = 1/2$. Supongamos que tirara la moneda $N=20$  veces. En este ejemplo, he cambiado la probabilidad de éxito, pero mantuve el tamaño de la muestra del experimento. ¿Qué efecto tiene este cambio en nuestra distribución binomial? Bueno, como la Figura \@ref(fig:binomial2a)  muestra, el efecto principal fue el desplazamiento de toda la distribución hacia la derecha, como era de esperar. ¿Y si lanzamos una moneda $N=100$ veces? En este caso obtendremos algo como lo de la Figura \@ref(fig:binomial2b). La distribución se mantiene aproximadamente en el medio, pero hay un poco más de variabilidad en los posibles resultados.
+Para darte una idea de cómo cambia la distribución binomial cuando modificamos los valores de $\theta$ y $N$, supongamos que en lugar de tirar dados, en realidad estoy lanzando monedas. Esta vez, mi experimento implica lanzar una moneda justa repetidamente, y el resultado que me interesa es la cantidad de caras que observo. En este escenario, la probabilidad de éxito ahora es de $\theta = 1/2$. Supongamos que tirara la moneda $N=20$  veces. En este ejemplo, he cambiado la probabilidad de éxito, pero mantuve el tamaño de la muestra del experimento. ¿Qué efecto tiene este cambio en nuestra distribución binomial? Bueno, como la `Figura 1.4`  muestra, el efecto principal fue el desplazamiento de toda la distribución hacia la derecha, como era de esperar. ¿Y si lanzamos una moneda $N=100$ veces? En este caso obtendremos algo como lo de la `Figura 1.5`. La distribución se mantiene aproximadamente en el medio, pero hay un poco más de variabilidad en los posibles resultados.
 
 
 ```{code-cell} r
+:tags: ["hide-input"]
   # plots the three examples of a binomial distribution
   	# needed for printing
   	width <- 8
@@ -309,6 +320,7 @@ binomPlot( n=20, p=1/6, xlab="Número de calaveras observadas" )
 ```
 
 ```{code-cell} r
+:tags: ["hide-input"]
   # plots the three examples of a binomial distribution
   	# needed for printing
   	width <- 8
@@ -328,12 +340,9 @@ binomPlot( n=20, p=1/6, xlab="Número de calaveras observadas" )
   	binomPlot( n=100, p=1/2, xlab="Número de caras observadas" )
 ```
 
-  
+---  
 
-  
-  
-
-## La distribución normal{#normal}
+## La distribución normal
   
   Si bien la distribución binomial es conceptualmente la distribución más sencilla de entender, no es la más importante. Ese honor le corresponde a la **_distribución normal_**, también conocida como "curva de campana" o como "distribución gaussiana" o "campana de Gauss". Una distribución normal se describe utilizando dos parámetros, la media de la distribución $\mu$  y la desviación estándar de la distribución $\sigma$. La notación que utilizamos para decir que una variable $X$ se distribuye normalmente es la siguiente:
 

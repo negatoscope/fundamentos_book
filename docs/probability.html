@@ -385,7 +385,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-al-binomio">Introducción al binomio</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-distribucion-normal-normal">La distribución normal{#normal}</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-distribucion-normal">La distribución normal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#densidad-de-probabilidad-density">Densidad de probabilidad{#density}</a></li>
 </ul>
 </li>
@@ -582,7 +582,7 @@ P(\mbox{cara}) = 0.5
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/d404987b85c185f2cfdc71ff62c046361e407bac57ac4d51188cb2a38aa30eb4.png" src="../_images/d404987b85c185f2cfdc71ff62c046361e407bac57ac4d51188cb2a38aa30eb4.png" />
+<img alt="../_images/17faae5a79d1979e6c94acb6ca7cf1d378632d9fde47df820efae8bfb137bf56.png" src="../_images/17faae5a79d1979e6c94acb6ca7cf1d378632d9fde47df820efae8bfb137bf56.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.1</span> <span class="pre">Una</span> <span class="pre">imagen</span> <span class="pre">de</span> <span class="pre">cómo</span> <span class="pre">funciona</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">frecuentista.</span> <span class="pre">Si</span> <span class="pre">lanzas</span> <span class="pre">una</span> <span class="pre">moneda</span> <span class="pre">justa</span> <span class="pre">una</span> <span class="pre">y</span> <span class="pre">otra</span> <span class="pre">vez,</span> <span class="pre">la</span> <span class="pre">proporción</span> <span class="pre">de</span> <span class="pre">caras</span> <span class="pre">deja</span> <span class="pre">de</span> <span class="pre">fluctuar</span> <span class="pre">y</span> <span class="pre">converge</span> <span class="pre">hacia</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">real</span> <span class="pre">de</span> <span class="pre">0.5.</span> <span class="pre">Cada</span> <span class="pre">panel</span> <span class="pre">muestra</span> <span class="pre">uno</span> <span class="pre">de</span> <span class="pre">las</span> <span class="pre">cuatro</span> <span class="pre">simulaciones</span> <span class="pre">con</span> <span class="pre">1.000</span> <span class="pre">lanzamientos</span> <span class="pre">cada</span> <span class="pre">uno.</span> <span class="pre">Aunque</span> <span class="pre">ninguna</span> <span class="pre">de</span> <span class="pre">estas</span> <span class="pre">simulaciones</span> <span class="pre">terminó</span> <span class="pre">con</span> <span class="pre">un</span> <span class="pre">valor</span> <span class="pre">exacto</span> <span class="pre">de</span> <span class="pre">.5,</span> <span class="pre">si</span> <span class="pre">hubiéramos</span> <span class="pre">extendido</span> <span class="pre">el</span> <span class="pre">experimento</span> <span class="pre">por</span> <span class="pre">un</span> <span class="pre">número</span> <span class="pre">infinito</span> <span class="pre">de</span> <span class="pre">lanzamientos</span> <span class="pre">lo</span> <span class="pre">habríamos</span> <span class="pre">conseguido.</span></code></p>
@@ -676,28 +676,6 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 \]</div>
 <p>y, dado que las probabilidades de los vaqueros azules, grises y negros son respectivamente .5, .3 y .1, la probabilidad total de usar vaqueros es igual a .9.</p>
 <p>Todo esto parece obvio y simple. Sin embargo, a partir de estos simples comienzos, es posible construir algunas herramientas matemáticas más complejas y poderosas. En la siguiente Tabla se muestran algunas de las otras reglas que deben de cumplirse para poder calcular probabilidades.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
-<span class="n">`Castellano`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;No $A$&quot;</span><span class="p">,</span> <span class="s">&quot;$A$ o $B$&quot;</span><span class="p">,</span> <span class="s">&quot;$A$ y $B$&quot;</span><span class="p">),</span>
-<span class="n">`Notacion`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$P(\\neg A)$&quot;</span><span class="p">,</span> <span class="s">&quot;$P(A \\cup B)$&quot;</span><span class="p">,</span> <span class="s">&quot;$P(A \\cap B)$&quot;</span><span class="p">),</span>
-<span class="n">`Igual`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">,</span> <span class="s">&quot;=&quot;</span><span class="p">,</span> <span class="s">&quot;=&quot;</span><span class="p">),</span>
-<span class="n">`Formula`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$1-P(A)$&quot;</span><span class="p">,</span> <span class="s">&quot;$P(A) + P(B) - P(A \\cap B)$&quot;</span><span class="p">,</span> <span class="s">&quot;$P(A \\vert B) P(B)$&quot;</span><span class="p">)),</span> <span class="s">&quot;markdown&quot;</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="s">&quot;Algunas reglas básicas de probabilidad. Son importantes si se quiere entender la teoría de la probabilidad con un poco más de detalle y nos sirven para resolver algunos problemas de probabilidad.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Table: Algunas reglas básicas de probabilidad. Son importantes si se quiere entender la teoría de la probabilidad con un poco más de detalle y nos sirven para resolver algunos problemas de probabilidad.
-
-|Castellano |Notacion      |Igual |Formula                     |
-|:----------|:-------------|:-----|:---------------------------|
-|No $A$     |$P(\neg A)$   |=     |$1-P(A)$                    |
-|$A$ o $B$  |$P(A \cup B)$ |=     |$P(A) + P(B) - P(A \cap B)$ |
-|$A$ y $B$  |$P(A \cap B)$ |=     |$P(A \vert B) P(B)$         |
-</pre></div>
-</div>
-</div>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">Tabla</span> <span class="pre">1.</span> <span class="pre">Algunas</span> <span class="pre">reglas</span> <span class="pre">básicas</span> <span class="pre">de</span> <span class="pre">probabilidad.</span> <span class="pre">Son</span> <span class="pre">importantes</span> <span class="pre">si</span> <span class="pre">se</span> <span class="pre">quiere</span> <span class="pre">entender</span> <span class="pre">la</span> <span class="pre">teoría</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">con</span> <span class="pre">un</span> <span class="pre">poco</span> <span class="pre">más</span> <span class="pre">de</span> <span class="pre">detalle</span> <span class="pre">y</span> <span class="pre">nos</span> <span class="pre">sirven</span> <span class="pre">para</span> <span class="pre">resolver</span> <span class="pre">algunos</span> <span class="pre">problemas</span> <span class="pre">de</span> <span class="pre">probabilidad.</span></code></p>
 <table class="table">
 <thead>
@@ -734,33 +712,36 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <section id="introduccion-al-binomio">
 <h3>Introducción al binomio<a class="headerlink" href="#introduccion-al-binomio" title="Permalink to this heading">#</a></h3>
 <p>La teoría de la probabilidad se creó originalmente para intentar describir cómo funcionaban los juegos de azar, por lo que parece adecuado que nuestra discusión sobre la <strong><em>distribución binomial</em></strong>  involucre una discusión sobre tirar dados y lanzar monedas. Imaginemos el siguiente “experimento”: tengo en mi poder 20 dados iguales de seis caras. En una de las caras de cada dado hay una imagen de una calavera; las otras cinco caras están en blanco. Si tiro los 20 dados, ¿cuál es la probabilidad de que obtenga exactamente 4 calaveras? Asumiendo que los dados son justos, sabemos que la probabilidad de que en un dado salga la calavera es de de 1 en 6; dicho de otra forma, la probabilidad de que salga calavera en un solo dado es de aproximadamente <span class="math notranslate nohighlight">\(.167\)</span>. Esta información es suficiente para poder responder a nuestra pregunta anterior, así que veamos cómo hacerlo.</p>
-<p>Primero, pondremos algunos nombres a los eventos con su respectiva notación. Dejaremos que <span class="math notranslate nohighlight">\(N\)</span> denote el número de dados que se tiran en nuestro experimento; a esto se le conoce como el <strong><em>parámetro de tamaño</em></strong> de nuestra distribución binomial. También usaremos <span class="math notranslate nohighlight">\(\theta\)</span> para referirnos a la probabilidad de que al tirar un solo dado salga calavera, una cantidad que generalmente se denomina como la <strong><em>probabilidad de éxito</em></strong> del binomio.^[Hay que tener en cuenta que el término “éxito” es bastante arbitrario, y en realidad no implica que el resultado sea algo deseado. Si <span class="math notranslate nohighlight">\(\theta\)</span> se refiriera a la probabilidad de que un pasajero se lesione en un accidente de autobús, seguiría siendo una probabilidad de éxito, aunque en realidad no queremos que la gente salga lastimada] Finalmente, usaremos <span class="math notranslate nohighlight">\(X\)</span> para referirnos a los resultados de nuestro experimento, es decir, la cantidad de calaveras que obtengo cuando lanzo los dados. Dado que el valor real de <span class="math notranslate nohighlight">\(X\)</span> se debe al azar, nos podemos referir a ella como una <strong><em>variable aleatoria</em></strong>. En cualquier caso, ahora que tenemos toda esta terminología y notación, podemos utilizarlos para exponer el problema que planteábamos en el párrafo anterior con mayor precisión. La cantidad que queremos calcular es la probabilidad de que <span class="math notranslate nohighlight">\(X = 4\)</span> sabiendo que <span class="math notranslate nohighlight">\(\theta = .167\)</span> y <span class="math notranslate nohighlight">\(N=20\)</span>. La “forma” general de esta probabilidad que me interesa calcular podría escribirse como,
-$<span class="math notranslate nohighlight">\(
+<p>Primero, pondremos algunos nombres a los eventos con su respectiva notación. Dejaremos que <span class="math notranslate nohighlight">\(N\)</span> denote el número de dados que se tiran en nuestro experimento; a esto se le conoce como el <strong><em>parámetro de tamaño</em></strong> de nuestra distribución binomial. También usaremos <span class="math notranslate nohighlight">\(\theta\)</span> para referirnos a la probabilidad de que al tirar un solo dado salga calavera, una cantidad que generalmente se denomina como la <strong><em>probabilidad de éxito</em></strong> del binomio.^[Hay que tener en cuenta que el término “éxito” es bastante arbitrario, y en realidad no implica que el resultado sea algo deseado. Si <span class="math notranslate nohighlight">\(\theta\)</span> se refiriera a la probabilidad de que un pasajero se lesione en un accidente de autobús, seguiría siendo una probabilidad de éxito, aunque en realidad no queremos que la gente salga lastimada] Finalmente, usaremos <span class="math notranslate nohighlight">\(X\)</span> para referirnos a los resultados de nuestro experimento, es decir, la cantidad de calaveras que obtengo cuando lanzo los dados. Dado que el valor real de <span class="math notranslate nohighlight">\(X\)</span> se debe al azar, nos podemos referir a ella como una <strong><em>variable aleatoria</em></strong>. En cualquier caso, ahora que tenemos toda esta terminología y notación, podemos utilizarlos para exponer el problema que planteábamos en el párrafo anterior con mayor precisión. La cantidad que queremos calcular es la probabilidad de que <span class="math notranslate nohighlight">\(X = 4\)</span> sabiendo que <span class="math notranslate nohighlight">\(\theta = .167\)</span> y <span class="math notranslate nohighlight">\(N=20\)</span>. La “forma” general de esta probabilidad que me interesa calcular podría escribirse como,</p>
+<div class="math notranslate nohighlight">
+\[
   P(X \ | \ \theta, N)
-\)</span><span class="math notranslate nohighlight">\(
-donde estamos interesados en el caso específico donde \)</span>X=4<span class="math notranslate nohighlight">\(, \)</span>\theta = .167<span class="math notranslate nohighlight">\( y \)</span>N=20<span class="math notranslate nohighlight">\(. Hace falta un elemento de notación más antes de continuar con la solución del problema. Si yo quiero decir que \)</span>X<span class="math notranslate nohighlight">\( se genera aleatoriamente a partir de una distribución binomial con los parámetros \)</span>\theta<span class="math notranslate nohighlight">\( y \)</span>N<span class="math notranslate nohighlight">\(, la notación que usaría para expresarlo sería la siguiente:
-  \)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>donde estamos interesados en el caso específico donde <span class="math notranslate nohighlight">\(X=4\)</span>, <span class="math notranslate nohighlight">\(\theta = .167\)</span> y <span class="math notranslate nohighlight">\(N=20\)</span>. Hace falta un elemento de notación más antes de continuar con la solución del problema. Si yo quiero decir que <span class="math notranslate nohighlight">\(X\)</span> se genera aleatoriamente a partir de una distribución binomial con los parámetros <span class="math notranslate nohighlight">\(\theta\)</span> y <span class="math notranslate nohighlight">\(N\)</span>, la notación que usaría para expresarlo sería la siguiente:</p>
+<div class="math notranslate nohighlight">
+\[
   X \sim \mbox{Binomial}(\theta, N)
-\)</span>$</p>
-<p>Aunque no utilizaremos las fórmulas para hacer cálculos formalmente, dejaré la fórmula de la distribución binomial en la Tabla &#64;ref(tab:distformulas), ya que puede ser útil si se quieren entender temas más avanzados con algo de profundidad. Por lo pronto, analizaremos como se ve una distribución binomial (puedes hacerlo tú mismo si entras <a class="reference external" href="https://leudave.shinyapps.io/distribuciones/">aquí</a>). La Figura &#64;ref(fig:binomial1) dibuja la probabilidad binomial para todos los valores posibles de <span class="math notranslate nohighlight">\(X\)</span> de nuestro experimento de lanzamiento de dados, partiendo desde <span class="math notranslate nohighlight">\(X=0\)</span>  (ninguna sale calavera) hasta <span class="math notranslate nohighlight">\(X=20\)</span> (salen todas calaveras). Hay que tener en cuenta que esto es básicamente un gráfico de barras, al igual que la gráfica de la “probabilidad de pantalones” de la Figura &#64;ref(fig:pantsprob). En el eje horizontal tenemos todos los eventos posibles, y en el eje vertical podemos leer la probabilidad de que ocurra cada uno de esos eventos. Por lo tanto, la probabilidad de que salgan 4 calaveras al tirar 20 dados es de aproximadamente 0,20 (la respuesta exacta es 0,2022036, como veremos en un momento). En otras palabras, esperaría que ese evento suceda aproximadamente el 20% de las veces que se lleve a cabo este experimento.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">Binomial</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$P(X | \\theta, N) = \\displaystyle\\frac{N!}{X! (N-X)!}  \\theta^X (1-\\theta)^{N-X}$&quot;</span><span class="p">),</span> 
-                        <span class="n">Normal</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$p(X | \\mu, \\sigma) = \\displaystyle\\frac{1}{\\sqrt{2\\pi}\\sigma} \\exp \\left( -\\frac{(X - \\mu)^2}{2\\sigma^2} \\right)$ &quot;</span><span class="p">)),</span> <span class="n">caption</span> <span class="o">=</span> <span class="s">&quot;Fórmulas para las distribuciones binomial y normal. En la ecuación de la binomial, $X!$ es una función factorial (es decir, multiplica todos los números enteros de  1 hasta $X$), y en la de la distribución normal \&quot;exp\&quot; se refiere a una función exponencial.&quot;</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Table: Fórmulas para las distribuciones binomial y normal. En la ecuación de la binomial, $X!$ es una función factorial (es decir, multiplica todos los números enteros de  1 hasta $X$), y en la de la distribución normal &quot;exp&quot; se refiere a una función exponencial.
-
-|Binomial                                                                               |Normal                                                                                                                  |
-|:--------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|
-|$P(X &amp;#124; \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}$ |$p(X &amp;#124; \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)$ |
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+\]</div>
+<p>Aunque no utilizaremos las fórmulas para hacer cálculos formalmente, dejaré la fórmula de la distribución binomial en la Tabla &#64;ref(tab:distformulas), ya que puede ser útil si se quieren entender temas más avanzados con algo de profundidad. Por lo pronto, analizaremos como se ve una distribución binomial (puedes hacerlo tú mismo si entras <a class="reference external" href="https://leudave.shinyapps.io/distribuciones/">aquí</a>). La <code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.3</span></code> dibuja la probabilidad binomial para todos los valores posibles de <span class="math notranslate nohighlight">\(X\)</span> de nuestro experimento de lanzamiento de dados, partiendo desde <span class="math notranslate nohighlight">\(X=0\)</span>  (ninguna sale calavera) hasta <span class="math notranslate nohighlight">\(X=20\)</span> (salen todas calaveras). Hay que tener en cuenta que esto es básicamente un gráfico de barras, al igual que la gráfica de la “probabilidad de pantalones” de la <code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.2</span></code>. En el eje horizontal tenemos todos los eventos posibles, y en el eje vertical podemos leer la probabilidad de que ocurra cada uno de esos eventos. Por lo tanto, la probabilidad de que salgan 4 calaveras al tirar 20 dados es de aproximadamente 0,20 (la respuesta exacta es 0,2022036, como veremos en un momento). En otras palabras, esperaría que ese evento suceda aproximadamente el 20% de las veces que se lleve a cabo este experimento.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Tabla</span> <span class="pre">2.</span> <span class="pre">Fórmulas</span> <span class="pre">para</span> <span class="pre">las</span> <span class="pre">distribuciones</span> <span class="pre">binomial</span> <span class="pre">y</span> <span class="pre">normal.</span> <span class="pre">En</span> <span class="pre">la</span> <span class="pre">ecuación</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">binomial,</span> <span class="pre">$X!$</span> <span class="pre">es</span> <span class="pre">una</span> <span class="pre">función</span> <span class="pre">factorial</span> <span class="pre">(es</span> <span class="pre">decir,</span> <span class="pre">multiplica</span> <span class="pre">todos</span> <span class="pre">los</span> <span class="pre">números</span> <span class="pre">enteros</span> <span class="pre">de</span>&#160; <span class="pre">1</span> <span class="pre">hasta</span> <span class="pre">$X$),</span> <span class="pre">y</span> <span class="pre">en</span> <span class="pre">la</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">normal</span> <span class="pre">\&quot;exp\&quot;</span> <span class="pre">se</span> <span class="pre">refiere</span> <span class="pre">a</span> <span class="pre">una</span> <span class="pre">función</span> <span class="pre">exponencial.</span></code></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Binomial</p></th>
+<th class="head text-left"><p>Normal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(P(X &amp;#124; \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p(X &amp;#124; \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plots the three examples of a binomial distribution</span>
 <span class="c1"># needed for printing</span>
@@ -785,12 +766,19 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="../_images/c2ed73471020a6e61eff8974cef1e968303fd95925e5b98a9513441177381030.png" src="../_images/c2ed73471020a6e61eff8974cef1e968303fd95925e5b98a9513441177381030.png" />
 </div>
 </div>
-<p>Para darte una idea de cómo cambia la distribución binomial cuando modificamos los valores de <span class="math notranslate nohighlight">\(\theta\)</span> y <span class="math notranslate nohighlight">\(N\)</span>, supongamos que en lugar de tirar dados, en realidad estoy lanzando monedas. Esta vez, mi experimento implica lanzar una moneda justa repetidamente, y el resultado que me interesa es la cantidad de caras que observo. En este escenario, la probabilidad de éxito ahora es de <span class="math notranslate nohighlight">\(\theta = 1/2\)</span>. Supongamos que tirara la moneda <span class="math notranslate nohighlight">\(N=20\)</span>  veces. En este ejemplo, he cambiado la probabilidad de éxito, pero mantuve el tamaño de la muestra del experimento. ¿Qué efecto tiene este cambio en nuestra distribución binomial? Bueno, como la Figura &#64;ref(fig:binomial2a)  muestra, el efecto principal fue el desplazamiento de toda la distribución hacia la derecha, como era de esperar. ¿Y si lanzamos una moneda <span class="math notranslate nohighlight">\(N=100\)</span> veces? En este caso obtendremos algo como lo de la Figura &#64;ref(fig:binomial2b). La distribución se mantiene aproximadamente en el medio, pero hay un poco más de variabilidad en los posibles resultados.</p>
-<div class="cell docutils container">
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.3:</span> <span class="pre">La</span> <span class="pre">distribución</span> <span class="pre">binomial</span> <span class="pre">con</span> <span class="pre">parámetro</span> <span class="pre">de</span> <span class="pre">tamaño</span> <span class="pre">de</span> <span class="pre">N=20</span> <span class="pre">y</span> <span class="pre">una</span> <span class="pre">probabilidad</span> <span class="pre">de</span> <span class="pre">éxito</span> <span class="pre">de</span> <span class="pre">theta=1/6.</span> <span class="pre">Cada</span> <span class="pre">barra</span> <span class="pre">vertical</span> <span class="pre">representa</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">de</span> <span class="pre">un</span> <span class="pre">resultado</span> <span class="pre">específico</span> <span class="pre">(un</span> <span class="pre">valor</span> <span class="pre">posible</span> <span class="pre">de</span> <span class="pre">X).</span> <span class="pre">Ya</span> <span class="pre">que</span> <span class="pre">esta</span> <span class="pre">es</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">de</span> <span class="pre">probabilidad,</span> <span class="pre">cada</span> <span class="pre">una</span> <span class="pre">de</span> <span class="pre">las</span> <span class="pre">probabilidades</span> <span class="pre">debe</span> <span class="pre">ser</span> <span class="pre">un</span> <span class="pre">número</span> <span class="pre">entre</span> <span class="pre">0</span> <span class="pre">y</span> <span class="pre">1,</span> <span class="pre">y</span> <span class="pre">la</span> <span class="pre">altura</span> <span class="pre">de</span> <span class="pre">las</span> <span class="pre">barras</span> <span class="pre">también</span> <span class="pre">deben</span> <span class="pre">sumar</span> <span class="pre">1.</span></code></p>
+<p>Para darte una idea de cómo cambia la distribución binomial cuando modificamos los valores de <span class="math notranslate nohighlight">\(\theta\)</span> y <span class="math notranslate nohighlight">\(N\)</span>, supongamos que en lugar de tirar dados, en realidad estoy lanzando monedas. Esta vez, mi experimento implica lanzar una moneda justa repetidamente, y el resultado que me interesa es la cantidad de caras que observo. En este escenario, la probabilidad de éxito ahora es de <span class="math notranslate nohighlight">\(\theta = 1/2\)</span>. Supongamos que tirara la moneda <span class="math notranslate nohighlight">\(N=20\)</span>  veces. En este ejemplo, he cambiado la probabilidad de éxito, pero mantuve el tamaño de la muestra del experimento. ¿Qué efecto tiene este cambio en nuestra distribución binomial? Bueno, como la <code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.4</span></code>  muestra, el efecto principal fue el desplazamiento de toda la distribución hacia la derecha, como era de esperar. ¿Y si lanzamos una moneda <span class="math notranslate nohighlight">\(N=100\)</span> veces? En este caso obtendremos algo como lo de la <code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.5</span></code>. La distribución se mantiene aproximadamente en el medio, pero hay un poco más de variabilidad en los posibles resultados.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span>  <span class="c1"># plots the three examples of a binomial distribution</span>
   	<span class="c1"># needed for printing</span>
@@ -812,11 +800,17 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="../_images/08e8cd86c9c60d122c49db7c0ebd6332a62b56fc204c0b70e40c3cd0e1511834.png" src="../_images/08e8cd86c9c60d122c49db7c0ebd6332a62b56fc204c0b70e40c3cd0e1511834.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span>  <span class="c1"># plots the three examples of a binomial distribution</span>
   	<span class="c1"># needed for printing</span>
@@ -838,14 +832,16 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="../_images/3000a72db7f98f11e4e24bfc515c6849d29a999a2ed11e652e15dccf8bcb73b6.png" src="../_images/3000a72db7f98f11e4e24bfc515c6849d29a999a2ed11e652e15dccf8bcb73b6.png" />
 </div>
 </div>
 </section>
 </section>
-<section id="la-distribucion-normal-normal">
-<h2>La distribución normal{#normal}<a class="headerlink" href="#la-distribucion-normal-normal" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="la-distribucion-normal">
+<h2>La distribución normal<a class="headerlink" href="#la-distribucion-normal" title="Permalink to this heading">#</a></h2>
 <p>Si bien la distribución binomial es conceptualmente la distribución más sencilla de entender, no es la más importante. Ese honor le corresponde a la <strong><em>distribución normal</em></strong>, también conocida como “curva de campana” o como “distribución gaussiana” o “campana de Gauss”. Una distribución normal se describe utilizando dos parámetros, la media de la distribución <span class="math notranslate nohighlight">\(\mu\)</span>  y la desviación estándar de la distribución <span class="math notranslate nohighlight">\(\sigma\)</span>. La notación que utilizamos para decir que una variable <span class="math notranslate nohighlight">\(X\)</span> se distribuye normalmente es la siguiente:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1047,7 +1043,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/13aee49782a60d234df10114e86f270297f43bf01948d65c6e7c2c4aa45a6b4b.png" src="../_images/13aee49782a60d234df10114e86f270297f43bf01948d65c6e7c2c4aa45a6b4b.png" />
+<img alt="../_images/49e3b198922d16e5f9e2e2f147deb44de90dc19730ac0c5eea491fa59e2a56cd.png" src="../_images/49e3b198922d16e5f9e2e2f147deb44de90dc19730ac0c5eea491fa59e2a56cd.png" />
 </div>
 </div>
 <p>En la Figura anterior podemos observar cómo han sido generados muchos valores distribuidos normalmente que luego han sido comparados con la  distribución de probabilidad verdadera (línea sólida). Supongamos que ahora queremos una distribución chi-cuadrada con 3 grados de libertad. Como hemos mencionado anteriormente, una distribución chi-cuadrada con <span class="math notranslate nohighlight">\(k\)</span> grados de libertad es es el resultado de tomar <span class="math notranslate nohighlight">\(k\)</span> variables (o muestras) normalmente distribuidas (con media 0 y desviación estándar 1), elevarlas al cuadrado y sumarlas. Como queremos una distribución de chi-cuadrada con 3 grados de libertad, además de nuestra “Muestra A”, necesitamos dos conjuntos más de valores (también distribuidos normalmente). A estas nuevas dos variables las llamaremos “Muestra B” y “Muestra C”:</p>
@@ -1078,7 +1074,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0f13ac7aa78a7a3304db62d6929f2f642c44f7f17f9f69e5582b28a234ef6f00.png" src="../_images/0f13ac7aa78a7a3304db62d6929f2f642c44f7f17f9f69e5582b28a234ef6f00.png" />
+<img alt="../_images/171144ad90968ac681e8b1a08af3334c0168daebfca7b0225801274fed2a6415.png" src="../_images/171144ad90968ac681e8b1a08af3334c0168daebfca7b0225801274fed2a6415.png" />
 </div>
 </div>
 <p>Una vez que tenemos las tres variables, la teoría dice que debemos elevarlos al cuadrado y sumarlos, con lo que obtendremos 1,000 observaciones que siguen una distribución de chi-cuadrada con 3 grados de libertad. Visualmente, obtendremos una distribución como en la Figura &#64;ref(fig:distchi).</p>
@@ -1111,7 +1107,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9cf4d07141fcff235a5400e1f89dda5d90b0b81b56b129a714a6d63bcbe09d67.png" src="../_images/9cf4d07141fcff235a5400e1f89dda5d90b0b81b56b129a714a6d63bcbe09d67.png" />
+<img alt="../_images/f1fc3a65c3582e23d63c598a0c1d1c187ef3d18e51831695466853fcf121338f.png" src="../_images/f1fc3a65c3582e23d63c598a0c1d1c187ef3d18e51831695466853fcf121338f.png" />
 </div>
 </div>
 <p>Del mismo modo, podemos obtener una distribución <span class="math notranslate nohighlight">\(F\)</span> al dividir dos distribuciones chi-cuadrada “escaladas”. Supongamos, por ejemplo, que deseamos generar datos que sigan una distribución <span class="math notranslate nohighlight">\(F\)</span> con 3 y 20 grados de libertad (es decir, con 3 y 20 variables respectivamente). La división de los valores de ambas distribuciones nos da como resultado una nueva variable <code class="docutils literal notranslate"><span class="pre">F.3.20</span></code> y su distribución es la que se muestra en la Figura &#64;ref(fig:distf).</p>
@@ -1142,7 +1138,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7954136020bea698460c44181a0ea9f4cfbc8db737c4c43f95a9f14d9c93fd0e.png" src="../_images/7954136020bea698460c44181a0ea9f4cfbc8db737c4c43f95a9f14d9c93fd0e.png" />
+<img alt="../_images/f2bdbb466d9bb1a093ad2d32fe0ad4bf81d087b79339e461a8ba4ef9155cf482.png" src="../_images/f2bdbb466d9bb1a093ad2d32fe0ad4bf81d087b79339e461a8ba4ef9155cf482.png" />
 </div>
 </div>
 <p>Hemos visto tres nuevas distribuciones: <span class="math notranslate nohighlight">\(\chi^2\)</span>, <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(F\)</span>. Todas son distribuciones continuas, y todas están estrechamente relacionadas con la distribución normal. Hemos hablado un poco poco sobre la naturaleza de esta relación. Sin embargo, la clave no es que tengas una comprensión profunda y detallada de todas estas diferentes distribuciones, ni que recuerdes las relaciones precisas que existen entre ellas. Lo más importante es entender la idea básica de que estas distribuciones están profundamente relacionadas entre sí y a su vez con la distribución normal. Más adelante en el curso nos vamos a encontrar con datos que se distribuyen normalmente, o que al menos suponemos que se distribuyen normalmente. Por lo tanto, si suponemos que nuestros datos se distribuyen normalmente, debemos saber reconocer las distribuciones <span class="math notranslate nohighlight">\(\chi^2\)</span>, <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(F\)</span>..</p>
@@ -1243,7 +1239,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-al-binomio">Introducción al binomio</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-distribucion-normal-normal">La distribución normal{#normal}</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-distribucion-normal">La distribución normal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#densidad-de-probabilidad-density">Densidad de probabilidad{#density}</a></li>
 </ul>
 </li>
