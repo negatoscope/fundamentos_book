@@ -61,7 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/learn_more';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -155,7 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_by_example.html">An Introductory Example</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Learn More</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebook1.html">Jupyter Notebook Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="probability.html">Introducción a la probabilidad, pero con R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability.html">Introducción a la probabilidad</a></li>
 <li class="toctree-l1"><a class="reference internal" href="probability_jupyter.html">Introducción a la probabilidad</a></li>
 </ul>
 
@@ -386,7 +387,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="learn-more">
+  <section class="tex2jax_ignore mathjax_ignore" id="learn-more">
 <h1>Learn More<a class="headerlink" href="#learn-more" title="Permalink to this heading">#</a></h1>
 <p>We’re about ready to wrap up this brief course on Python for scientific
 computing.</p>
@@ -431,7 +432,7 @@ optimized machine code.</p>
 <h2>SciPy<a class="headerlink" href="#scipy" title="Permalink to this heading">#</a></h2>
 <p>The <a class="reference external" href="http://www.scipy.org">SciPy</a> library is built on top of NumPy and
 provides additional functionality.</p>
-<p id="tuple-unpacking-example">For example, let’s calculate $\int_{-2}^2 \phi(z) dz$ where $\phi$ is
+<p id="tuple-unpacking-example">For example, let’s calculate <span class="math notranslate nohighlight">\(\int_{-2}^2 \phi(z) dz\)</span> where <span class="math notranslate nohighlight">\(\phi\)</span> is
 the standard normal density.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
