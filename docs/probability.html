@@ -554,7 +554,10 @@ P(\mbox{cara}) = 0.5
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="n">caption</span><span class="o">:</span> <span class="n">Figura</span> <span class="m">1.1</span><span class="o">:</span> <span class="n">Una</span> <span class="n">imagen</span> <span class="n">de</span> <span class="n">cómo</span> <span class="n">funciona</span> <span class="n">la</span> <span class="n">probabilidad</span> <span class="n">frecuentista.</span> <span class="n">Si</span> <span class="n">lanzas</span> <span class="n">una</span> <span class="n">moneda</span> <span class="n">justa</span> <span class="n">una</span> <span class="n">y</span> <span class="n">otra</span> <span class="n">vez</span><span class="p">,</span> <span class="n">la</span> <span class="n">proporción</span> <span class="n">de</span> <span class="n">caras</span> <span class="n">deja</span> <span class="n">de</span> <span class="n">fluctuar</span> <span class="n">y</span> <span class="n">converge</span> <span class="n">hacia</span> <span class="n">la</span> <span class="n">probabilidad</span> <span class="n">real</span> <span class="n">de</span> <span class="m">0.5</span><span class="n">.</span> <span class="n">Cada</span> <span class="n">panel</span> <span class="n">muestra</span> <span class="n">uno</span> <span class="n">de</span> <span class="n">las</span> <span class="n">cuatro</span> <span class="n">simulaciones</span> <span class="n">con</span> <span class="m">1.000</span> <span class="n">lanzamientos</span> <span class="n">cada</span> <span class="n">uno.</span> <span class="n">Aunque</span> <span class="n">ninguna</span> <span class="n">de</span> <span class="n">estas</span> <span class="n">simulaciones</span> <span class="n">terminó</span> <span class="n">con</span> <span class="n">un</span> <span class="n">valor</span> <span class="n">exacto</span> <span class="n">de</span> <span class="n">.</span><span class="m">5</span><span class="p">,</span> <span class="n">si</span> <span class="n">hubiéramos</span> <span class="n">extendido</span> <span class="n">el</span> <span class="n">experimento</span> <span class="n">por</span> <span class="n">un</span> <span class="n">número</span> <span class="n">infinito</span> <span class="n">de</span> <span class="n">lanzamientos</span> <span class="n">lo</span> <span class="n">habríamos</span> <span class="n">conseguido.</span> 
+<span class="o">---</span>
+<span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 <span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 <span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
 <span class="n">eps</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
@@ -579,7 +582,13 @@ P(\mbox{cara}) = 0.5
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/364299776cb566d5a1ab99cb631468d20fa537261dde48b830b5ee079e56af53.png" src="../_images/364299776cb566d5a1ab99cb631468d20fa537261dde48b830b5ee079e56af53.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">parse</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">srcfile</span> <span class="o">=</span> <span class="n">src</span><span class="p">):</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span> <span class="n">unexpected</span> <span class="n">numeric</span> <span class="n">constant</span>
+<span class="mi">1</span><span class="p">:</span> <span class="o">---</span>
+<span class="mi">2</span><span class="p">:</span> <span class="n">caption</span><span class="p">:</span> <span class="n">Figura</span> <span class="mf">1.1</span>
+                   <span class="o">^</span>
+<span class="ne">Traceback</span>:
+</pre></div>
+</div>
 </div>
 </div>
 <p>La definición frecuentista de probabilidad tiene algunas características que le hacen deseable. En primer lugar, es objetivo: la probabilidad de un evento se basa <em>necesariamente</em> en el mundo real. La única forma en que declaraciones de probabilidad puedan tener sentido es si se refieren a (una secuencia de) eventos que ocurren en el universo físico. En segundo lugar, es inequívoco: dos personas que miran como se desarrolla la misma secuencia de eventos, al tratar de calcular la probabilidad de un evento, inevitablemente deberán llegar a la misma respuesta. Sin embargo, también tiene algunas características no tan deseables. En primer lugar, no existen secuencias infinitas en el mundo físico. Supongamos que has encontrado una moneda en el suelo y has comenzado a lanzarla varias veces. Cada vez que aterriza, impacta en el suelo. Cada impacto daña un poco la moneda; eventualmente, la moneda será inutilizable. Entonces, uno podría preguntarse si realmente tiene sentido fingir que una secuencia “infinita” de lanzamientos de monedas es un concepto significativo u objetivo. No podemos decir que una “secuencia infinita” de eventos es algo real en el universo físico, porque el universo físico no permite nada infinito. Así, podemos ver que la definición frecuentista tiene un alcance limitado. Hay muchas cosas por ahí a las que los seres humanos estamos felices de asignar probabilidades en el día a día, pero que no pueden (ni siquiera en teoría) ser planteadas como una secuencia hipotética de eventos. Por ejemplo, si un meteorólogo aparece en televisión y dice: “la probabilidad de lluvia en Pamplona el 2 de noviembre del 2048 es del 60%” nosotros podemos aceptarlo sin rechistar. Pero desde un punto de vista frecuentista, no queda tan claro cómo podemos definirlo. Sólo hay una ciudad de Pamplona (en Navarra), y sólo un 2 de noviembre del 2048. Aquí no hay una secuencia infinita de eventos, solo una cosa de una vez. La probabilidad frecuentista nos <em>prohíbe</em> hacer declaraciones de probabilidad sobre un solo evento. Desde la perspectiva frecuentista, lloverá mañana o o no lloverá; no hay una “probabilidad” que se pueda adjuntar a un sólo evento no repetible. Sin embargo, existen algunos trucos que los frecuentistas pueden utilizar para solucionar esta situación. Una posibilidad es que el meteorólogo en realidad nos quiera decir algo así: “Existe una categoría de días para la que predigo un 60% probabilidad de lluvia; si miramos sólo esos días para los que hago esta predicción, entonces en el 60%  de esos días lloverá realmente”. Es un poco extraño y contradictorio pensarlo de esta manera, pero los frecuentistas hacen esto a veces.</p>
@@ -616,14 +625,6 @@ P(\mbox{cara}) = 0.5
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|Pantalones  |V..azules    |V..grises    |V..negros    |Traje.negro |Chándal.azul |
-|:-----------|:------------|:------------|:------------|:-----------|:------------|
-|Nombre      |$X_1$        |$X_2$        |$X_3$        |$X_4$       |$X_5$        |
-|Probabilidad|$P(X_1) = .5$|$P(X_2) = .3$|$P(X_3) = .1$|$P(X_4) = 0$|$P(X_5) = .1$|
-</pre></div>
-</div>
-</div>
 </div>
 <p>Cada uno de estos eventos tiene una probabilidad que se encuentra entre 0 y 1, y si sumamos la probabilidad de todos eventos, suman 1. Incluso podemos dibujar un gráfico de barras para visualizar esta distribución, como se muestra en la Figura &#64;ref(fig:pantsprob).</p>
 <div class="cell docutils container">
@@ -644,9 +645,6 @@ P(\mbox{cara}) = 0.5
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/b72053d5afdfd7540f6899ebfa3645911bd50fafc44b72f85fbc38f7a1df8ee8.png" src="../_images/b72053d5afdfd7540f6899ebfa3645911bd50fafc44b72f85fbc38f7a1df8ee8.png" />
-</div>
 </div>
 <p>Es importante señalar que la teoría de probabilidades permite hablar acerca de eventos elementales pero también sobre los <strong><em>eventos no elementales</em></strong>. La forma más fácil de ilustrar este concepto es con un ejemplo. Siguiendo con el ejemplo de los pantalones, es perfectamente posible hablar sobre la probabilidad de usar vaqueros. Bajo esta premisa, podemos decir que el evento “yo uso vaqueros” es posible siempre y cuando ocurra alguno de los eventos elementales apropiados; en este caso “vaqueros azules”, “vaqueros negros” o “vaqueros grises”. En términos matemáticos, definimos al evento <span class="math notranslate nohighlight">\(E\)</span> “vaqueros” como el conjunto de eventos elementales <span class="math notranslate nohighlight">\((X_1, X_2, X_3)\)</span>. Si se produce alguno de estos eventos elementales, también podemos decir que <span class="math notranslate nohighlight">\(E\)</span> ha ocurrido. Por lo tanto, podemos decir que la probabilidad <span class="math notranslate nohighlight">\(P(E)\)</span> es simplemente la suma de esos tres eventos, así
 $<span class="math notranslate nohighlight">\(
@@ -661,17 +659,6 @@ y, dado que las probabilidades de los vaqueros azules, grises y negros son respe
 <span class="n">`Notacion`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$P(\\neg A)$&quot;</span><span class="p">,</span> <span class="s">&quot;$P(A \\cup B)$&quot;</span><span class="p">,</span> <span class="s">&quot;$P(A \\cap B)$&quot;</span><span class="p">),</span>
 <span class="n">`Igual`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">,</span> <span class="s">&quot;=&quot;</span><span class="p">,</span> <span class="s">&quot;=&quot;</span><span class="p">),</span>
 <span class="n">`Formula`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$1-P(A)$&quot;</span><span class="p">,</span> <span class="s">&quot;$P(A) + P(B) - P(A \\cap B)$&quot;</span><span class="p">,</span> <span class="s">&quot;$P(A \\vert B) P(B)$&quot;</span><span class="p">)),</span> <span class="s">&quot;markdown&quot;</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="s">&quot;Algunas reglas básicas de probabilidad. Son importantes si se quiere entender la teoría de la probabilidad con un poco más de detalle y nos sirven para resolver algunos problemas de probabilidad.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Table: Algunas reglas básicas de probabilidad. Son importantes si se quiere entender la teoría de la probabilidad con un poco más de detalle y nos sirven para resolver algunos problemas de probabilidad.
-
-|Castellano |Notacion      |Igual |Formula                     |
-|:----------|:-------------|:-----|:---------------------------|
-|No $A$     |$P(\neg A)$   |=     |$1-P(A)$                    |
-|$A$ o $B$  |$P(A \cup B)$ |=     |$P(A) + P(B) - P(A \cap B)$ |
-|$A$ y $B$  |$P(A \cap B)$ |=     |$P(A \vert B) P(B)$         |
 </pre></div>
 </div>
 </div>
@@ -697,15 +684,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">Binomial</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$P(X | \\theta, N) = \\displaystyle\\frac{N!}{X! (N-X)!}  \\theta^X (1-\\theta)^{N-X}$&quot;</span><span class="p">),</span> 
                         <span class="n">Normal</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$p(X | \\mu, \\sigma) = \\displaystyle\\frac{1}{\\sqrt{2\\pi}\\sigma} \\exp \\left( -\\frac{(X - \\mu)^2}{2\\sigma^2} \\right)$ &quot;</span><span class="p">)),</span> <span class="n">caption</span> <span class="o">=</span> <span class="s">&quot;Fórmulas para las distribuciones binomial y normal. En la ecuación de la binomial, $X!$ es una función factorial (es decir, multiplica todos los números enteros de  1 hasta $X$), y en la de la distribución normal \&quot;exp\&quot; se refiere a una función exponencial.&quot;</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Table: Fórmulas para las distribuciones binomial y normal. En la ecuación de la binomial, $X!$ es una función factorial (es decir, multiplica todos los números enteros de  1 hasta $X$), y en la de la distribución normal &quot;exp&quot; se refiere a una función exponencial.
-
-|Binomial                                                                               |Normal                                                                                                                  |
-|:--------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|
-|$P(X &amp;#124; \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}$ |$p(X &amp;#124; \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)$ |
 </pre></div>
 </div>
 </div>
@@ -735,9 +713,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/c2ed73471020a6e61eff8974cef1e968303fd95925e5b98a9513441177381030.png" src="../_images/c2ed73471020a6e61eff8974cef1e968303fd95925e5b98a9513441177381030.png" />
-</div>
 </div>
 <p>Para darte una idea de cómo cambia la distribución binomial cuando modificamos los valores de <span class="math notranslate nohighlight">\(\theta\)</span> y <span class="math notranslate nohighlight">\(N\)</span>, supongamos que en lugar de tirar dados, en realidad estoy lanzando monedas. Esta vez, mi experimento implica lanzar una moneda justa repetidamente, y el resultado que me interesa es la cantidad de caras que observo. En este escenario, la probabilidad de éxito ahora es de <span class="math notranslate nohighlight">\(\theta = 1/2\)</span>. Supongamos que tirara la moneda <span class="math notranslate nohighlight">\(N=20\)</span>  veces. En este ejemplo, he cambiado la probabilidad de éxito, pero mantuve el tamaño de la muestra del experimento. ¿Qué efecto tiene este cambio en nuestra distribución binomial? Bueno, como la Figura &#64;ref(fig:binomial2a)  muestra, el efecto principal fue el desplazamiento de toda la distribución hacia la derecha, como era de esperar. ¿Y si lanzamos una moneda <span class="math notranslate nohighlight">\(N=100\)</span> veces? En este caso obtendremos algo como lo de la Figura &#64;ref(fig:binomial2b). La distribución se mantiene aproximadamente en el medio, pero hay un poco más de variabilidad en los posibles resultados.</p>
 <div class="cell docutils container">
@@ -762,9 +737,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/08e8cd86c9c60d122c49db7c0ebd6332a62b56fc204c0b70e40c3cd0e1511834.png" src="../_images/08e8cd86c9c60d122c49db7c0ebd6332a62b56fc204c0b70e40c3cd0e1511834.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -787,9 +759,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
   	<span class="nf">binomPlot</span><span class="p">(</span> <span class="n">n</span><span class="o">=</span><span class="m">100</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Número de caras observadas&quot;</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/3000a72db7f98f11e4e24bfc515c6849d29a999a2ed11e652e15dccf8bcb73b6.png" src="../_images/3000a72db7f98f11e4e24bfc515c6849d29a999a2ed11e652e15dccf8bcb73b6.png" />
 </div>
 </div>
 </section>
@@ -819,9 +788,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/0e6a443c2176630c8c09cd491699994563efe01525762ea555df6bd13373f2f3.png" src="../_images/0e6a443c2176630c8c09cd491699994563efe01525762ea555df6bd13373f2f3.png" />
-</div>
 </div>
 <p>Una vez visto esto, vamos a analizar cómo funciona una distribución normal. En primer lugar, veamos qué es lo que sucede cuando jugamos con los parámetros de la distribución (puedes hacerlo tú mismo si entras en este enlace). La Figura &#64;ref(fig:normmean) muestra distribuciones normales que tienen medias diferentes, pero con la misma desviación estándar. Como es de esperar, todas estas distribuciones tienen la misma “anchura”. La unica diferencia entre ellas es que se han desplazado hacia la izquierda o hacia la derecha. En todos los demás aspectos son idénticas. Por el contrario, si aumentamos la desviación estándar mientras mantenemos la media constante, el pico de la distribución permanece en el mismo lugar, pero la distribución se amplía, como podemos ver en la Figura &#64;ref(fig:normsd). Sin embargo, cuando ampliamos la distribución, la altura del pico disminuye. Esto <em>tiene</em> que suceder: de la misma forma que las alturas de las barras de una distribución binomial discreta tienen que <em>sumar</em> 1, el total del <em>área bajo la curva</em> de una distribución normal debe ser igual a 1.</p>
 <div class="cell docutils container">
@@ -837,9 +803,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/9e636cb1f01b625c54a06b1529a25cc0a8d3ac571abb9babe3c1c9ba30338670.png" src="../_images/9e636cb1f01b625c54a06b1529a25cc0a8d3ac571abb9babe3c1c9ba30338670.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -853,9 +816,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 <span class="nf">lines</span><span class="p">(</span>	<span class="n">xval</span><span class="p">,</span> <span class="n">yval.2</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/22a35568be565ed29dfa0f4d7f47fcabd35ee050738608ad47108d908cdc86b0.png" src="../_images/22a35568be565ed29dfa0f4d7f47fcabd35ee050738608ad47108d908cdc86b0.png" />
 </div>
 </div>
 <p>Antes de seguir adelante, quiero señalar una característica importante de la distribución normal. Independientemente de los valores de la media y la desviación estándar, un 68.3% del área de la curva cae dentro de 1 desviación estándar sobre la media. Del mismo modo, el 95.4% de la distribución cae dentro de 2 desviaciones estándar sobre la media, y el 99.7% de la distribución está dentro de 3 desviaciones estándar. Esta idea se ilustra en las Figuras &#64;ref(fig:sdnorm1) y &#64;ref(fig:sdnorm2).</p>
@@ -888,9 +848,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/c9e245f157e3837382310795629a165cb223b348a77fc2d2013f438ff2dc1036.png" src="../_images/c9e245f157e3837382310795629a165cb223b348a77fc2d2013f438ff2dc1036.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -900,9 +857,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 <span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/cc95496e1f87f2b5f09bca9ddf7b5349d432e864a15664d9ce77567ff3fb8ba2.png" src="../_images/cc95496e1f87f2b5f09bca9ddf7b5349d432e864a15664d9ce77567ff3fb8ba2.png" />
 </div>
 </div>
 <section id="densidad-de-probabilidad-density">
@@ -929,9 +883,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/1b77da96fb669e3b834b40c201e3529be532b04b68fbeb87e2b14646bfe47500.png" src="../_images/1b77da96fb669e3b834b40c201e3529be532b04b68fbeb87e2b14646bfe47500.png" />
-</div>
 </div>
 <ul class="simple">
 <li><p>La <strong><em>distribución <span class="math notranslate nohighlight">\(\chi^2\)</span></em></strong> es otra distribución que podemos encontrar con cierta frecuencia. Es habitual encontrarla cuando hacemos análisis de datos categóricos. Los valores de una distribución <span class="math notranslate nohighlight">\(\chi^2\)</span> se consiguen al elevar al cuadrado los valores de una variable distribuída normalmente y luego sumarlos (un procedimiento denominado “suma de cuadrados”). Después veremos porqué es útil hacer una “suma de cuadrados”. La apariencia de una distribución <span class="math notranslate nohighlight">\(\chi^2\)</span> la puedes encontrar en la Figura &#64;ref(fig:chisqdist).</p></li>
@@ -945,9 +896,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/9ef0d3d2941ec8d98b37f5a363e1f8254aba8b3022793d304d3069c9ca25a009.png" src="../_images/9ef0d3d2941ec8d98b37f5a363e1f8254aba8b3022793d304d3069c9ca25a009.png" />
 </div>
 </div>
 <ul class="simple">
@@ -963,9 +911,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/b267041f25c23fa1afa24f5a37931275cb21b23e0a55e18d269fece3106566ae.png" src="../_images/b267041f25c23fa1afa24f5a37931275cb21b23e0a55e18d269fece3106566ae.png" />
 </div>
 </div>
 <p>Debido a que estas distribuciones están estrechamente relacionadas con la distribución normal y entre sí, y porque se convertirán en las distribuciones importantes al hacer análisis estadísticos inferenciales en este curso, creo que es útil hacer una pequeña demostración de cómo estas distribuciones realmente están relacionadas entre sí. Primero, imagina que tenemos un conjunto de 1,000 observaciones aleatorias distribuidas normalmente al cual llamaremos “Muestra A”.</p>
@@ -996,9 +941,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/f050263e3511e1fe54c54e35410833a503a3f87a7ff7b4370c9e091545fe02f4.png" src="../_images/f050263e3511e1fe54c54e35410833a503a3f87a7ff7b4370c9e091545fe02f4.png" />
-</div>
 </div>
 <p>En la Figura anterior podemos observar cómo han sido generados muchos valores distribuidos normalmente que luego han sido comparados con la  distribución de probabilidad verdadera (línea sólida). Supongamos que ahora queremos una distribución chi-cuadrada con 3 grados de libertad. Como hemos mencionado anteriormente, una distribución chi-cuadrada con <span class="math notranslate nohighlight">\(k\)</span> grados de libertad es es el resultado de tomar <span class="math notranslate nohighlight">\(k\)</span> variables (o muestras) normalmente distribuidas (con media 0 y desviación estándar 1), elevarlas al cuadrado y sumarlas. Como queremos una distribución de chi-cuadrada con 3 grados de libertad, además de nuestra “Muestra A”, necesitamos dos conjuntos más de valores (también distribuidos normalmente). A estas nuevas dos variables las llamaremos “Muestra B” y “Muestra C”:</p>
 <div class="cell docutils container">
@@ -1026,9 +968,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 <span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/592223daef299304d5fbcc7ab0f06e04a8bf000c0cf5cb4b87e1f0b700abfa09.png" src="../_images/592223daef299304d5fbcc7ab0f06e04a8bf000c0cf5cb4b87e1f0b700abfa09.png" />
 </div>
 </div>
 <p>Una vez que tenemos las tres variables, la teoría dice que debemos elevarlos al cuadrado y sumarlos, con lo que obtendremos 1,000 observaciones que siguen una distribución de chi-cuadrada con 3 grados de libertad. Visualmente, obtendremos una distribución como en la Figura &#64;ref(fig:distchi).</p>
@@ -1060,9 +999,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/cbbf4a62645e0baf2707d09c75e286e956e935ead7c491db9b8efc45ef41f8af.png" src="../_images/cbbf4a62645e0baf2707d09c75e286e956e935ead7c491db9b8efc45ef41f8af.png" />
-</div>
 </div>
 <p>Del mismo modo, podemos obtener una distribución <span class="math notranslate nohighlight">\(F\)</span> al dividir dos distribuciones chi-cuadrada “escaladas”. Supongamos, por ejemplo, que deseamos generar datos que sigan una distribución <span class="math notranslate nohighlight">\(F\)</span> con 3 y 20 grados de libertad (es decir, con 3 y 20 variables respectivamente). La división de los valores de ambas distribuciones nos da como resultado una nueva variable <code class="docutils literal notranslate"><span class="pre">F.3.20</span></code> y su distribución es la que se muestra en la Figura &#64;ref(fig:distf).</p>
 <div class="cell docutils container">
@@ -1090,9 +1026,6 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 <span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/bcd703577ac16eef6922f9610db1411e854375c7f253312b84ac63c9a699646f.png" src="../_images/bcd703577ac16eef6922f9610db1411e854375c7f253312b84ac63c9a699646f.png" />
 </div>
 </div>
 <p>Hemos visto tres nuevas distribuciones: <span class="math notranslate nohighlight">\(\chi^2\)</span>, <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(F\)</span>. Todas son distribuciones continuas, y todas están estrechamente relacionadas con la distribución normal. Hemos hablado un poco poco sobre la naturaleza de esta relación. Sin embargo, la clave no es que tengas una comprensión profunda y detallada de todas estas diferentes distribuciones, ni que recuerdes las relaciones precisas que existen entre ellas. Lo más importante es entender la idea básica de que estas distribuciones están profundamente relacionadas entre sí y a su vez con la distribución normal. Más adelante en el curso nos vamos a encontrar con datos que se distribuyen normalmente, o que al menos suponemos que se distribuyen normalmente. Por lo tanto, si suponemos que nuestros datos se distribuyen normalmente, debemos saber reconocer las distribuciones <span class="math notranslate nohighlight">\(\chi^2\)</span>, <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(F\)</span>..</p>

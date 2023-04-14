@@ -111,6 +111,9 @@ Tengamos en cuenta que al comienzo de esta secuencia, la *proporción* de caras 
 ```{code-cell} ir
 :tags: ["hide-input"]
 :name: figura1
+---
+caption: Figura 1.1: Una imagen de cómo funciona la probabilidad frecuentista. Si lanzas una moneda justa una y otra vez, la proporción de caras deja de fluctuar y converge hacia la probabilidad real de 0.5. Cada panel muestra uno de las cuatro simulaciones con 1.000 lanzamientos cada uno. Aunque ninguna de estas simulaciones terminó con un valor exacto de .5, si hubiéramos extendido el experimento por un número infinito de lanzamientos lo habríamos conseguido. 
+---
 emphCol <- rgb(0,0,1)
 emphColLight <- rgb(.5,.5,1)
 emphGrey <- grey(.5)
