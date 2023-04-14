@@ -75,7 +75,8 @@ X,C,C,C,C,X,X,C,C,C,C,X,C,C,X,X,X,X,X,C
 ```
 En este caso, en 11 de los 20 lanzamientos (55\%) salió cara. Ahora supongamos que he ido guardando un registro con el número de caras (que llamaré $N_C$) que han salido, a lo largo de las primeras $N$ lanzadas de moneda, además de calcular la proporción de caras $N_C / N$ con cada registro. Este es el resultado que obtendría:
 
-```{code-cell, echo=FALSE, results='hide'} r
+```{code-cell} r
+:tags: ["hide-input"]
 knitr::kable(data.frame(stringsAsFactors=FALSE,
 `Número de lanzamientos` = c(1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10, 11 , 12 , 13 , 14 , 15 , 16 , 17 , 18 , 19 , 20),
 `Número de caras` = c( 0 , 1 , 2 , 3 , 4 , 4 , 4 , 5 , 6 , 7,  8  ,  8 ,  9 , 10 , 10 , 10 , 10 , 10 , 10 , 11 ), 
