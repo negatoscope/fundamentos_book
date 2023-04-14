@@ -456,71 +456,6 @@ P(\mbox{cara}) = 0.5
 </pre></div>
 </div>
 <p>En este caso, en 11 de los 20 lanzamientos (55%) salió cara. Ahora supongamos que he ido guardando un registro con el número de caras (que llamaré <span class="math notranslate nohighlight">\(N_C\)</span>) que han salido, a lo largo de las primeras <span class="math notranslate nohighlight">\(N\)</span> lanzadas de moneda, además de calcular la proporción de caras <span class="math notranslate nohighlight">\(N_C / N\)</span> con cada registro. Este es el resultado que obtendría:</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
-<span class="n">`Número de lanzamientos`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span> <span class="p">,</span> <span class="m">2</span> <span class="p">,</span> <span class="m">3</span> <span class="p">,</span> <span class="m">4</span> <span class="p">,</span> <span class="m">5</span> <span class="p">,</span> <span class="m">6</span> <span class="p">,</span> <span class="m">7</span> <span class="p">,</span> <span class="m">8</span> <span class="p">,</span> <span class="m">9</span> <span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">11</span> <span class="p">,</span> <span class="m">12</span> <span class="p">,</span> <span class="m">13</span> <span class="p">,</span> <span class="m">14</span> <span class="p">,</span> <span class="m">15</span> <span class="p">,</span> <span class="m">16</span> <span class="p">,</span> <span class="m">17</span> <span class="p">,</span> <span class="m">18</span> <span class="p">,</span> <span class="m">19</span> <span class="p">,</span> <span class="m">20</span><span class="p">),</span>
-<span class="n">`Número de caras`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span> <span class="m">0</span> <span class="p">,</span> <span class="m">1</span> <span class="p">,</span> <span class="m">2</span> <span class="p">,</span> <span class="m">3</span> <span class="p">,</span> <span class="m">4</span> <span class="p">,</span> <span class="m">4</span> <span class="p">,</span> <span class="m">4</span> <span class="p">,</span> <span class="m">5</span> <span class="p">,</span> <span class="m">6</span> <span class="p">,</span> <span class="m">7</span><span class="p">,</span>  <span class="m">8</span>  <span class="p">,</span>  <span class="m">8</span> <span class="p">,</span>  <span class="m">9</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">10</span> <span class="p">,</span> <span class="m">11</span> <span class="p">),</span> 
-<span class="n">`Proporción`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span> <span class="n">.</span><span class="m">00</span> <span class="p">,</span> <span class="n">.</span><span class="m">50</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span> <span class="n">.</span><span class="m">75</span> <span class="p">,</span> <span class="n">.</span><span class="m">80</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span> <span class="n">.</span><span class="m">57</span> <span class="p">,</span> <span class="n">.</span><span class="m">63</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span> <span class="n">.</span><span class="m">70</span><span class="p">,</span> <span class="n">.</span><span class="m">73</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span> <span class="n">.</span><span class="m">69</span> <span class="p">,</span> <span class="n">.</span><span class="m">71</span> <span class="p">,</span> <span class="n">.</span><span class="m">67</span> <span class="p">,</span>  <span class="n">.</span><span class="m">63</span> <span class="p">,</span> <span class="n">.</span><span class="m">59</span> <span class="p">,</span> <span class="n">.</span><span class="m">56</span> <span class="p">,</span> <span class="n">.</span><span class="m">53</span> <span class="p">,</span> <span class="n">.</span><span class="m">55</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| Número.de.lanzamientos| Número.de.caras| Proporción|
-|----------------------:|---------------:|----------:|
-|                      1|               0|       0.00|
-|                      2|               1|       0.50|
-|                      3|               2|       0.67|
-|                      4|               3|       0.75|
-|                      5|               4|       0.80|
-|                      6|               4|       0.67|
-|                      7|               4|       0.57|
-|                      8|               5|       0.63|
-|                      9|               6|       0.67|
-|                     10|               7|       0.70|
-|                     11|               8|       0.73|
-|                     12|               8|       0.67|
-|                     13|               9|       0.69|
-|                     14|              10|       0.71|
-|                     15|              10|       0.67|
-|                     16|              10|       0.63|
-|                     17|              10|       0.59|
-|                     18|              10|       0.56|
-|                     19|              10|       0.53|
-|                     20|              11|       0.55|
-</pre></div>
-</div>
-</div>
-</div>
-<table class="table" id="id1">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Tabla de lanzamientos</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
-<thead>
-<tr class="row-odd"><th class="head"><p>Número de lanzamientos</p></th>
-<th class="head"><p>Número de caras</p></th>
-<th class="head"><p>Proporción</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>1</p></td>
-<td><p>0</p></td>
-<td><p>0.00</p></td>
-</tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td><p>1</p></td>
-<td><p>0.50</p></td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>2</p></td>
-<td><p>0.67</p></td>
-</tr>
-</tbody>
-</table>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-right"><p>Número.de.lanzamientos</p></th>
@@ -611,8 +546,13 @@ P(\mbox{cara}) = 0.5
 </tr>
 </tbody>
 </table>
-<p>Tengamos en cuenta que al comienzo de esta secuencia, la <em>proporción</em> de caras fluctúa enormemente, comenzando en .00 y subiendo tan alto como .80. Conforme aumenta el número de lanzamientos, uno tiene la impresión de que este efecto se amortigua un poco, mientras que los valores se aproximan cada vez más a la respuesta “correcta” de .50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzar una moneda justa una y otra vez, y a medida que <span class="math notranslate nohighlight">\(N\)</span> crece  (se acerca al infinito, denotado como <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span>), la proporción de caras convergerá en el 50%. Tecnicismos matemáticos aparte, cualitativamente hablando, es así es como los frecuentistas definen la probabilidad. Desafortunadamente, no tengo un número infinito de monedas, o la paciencia infinita requerida para lanzar una moneda un número infinito de veces. Sin embargo, existen los ordenadores, y los ordenadores se destacan por la ejecución repetitiva de tareas sin sentido como esta. Entonces, al simular 1.000 lanzamientos de moneda y repetir este procesos 4 veces (para darle solidez a los resultados), podemos ver qué sucede con la proporción <span class="math notranslate nohighlight">\(N_C / N\)</span> a medida que <span class="math notranslate nohighlight">\(N\)</span> aumenta. Los resultados se muestran en la Figura &#64;ref(fig:frequentistprobability) aunque también puedes hacer tú la simulación haciendo click <a class="reference external" href="https://leudave.shinyapps.io/cara_cruz/">aquí</a>. Podemos apreciar que la <em>proporción de caras observadas</em> deja de fluctuar conforme aumenta el número de lanzamientos; cuando lo hace, el número que finalmente obtenemos es el verdadera probabilidad de salga cara.</p>
-<div class="cell docutils container">
+<p>Tengamos en cuenta que al comienzo de esta secuencia, la <em>proporción</em> de caras fluctúa enormemente, comenzando en .00 y subiendo tan alto como .80. Conforme aumenta el número de lanzamientos, uno tiene la impresión de que este efecto se amortigua un poco, mientras que los valores se aproximan cada vez más a la respuesta “correcta” de .50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzar una moneda justa una y otra vez, y a medida que <span class="math notranslate nohighlight">\(N\)</span> crece  (se acerca al infinito, denotado como <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span>), la proporción de caras convergerá en el 50%. Tecnicismos matemáticos aparte, cualitativamente hablando, es así es como los frecuentistas definen la probabilidad. Desafortunadamente, no tengo un número infinito de monedas, o la paciencia infinita requerida para lanzar una moneda un número infinito de veces. Sin embargo, existen los ordenadores, y los ordenadores se destacan por la ejecución repetitiva de tareas sin sentido como esta. Entonces, al simular 1.000 lanzamientos de moneda y repetir este procesos 4 veces (para darle solidez a los resultados), podemos ver qué sucede con la proporción <span class="math notranslate nohighlight">\(N_C / N\)</span> a medida que <span class="math notranslate nohighlight">\(N\)</span> aumenta. Los resultados se muestran en la <code class="xref std std-numref docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">%s</span></code> aunque también puedes hacer tú la simulación haciendo click <a class="reference external" href="https://leudave.shinyapps.io/cara_cruz/">aquí</a>. Podemos apreciar que la <em>proporción de caras observadas</em> deja de fluctuar conforme aumenta el número de lanzamientos; cuando lo hace, el número que finalmente obtenemos es el verdadera probabilidad de salga cara.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 <span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
@@ -637,8 +577,9 @@ P(\mbox{cara}) = 0.5
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../_images/ee946ba30f324705769fa81749d680dcce05b065de3f32698b0c9738828b5eb3.png" src="../_images/ee946ba30f324705769fa81749d680dcce05b065de3f32698b0c9738828b5eb3.png" />
+<img alt="../_images/364299776cb566d5a1ab99cb631468d20fa537261dde48b830b5ee079e56af53.png" src="../_images/364299776cb566d5a1ab99cb631468d20fa537261dde48b830b5ee079e56af53.png" />
 </div>
 </div>
 <p>La definición frecuentista de probabilidad tiene algunas características que le hacen deseable. En primer lugar, es objetivo: la probabilidad de un evento se basa <em>necesariamente</em> en el mundo real. La única forma en que declaraciones de probabilidad puedan tener sentido es si se refieren a (una secuencia de) eventos que ocurren en el universo físico. En segundo lugar, es inequívoco: dos personas que miran como se desarrolla la misma secuencia de eventos, al tratar de calcular la probabilidad de un evento, inevitablemente deberán llegar a la misma respuesta. Sin embargo, también tiene algunas características no tan deseables. En primer lugar, no existen secuencias infinitas en el mundo físico. Supongamos que has encontrado una moneda en el suelo y has comenzado a lanzarla varias veces. Cada vez que aterriza, impacta en el suelo. Cada impacto daña un poco la moneda; eventualmente, la moneda será inutilizable. Entonces, uno podría preguntarse si realmente tiene sentido fingir que una secuencia “infinita” de lanzamientos de monedas es un concepto significativo u objetivo. No podemos decir que una “secuencia infinita” de eventos es algo real en el universo físico, porque el universo físico no permite nada infinito. Así, podemos ver que la definición frecuentista tiene un alcance limitado. Hay muchas cosas por ahí a las que los seres humanos estamos felices de asignar probabilidades en el día a día, pero que no pueden (ni siquiera en teoría) ser planteadas como una secuencia hipotética de eventos. Por ejemplo, si un meteorólogo aparece en televisión y dice: “la probabilidad de lluvia en Pamplona el 2 de noviembre del 2048 es del 60%” nosotros podemos aceptarlo sin rechistar. Pero desde un punto de vista frecuentista, no queda tan claro cómo podemos definirlo. Sólo hay una ciudad de Pamplona (en Navarra), y sólo un 2 de noviembre del 2048. Aquí no hay una secuencia infinita de eventos, solo una cosa de una vez. La probabilidad frecuentista nos <em>prohíbe</em> hacer declaraciones de probabilidad sobre un solo evento. Desde la perspectiva frecuentista, lloverá mañana o o no lloverá; no hay una “probabilidad” que se pueda adjuntar a un sólo evento no repetible. Sin embargo, existen algunos trucos que los frecuentistas pueden utilizar para solucionar esta situación. Una posibilidad es que el meteorólogo en realidad nos quiera decir algo así: “Existe una categoría de días para la que predigo un 60% probabilidad de lluvia; si miramos sólo esos días para los que hago esta predicción, entonces en el 60%  de esos días lloverá realmente”. Es un poco extraño y contradictorio pensarlo de esta manera, pero los frecuentistas hacen esto a veces.</p>
@@ -1056,7 +997,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/290cfa49976ee75a98c5a08b69c35abd1739c405278ffafe0b41f392b4832efd.png" src="../_images/290cfa49976ee75a98c5a08b69c35abd1739c405278ffafe0b41f392b4832efd.png" />
+<img alt="../_images/f050263e3511e1fe54c54e35410833a503a3f87a7ff7b4370c9e091545fe02f4.png" src="../_images/f050263e3511e1fe54c54e35410833a503a3f87a7ff7b4370c9e091545fe02f4.png" />
 </div>
 </div>
 <p>En la Figura anterior podemos observar cómo han sido generados muchos valores distribuidos normalmente que luego han sido comparados con la  distribución de probabilidad verdadera (línea sólida). Supongamos que ahora queremos una distribución chi-cuadrada con 3 grados de libertad. Como hemos mencionado anteriormente, una distribución chi-cuadrada con <span class="math notranslate nohighlight">\(k\)</span> grados de libertad es es el resultado de tomar <span class="math notranslate nohighlight">\(k\)</span> variables (o muestras) normalmente distribuidas (con media 0 y desviación estándar 1), elevarlas al cuadrado y sumarlas. Como queremos una distribución de chi-cuadrada con 3 grados de libertad, además de nuestra “Muestra A”, necesitamos dos conjuntos más de valores (también distribuidos normalmente). A estas nuevas dos variables las llamaremos “Muestra B” y “Muestra C”:</p>
@@ -1087,7 +1028,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d1c7e1f6d3d4c16c3f072254112c313d4b5593c3e03bea692b46f35354d056ce.png" src="../_images/d1c7e1f6d3d4c16c3f072254112c313d4b5593c3e03bea692b46f35354d056ce.png" />
+<img alt="../_images/592223daef299304d5fbcc7ab0f06e04a8bf000c0cf5cb4b87e1f0b700abfa09.png" src="../_images/592223daef299304d5fbcc7ab0f06e04a8bf000c0cf5cb4b87e1f0b700abfa09.png" />
 </div>
 </div>
 <p>Una vez que tenemos las tres variables, la teoría dice que debemos elevarlos al cuadrado y sumarlos, con lo que obtendremos 1,000 observaciones que siguen una distribución de chi-cuadrada con 3 grados de libertad. Visualmente, obtendremos una distribución como en la Figura &#64;ref(fig:distchi).</p>
@@ -1120,7 +1061,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/91168ed8fe053a3690fd68d1ce0141e00269d5d7602c8acb45337d73000695dd.png" src="../_images/91168ed8fe053a3690fd68d1ce0141e00269d5d7602c8acb45337d73000695dd.png" />
+<img alt="../_images/cbbf4a62645e0baf2707d09c75e286e956e935ead7c491db9b8efc45ef41f8af.png" src="../_images/cbbf4a62645e0baf2707d09c75e286e956e935ead7c491db9b8efc45ef41f8af.png" />
 </div>
 </div>
 <p>Del mismo modo, podemos obtener una distribución <span class="math notranslate nohighlight">\(F\)</span> al dividir dos distribuciones chi-cuadrada “escaladas”. Supongamos, por ejemplo, que deseamos generar datos que sigan una distribución <span class="math notranslate nohighlight">\(F\)</span> con 3 y 20 grados de libertad (es decir, con 3 y 20 variables respectivamente). La división de los valores de ambas distribuciones nos da como resultado una nueva variable <code class="docutils literal notranslate"><span class="pre">F.3.20</span></code> y su distribución es la que se muestra en la Figura &#64;ref(fig:distf).</p>
@@ -1151,7 +1092,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3ba9f5ac541d8d33ec6e2ab8906cd4257d82bb9510b5284a9e8a239416ce346e.png" src="../_images/3ba9f5ac541d8d33ec6e2ab8906cd4257d82bb9510b5284a9e8a239416ce346e.png" />
+<img alt="../_images/bcd703577ac16eef6922f9610db1411e854375c7f253312b84ac63c9a699646f.png" src="../_images/bcd703577ac16eef6922f9610db1411e854375c7f253312b84ac63c9a699646f.png" />
 </div>
 </div>
 <p>Hemos visto tres nuevas distribuciones: <span class="math notranslate nohighlight">\(\chi^2\)</span>, <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(F\)</span>. Todas son distribuciones continuas, y todas están estrechamente relacionadas con la distribución normal. Hemos hablado un poco poco sobre la naturaleza de esta relación. Sin embargo, la clave no es que tengas una comprensión profunda y detallada de todas estas diferentes distribuciones, ni que recuerdes las relaciones precisas que existen entre ellas. Lo más importante es entender la idea básica de que estas distribuciones están profundamente relacionadas entre sí y a su vez con la distribución normal. Más adelante en el curso nos vamos a encontrar con datos que se distribuyen normalmente, o que al menos suponemos que se distribuyen normalmente. Por lo tanto, si suponemos que nuestros datos se distribuyen normalmente, debemos saber reconocer las distribuciones <span class="math notranslate nohighlight">\(\chi^2\)</span>, <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(F\)</span>..</p>
