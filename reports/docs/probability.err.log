@@ -18,7 +18,8 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 ---
-caption: Figura 1.1: Una imagen de cómo funciona la probabilidad frecuentista. Si lanzas una moneda justa una y otra vez, la proporción de caras deja de fluctuar y converge hacia la probabilidad real de 0.5. Cada panel muestra uno de las cuatro simulaciones con 1.000 lanzamientos cada uno. Aunque ninguna de estas simulaciones terminó con un valor exacto de .5, si hubiéramos extendido el experimento por un número infinito de lanzamientos lo habríamos conseguido. 
+caption: |
+Figura 1.1: Una imagen de cómo funciona la probabilidad frecuentista. Si lanzas una moneda justa una y otra vez, la proporción de caras deja de fluctuar y converge hacia la probabilidad real de 0.5. Cada panel muestra uno de las cuatro simulaciones con 1.000 lanzamientos cada uno. Aunque ninguna de estas simulaciones terminó con un valor exacto de .5, si hubiéramos extendido el experimento por un número infinito de lanzamientos lo habríamos conseguido. 
 ---
 emphCol <- rgb(0,0,1)
 emphColLight <- rgb(.5,.5,1)
@@ -42,15 +43,15 @@ colour <- TRUE
 	par(def.par)#- reset to default
 ------------------
 
-Error in parse(text = x, srcfile = src): <text>:2:17: unexpected numeric constant
+Error in parse(text = x, srcfile = src): <text>:2:10: unexpected '|'
 1: ---
-2: caption: Figura 1.1
-                   ^
+2: caption: |
+            ^
 Traceback:
 
-ERROR: Error in parse(text = x, srcfile = src): <text>:2:17: unexpected numeric constant
+ERROR: Error in parse(text = x, srcfile = src): <text>:2:10: unexpected '|'
 1: ---
-2: caption: Figura 1.1
-                   ^
+2: caption: |
+            ^
 
 
