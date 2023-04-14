@@ -371,7 +371,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica">¿Cómo de diferentes son la probabilidad y la estadística?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-significa-la-probabilidad-probmeaning">¿Qué significa la probabilidad?{#probmeaning}</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-significa-la-probabilidad">¿Qué significa la probabilidad?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-frecuentista">La visión frecuentista</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-bayesiana">La visión bayesiana</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cual-es-la-diferencia-y-quien-tiene-razon">¿Cuál es la diferencia? ¿Y quién tiene razón?</a></li>
@@ -426,8 +426,6 @@ Este tipo de comentarios suele pasar como completamente irrelevante en los peri�
 \[
 P(\mbox{cara}) = 0.5
 \]</div>
-<div class="math notranslate nohighlight">
-\[P(\mbox{cara}) = 0.5\]</div>
 <p>que puedes leer como “la probabilidad de que salga cara es 0.5”. Como veremos más adelante, de la misma manera que los porcentajes son números que van del 0% al 100%, las probabilidades son solo números que van del 0 al 1. Cuando usamos este modelo de probabilidad para responder a la primera pregunta, en realidad no sé exactamente qué va a ocurrir. Tal vez obtenga 10 caras, como dice la pregunta. Pero quizás salgan sólo tres caras. Esta es la clave: con la teoría de la probabilidad, se conoce el <em>modelo</em>, pero no los <em>datos</em>.</p>
 <p>Hemos visto lo que es la probabilidad. ¿Qué hay de la estadística? Las preguntas en estadística funcionan al revés. En estadística, nosotros <em>no</em> sabemos la verdad sobre el mundo. Todo lo que tenemos son los datos, y es a partir de esos datos que queremos <em>aprender</em> sobre la verdad del mundo. Las preguntas estadísticas tienden a parecerse más a estas:</p>
 <ul class="simple">
@@ -439,10 +437,10 @@ P(\mbox{cara}) = 0.5
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span> <span class="n">C</span>
 </pre></div>
 </div>
-<p>y lo que estoy tratando de hacer es averiguar en qué “modelo de verdad del mundo” debería confiar. Si la moneda es justa, entonces el modelo que debo aceptar es uno que diga que la probabilidad de que salga cara es 0.5; es decir,  <span class="math notranslate nohighlight">\(P(\mbox{cara}) = 0.5\)</span> <code class="docutils literal notranslate"><span class="pre">{math}P(\mbox{cara})</span> <span class="pre">=</span> <span class="pre">0.5</span></code>. Si la moneda no es justa, entonces debo concluir que la probabilidad de que salga cara <em>no</em> es 0.5, lo cual escribiríamos como <span class="math notranslate nohighlight">\(P(\mbox{cara}) \neq 0.5\)</span>. En otras palabras, el objetivo de la inferencia estadística es decidir cual de estos modelos de probabilidad es el correcto. Vemos pues, que una pregunta en estadística no es la misma que una pregunta en probabilidad, pero están íntimamente conectados entre sí. Es por ello que una buena introducción a la teoría estadística comenzará con una discusión sobre qué es la probabilidad y cómo funciona.</p>
+<p>y lo que estoy tratando de hacer es averiguar en qué “modelo de verdad del mundo” debería confiar. Si la moneda es justa, entonces el modelo que debo aceptar es uno que diga que la probabilidad de que salga cara es 0.5; es decir,  <span class="math notranslate nohighlight">\(P(\mbox{cara}) = 0.5\)</span>. Si la moneda no es justa, entonces debo concluir que la probabilidad de que salga cara <em>no</em> es 0.5, lo cual escribiríamos como <span class="math notranslate nohighlight">\(P(\mbox{cara}) \neq 0.5\)</span>. En otras palabras, el objetivo de la inferencia estadística es decidir cual de estos modelos de probabilidad es el correcto. Vemos pues, que una pregunta en estadística no es la misma que una pregunta en probabilidad, pero están íntimamente conectados entre sí. Es por ello que una buena introducción a la teoría estadística comenzará con una discusión sobre qué es la probabilidad y cómo funciona.</p>
 </section>
-<section id="que-significa-la-probabilidad-probmeaning">
-<h2>¿Qué significa la probabilidad?{#probmeaning}<a class="headerlink" href="#que-significa-la-probabilidad-probmeaning" title="Permalink to this heading">#</a></h2>
+<section id="que-significa-la-probabilidad">
+<h2>¿Qué significa la probabilidad?<a class="headerlink" href="#que-significa-la-probabilidad" title="Permalink to this heading">#</a></h2>
 <p>Comencemos con la primera de estas preguntas. ¿Qué es la “probabilidad”? Puede parecer sorprendente, pero mientras que los estadísticos y matemáticos (en su mayoría) están de acuerdo sobre cuáles son las <em>reglas</em> de la probabilidad, hay mucho menos consenso sobre lo que realmente <em>significa</em> la palabra. Parece extraño porque todos usemos con soltura palabras como “posibilidad”, “probabilidad”, “posible” y “probable”, y además no parece que deba ser una pregunta difícil de responder. Si tuvieramos que explicar el concepto de “probabilidad” a un niño de cinco años, podríamos hacerlo sin muchos problemas. Pero si alguna vez lo has intentando en la vida real, podrías terminar esa conversación sintiendo que no lo has hecho muy bien y que (como con muchos conceptos cotidianos) resulta que <em>realmente</em> no sabemos de qué se trata.</p>
 <p>Aún así, vamos a intentarlo. Supongamos que quiero apostar en un juego de fútbol entre dos equipos que en lugar de humanos están formados por robots: el <em>Tesla FC</em> y el <em>Real TikTok</em>. Según los datos de esta temporada, calculo que hay un 80% de probabilidad de que el <em>Tesla FC</em> gane. ¿Qué quiero decir realmente con eso? Tenemos tres posibilidades…</p>
 <ul class="simple">
@@ -494,6 +492,119 @@ P(\mbox{cara}) = 0.5
 </div>
 </div>
 </div>
+<table class="table" id="id1">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Tabla de lanzamientos</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Número de lanzamientos</p></th>
+<th class="head"><p>Número de caras</p></th>
+<th class="head"><p>Proporción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>0.50</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>2</p></td>
+<td><p>0.67</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Número.de.lanzamientos</p></th>
+<th class="head text-right"><p>Número.de.caras</p></th>
+<th class="head text-right"><p>Proporción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0.50</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>3</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>0.67</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>4</p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-right"><p>0.75</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>5</p></td>
+<td class="text-right"><p>4</p></td>
+<td class="text-right"><p>0.80</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>6</p></td>
+<td class="text-right"><p>4</p></td>
+<td class="text-right"><p>0.67</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>7</p></td>
+<td class="text-right"><p>4</p></td>
+<td class="text-right"><p>0.57</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>8</p></td>
+<td class="text-right"><p>5</p></td>
+<td class="text-right"><p>0.63</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>9</p></td>
+<td class="text-right"><p>6</p></td>
+<td class="text-right"><p>0.67</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>10</p></td>
+<td class="text-right"><p>7</p></td>
+<td class="text-right"><p>0.70</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>11</p></td>
+<td class="text-right"><p>8</p></td>
+<td class="text-right"><p>0.73</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>12</p></td>
+<td class="text-right"><p>8</p></td>
+<td class="text-right"><p>0.67</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>13</p></td>
+<td class="text-right"><p>9</p></td>
+<td class="text-right"><p>0.69</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>14</p></td>
+<td class="text-right"><p>10</p></td>
+<td class="text-right"><p>0.71</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>15</p></td>
+<td class="text-right"><p>10</p></td>
+<td class="text-right"><p>0.67</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>16</p></td>
+<td class="text-right"><p>10</p></td>
+<td class="text-right"><p>0.63</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>17</p></td>
+<td class="text-right"><p>10</p></td>
+<td class="text-right"><p>0.59</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>18</p></td>
+<td class="text-right"><p>10</p></td>
+<td class="text-right"><p>0.56</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>19</p></td>
+<td class="text-right"><p>10</p></td>
+<td class="text-right"><p>0.53</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>20</p></td>
+<td class="text-right"><p>11</p></td>
+<td class="text-right"><p>0.55</p></td>
+</tr>
+</tbody>
+</table>
 <p>Tengamos en cuenta que al comienzo de esta secuencia, la <em>proporción</em> de caras fluctúa enormemente, comenzando en .00 y subiendo tan alto como .80. Conforme aumenta el número de lanzamientos, uno tiene la impresión de que este efecto se amortigua un poco, mientras que los valores se aproximan cada vez más a la respuesta “correcta” de .50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzar una moneda justa una y otra vez, y a medida que <span class="math notranslate nohighlight">\(N\)</span> crece  (se acerca al infinito, denotado como <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span>), la proporción de caras convergerá en el 50%. Tecnicismos matemáticos aparte, cualitativamente hablando, es así es como los frecuentistas definen la probabilidad. Desafortunadamente, no tengo un número infinito de monedas, o la paciencia infinita requerida para lanzar una moneda un número infinito de veces. Sin embargo, existen los ordenadores, y los ordenadores se destacan por la ejecución repetitiva de tareas sin sentido como esta. Entonces, al simular 1.000 lanzamientos de moneda y repetir este procesos 4 veces (para darle solidez a los resultados), podemos ver qué sucede con la proporción <span class="math notranslate nohighlight">\(N_C / N\)</span> a medida que <span class="math notranslate nohighlight">\(N\)</span> aumenta. Los resultados se muestran en la Figura &#64;ref(fig:frequentistprobability) aunque también puedes hacer tú la simulación haciendo click <a class="reference external" href="https://leudave.shinyapps.io/cara_cruz/">aquí</a>. Podemos apreciar que la <em>proporción de caras observadas</em> deja de fluctuar conforme aumenta el número de lanzamientos; cuando lo hace, el número que finalmente obtenemos es el verdadera probabilidad de salga cara.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1121,7 +1232,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-de-diferentes-son-la-probabilidad-y-la-estadistica">¿Cómo de diferentes son la probabilidad y la estadística?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-significa-la-probabilidad-probmeaning">¿Qué significa la probabilidad?{#probmeaning}</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-significa-la-probabilidad">¿Qué significa la probabilidad?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-frecuentista">La visión frecuentista</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-vision-bayesiana">La visión bayesiana</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cual-es-la-diferencia-y-quien-tiene-razon">¿Cuál es la diferencia? ¿Y quién tiene razón?</a></li>

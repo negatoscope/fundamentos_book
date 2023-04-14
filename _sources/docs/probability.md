@@ -39,10 +39,6 @@ $$
 P(\mbox{cara}) = 0.5
 $$
 
-```{math}
-P(\mbox{cara}) = 0.5
-```
-
 que puedes leer como "la probabilidad de que salga cara es 0.5". Como veremos más adelante, de la misma manera que los porcentajes son números que van del 0\% al 100\%, las probabilidades son solo números que van del 0 al 1. Cuando usamos este modelo de probabilidad para responder a la primera pregunta, en realidad no sé exactamente qué va a ocurrir. Tal vez obtenga 10 caras, como dice la pregunta. Pero quizás salgan sólo tres caras. Esta es la clave: con la teoría de la probabilidad, se conoce el *modelo*, pero no los *datos*.
 
 Hemos visto lo que es la probabilidad. ¿Qué hay de la estadística? Las preguntas en estadística funcionan al revés. En estadística, nosotros *no* sabemos la verdad sobre el mundo. Todo lo que tenemos son los datos, y es a partir de esos datos que queremos *aprender* sobre la verdad del mundo. Las preguntas estadísticas tienden a parecerse más a estas:  
@@ -57,9 +53,9 @@ Esta vez, lo único que tenemos son datos. Lo que *sé*  es que vi a mi amigo la
 C C C C C C C C C C C
 ```
 
-y lo que estoy tratando de hacer es averiguar en qué "modelo de verdad del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debo aceptar es uno que diga que la probabilidad de que salga cara es 0.5; es decir,  $P(\mbox{cara}) = 0.5$ ```{math}P(\mbox{cara}) = 0.5```. Si la moneda no es justa, entonces debo concluir que la probabilidad de que salga cara *no* es 0.5, lo cual escribiríamos como $P(\mbox{cara}) \neq 0.5$. En otras palabras, el objetivo de la inferencia estadística es decidir cual de estos modelos de probabilidad es el correcto. Vemos pues, que una pregunta en estadística no es la misma que una pregunta en probabilidad, pero están íntimamente conectados entre sí. Es por ello que una buena introducción a la teoría estadística comenzará con una discusión sobre qué es la probabilidad y cómo funciona.
+y lo que estoy tratando de hacer es averiguar en qué "modelo de verdad del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debo aceptar es uno que diga que la probabilidad de que salga cara es 0.5; es decir,  $P(\mbox{cara}) = 0.5$. Si la moneda no es justa, entonces debo concluir que la probabilidad de que salga cara *no* es 0.5, lo cual escribiríamos como $P(\mbox{cara}) \neq 0.5$. En otras palabras, el objetivo de la inferencia estadística es decidir cual de estos modelos de probabilidad es el correcto. Vemos pues, que una pregunta en estadística no es la misma que una pregunta en probabilidad, pero están íntimamente conectados entre sí. Es por ello que una buena introducción a la teoría estadística comenzará con una discusión sobre qué es la probabilidad y cómo funciona.
 
-## ¿Qué significa la probabilidad?{#probmeaning}
+## ¿Qué significa la probabilidad?
 
 Comencemos con la primera de estas preguntas. ¿Qué es la "probabilidad"? Puede parecer sorprendente, pero mientras que los estadísticos y matemáticos (en su mayoría) están de acuerdo sobre cuáles son las *reglas* de la probabilidad, hay mucho menos consenso sobre lo que realmente *significa* la palabra. Parece extraño porque todos usemos con soltura palabras como "posibilidad", "probabilidad", "posible" y "probable", y además no parece que deba ser una pregunta difícil de responder. Si tuvieramos que explicar el concepto de "probabilidad" a un niño de cinco años, podríamos hacerlo sin muchos problemas. Pero si alguna vez lo has intentando en la vida real, podrías terminar esa conversación sintiendo que no lo has hecho muy bien y que (como con muchos conceptos cotidianos) resulta que *realmente* no sabemos de qué se trata. 
 
@@ -85,6 +81,45 @@ knitr::kable(data.frame(stringsAsFactors=FALSE,
 `Número de caras` = c( 0 , 1 , 2 , 3 , 4 , 4 , 4 , 5 , 6 , 7,  8  ,  8 ,  9 , 10 , 10 , 10 , 10 , 10 , 10 , 11 ), 
 `Proporción` = c( .00 , .50 , .67 , .75 , .80 , .67 , .57 , .63 , .67 , .70, .73 , .67 , .69 , .71 , .67 ,  .63 , .59 , .56 , .53 , .55)))
 ```
+
+```{list-table} Tabla de lanzamientos
+:header-rows: 1
+
+* - Número de lanzamientos
+  - Número de caras
+  - Proporción
+* - 1
+  - 0
+  - 0.00
+* - 2
+  - 1
+  - 0.50
+* - 3
+  - 2
+  - 0.67
+```
+| Número.de.lanzamientos| Número.de.caras| Proporción|
+|----------------------:|---------------:|----------:|
+|                      1|               0|       0.00|
+|                      2|               1|       0.50|
+|                      3|               2|       0.67|
+|                      4|               3|       0.75|
+|                      5|               4|       0.80|
+|                      6|               4|       0.67|
+|                      7|               4|       0.57|
+|                      8|               5|       0.63|
+|                      9|               6|       0.67|
+|                     10|               7|       0.70|
+|                     11|               8|       0.73|
+|                     12|               8|       0.67|
+|                     13|               9|       0.69|
+|                     14|              10|       0.71|
+|                     15|              10|       0.67|
+|                     16|              10|       0.63|
+|                     17|              10|       0.59|
+|                     18|              10|       0.56|
+|                     19|              10|       0.53|
+|                     20|              11|       0.55|
 
 Tengamos en cuenta que al comienzo de esta secuencia, la *proporción* de caras fluctúa enormemente, comenzando en .00 y subiendo tan alto como .80. Conforme aumenta el número de lanzamientos, uno tiene la impresión de que este efecto se amortigua un poco, mientras que los valores se aproximan cada vez más a la respuesta "correcta" de .50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzar una moneda justa una y otra vez, y a medida que $N$ crece  (se acerca al infinito, denotado como $N\rightarrow \infty$), la proporción de caras convergerá en el 50\%. Tecnicismos matemáticos aparte, cualitativamente hablando, es así es como los frecuentistas definen la probabilidad. Desafortunadamente, no tengo un número infinito de monedas, o la paciencia infinita requerida para lanzar una moneda un número infinito de veces. Sin embargo, existen los ordenadores, y los ordenadores se destacan por la ejecución repetitiva de tareas sin sentido como esta. Entonces, al simular 1.000 lanzamientos de moneda y repetir este procesos 4 veces (para darle solidez a los resultados), podemos ver qué sucede con la proporción $N_C / N$ a medida que $N$ aumenta. Los resultados se muestran en la Figura \@ref(fig:frequentistprobability) aunque también puedes hacer tú la simulación haciendo click [aquí](https://leudave.shinyapps.io/cara_cruz/). Podemos apreciar que la *proporción de caras observadas* deja de fluctuar conforme aumenta el número de lanzamientos; cuando lo hace, el número que finalmente obtenemos es el verdadera probabilidad de salga cara.
 
