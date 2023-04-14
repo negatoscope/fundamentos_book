@@ -271,12 +271,12 @@ knitr::kable(data.frame(stringsAsFactors=FALSE, Binomial = c("$P(X | \\theta, N)
 
 * - Binomial
   - Normal
-* - $P(X &#124; \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}$
-  - $p(X &#124; \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)$
+* - $P(X \mid \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}$
+  - $p(X \mid \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)$
 ```
 |Binomial                                                                               |Normal                                                                                                                  |
 |:--------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|
-|$P(X &#124; \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}$ |$p(X &#124; \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)$ |
+|$P(X \mid \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}$ |$p(X \mid \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)$ |
 
 ```{code-cell} r
 :tags: ["hide-input"]
