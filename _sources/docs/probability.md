@@ -238,7 +238,7 @@ knitr::kable(data.frame(stringsAsFactors=FALSE,
 
 ---
 
-## La distribución binomial{#binomial}
+## La distribución binomial
 
 Como hemos visto, las distribuciones de probabilidad pueden variar enormemente, por lo que existe un gran número de distribuciones posibles. Sin embargo, no todas son igual de importantes. Las distribuciones más importantes, y de las que hablaremos en esta asignatura son cinco: la distribución binomial, la distribución normal, la distribución $t$, la distribución $\chi^2$ ("chi-cuadrada") y la distribución $F$. Daremos una breve introducción a las cinco, prestando especial atención a las distribuciones binomial y normal. Comenzaremos con la distribución más simple de las cinco, la distribución binomial.
 
