@@ -150,6 +150,7 @@ La alternativa a la visión frecuentista, la **_visión bayesiana_** de la proba
 
 ¿Cuáles son las ventajas y desventajas del enfoque bayesiano? La principal ventaja es que le permite asignar probabilidades a cualquier evento. No esta limitado a aquellos eventos que son repetibles. La principal desventaja (para muchas personas) es que no podemos ser realmente objetivos - especificar una probabilidad requiere que especifiquemos la entidad que tiene el grado de creencia que estamos examinando. Esta entidad puede ser un humano, un extraterrestre, un robot o incluso un estadístico, pero tiene que ser un agente inteligente que sea capaz de creer en cosas. Para muchas personas esto representa un inconveniente: parece hacer que la probabilidad sea arbitraria. Si bien el enfoque bayesiano requiere que el agente en cuestión sea racional (es decir, que obedezca las reglas de la probabilidad), permite que todos tengan sus propias creencias; yo puedo creer que la moneda es justa mientras que otro no, aunque ambos seamos racionales. La visión frecuentista no permite que dos observadores atribuyan diferentes probabilidades al mismo evento: cuando eso sucede, al menos uno de ellos debe estar equivocado. La visión bayesiana no evita que esto ocurra. Dos observadores con diferentes conocimientos previos pueden tener creencias diferentes sobre el mismo evento. En otras palabras, mientras que la visión frecuentista se puede considerar como demasiado estrecha (prohíbe muchas cosas a las cuales queremos asignar probabilidades), la visión bayesiana puede resultar demasiado amplia (permite demasiadas diferencias entre observadores).
 
+---
 
 ### ¿Cuál es la diferencia? ¿Y quién tiene razón?
 
@@ -159,10 +160,13 @@ Entendiendo las diferencias, podemos preguntarnos a continuación cuál de dos e
 
 En cualquier caso, la mayor parte de los métodos y análisis estadísticos en la literatura se basan en el enfoque frecuentista. Por lo tanto, el objetivo de esta asignatura es cubrir aproximadamente el mismo temario que una clase típica de estadística de pregrado en ciencias de la educación, y si queremos entender las herramientas estadísticas utilizadas por la mayoría de los educadores en investigación, necesitaremos una buena comprensión de los métodos frecuentistas. 
 
+---
 
-## Teoría de probabilidad básica{#basicprobability}
+## Teoría de probabilidad básica
 
 A pesar de los argumentos ideológicos entre bayesianos y frecuentistas, existe un consenso más o menos generalizado sobre las reglas que la probabilidad debe obedecer. Hay muchas formas de abordar estas reglas. El enfoque más utilizado se basa en el trabajo de Andrey Kolmogorov, uno de los grandes matemáticos soviéticos del siglo XX. No entraremos mucho en detalle, pero aprenderemos en qué consisten y cómo utilizarlas a través del siguiente ejemplo.
+
+---
 
 ### Introducción a las distribuciones de probabilidad
 
@@ -171,7 +175,9 @@ Un hecho comprobado sobre mi vida es que sólo tengo 5 pares de pantalones: tres
 Bien, ahora que tenemos un espacio muestral (un armario), que está construido a partir de muchas posibles eventos elementales (pantalones), lo que queremos hacer es asignar una **_probabilidad_**  a cada uno de estos eventos elementales. Para un evento $X$, la probabilidad de ese evento $P(X)$ es un número que se encuentra entre 0 y 1. Cuanto mayor sea el valor de $P(X)$, más probable será que ocurra el evento. Entonces, por ejemplo, si $P(X) = 0$, significa que el evento $X$ es imposible (es decir, nunca uso esos pantalones). Por otro lado, si  $P(X) = 1$ significa que el evento $X$ es seguro que ocurra (es decir, siempre uso esos pantalones). Los valores de probabilidad intermedios, significan que a veces uso esos pantalones (y a veces no). Por ejemplo, una $P(X) = 0.5$ significa que uso esos pantalones la mitad de las veces.  
 
 Llegados a este punto, lo siguiente que debemos entender es que "algo siempre sucede ". Cada vez que me pongo unos pantalones, realmente termino usando esos pantalones. Lo que esto significa en términos probabilísticos, es que las probabilidades de todos los eventos elementales siempre suman 1. Esto se conoce como la **_ley de probabilidad total_**. Si se cumplen estos requisitos (tenemos número $X$ de pantalones, cada par con una probabilidad $P(X)$ de usarlos que en total suman 1), entonces lo que tenemos es una **_distribución de probabilidad_**.Veamos un ejemplo de distribución de probabilidad
+
 ```{code-cell} r
+:tags: ["remove-cell"]
 knitr::kable(data.frame(stringsAsFactors=FALSE,
 `Pantalones` = c(  "Nombre" , "Probabilidad" ), 
 `V. azules` = c(  "$X_1$" , "$P(X_1) = .5$" ),
@@ -180,10 +186,15 @@ knitr::kable(data.frame(stringsAsFactors=FALSE,
 `Traje negro` = c(  "$X_4$" , "$P(X_4) = 0$ "),
 `Chándal azul` = c(  "$X_5$ ", "$P(X_5) = .1$")), "markdown", padding=0L)
 ```
+|Pantalones  |V..azules    |V..grises    |V..negros    |Traje.negro |Chándal.azul |
+|:-----------|:------------|:------------|:------------|:-----------|:------------|
+|Nombre      |$X_1$        |$X_2$        |$X_3$        |$X_4$       |$X_5$        |
+|Probabilidad|$P(X_1) = .5$|$P(X_2) = .3$|$P(X_3) = .1$|$P(X_4) = 0$|$P(X_5) = .1$|
 
-Cada uno de estos eventos tiene una probabilidad que se encuentra entre 0 y 1, y si sumamos la probabilidad de todos eventos, suman 1. Incluso podemos dibujar un gráfico de barras para visualizar esta distribución, como se muestra en la Figura \@ref(fig:pantsprob). 
+Cada uno de estos eventos tiene una probabilidad que se encuentra entre 0 y 1, y si sumamos la probabilidad de todos eventos, suman 1. Incluso podemos dibujar un gráfico de barras para visualizar esta distribución, como se muestra en la `Figura 2`. 
 
 ```{code-cell} r
+:tags: ["hide-input"]
 probabilities <- c( .5, .3, .1, 0, .1)
 	eventNames <- c( "V. azules", "V. grises", "V. negros", 
 					 "Traje negro", "Chándal azul" )
@@ -198,13 +209,14 @@ probabilities <- c( .5, .3, .1, 0, .1)
 		col = ifelse(colour,emphCol,emphGrey)
 	)
 ```
-
-
+`Figura 1.2: Demostración visual de la distribución de probabilidad de los “pantalones”. Existen 5 “eventos elementales”, que se corresponden con mis 5 pares de pantalones. Cada evento tiene una probabilidad de ocurrir: esta probabilidad es un número entre 0 y 1. La suma de estas probabilidades es 1.`
 
 Es importante señalar que la teoría de probabilidades permite hablar acerca de eventos elementales pero también sobre los **_eventos no elementales_**. La forma más fácil de ilustrar este concepto es con un ejemplo. Siguiendo con el ejemplo de los pantalones, es perfectamente posible hablar sobre la probabilidad de usar vaqueros. Bajo esta premisa, podemos decir que el evento "yo uso vaqueros" es posible siempre y cuando ocurra alguno de los eventos elementales apropiados; en este caso "vaqueros azules", "vaqueros negros" o "vaqueros grises". En términos matemáticos, definimos al evento $E$ "vaqueros" como el conjunto de eventos elementales $(X_1, X_2, X_3)$. Si se produce alguno de estos eventos elementales, también podemos decir que $E$ ha ocurrido. Por lo tanto, podemos decir que la probabilidad $P(E)$ es simplemente la suma de esos tres eventos, así
+
 $$
 P(E) = P(X_1) + P(X_2) + P(X_3)
 $$ 
+
 y, dado que las probabilidades de los vaqueros azules, grises y negros son respectivamente .5, .3 y .1, la probabilidad total de usar vaqueros es igual a .9.
 
 Todo esto parece obvio y simple. Sin embargo, a partir de estos simples comienzos, es posible construir algunas herramientas matemáticas más complejas y poderosas. En la siguiente Tabla se muestran algunas de las otras reglas que deben de cumplirse para poder calcular probabilidades. 
@@ -216,6 +228,14 @@ knitr::kable(data.frame(stringsAsFactors=FALSE,
 `Igual` = c("=", "=", "="),
 `Formula` = c("$1-P(A)$", "$P(A) + P(B) - P(A \\cap B)$", "$P(A \\vert B) P(B)$")), "markdown", caption = "Algunas reglas básicas de probabilidad. Son importantes si se quiere entender la teoría de la probabilidad con un poco más de detalle y nos sirven para resolver algunos problemas de probabilidad.")
 ```
+`Tabla 1. Algunas reglas básicas de probabilidad. Son importantes si se quiere entender la teoría de la probabilidad con un poco más de detalle y nos sirven para resolver algunos problemas de probabilidad.`
+|Castellano |Notacion      |Igual |Formula                     |
+|:----------|:-------------|:-----|:---------------------------|
+|No $A$     |$P(\neg A)$   |=     |$1-P(A)$                    |
+|$A$ o $B$  |$P(A \cup B)$ |=     |$P(A) + P(B) - P(A \cap B)$ |
+|$A$ y $B$  |$P(A \cap B)$ |=     |$P(A \vert B) P(B)$         |
+
+---
 
 ## La distribución binomial{#binomial}
 

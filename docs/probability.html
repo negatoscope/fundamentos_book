@@ -377,7 +377,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cual-es-la-diferencia-y-quien-tiene-razon">¿Cuál es la diferencia? ¿Y quién tiene razón?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teoria-de-probabilidad-basica-basicprobability">Teoría de probabilidad básica{#basicprobability}</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teoria-de-probabilidad-basica">Teoría de probabilidad básica</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-las-distribuciones-de-probabilidad">Introducción a las distribuciones de probabilidad</a></li>
 </ul>
 </li>
@@ -582,7 +582,7 @@ P(\mbox{cara}) = 0.5
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/2d272784611eb961736b14843883a103b468e6ae27508f32fdf0c337d2d07c10.png" src="../_images/2d272784611eb961736b14843883a103b468e6ae27508f32fdf0c337d2d07c10.png" />
+<img alt="../_images/d404987b85c185f2cfdc71ff62c046361e407bac57ac4d51188cb2a38aa30eb4.png" src="../_images/d404987b85c185f2cfdc71ff62c046361e407bac57ac4d51188cb2a38aa30eb4.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.1</span> <span class="pre">Una</span> <span class="pre">imagen</span> <span class="pre">de</span> <span class="pre">cómo</span> <span class="pre">funciona</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">frecuentista.</span> <span class="pre">Si</span> <span class="pre">lanzas</span> <span class="pre">una</span> <span class="pre">moneda</span> <span class="pre">justa</span> <span class="pre">una</span> <span class="pre">y</span> <span class="pre">otra</span> <span class="pre">vez,</span> <span class="pre">la</span> <span class="pre">proporción</span> <span class="pre">de</span> <span class="pre">caras</span> <span class="pre">deja</span> <span class="pre">de</span> <span class="pre">fluctuar</span> <span class="pre">y</span> <span class="pre">converge</span> <span class="pre">hacia</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">real</span> <span class="pre">de</span> <span class="pre">0.5.</span> <span class="pre">Cada</span> <span class="pre">panel</span> <span class="pre">muestra</span> <span class="pre">uno</span> <span class="pre">de</span> <span class="pre">las</span> <span class="pre">cuatro</span> <span class="pre">simulaciones</span> <span class="pre">con</span> <span class="pre">1.000</span> <span class="pre">lanzamientos</span> <span class="pre">cada</span> <span class="pre">uno.</span> <span class="pre">Aunque</span> <span class="pre">ninguna</span> <span class="pre">de</span> <span class="pre">estas</span> <span class="pre">simulaciones</span> <span class="pre">terminó</span> <span class="pre">con</span> <span class="pre">un</span> <span class="pre">valor</span> <span class="pre">exacto</span> <span class="pre">de</span> <span class="pre">.5,</span> <span class="pre">si</span> <span class="pre">hubiéramos</span> <span class="pre">extendido</span> <span class="pre">el</span> <span class="pre">experimento</span> <span class="pre">por</span> <span class="pre">un</span> <span class="pre">número</span> <span class="pre">infinito</span> <span class="pre">de</span> <span class="pre">lanzamientos</span> <span class="pre">lo</span> <span class="pre">habríamos</span> <span class="pre">conseguido.</span></code></p>
@@ -594,6 +594,7 @@ P(\mbox{cara}) = 0.5
 <p>La alternativa a la visión frecuentista, la <strong><em>visión bayesiana</em></strong> de la probabilidad, a menudo se denomina visión subjetivista, y es una visión relativamente minoritaria entre los estadísticos, aunque ha ido ganando terreno constantemente a lo largo de las últimas décadas. Hay muchos formas de bayesianismo, lo que hace difícil decir exactamente cuál es “la” visión bayesiana. La forma más fácil de entender la probabilidad subjetiva es al definir la probabilidad de un evento como el <strong><em>grado de creencia</em></strong> que un agente inteligente y racional  asigna a la verdad de ese evento. Desde esa perspectiva, las probabilidades no existen en el mundo, sino más bien en los pensamientos y suposiciones de las personas y otros seres inteligentes. Sin embargo, para que este enfoque funcione, necesitamos una forma de operacionalizar este “grado de creencia”. Una forma de hacerlo es formalizándolo en términos de una “apuesta racional” aunque existen muchas otras formas. Supongamos que creo que existe una probabilidad de que llueva mañana de un 60%. Si alguien me hace una apuesta, si llueve mañana, gano $5,  pero si no llueve, pierdo $5. Claramente, desde mi punto de vista, esta es una buena apuesta. Por otro lado, si creo que la probabilidad de lluvia es sólo del 40%, entonces es una mala apuesta. Por lo tanto, podemos poner en práctica la noción de una “probabilidad subjetiva” en términos de qué apuestas que estoy dispuesto a aceptar.</p>
 <p>¿Cuáles son las ventajas y desventajas del enfoque bayesiano? La principal ventaja es que le permite asignar probabilidades a cualquier evento. No esta limitado a aquellos eventos que son repetibles. La principal desventaja (para muchas personas) es que no podemos ser realmente objetivos - especificar una probabilidad requiere que especifiquemos la entidad que tiene el grado de creencia que estamos examinando. Esta entidad puede ser un humano, un extraterrestre, un robot o incluso un estadístico, pero tiene que ser un agente inteligente que sea capaz de creer en cosas. Para muchas personas esto representa un inconveniente: parece hacer que la probabilidad sea arbitraria. Si bien el enfoque bayesiano requiere que el agente en cuestión sea racional (es decir, que obedezca las reglas de la probabilidad), permite que todos tengan sus propias creencias; yo puedo creer que la moneda es justa mientras que otro no, aunque ambos seamos racionales. La visión frecuentista no permite que dos observadores atribuyan diferentes probabilidades al mismo evento: cuando eso sucede, al menos uno de ellos debe estar equivocado. La visión bayesiana no evita que esto ocurra. Dos observadores con diferentes conocimientos previos pueden tener creencias diferentes sobre el mismo evento. En otras palabras, mientras que la visión frecuentista se puede considerar como demasiado estrecha (prohíbe muchas cosas a las cuales queremos asignar probabilidades), la visión bayesiana puede resultar demasiado amplia (permite demasiadas diferencias entre observadores).</p>
 </section>
+<hr class="docutils" />
 <section id="cual-es-la-diferencia-y-quien-tiene-razon">
 <h3>¿Cuál es la diferencia? ¿Y quién tiene razón?<a class="headerlink" href="#cual-es-la-diferencia-y-quien-tiene-razon" title="Permalink to this heading">#</a></h3>
 <p>Ahora que hemos visto ambas visiones estadísticas de forma independiente, es necesario compararlas. Regresemos al hipotético juego de fútbol de robots que comentamos comienzo del tema. ¿Que dirían un frecuentista y un bayesiano sobre las tres afirmaciones? ¿Qué enunciado sería la definición de probabilidad correcta para el frecuentista? ¿Y para el bayesiano? ¿Es posible que alguno de los enunciados no tenga sentido para cualquiera de los dos? Si entendemos ambas perspectivas, podemos intuir cómo responder a estas preguntas.</p>
@@ -601,37 +602,50 @@ P(\mbox{cara}) = 0.5
 <p>En cualquier caso, la mayor parte de los métodos y análisis estadísticos en la literatura se basan en el enfoque frecuentista. Por lo tanto, el objetivo de esta asignatura es cubrir aproximadamente el mismo temario que una clase típica de estadística de pregrado en ciencias de la educación, y si queremos entender las herramientas estadísticas utilizadas por la mayoría de los educadores en investigación, necesitaremos una buena comprensión de los métodos frecuentistas.</p>
 </section>
 </section>
-<section id="teoria-de-probabilidad-basica-basicprobability">
-<h2>Teoría de probabilidad básica{#basicprobability}<a class="headerlink" href="#teoria-de-probabilidad-basica-basicprobability" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="teoria-de-probabilidad-basica">
+<h2>Teoría de probabilidad básica<a class="headerlink" href="#teoria-de-probabilidad-basica" title="Permalink to this heading">#</a></h2>
 <p>A pesar de los argumentos ideológicos entre bayesianos y frecuentistas, existe un consenso más o menos generalizado sobre las reglas que la probabilidad debe obedecer. Hay muchas formas de abordar estas reglas. El enfoque más utilizado se basa en el trabajo de Andrey Kolmogorov, uno de los grandes matemáticos soviéticos del siglo XX. No entraremos mucho en detalle, pero aprenderemos en qué consisten y cómo utilizarlas a través del siguiente ejemplo.</p>
+<hr class="docutils" />
 <section id="introduccion-a-las-distribuciones-de-probabilidad">
 <h3>Introducción a las distribuciones de probabilidad<a class="headerlink" href="#introduccion-a-las-distribuciones-de-probabilidad" title="Permalink to this heading">#</a></h3>
 <p>Un hecho comprobado sobre mi vida es que sólo tengo 5 pares de pantalones: tres pares de vaqueros, los pantalones de un traje y un par de pantalones de chándal. Lo más triste es que les he dado nombres: los llamo <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>, <span class="math notranslate nohighlight">\(X_4\)</span> y <span class="math notranslate nohighlight">\(X_5\)</span>. Diariamente, por la mañana, elijo un único par de esos pantalones que voy a usar. Si yo tuviera que describir esta situación usando el lenguaje de la teoría de la probabilidad, me referiría a cada par de pantalones (es decir, a cada <span class="math notranslate nohighlight">\(X\)</span>) como un <strong><em>evento elemental</em></strong>.  La característica clave de estos eventos elementales es que cada vez que hacemos una observación (por ejemplo, cada vez que escojo un par de pantalones), el resultado será uno y solo uno de estos eventos. Como he dicho antes, siempre uso exactamente sólo un par de pantalones, así que mis pantalones cumplen con esta restricción. Del mismo modo, al conjunto de todos los eventos posibles se le denomina  <strong><em>espacio muestral</em></strong>. Siguiendo con el ejemplo, mi espacio muestral sería el armario que contiene los 5 pantalones.</p>
 <p>Bien, ahora que tenemos un espacio muestral (un armario), que está construido a partir de muchas posibles eventos elementales (pantalones), lo que queremos hacer es asignar una <strong><em>probabilidad</em></strong>  a cada uno de estos eventos elementales. Para un evento <span class="math notranslate nohighlight">\(X\)</span>, la probabilidad de ese evento <span class="math notranslate nohighlight">\(P(X)\)</span> es un número que se encuentra entre 0 y 1. Cuanto mayor sea el valor de <span class="math notranslate nohighlight">\(P(X)\)</span>, más probable será que ocurra el evento. Entonces, por ejemplo, si <span class="math notranslate nohighlight">\(P(X) = 0\)</span>, significa que el evento <span class="math notranslate nohighlight">\(X\)</span> es imposible (es decir, nunca uso esos pantalones). Por otro lado, si  <span class="math notranslate nohighlight">\(P(X) = 1\)</span> significa que el evento <span class="math notranslate nohighlight">\(X\)</span> es seguro que ocurra (es decir, siempre uso esos pantalones). Los valores de probabilidad intermedios, significan que a veces uso esos pantalones (y a veces no). Por ejemplo, una <span class="math notranslate nohighlight">\(P(X) = 0.5\)</span> significa que uso esos pantalones la mitad de las veces.</p>
 <p>Llegados a este punto, lo siguiente que debemos entender es que “algo siempre sucede “. Cada vez que me pongo unos pantalones, realmente termino usando esos pantalones. Lo que esto significa en términos probabilísticos, es que las probabilidades de todos los eventos elementales siempre suman 1. Esto se conoce como la <strong><em>ley de probabilidad total</em></strong>. Si se cumplen estos requisitos (tenemos número <span class="math notranslate nohighlight">\(X\)</span> de pantalones, cada par con una probabilidad <span class="math notranslate nohighlight">\(P(X)\)</span> de usarlos que en total suman 1), entonces lo que tenemos es una <strong><em>distribución de probabilidad</em></strong>.Veamos un ejemplo de distribución de probabilidad</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
-<span class="n">`Pantalones`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>  <span class="s">&quot;Nombre&quot;</span> <span class="p">,</span> <span class="s">&quot;Probabilidad&quot;</span> <span class="p">),</span> 
-<span class="n">`V. azules`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>  <span class="s">&quot;$X_1$&quot;</span> <span class="p">,</span> <span class="s">&quot;$P(X_1) = .5$&quot;</span> <span class="p">),</span>
-<span class="n">`V. grises`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>  <span class="s">&quot;$X_2$ &quot;</span><span class="p">,</span> <span class="s">&quot;$P(X_2) = .3$ &quot;</span><span class="p">),</span>
-<span class="n">`V. negros`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>  <span class="s">&quot;$X_3$ &quot;</span><span class="p">,</span> <span class="s">&quot;$P(X_3) = .1$&quot;</span> <span class="p">),</span>
-<span class="n">`Traje negro`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>  <span class="s">&quot;$X_4$&quot;</span> <span class="p">,</span> <span class="s">&quot;$P(X_4) = 0$ &quot;</span><span class="p">),</span>
-<span class="n">`Chándal azul`</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>  <span class="s">&quot;$X_5$ &quot;</span><span class="p">,</span> <span class="s">&quot;$P(X_5) = .1$&quot;</span><span class="p">)),</span> <span class="s">&quot;markdown&quot;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="m">0L</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|Pantalones  |V..azules    |V..grises    |V..negros    |Traje.negro |Chándal.azul |
-|:-----------|:------------|:------------|:------------|:-----------|:------------|
-|Nombre      |$X_1$        |$X_2$        |$X_3$        |$X_4$       |$X_5$        |
-|Probabilidad|$P(X_1) = .5$|$P(X_2) = .3$|$P(X_3) = .1$|$P(X_4) = 0$|$P(X_5) = .1$|
-</pre></div>
-</div>
-</div>
-</div>
-<p>Cada uno de estos eventos tiene una probabilidad que se encuentra entre 0 y 1, y si sumamos la probabilidad de todos eventos, suman 1. Incluso podemos dibujar un gráfico de barras para visualizar esta distribución, como se muestra en la Figura &#64;ref(fig:pantsprob).</p>
-<div class="cell docutils container">
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Pantalones</p></th>
+<th class="head text-left"><p>V..azules</p></th>
+<th class="head text-left"><p>V..grises</p></th>
+<th class="head text-left"><p>V..negros</p></th>
+<th class="head text-left"><p>Traje.negro</p></th>
+<th class="head text-left"><p>Chándal.azul</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Nombre</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(X_1\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(X_2\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(X_3\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(X_4\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(X_5\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Probabilidad</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(X_1) = .5\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(X_2) = .3\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(X_3) = .1\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(X_4) = 0\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(X_5) = .1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Cada uno de estos eventos tiene una probabilidad que se encuentra entre 0 y 1, y si sumamos la probabilidad de todos eventos, suman 1. Incluso podemos dibujar un gráfico de barras para visualizar esta distribución, como se muestra en la <code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">2</span></code>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">probabilities</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span> <span class="n">.</span><span class="m">5</span><span class="p">,</span> <span class="n">.</span><span class="m">3</span><span class="p">,</span> <span class="n">.</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">.</span><span class="m">1</span><span class="p">)</span>
 	<span class="n">eventNames</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span> <span class="s">&quot;V. azules&quot;</span><span class="p">,</span> <span class="s">&quot;V. grises&quot;</span><span class="p">,</span> <span class="s">&quot;V. negros&quot;</span><span class="p">,</span> 
@@ -649,15 +663,18 @@ P(\mbox{cara}) = 0.5
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="../_images/b72053d5afdfd7540f6899ebfa3645911bd50fafc44b72f85fbc38f7a1df8ee8.png" src="../_images/b72053d5afdfd7540f6899ebfa3645911bd50fafc44b72f85fbc38f7a1df8ee8.png" />
 </div>
 </div>
-<p>Es importante señalar que la teoría de probabilidades permite hablar acerca de eventos elementales pero también sobre los <strong><em>eventos no elementales</em></strong>. La forma más fácil de ilustrar este concepto es con un ejemplo. Siguiendo con el ejemplo de los pantalones, es perfectamente posible hablar sobre la probabilidad de usar vaqueros. Bajo esta premisa, podemos decir que el evento “yo uso vaqueros” es posible siempre y cuando ocurra alguno de los eventos elementales apropiados; en este caso “vaqueros azules”, “vaqueros negros” o “vaqueros grises”. En términos matemáticos, definimos al evento <span class="math notranslate nohighlight">\(E\)</span> “vaqueros” como el conjunto de eventos elementales <span class="math notranslate nohighlight">\((X_1, X_2, X_3)\)</span>. Si se produce alguno de estos eventos elementales, también podemos decir que <span class="math notranslate nohighlight">\(E\)</span> ha ocurrido. Por lo tanto, podemos decir que la probabilidad <span class="math notranslate nohighlight">\(P(E)\)</span> es simplemente la suma de esos tres eventos, así
-$<span class="math notranslate nohighlight">\(
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.2:</span> <span class="pre">Demostración</span> <span class="pre">visual</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">de</span> <span class="pre">probabilidad</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">“pantalones”.</span> <span class="pre">Existen</span> <span class="pre">5</span> <span class="pre">“eventos</span> <span class="pre">elementales”,</span> <span class="pre">que</span> <span class="pre">se</span> <span class="pre">corresponden</span> <span class="pre">con</span> <span class="pre">mis</span> <span class="pre">5</span> <span class="pre">pares</span> <span class="pre">de</span> <span class="pre">pantalones.</span> <span class="pre">Cada</span> <span class="pre">evento</span> <span class="pre">tiene</span> <span class="pre">una</span> <span class="pre">probabilidad</span> <span class="pre">de</span> <span class="pre">ocurrir:</span> <span class="pre">esta</span> <span class="pre">probabilidad</span> <span class="pre">es</span> <span class="pre">un</span> <span class="pre">número</span> <span class="pre">entre</span> <span class="pre">0</span> <span class="pre">y</span> <span class="pre">1.</span> <span class="pre">La</span> <span class="pre">suma</span> <span class="pre">de</span> <span class="pre">estas</span> <span class="pre">probabilidades</span> <span class="pre">es</span> <span class="pre">1.</span></code></p>
+<p>Es importante señalar que la teoría de probabilidades permite hablar acerca de eventos elementales pero también sobre los <strong><em>eventos no elementales</em></strong>. La forma más fácil de ilustrar este concepto es con un ejemplo. Siguiendo con el ejemplo de los pantalones, es perfectamente posible hablar sobre la probabilidad de usar vaqueros. Bajo esta premisa, podemos decir que el evento “yo uso vaqueros” es posible siempre y cuando ocurra alguno de los eventos elementales apropiados; en este caso “vaqueros azules”, “vaqueros negros” o “vaqueros grises”. En términos matemáticos, definimos al evento <span class="math notranslate nohighlight">\(E\)</span> “vaqueros” como el conjunto de eventos elementales <span class="math notranslate nohighlight">\((X_1, X_2, X_3)\)</span>. Si se produce alguno de estos eventos elementales, también podemos decir que <span class="math notranslate nohighlight">\(E\)</span> ha ocurrido. Por lo tanto, podemos decir que la probabilidad <span class="math notranslate nohighlight">\(P(E)\)</span> es simplemente la suma de esos tres eventos, así</p>
+<div class="math notranslate nohighlight">
+\[
 P(E) = P(X_1) + P(X_2) + P(X_3)
-\)</span>$
-y, dado que las probabilidades de los vaqueros azules, grises y negros son respectivamente .5, .3 y .1, la probabilidad total de usar vaqueros es igual a .9.</p>
+\]</div>
+<p>y, dado que las probabilidades de los vaqueros azules, grises y negros son respectivamente .5, .3 y .1, la probabilidad total de usar vaqueros es igual a .9.</p>
 <p>Todo esto parece obvio y simple. Sin embargo, a partir de estos simples comienzos, es posible construir algunas herramientas matemáticas más complejas y poderosas. En la siguiente Tabla se muestran algunas de las otras reglas que deben de cumplirse para poder calcular probabilidades.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -681,8 +698,36 @@ y, dado que las probabilidades de los vaqueros azules, grises y negros son respe
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">Tabla</span> <span class="pre">1.</span> <span class="pre">Algunas</span> <span class="pre">reglas</span> <span class="pre">básicas</span> <span class="pre">de</span> <span class="pre">probabilidad.</span> <span class="pre">Son</span> <span class="pre">importantes</span> <span class="pre">si</span> <span class="pre">se</span> <span class="pre">quiere</span> <span class="pre">entender</span> <span class="pre">la</span> <span class="pre">teoría</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">con</span> <span class="pre">un</span> <span class="pre">poco</span> <span class="pre">más</span> <span class="pre">de</span> <span class="pre">detalle</span> <span class="pre">y</span> <span class="pre">nos</span> <span class="pre">sirven</span> <span class="pre">para</span> <span class="pre">resolver</span> <span class="pre">algunos</span> <span class="pre">problemas</span> <span class="pre">de</span> <span class="pre">probabilidad.</span></code></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Castellano</p></th>
+<th class="head text-left"><p>Notacion</p></th>
+<th class="head text-left"><p>Igual</p></th>
+<th class="head text-left"><p>Formula</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>No <span class="math notranslate nohighlight">\(A\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(\neg A)\)</span></p></td>
+<td class="text-left"><p>=</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(1-P(A)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(A\)</span> o <span class="math notranslate nohighlight">\(B\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(A \cup B)\)</span></p></td>
+<td class="text-left"><p>=</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(A) + P(B) - P(A \cap B)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(A \cap B)\)</span></p></td>
+<td class="text-left"><p>=</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(P(A \vert B) P(B)\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
+<hr class="docutils" />
 <section id="la-distribucion-binomial-binomial">
 <h2>La distribución binomial{#binomial}<a class="headerlink" href="#la-distribucion-binomial-binomial" title="Permalink to this heading">#</a></h2>
 <p>Como hemos visto, las distribuciones de probabilidad pueden variar enormemente, por lo que existe un gran número de distribuciones posibles. Sin embargo, no todas son igual de importantes. Las distribuciones más importantes, y de las que hablaremos en esta asignatura son cinco: la distribución binomial, la distribución normal, la distribución <span class="math notranslate nohighlight">\(t\)</span>, la distribución <span class="math notranslate nohighlight">\(\chi^2\)</span> (“chi-cuadrada”) y la distribución <span class="math notranslate nohighlight">\(F\)</span>. Daremos una breve introducción a las cinco, prestando especial atención a las distribuciones binomial y normal. Comenzaremos con la distribución más simple de las cinco, la distribución binomial.</p>
@@ -1002,7 +1047,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/13c6f21c8595d0ed4f1080bc8476ffc6212fa2760e28ac29637087199265ca83.png" src="../_images/13c6f21c8595d0ed4f1080bc8476ffc6212fa2760e28ac29637087199265ca83.png" />
+<img alt="../_images/13aee49782a60d234df10114e86f270297f43bf01948d65c6e7c2c4aa45a6b4b.png" src="../_images/13aee49782a60d234df10114e86f270297f43bf01948d65c6e7c2c4aa45a6b4b.png" />
 </div>
 </div>
 <p>En la Figura anterior podemos observar cómo han sido generados muchos valores distribuidos normalmente que luego han sido comparados con la  distribución de probabilidad verdadera (línea sólida). Supongamos que ahora queremos una distribución chi-cuadrada con 3 grados de libertad. Como hemos mencionado anteriormente, una distribución chi-cuadrada con <span class="math notranslate nohighlight">\(k\)</span> grados de libertad es es el resultado de tomar <span class="math notranslate nohighlight">\(k\)</span> variables (o muestras) normalmente distribuidas (con media 0 y desviación estándar 1), elevarlas al cuadrado y sumarlas. Como queremos una distribución de chi-cuadrada con 3 grados de libertad, además de nuestra “Muestra A”, necesitamos dos conjuntos más de valores (también distribuidos normalmente). A estas nuevas dos variables las llamaremos “Muestra B” y “Muestra C”:</p>
@@ -1033,7 +1078,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c04a2fb9fcf244af771e80927ba0160addb253008c1ec448b193a347ccff4dbb.png" src="../_images/c04a2fb9fcf244af771e80927ba0160addb253008c1ec448b193a347ccff4dbb.png" />
+<img alt="../_images/0f13ac7aa78a7a3304db62d6929f2f642c44f7f17f9f69e5582b28a234ef6f00.png" src="../_images/0f13ac7aa78a7a3304db62d6929f2f642c44f7f17f9f69e5582b28a234ef6f00.png" />
 </div>
 </div>
 <p>Una vez que tenemos las tres variables, la teoría dice que debemos elevarlos al cuadrado y sumarlos, con lo que obtendremos 1,000 observaciones que siguen una distribución de chi-cuadrada con 3 grados de libertad. Visualmente, obtendremos una distribución como en la Figura &#64;ref(fig:distchi).</p>
@@ -1066,7 +1111,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/60fdc3202c096d5d42eaa16b7e16d8600a36fc027fd1a2b0101453611dd2d795.png" src="../_images/60fdc3202c096d5d42eaa16b7e16d8600a36fc027fd1a2b0101453611dd2d795.png" />
+<img alt="../_images/9cf4d07141fcff235a5400e1f89dda5d90b0b81b56b129a714a6d63bcbe09d67.png" src="../_images/9cf4d07141fcff235a5400e1f89dda5d90b0b81b56b129a714a6d63bcbe09d67.png" />
 </div>
 </div>
 <p>Del mismo modo, podemos obtener una distribución <span class="math notranslate nohighlight">\(F\)</span> al dividir dos distribuciones chi-cuadrada “escaladas”. Supongamos, por ejemplo, que deseamos generar datos que sigan una distribución <span class="math notranslate nohighlight">\(F\)</span> con 3 y 20 grados de libertad (es decir, con 3 y 20 variables respectivamente). La división de los valores de ambas distribuciones nos da como resultado una nueva variable <code class="docutils literal notranslate"><span class="pre">F.3.20</span></code> y su distribución es la que se muestra en la Figura &#64;ref(fig:distf).</p>
@@ -1097,7 +1142,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/12874468ab9a3687b4d4eb6bf4d3593570b7460b1c17e2e84bc23bc35854414e.png" src="../_images/12874468ab9a3687b4d4eb6bf4d3593570b7460b1c17e2e84bc23bc35854414e.png" />
+<img alt="../_images/7954136020bea698460c44181a0ea9f4cfbc8db737c4c43f95a9f14d9c93fd0e.png" src="../_images/7954136020bea698460c44181a0ea9f4cfbc8db737c4c43f95a9f14d9c93fd0e.png" />
 </div>
 </div>
 <p>Hemos visto tres nuevas distribuciones: <span class="math notranslate nohighlight">\(\chi^2\)</span>, <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(F\)</span>. Todas son distribuciones continuas, y todas están estrechamente relacionadas con la distribución normal. Hemos hablado un poco poco sobre la naturaleza de esta relación. Sin embargo, la clave no es que tengas una comprensión profunda y detallada de todas estas diferentes distribuciones, ni que recuerdes las relaciones precisas que existen entre ellas. Lo más importante es entender la idea básica de que estas distribuciones están profundamente relacionadas entre sí y a su vez con la distribución normal. Más adelante en el curso nos vamos a encontrar con datos que se distribuyen normalmente, o que al menos suponemos que se distribuyen normalmente. Por lo tanto, si suponemos que nuestros datos se distribuyen normalmente, debemos saber reconocer las distribuciones <span class="math notranslate nohighlight">\(\chi^2\)</span>, <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(F\)</span>..</p>
@@ -1190,7 +1235,7 @@ donde estamos interesados en el caso específico donde \)</span>X=4<span class="
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cual-es-la-diferencia-y-quien-tiene-razon">¿Cuál es la diferencia? ¿Y quién tiene razón?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teoria-de-probabilidad-basica-basicprobability">Teoría de probabilidad básica{#basicprobability}</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teoria-de-probabilidad-basica">Teoría de probabilidad básica</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-las-distribuciones-de-probabilidad">Introducción a las distribuciones de probabilidad</a></li>
 </ul>
 </li>
