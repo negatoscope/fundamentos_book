@@ -274,9 +274,6 @@ knitr::kable(data.frame(stringsAsFactors=FALSE, Binomial = c("$P(X | \\theta, N)
 * - $P(X \mid \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}$
   - $p(X \mid \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)$
 ```
-|Binomial                                                                               |Normal                                                                                                                  |
-|:--------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|
-|$P(X \mid \theta, N) = \displaystyle\frac{N!}{X! (N-X)!}  \theta^X (1-\theta)^{N-X}$ |$p(X \mid \mu, \sigma) = \displaystyle\frac{1}{\sqrt{2\pi}\sigma} \exp \left( -\frac{(X - \mu)^2}{2\sigma^2} \right)$ |
 
 ```{code-cell} r
 :tags: ["hide-input"]
@@ -305,7 +302,6 @@ binomPlot( n=20, p=1/6, xlab="Número de calaveras observadas" )
 
 Para darte una idea de cómo cambia la distribución binomial cuando modificamos los valores de $\theta$ y $N$, supongamos que en lugar de tirar dados, en realidad estoy lanzando monedas. Esta vez, mi experimento implica lanzar una moneda justa repetidamente, y el resultado que me interesa es la cantidad de caras que observo. En este escenario, la probabilidad de éxito ahora es de $\theta = 1/2$. Supongamos que tirara la moneda $N=20$  veces. En este ejemplo, he cambiado la probabilidad de éxito, pero mantuve el tamaño de la muestra del experimento. ¿Qué efecto tiene este cambio en nuestra distribución binomial? Bueno, como la `Figura 1.4`  muestra, el efecto principal fue el desplazamiento de toda la distribución hacia la derecha, como era de esperar. ¿Y si lanzamos una moneda $N=100$ veces? En este caso obtendremos algo como lo de la `Figura 1.5`. La distribución se mantiene aproximadamente en el medio, pero hay un poco más de variabilidad en los posibles resultados.
 
-
 ```{code-cell} r
 :tags: ["hide-input"]
   # plots the three examples of a binomial distribution
@@ -326,6 +322,7 @@ Para darte una idea de cómo cambia la distribución binomial cuando modificamos
   	# coins image #1...
   	binomPlot( n=20, p=1/2, xlab="Número de caras observadas" )
 ```
+`Figura 1.4`
 
 ```{code-cell} r
 :tags: ["hide-input"]
@@ -347,6 +344,7 @@ Para darte una idea de cómo cambia la distribución binomial cuando modificamos
   	# coins image #2...
   	binomPlot( n=100, p=1/2, xlab="Número de caras observadas" )
 ```
+`Figura 1.5`
 
 ---  
 
@@ -357,12 +355,13 @@ Para darte una idea de cómo cambia la distribución binomial cuando modificamos
 $$
   X \sim \mbox{Normal}(\mu,\sigma)
 $$
-  Al igual que con la distribución binomial, he incluido la fórmula para la distribución normal en la tabla \@ref(tab:distformulas), porque creo que es lo suficientemente importante como para que todos los que aprenden algo de estadística al menos la conozcan, aunque no nos enfoquemos en ella. 
 
-Vamos intentar descifrar lo que significa que una variable esté normalmente distribuida. Echemos un vistazo a la Figura \@ref(fig:normdist), que muestra una distribución normal con media $\mu = 0$ y desviación estándar $\sigma = 1$. Con un poco de imaginación, podemos apreciar de dónde viene el nombre “curva de campana”. A diferencia de los gráficos sobre la distribución binomial, la imagen de la distribución normal en la Figura \@ref(fig:normdist) muestra una curva suave en lugar de barras "tipo histograma". Esto no es arbitrario: la distribución normal es continua, mientras que la distribución binomial es discreta. Por ejemplo, en el experimento de tiro de dados de la sección anterior, es posible obtener 3 calaveras o 4 calaveras, mientras que un valor intermedio como 3.9 es imposible de obtener. Este hecho se ve reflejado en la Figura \@ref(fig:binomial1), donde tenemos una barra ubicada en $X=3$ y otra en $X=4$, pero entre ellas no hay nada. En cambio, los valores continuos no tienen esta restricción. Por ejemplo, supongamos que estamos hablando del tiempo. La temperatura de un día primavera podría ser de 23 grados, 24 grados, 23.9 grados o cualquier cosa intermedia, ya que la temperatura es una variable continua, por lo que una distribución normal podría ser la herramienta apropiada para describir las diferentes temperaturas en los días de primavera.^[En la práctica, la distribución normal es tan útil que las personas tienden a usarla incluso cuando la variable no es continua. Siempre que haya suficientes categorías (por ejemplo, respuestas de escala Likert de un cuestionario), suele ser frecuente el uso de la distribución normal.] 
+Al igual que con la distribución binomial, he incluido la fórmula para la distribución normal en la tabla \@ref(tab:distformulas), porque creo que es lo suficientemente importante como para que todos los que aprenden algo de estadística al menos la conozcan, aunque no nos enfoquemos en ella. 
 
+Vamos intentar descifrar lo que significa que una variable esté normalmente distribuida. Echemos un vistazo a la Figura \@ref(fig:normdist), que muestra una distribución normal con media $\mu = 0$ y desviación estándar $\sigma = 1$. Con un poco de imaginación, podemos apreciar de dónde viene el nombre “curva de campana”. A diferencia de los gráficos sobre la distribución binomial, la imagen de la distribución normal en la `Figura 1.6` muestra una curva suave en lugar de barras "tipo histograma". Esto no es arbitrario: la distribución normal es continua, mientras que la distribución binomial es discreta. Por ejemplo, en el experimento de tiro de dados de la sección anterior, es posible obtener 3 calaveras o 4 calaveras, mientras que un valor intermedio como 3.9 es imposible de obtener. Este hecho se ve reflejado en la `Figura 1.3`, donde tenemos una barra ubicada en $X=3$ y otra en $X=4$, pero entre ellas no hay nada. En cambio, los valores continuos no tienen esta restricción. Por ejemplo, supongamos que estamos hablando del tiempo. La temperatura de un día primavera podría ser de 23 grados, 24 grados, 23.9 grados o cualquier cosa intermedia, ya que la temperatura es una variable continua, por lo que una distribución normal podría ser la herramienta apropiada para describir las diferentes temperaturas en los días de primavera.^[En la práctica, la distribución normal es tan útil que las personas tienden a usarla incluso cuando la variable no es continua. Siempre que haya suficientes categorías (por ejemplo, respuestas de escala Likert de un cuestionario), suele ser frecuente el uso de la distribución normal.] 
 
 ```{code-cell} r
+:tags: ["hide-input"]
 # plots the standard normal
 # needed for printing
 width <- 8
@@ -375,10 +374,12 @@ plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado
        frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l"
 )
 ```
+`Figura 1.6 Distribución normal con media mu=0 y desviación típica sigma=1. El eje x corresponde con el valor de alguna variable, y el eje y nos dice qué tan probable es que observemos ese valor. Sin embargo, vemos como el eje y se denomina "Densidad de Probabilidad" y no "Probabilidad". La altura de la curva no representa como tal la probabilidad de observar un valor particular de x; más bien nos informan sobré valores de x son los más probables`
 
-Una vez visto esto, vamos a analizar cómo funciona una distribución normal. En primer lugar, veamos qué es lo que sucede cuando jugamos con los parámetros de la distribución (puedes hacerlo tú mismo si entras en este enlace). La Figura \@ref(fig:normmean) muestra distribuciones normales que tienen medias diferentes, pero con la misma desviación estándar. Como es de esperar, todas estas distribuciones tienen la misma "anchura". La unica diferencia entre ellas es que se han desplazado hacia la izquierda o hacia la derecha. En todos los demás aspectos son idénticas. Por el contrario, si aumentamos la desviación estándar mientras mantenemos la media constante, el pico de la distribución permanece en el mismo lugar, pero la distribución se amplía, como podemos ver en la Figura \@ref(fig:normsd). Sin embargo, cuando ampliamos la distribución, la altura del pico disminuye. Esto *tiene* que suceder: de la misma forma que las alturas de las barras de una distribución binomial discreta tienen que *sumar* 1, el total del *área bajo la curva* de una distribución normal debe ser igual a 1. 
+Una vez visto esto, vamos a analizar cómo funciona una distribución normal. En primer lugar, veamos qué es lo que sucede cuando jugamos con los parámetros de la distribución (puedes hacerlo tú mismo si entras en este enlace). La `Figura 1.7` muestra distribuciones normales que tienen medias diferentes, pero con la misma desviación estándar. Como es de esperar, todas estas distribuciones tienen la misma "anchura". La unica diferencia entre ellas es que se han desplazado hacia la izquierda o hacia la derecha. En todos los demás aspectos son idénticas. Por el contrario, si aumentamos la desviación estándar mientras mantenemos la media constante, el pico de la distribución permanece en el mismo lugar, pero la distribución se amplía, como podemos ver en la `Figura 1.8`. Sin embargo, cuando ampliamos la distribución, la altura del pico disminuye. Esto *tiene* que suceder: de la misma forma que las alturas de las barras de una distribución binomial discreta tienen que *sumar* 1, el total del *área bajo la curva* de una distribución normal debe ser igual a 1. 
 
 ```{code-cell} r
+:tags: ["hide-input"]
 # draw the plot
 xval <- seq(0,11,.01)
 yval.1 <- dnorm( xval, 4, 1)
@@ -388,9 +389,10 @@ plot( 	xval, yval.1, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observa
 )
 lines(	xval, yval.2, lwd=3, col=ifelse(colour,emphCol,"black"), lty=2 )
 ```
-
+`Figura 1.7 Gráfica que demuestra lo que sucede cuando se cambia la media de una distribución normal. La línea sólida representa una distribución normal con media de mu=4. La línea discontinua muestra una distribución normal con una media de mu=7. En ambos casos, la desviación típica es de sigma=1. Vemos como las dos distribuciones tienen la misma forma, pero la distribución con la línea discontinua se desplaza hacia la derecha`
 
 ```{code-cell} r
+:tags: ["hide-input"]
 # draw the plot
 xval <- seq(0,10,.01)
 yval.1 <- dnorm( xval, 5, 1)
@@ -400,10 +402,12 @@ plot( 	xval, yval.1, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observa
 )
 lines(	xval, yval.2, lwd=3, col=ifelse(colour,emphCol,"black"), lty=2 )
 ```
+`Figura 1.8 Una ilustración de lo que sucede cuando cambia la desviación estándar de una distribución normal. Ambas distribuciones tienen una media de mu=5, pero diferentes desviaciones estándar. La línea continua dibuja una distribución con una desviación estándar sigma=1, y la línea discontinua muestra una distribución con desviación estándar de sigma=2. Como consecuencia, ambas distribuciones están centradas en el mismo lugar, pero la distribución con la línea discontinua es más ancha que la otra.`
 
-Antes de seguir adelante, quiero señalar una característica importante de la distribución normal. Independientemente de los valores de la media y la desviación estándar, un 68.3\% del área de la curva cae dentro de 1 desviación estándar sobre la media. Del mismo modo, el 95.4\% de la distribución cae dentro de 2 desviaciones estándar sobre la media, y el 99.7\% de la distribución está dentro de 3 desviaciones estándar. Esta idea se ilustra en las Figuras \@ref(fig:sdnorm1) y \@ref(fig:sdnorm2).
+Antes de seguir adelante, quiero señalar una característica importante de la distribución normal. Independientemente de los valores de la media y la desviación estándar, un 68.3\% del área de la curva cae dentro de 1 desviación estándar sobre la media. Del mismo modo, el 95.4\% de la distribución cae dentro de 2 desviaciones estándar sobre la media, y el 99.7\% de la distribución está dentro de 3 desviaciones estándar. Esta idea se ilustra en las `Figura 1.9` y `Figura 1.10`.
 
 ```{code-cell} r
+:tags: ["hide-input"]
 par(mfrow=c(1,2))
 plotOne <- function( a,b ) {
   plot.new()
@@ -429,16 +433,20 @@ plotOne(-1,1)
 plotOne(-3,3)
 par(mfrow=c(1,1))
 ```
-
+`Figura 1.9 El área bajo la curva indica la probabilidad de que una observación se encuentre dentro de un rango determinado. Las línea continua traza una distribución normal con media mu=0 y desviación típica sigma=1. El área sombreada ilustra el ‘área bajo la curva’ para dos casos importantes. En el panel izquierdo, podemos ver que hay es un 68.3% de probabilidad de que una observación caiga dentro de 1 desviación estándar sobre la media. En el panel derecho, vemos que existe una probabilidad del 95.4% de que una observación se encuentre dentro de 2 desviaciones estándar sobre la media.`
 
 ```{code-cell} r
+:tags: ["hide-input"]
 par(mfrow=c(1,2))
 plotOne(-1,0)
 plotOne(-50,-1)
 par(mfrow=c(1,1))
 ```
+`Figura 1.10 Dos ejemplos más sobre el concepto del ‘área bajo la curva’. Existe un 15.9% de probabilidad de que una observación se encuentre 1 desviación estándar o menos por debajo de la media (panel izquierdo), y una probabilidad del 34.1% de que una observación sea mayor que una desviación estándar por debajo de la media pero menor que la media (panel derecho). Si sumamos estos dos valores, obtendremos 15.9% + 34.1% = 50%. Para datos que estén normalmente distribuidos, existe un 50% de probabilidad de que una observación caiga por debajo de la media. Esto implica que existe un 50% de probabilidad de que caiga por encima de la media.`
 
-### Densidad de probabilidad{#density}
+---
+
+### Densidad de probabilidad
 
 A lo largo de la discusión sobre la distribución normal, ha habido un par de cosas que parecen no tener sentido. Quizás hayas notado que el eje $y$ en estas Figuras se denomina como "Densidad de probabilidad" en lugar de "Probabilidad". Tal vez notaste que utilizamos $p(X)$ en lugar de $P(X)$  en la fórmula de la distribución normal. 
 
@@ -452,14 +460,16 @@ El objetivo de esta explicación es dejar claro que, cuando hablamos de distribu
 
 Para finalizar, volveremos con la fórmula para $p(x)$ que vimos anteriormente. Los resultados de $p(x)$ no describe una probabilidad, sino una **_densidad de probabilidad_**,  que en las gráficas corresponde a la altura de la curva. De la misma forma en que las probabilidades son números no-negativos que deben sumar 1, las densidades de probabilidad son números no-negativos que deben integrar a 1 (donde la integral se toma a través de todos los valores posibles de $X$). Para calcular la probabilidad de que $X$ caiga entre $a$ y $b$  calculamos la integral definida de la función de densidad sobre el rango correspondiente, $\int_a^b p(x) \ dx$. Se trata simplemente de otra forma de llegar al mismo resultado.
 
+---
 
+## Otras distribuciones útiles
 
+La distribución normal es la distribución más utilizada por los estadísticos (por razones que se discutirán más adelante), y la distribución binomial es útil muchos escenarios. Sin embargo, existen otros tipos de distribuciones de probabilidad. Revisaremos brevemente 3 de ellas: la distribución $t$, la distribución $\chi^2$ y la distribución $F$.  
 
-## Otras distribuciones útiles{#otherdists}
-
-La distribución normal es la distribución más utilizada por los estadísticos (por razones que se discutirán más adelante), y la distribución binomial es útil muchos escenarios. Sin embargo, existen otros tipos de distribuciones de probabilidad. Revisaremos brevemente 3 de ellas: la distribución $t$, la distribución $\chi^2$ y la distribución $F$.  La **_distribución $t$_** es una distribución continua que se parece mucho a una distribución normal, pero que tiene colas más pesadas (ver Figura \@ref(fig:tdist)). Esta distribución tiende a surgir en situaciones en las que piensa que los datos siguen una distribución normal, pero no se conoce la media o la desviación estándar. 
+- La **_distribución $t$_** es una distribución continua que se parece mucho a una distribución normal, pero que tiene colas más pesadas (ver `Figura 1.11`). Esta distribución tiende a surgir en situaciones en las que piensa que los datos siguen una distribución normal, pero no se conoce la media o la desviación estándar. 
 
 ```{code-cell} r
+:tags: ["hide-input"]
 xval <- seq(-5,5,.01)
 yval <- dt( xval, df=3)
 plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
@@ -467,20 +477,24 @@ plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado
 )
 lines( xval, dnorm(xval,0,1), lty=2, col=emphGrey)
 ```
+`Figura 1.11 Una distribución t con 3 grados de libertad (línea continua). Se asemeja a una distribución normal, pero no es igual (línea discontinua). Ten en cuenta que las “colas” de la distribución t son más “pesadas” (es decir, se extienden más hacia afuera, conteniendo más valores que se alejan de la media) que las colas de la distribución normal.`
 
 - La **_distribución $\chi^2$_** es otra distribución que podemos encontrar con cierta frecuencia. Es habitual encontrarla cuando hacemos análisis de datos categóricos. Los valores de una distribución $\chi^2$ se consiguen al elevar al cuadrado los valores de una variable distribuída normalmente y luego sumarlos (un procedimiento denominado "suma de cuadrados"). Después veremos porqué es útil hacer una "suma de cuadrados". La apariencia de una distribución $\chi^2$ la puedes encontrar en la Figura \@ref(fig:chisqdist). 
 
 ```{code-cell} r
+:tags: ["hide-input"]
 xval <- seq(0,10,.01)
 yval <- dchisq( xval, df=3)
 plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
        frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l"
 )
 ```
+`Figura 1.12 Una distribución $\chi^2$_** con 3 grados de libertad (3 repeticiones, lo explicaremos más adelante). Observa que los valores siempre deben ser mayores que cero (los valores se elevan al cuadrado y se suman), y que la distribución es bastante sesgada (en este caso hacia la derecha). Estas son las características clave de una distribución chi-cuadrado.`
 
 - La **_distribución $F$_** se parece un poco a la distribución $\chi^2$ y surge cada vez que necesitamos comparar dos distribuciones $\chi^2$ entre sí. Es decir, si queremos comparar dos "sumas de cuadrados" diferentes, nos encontraremos con una distribución $F$. Aún no hemos visto un ejemplo de todo lo que implica una suma de cuadrados, pero lo veremos cuando hablemos sobre ANOVAs, donde nos encontraremos nuevamente con la distribución $F$. 
 
 ```{code-cell} r
+:tags: ["hide-input"]
 # draw the plot
 xval <- seq(0,10,.01)
 yval <- df( xval, df1=3, df2=5)
@@ -488,13 +502,14 @@ plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado
        frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l"
 )
 ```
-
+`Figura 1.13 Una distribución F con 3 y 5 grados de libertad. Cualitativamente hablando, es similar a una distribución de chi-cuadrado, pero por lo general el significado no es el mismo.`
 
 Debido a que estas distribuciones están estrechamente relacionadas con la distribución normal y entre sí, y porque se convertirán en las distribuciones importantes al hacer análisis estadísticos inferenciales en este curso, creo que es útil hacer una pequeña demostración de cómo estas distribuciones realmente están relacionadas entre sí. Primero, imagina que tenemos un conjunto de 1,000 observaciones aleatorias distribuidas normalmente al cual llamaremos "Muestra A".
 
-Esta "Muestra A" es una variable que contiene 1,000 números que se distribuyen normalmente y tienen una media de 0 y desviación estándar de 1. En la Figura \@ref(fig:distnormal) podemos ver un histograma con la distribución de los valores organizados por columnas, así como una línea negra sólida que representa la distribución verdadera de los datos (es decir, una distribución normal con valores infinitos con media 0 y desviación estándar 1). Así podemos comparar los datos recién generados con los de una distribución normal verdadera. 
+Esta "Muestra A" es una variable que contiene 1,000 números que se distribuyen normalmente y tienen una media de 0 y desviación estándar de 1. En la `Figura 1.14` podemos ver un histograma con la distribución de los valores organizados por columnas, así como una línea negra sólida que representa la distribución verdadera de los datos (es decir, una distribución normal con valores infinitos con media 0 y desviación estándar 1). Así podemos comparar los datos recién generados con los de una distribución normal verdadera. 
 
 ```{code-cell} r
+:tags: ["hide-input"]
 # generate the data 
 n <- 1000
 normal.a <- rnorm( n )
@@ -517,11 +532,12 @@ hist( 	normal.a, seq(min(normal.a)-bw,max(normal.a)+bw,bw),
 lines( x<-seq(-4,4,.1), dnorm(x), lwd=3, col="black"  )
 axis(1)
 ```
-
+`Figura 1.14 Distribución normal de la Muestra A (histograma), junto con la distribución normal verdadera (línea sólida)`
 
 En la Figura anterior podemos observar cómo han sido generados muchos valores distribuidos normalmente que luego han sido comparados con la  distribución de probabilidad verdadera (línea sólida). Supongamos que ahora queremos una distribución chi-cuadrada con 3 grados de libertad. Como hemos mencionado anteriormente, una distribución chi-cuadrada con $k$ grados de libertad es es el resultado de tomar $k$ variables (o muestras) normalmente distribuidas (con media 0 y desviación estándar 1), elevarlas al cuadrado y sumarlas. Como queremos una distribución de chi-cuadrada con 3 grados de libertad, además de nuestra "Muestra A", necesitamos dos conjuntos más de valores (también distribuidos normalmente). A estas nuevas dos variables las llamaremos "Muestra B" y "Muestra C":
 
 ```{code-cell} r
+:tags: ["hide-input"]
 # generate the data 
 n <- 1000
 normal.a <- rnorm( n )
@@ -544,14 +560,16 @@ hist( 	chi.sq.3, seq(0,max(chi.sq.3)+bw,bw),
 lines( x<-seq(0,16,.1), dchisq(x,3), lwd=3, col="black"  )	
 axis(1)
 ```
+`Figura 1.15 Distribución chi-cuadrada. Incluye a las Muestras A, B y C (3 grados de libertad)`
 
-Una vez que tenemos las tres variables, la teoría dice que debemos elevarlos al cuadrado y sumarlos, con lo que obtendremos 1,000 observaciones que siguen una distribución de chi-cuadrada con 3 grados de libertad. Visualmente, obtendremos una distribución como en la Figura \@ref(fig:distchi).
+Una vez que tenemos las tres variables, la teoría dice que debemos elevarlos al cuadrado y sumarlos, con lo que obtendremos 1,000 observaciones que siguen una distribución de chi-cuadrada con 3 grados de libertad. Visualmente, obtendremos una distribución como en la `Figura 1.15`.
 
 Podemos extender esta demostración y tratar de entender el origen de la distribución $t$ y la distribución $F$. Antes, hemos dicho que la distribución $t$ está relacionada con la distribución normal cuando se desconoce la media o la desviación estándar. Sin embargo, existe una relación más precisa entre las distribuciones normal, chi-cuadrada y $t$. Supongamos que "escalamos" nuestros datos anteriores de la chi-cuadrada al dividirla entre sus 3 grados de libertad.
 
-Si tomamos un conjunto de variables normalmente distribuidas (pensemos ahora en una "Muestra D") y las dividimos por (la raíz cuadrada de) nuestra variable chi-cuadrada "escalada" que tenía $k=3$ grados de libertad, la operación dará como resultado una distribución $t$ con 3 grados de libertad. Si trazamos el histograma de esta nueva distribución $t$, observaremos algo parecido al de la Figura \@ref(fig:distt). 
+Si tomamos un conjunto de variables normalmente distribuidas (pensemos ahora en una "Muestra D") y las dividimos por (la raíz cuadrada de) nuestra variable chi-cuadrada "escalada" que tenía $k=3$ grados de libertad, la operación dará como resultado una distribución $t$ con 3 grados de libertad. Si trazamos el histograma de esta nueva distribución $t$, observaremos algo parecido al de la `Figura 1.16`. 
 
 ```{code-cell} r
+:tags: ["hide-input"]
 # generate the data 
 n <- 1000
 normal.a <- rnorm( n )
@@ -574,11 +592,12 @@ hist( 	t.3, seq(min(t.3)-bw,max(t.3)+bw,bw),
 lines( x<-seq(-4,4,.1), dt(x,3), lwd=3, col="black"  )
 axis(1)	
 ```
+`Figura 1.16 Distribución t. Es el resultado de dividir una distribución normal (en este caso la Muestra D) entre una variable chi-cuadrada escalada`
 
-
-Del mismo modo, podemos obtener una distribución $F$ al dividir dos distribuciones chi-cuadrada "escaladas". Supongamos, por ejemplo, que deseamos generar datos que sigan una distribución $F$ con 3 y 20 grados de libertad (es decir, con 3 y 20 variables respectivamente). La división de los valores de ambas distribuciones nos da como resultado una nueva variable `F.3.20` y su distribución es la que se muestra en la Figura \@ref(fig:distf).
+Del mismo modo, podemos obtener una distribución $F$ al dividir dos distribuciones chi-cuadrada "escaladas". Supongamos, por ejemplo, que deseamos generar datos que sigan una distribución $F$ con 3 y 20 grados de libertad (es decir, con 3 y 20 variables respectivamente). La división de los valores de ambas distribuciones nos da como resultado una nueva variable `F.3.20` y su distribución es la que se muestra en la `Figura 1.17`.
 
 ```{code-cell} r
+:tags: ["hide-input"]
 # generate the data 
 n <- 1000
 normal.a <- rnorm( n )
@@ -601,22 +620,23 @@ hist( 	F.3.20, seq(0,max(F.3.20)+bw,bw),
 lines( x<-seq(0,6,.01), df(x,3,20), lwd=3, col="black"  )	
 axis(1)
 ``` 
+`Figura 1.17 Distribución F. En este ejemplo hipotético, se compara la distribución chi-cuadrada de 3 grados de libertad previa con otra distribución chi-cuadrada con 20 grados de libertad (es decir, que incluye 20 muestras o variables)` 
 
 Hemos visto tres nuevas distribuciones: $\chi^2$, $t$ y $F$. Todas son distribuciones continuas, y todas están estrechamente relacionadas con la distribución normal. Hemos hablado un poco poco sobre la naturaleza de esta relación. Sin embargo, la clave no es que tengas una comprensión profunda y detallada de todas estas diferentes distribuciones, ni que recuerdes las relaciones precisas que existen entre ellas. Lo más importante es entender la idea básica de que estas distribuciones están profundamente relacionadas entre sí y a su vez con la distribución normal. Más adelante en el curso nos vamos a encontrar con datos que se distribuyen normalmente, o que al menos suponemos que se distribuyen normalmente. Por lo tanto, si suponemos que nuestros datos se distribuyen normalmente, debemos saber reconocer las distribuciones $\chi^2$, $t$ y $F$..
 
+---
 
 ## Resumen
 
 En este capítulo hemos hablado de probabilidad. Hemos hablado de lo que significa la probabilidad y por qué los estadísticos no están muy de acuerdo en lo que significa. Hablamos sobre las reglas que las probabilidades tienen que obedecer. Hemos introducido la idea de una distribución de probabilidad y conocido algunas de las distribuciones de probabilidad más importantes con las que nos podemos encontrar. Los temas han sido los siguientes:
   
-  - Teoría de probabilidad vs estadística (Sección \@ref(probstats))
-- Visión frecuenciantista vs visión bayesiana de probabilidad (Sección \@ref(probmeaning))
-- Conceptos básicos de la teoría de probabilidad (Sección \@ref(basicprobability))
-- Distribución binomial (Sección \@ref(binomial)), distribución normal (sección \@ref(normal)), y otras distribuciones (Sección \@ref(otherdists))
-
+  - Teoría de probabilidad vs estadística 
+- Visión frecuenciantista vs visión bayesiana de probabilidad 
+- Conceptos básicos de la teoría de probabilidad 
+- Distribución binomial, distribución normal y otras distribuciones
 
 Esto es una simple introducción dentro de un gran tema. La teoría de la probabilidad es una rama de las matemáticas, completamente separada de su aplicación a la estadística y al análisis de datos. Como tales, hay miles de libros escritos sobre el tema y las universidades generalmente ofrecen clases dedicadas por completo a la teoría de la probabilidad. En este capítulo se han descrito cinco distribuciones de probabilidad estándar, pero existen *muchas* más que esas. Afortunadamente, estas distribuciones bastarán por el momento.
 
 Los conceptos básicos que hemos adquirido en este capítulo servirán como fundamento para los siguientes dos. Existen muchas reglas sobre lo que se nos "permite" decir cuando hacemos inferencia estadística, y muchas de ellas pueden parecer arbitrarias. Sin embargo, veremos que comienzan a tener sentido si tenemos en cuenta estos conceptos básicos que hemos aprendido. 
 
-
+---
