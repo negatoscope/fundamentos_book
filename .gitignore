@@ -1,4 +1,10 @@
-mini_book/_build/*
+mini_book/_build/.doctrees
+mini_book/_build/.jupyter_cache
+mini_book/_build/jupyter_execute
+mini_book/_build/html/_images
+mini_book/_build/html/_sources
+mini_book/_build/html/_sphinx_design_static
+mini_book/_build/html/_static
 .ipynb_checkpoints
 .DS_Store
 __pycache__/
