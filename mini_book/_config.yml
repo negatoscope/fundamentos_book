@@ -7,7 +7,7 @@ description: >-
   Apuntes Fundamentos de Investigación II
 
 execute:
-  execute_notebooks           : cache
+  execute_notebooks           : force
 
 # HTML-specific settings
 html:

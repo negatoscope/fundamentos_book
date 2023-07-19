@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/estimation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -365,8 +367,29 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muestras-poblaciones-y-muestreo-srs">Muestras, poblaciones y muestreo{#srs}</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-una-poblacion-pop">Definición de una población{#pop}</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#muestras-aleatorias-simples">Muestras aleatorias simples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-mayoria-de-las-muestras-no-son-muestras-aleatorias-simples">La mayoría de las muestras no son muestras aleatorias simples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuanto-importa-si-no-se-tiene-una-muestra-aleatoria-simple">¿Cuánto importa si no se tiene una muestra aleatoria simple?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-poblacionales-y-estadisticos-muestrales">Parámetros poblacionales y estadísticos muestrales</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-ley-de-los-grandes-numeros-lawlargenumbers">La ley de los grandes números{#lawlargenumbers}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-muestrales-y-el-teorema-del-limite-central-samplesandclt">Distribuciones muestrales y el teorema del límite central{#samplesandclt}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-muestral-de-la-media-samplingdists">Distribución muestral de la media{#samplingdists}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#existen-distribuciones-muestrales-para-cualquier-estadistico-muestral">Existen distribuciones muestrales para cualquier estadístico muestral</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-teorema-del-limite-central-clt">El teorema del límite central{#clt}</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-parametros-poblacionales-pointestimates">Estimando parámetros poblacionales{#pointestimates}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-la-media-poblacional">Estimando la media poblacional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-la-desviacion-estandar-poblacional">Estimando la desviación estándar poblacional</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-un-intervalo-de-confianza-ci">Estimando un intervalo de confianza{#ci}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-pasa-cuando-no-conocemos-los-parametros-poblacionales">¿Qué pasa cuando no conocemos los parámetros poblacionales?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretando-un-intervalo-de-confianza">Interpretando un intervalo de confianza</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-el-tamano-muestral-samplesize">Estimando el tamaño muestral{#samplesize}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
 </ul>
             </nav>
@@ -406,12 +429,617 @@ document.write(`
 <hr class="docutils" />
 <section id="muestras-aleatorias-simples">
 <h3>Muestras aleatorias simples<a class="headerlink" href="#muestras-aleatorias-simples" title="Permalink to this heading">#</a></h3>
-<hr class="docutils" />
+<p><img alt="figure1" src="../_images/srs1.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.1</span> <span class="pre">Muestreo</span> <span class="pre">aleatorio</span> <span class="pre">simple</span> <span class="pre">*sin*</span> <span class="pre">reemplazo</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">finita.</span></code></p>
+<p>Independientemente de cómo definamos a una población, la clave es que la muestra es un subgrupo de esa población, y nuestro objetivo es utilizar nuestro conocimiento de la muestra para hacer inferencias sobre las propiedades de la población. La relación que exista entre los dos dependerá del <em>procedimiento</em> mediante el cual se seleccionó la muestra. Este procedimiento se conoce como <strong><em>método de muestreo</em></strong> y es importante comprender su importancia.</p>
+<p>Pongamos un ejemplo sencillo. Imaginemos que tenemos una bolsa que contiene 10 fichas. Cada ficha tiene una letra única impresa, con la que la podemos distinguir de entre las otras 10 fichas. Las fichas vienen en dos colores, blanco y negro. Este conjunto de fichas es la población de interés y se muestra gráficamente a la izquierda de la Figura &#64;ref(fig:srs1). Como podrás ver en la imagen, tenemos 4 fichas negras y 6 fichas blancas, pero recuerda que en la vida real esto no lo sabríamos a menos que miráramos en la bolsa. Ahora imagina que realizas el siguiente “experimento”: agitas la bolsa, cierras los ojos y sacas 4 fichas sin devolver ninguna de ellas a la bolsa. Primero sale la ficha <span class="math notranslate nohighlight">\(a\)</span> (negra), seguida de la ficha <span class="math notranslate nohighlight">\(c\)</span> (blanca), luego la <span class="math notranslate nohighlight">\(j\)</span> (blanca) y finalmente la ficha <span class="math notranslate nohighlight">\(b\)</span> (negra). Una vez extraídas 4 fichas, podrás volver a poner todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la Figura &#64;ref(fig:srs1). Cada vez que repites el experimento obtienes resultados diferentes, pero el procedimiento es idéntico en cada caso. El hecho de que el mismo procedimiento pueda dar lugar a resultados diferentes cada vez, lo define como un proceso <em>aleatorio</em>. Y debido a que hemos agitado la bolsa antes de sacar las fichas, parece razonable pensar que todas las fichas tienen las mismas posibilidades de ser seleccionadas. Un procedimiento en el que todos los miembros de la población tienen las mismas posibilidades de ser seleccionados se denomina <strong><em>muestra aleatoria simple</em></strong>. El hecho de que se <em>no</em> se devuelvan las fichas a la bolsa después de salir, significa que no podremos observar la misma ficha dos veces, y en tales casos se dice que ha habido un muestreo <strong><em>sin reemplazo</em></strong>.</p>
+<p>Para comprender la importancia del procedimiento de muestreo, consideremos ahora una forma alternativa en la que podría haberse realizado el experimento. Supongamos que mi sobrino de 3 años coge la bolsa y decide sacar las cuatro fichas negras (le gusta el color negro) sin devolverlas la bolsa. Este esquema de muestreo <em>sesgado</em> se muestra en la Figura &#64;ref(fig:brs). Ahora considera el valor que tiene obtener una muestra con 4 fichas negras y 0 fichas blancas siguiendo el procedimiento de mi sobrino. Vemos pues, como el valor dependerá mucho del método de muestreo. Si sabemos que el método de muestreo está sesgado para seleccionar únicamente fichas negras, entonces una muestra que consta únicamente de fichas negras no dice mucho sobre nuestra población de fichas. Por esta razón, los estadísticos prefieren que un conjunto de datos provenga de una muestra aleatoria simple, ya que facilita <em>mucho</em> el análisis de los datos.</p>
+<p><img alt="figure2" src="../_images/brs.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.2</span> <span class="pre">Muestreo</span> <span class="pre">sesgado</span> <span class="pre">sin</span> <span class="pre">reemplazo</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">finita.</span></code></p>
+<p><img alt="figure3" src="../_images/srs2.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.3</span> <span class="pre">Muestreo</span> <span class="pre">aleatorio</span> <span class="pre">simple</span> <span class="pre">*con*</span> <span class="pre">reemplazo</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">finita.</span></code></p>
+<p>Vale la pena mencionar un tercer procedimiento. Esta vez cerramos los ojos, agitamos la bolsa y sacamos una ficha. Sin embargo, esta vez registramos la observación y luego volvemos a poner la ficha dentro de la bolsa. Nuevamente, cerramos los ojos, agitamos la bolsa y sacamos otra ficha. Repetimos este procedimiento hasta que tengamos 4 fichas. Los conjuntos de datos que hemos generado de esta manera siguen siendo muestras aleatorias simples, pero debido a que volvemos a meter las fichas dentro de la bolsa inmediatamente después de haberlas sacado, se denomina como una muestra <strong><em>con reemplazo</em></strong>. La diferencia entre este caso y el primero es que es posible observar al mismo elemento de la población varias veces (en este caso la misma ficha), tal como se ilustra en la Figura &#64;ref(fig:srs2).</p>
+<p>Por lo general, la mayoría de los experimentos que veamos en ciencias de la educación tienden a tomar muestras sin reemplazo, ya que la misma persona no puede participar en el experimento dos veces. Sin embargo, una gran parte de la teoría estadística se basa en el supuesto de que los datos surgen de una muestra aleatoria simple <em>con</em> reemplazo. En la vida real, esto rara vez importa. Si la población de interés es grande, la diferencia entre el muestreo con y sin reemplazo es demasiado pequeña como para preocuparnos. Sin embargo, la diferencia que existe entre muestras aleatorias simples y muestras sesgadas no es algo no es algo que podemos ignorar tan facilmente.</p>
+</section>
+<section id="la-mayoria-de-las-muestras-no-son-muestras-aleatorias-simples">
+<h3>La mayoría de las muestras no son muestras aleatorias simples<a class="headerlink" href="#la-mayoria-de-las-muestras-no-son-muestras-aleatorias-simples" title="Permalink to this heading">#</a></h3>
+<p>Si miras la lista anterior de posibles poblaciones, te darás cuenta que es casi imposible obtener una muestra aleatoria simple de la mayoría de esas poblaciones de interés. Cuando hacemos experimentos con estudiantes universitarios, el obtener una verdadera muestra aleatoria de estos estudiantes los podemos considerar como un milagro menor, aunque al final se trate de una población muy específica a partir de la cual generalizar. Mencionaré brevemente algunos de los otros tipos de muestreo que existen y que solemos encontrar con frecuencia:</p>
+<ul class="simple">
+<li><p><em>Muestreo estratificado</em>. Supongamos que tu población está (o puede estar) dividida en varias subpoblaciones o <em>estratos</em> diferentes. Quizás sea porque estás realizando un estudio en varios paises diferentes, por ejemplo. En lugar de intentar tomar una muestra aleatoria de toda la población en su conjunto, recolectamos una muestra aleatoria de cada una de las subpoblaciones o estratos. El muestreo estratificado suele ser más fácil de llevar a cabo que el muestreo aleatorio simple, especialmente cuando la población ya está dividida en los distintos estratos. También puede ser más eficiente que el muestreo aleatorio simple, especialmente cuando algunas de las subpoblaciones son raras o poco frecuentes. Por ejemplo, en el estudio de la esquizofrenia, resulta más sencillo dividir la población en dos estratos (con-esquizofrenia y sin-esquizofrenia) y adquirir una muestra de cada grupo. Si seleccionaramos personas al azar, obtendríamos tan pocas personas con esquizofrenia en la muestra que el estudio resultaría inútil.</p></li>
+<li><p><em>Muestreo de bola de nieve</em>. Es una técnica que es especialmente útil cuando se toman muestras de una población “oculta” o de difícil acceso, y es especialmente común en las ciencias sociales. Por ejemplo, supongamos que los investigadores quieren realizar una encuesta de opinión a personas VIH positivo. Es posible que el equipo de investigación solo tenga los datos de contacto de algunas personas VIH positivo, por lo que la encuesta comienza pidiéndoles a esas personas que participen (etapa 1). Al final de la encuesta, se pide a los participantes que proporcionen los datos de contacto de otras personas que podrían querer participar. En la etapa 2, se encuesta a estos nuevos contactos. El proceso continúa hasta que los investigadores obtengan datos suficientes. La gran ventaja del muestreo de bola de nieve es que es capaz de proporcionar datos en situaciones que de otro modo serían imposibles de obtener. Desde el punto de vista estadístico, la principal desventaja es que la muestra es altamente no aleatoria y no aleatoria en formas que son difíciles de abordar.</p></li>
+<li><p><em>Muestreo de conveniencia</em>. En este tipo de muestreo las muestras se eligen de una forma conveniente para el investigador, sin que exista una selección al azar a partir de la población de interés. El muestreo de bola de nieve es un tipo de muestreo de conveniencia, pero hay muchos otros. Un ejemplo son los estudios que se basan en estudiantes de universitarios. Estas muestras generalmente no son aleatorias desde dos puntos de vista: en primer lugar, depender de una muestra de estudiantes universitarios significa automáticamente que estos datos están restringidos a una sola subpoblación. En segundo lugar, los estudiantes suelen elegir los estudios en los que participan, por lo que la muestra es un subconjunto de estudiantes autoseleccionado, no un subconjunto seleccionado al azar. En general, la mayoría de los estudios incluyen muestras de conveniencia de una forma u otra. A veces, puede suponer una limitación en la interpretación de los resultados, pero no siempre.</p></li>
+</ul>
+</section>
+<section id="cuanto-importa-si-no-se-tiene-una-muestra-aleatoria-simple">
+<h3>¿Cuánto importa si no se tiene una muestra aleatoria simple?<a class="headerlink" href="#cuanto-importa-si-no-se-tiene-una-muestra-aleatoria-simple" title="Permalink to this heading">#</a></h3>
+<p>Hemos visto que en muchos casos no es posible recolectar muestras aleatorias simples. ¿Eso qué impacto tiene? Un ejemplo de ese impacto lo podemos apreciar con la diferencia que existe entre las Figuras &#64;ref(fig:srs1) y &#64;ref(fig:brs). Sin embargo, no es tan malo como parece. Algunos tipos de muestras sesgadas no representan ningún problema. Por ejemplo, cuando utilizamos el muestreo estratificado, realmente sabemos <em>cuál</em> es el sesgo ya que lo hemos creado deliberadamente, con la intención de <em>aumentar</em> la efectividad de su estudio, y existen técnicas estadísticas que podemos utilizar para ajustar estos sesgos que hemos introducido. En estos casos, por lo tanto, no tenemos un problema.</p>
+<p>Sin embargo, es importante recordar que el muestreo aleatorio es un medio para un fin, no el fin en sí mismo. Supongamos que recolectamos una muestra de conveniencia y, como tal, podemos asumir que está sesgada. Un sesgo en el método de muestreo solo es un problema si nos hace sacar conclusiones equivocadas. Desde esta perspectiva, podemos afirmar que no necesitamos que la muestra sea aleatoria en <em>todos</em> los aspectos: necesitamos que sea aleatoria con respecto al fenómeno de interés que buscamos estudiar. Supongamos que estoy haciendo un estudio sobre la capacidad de atención sostenida en niños de 6 años. En el estudio 1, tengo la capacidad de tomar muestras al azar de todos los niños de 6 años del mundo actualmente vivos, con una pequeña excepción: sólo puedo incluir niños nacidos en lunes. En el estudio 2, puedo tomar una muestra al azar de la población española. Con estos estudios quiero generalizar mis resultados a la población de todos los niños de 6 años. ¿Qué estudio es mejor? La respuesta, obviamente, es el estudio 1. ¿Por qué? Porque no tenemos ninguna razón para pensar que “nacer en lunes” influye en la capacidad de atención sostenida. Por otro lado, puedo pensar en varias razones por las que “ser español” podría ser importante. España es un país rico e industrializado con un sistema educativo muy desarrollado. Las personas que crecieron con este sistema habrán tenido experiencias de vida mucho más similares a las experiencias de vida de las personas que diseñaron las pruebas de capacidad de atención sostenida. Esta experiencia compartida podría traducirse fácilmente en creencias similares sobre cómo se debe “realizar una prueba”, entre otras razones. Este tipo de características son importantes y podrían, por ejemplo, llevar a una imagen engañosa de lo que es la capacidad atención sostenida.</p>
+<p>Existe un reflexión clave oculta en esta discusión. Al diseñar estudios, es importante pensar en la población de interés y en esforzarse por elegir un método de muestreo que sea apropiado para esa población. En la práctica, muchas veces nos veremos obligados a utilizar una “muestra de conveniencia” (por ejemplo, estudiantes de unos pocos centros), pero deberíamos, al menos, dedicar un tiempo a pensar en los riesgos e implicaciones de esta práctica.</p>
+</section>
+<section id="parametros-poblacionales-y-estadisticos-muestrales">
+<h3>Parámetros poblacionales y estadísticos muestrales<a class="headerlink" href="#parametros-poblacionales-y-estadisticos-muestrales" title="Permalink to this heading">#</a></h3>
+<p>Hasta ahora hemos estado hablando de poblaciones como lo haría un científico. Para un educador, una población puede ser un grupo de niños. Para un ecologista, una población puede ser un grupo de osos. En la mayoría de los casos, las poblaciones son cosas concretas que realmente existen en el mundo real. Los estadísticos, sin embargo, tienen un interés dual. Por un lado, <em>están</em> interesados en los datos del mundo real de la misma forma que los científicos. Por otro lado, también operan en el ámbito de la abstracción pura como lo hacen los matemáticos. En consecuencia, la teoría estadística puede ser un poco abstracta cuando define una población. Para ello, los estadísticos operacionalizan el concepto de “población” en términos de objetos matemáticos los cuales ya conocemos: se llaman distribuciones de probabilidad.</p>
+<p>La idea es muy simple. Digamos que estamos hablando (otra vez) de puntajes de coeficiente intelectual (CI). Para un educador, la población de interés es un grupo de humanos reales que tienen puntajes de CI. Un estadístico “simplifica” esto al definir operativamente a la población como la distribución de probabilidad representada en la Figura &#64;ref(fig:IQdista). Las pruebas de CI están <em>diseñadas</em> de tal forma que la media sea 100, que la desviación estándar sea 15 y que la distribución de los puntajes sea normal. Estos valores se denominan <strong><em>parámetros poblacionales</em></strong> porque son característicos de toda la población. Es decir, decimos que la media de la población <span class="math notranslate nohighlight">\(\mu\)</span> es 100, y la desviación estándar de la población <span class="math notranslate nohighlight">\(\sigma\)</span> es 15.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">estImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
+
+<span class="n">colour</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+
+	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	
+	<span class="c1"># plot</span>
+	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	<span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span>
+		<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;CI&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Densidad de probabilidad&quot;</span><span class="p">,</span><span class="n">frame.plot</span><span class="o">=</span><span class="kc">FALSE</span>
+	<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/b122f33872864d73d9a9a4f8ac45705c8bbca28f068da610bf7536aef1c5da0b.png" src="../_images/b122f33872864d73d9a9a4f8ac45705c8bbca28f068da610bf7536aef1c5da0b.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.4</span> <span class="pre">Distribución</span> <span class="pre">poblacional</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">puntajes</span> <span class="pre">de</span> <span class="pre">CI.</span></code></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">estImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
+
+<span class="n">colour</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+
+	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	
+	<span class="c1"># plot</span>
+	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	
+	<span class="c1"># function to do all the work</span>
+	<span class="n">plotSamples</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span> <span class="p">{</span>
+		
+		<span class="n">IQ</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+		<span class="nf">hist</span><span class="p">(</span> <span class="n">IQ</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">180</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> 
+			<span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphColLight</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span>
+			<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;CI&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="m">140</span><span class="p">),</span>
+			<span class="n">main</span><span class="o">=</span><span class="s">&quot;&quot;</span>
+		<span class="p">)</span>
+		<span class="nf">print</span><span class="p">(</span> <span class="nf">paste</span><span class="p">(</span> <span class="s">&quot;n=&quot;</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="s">&quot;mean=&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">IQ</span><span class="p">),</span> <span class="s">&quot;sd=&quot;</span><span class="p">,</span><span class="nf">sd</span><span class="p">(</span><span class="n">IQ</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+	<span class="p">}</span>
+	
+	<span class="c1"># plot two different sample sizes</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;n= 10 mean= 103.772457327745 sd= 13.0592222804847&quot;
+</pre></div>
+</div>
+<img alt="../_images/d3c54103499cdf96cc492b768826d656f95b72b06529837e35691d6bdee75547.png" src="../_images/d3c54103499cdf96cc492b768826d656f95b72b06529837e35691d6bdee75547.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.5</span> <span class="pre">Muestra</span> <span class="pre">con</span> <span class="pre">100</span> <span class="pre">observaciones</span> <span class="pre">provenientes</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">previa</span></code></p>
+<p>Supongamos que hacemos un experimento. Seleccionamos 100 personas al azar para que elaboren nuestro test de CI, lo cual me dará una muestra aleatoria de la población. Mi muestra consistirá en una serie de números como estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                          <span class="mi">106</span> <span class="mi">101</span> <span class="mi">98</span> <span class="mi">80</span> <span class="mi">74</span> <span class="o">...</span> <span class="mi">107</span> <span class="mi">72</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>Estos puntajes forman parte de una muestra extraída de una población con distribución normal, media de 100 y desviación estándar de 15. Si trazamos un histograma de esta muestra, obtendremos algo como el que se muestra en la Figura &#64;ref(fig:IQdistb). Podemos ver que el histograma tiene una forma <em>aproximadamente</em> normal, pero aún queda como una aproximación burda de la verdadera distribución de la población que se muestra en la Figura &#64;ref(fig:IQdista). Si calculamos la media muestral, obtendremos un número que está bastante cerca de la media de la población 100, pero no es idéntico. En este caso, vemos que las personas de mi muestra tienen un CI medio de 98,5 y la desviación estándar de sus puntuaciones de CI es de 15,9. Estos <strong><em>estadísticos muestrales</em></strong> nos presentan una descripción de nuestro conjunto de datos y, aunque son bastante similares a los valores reales de población, no son iguales. En general, los estadísticos muestrales son lo que podemos calcular a partir de un conjunto de datos mientras que los parámetros poblacionales son las cosas sobre las que deseamos aprender. Más adelante, hablaremos sobre cómo podemos estimar los parámetros poblacionales utilizando sus estadísticos muestrales (Sección &#64;ref(pointestimates)) así como qué tan seguros estamos de esos estimadores (Sección &#64;ref(ci)) pero antes necesitamos conocer algunos conceptos adicionales sobre la teoría de muestreo.</p>
 </section>
 </section>
-<hr class="docutils" />
+<section id="la-ley-de-los-grandes-numeros-lawlargenumbers">
+<h2>La ley de los grandes números{#lawlargenumbers}<a class="headerlink" href="#la-ley-de-los-grandes-numeros-lawlargenumbers" title="Permalink to this heading">#</a></h2>
+<p>En la sección anterior vimos los resultados de un experimento ficticio con un tamaño de muestra de <span class="math notranslate nohighlight">\(N=100\)</span>. Los resultados fueron algo alentadores: la media real de la población es 100,,mientras que la media muestral fue de 98.5, una aproximación razonable. En muchos estudios científicos, este nivel de precisión es perfectamente aceptable, pero existen situaciones en las que nos gustaría ser bastante más precisos. Si queremos que nuestros estadísticos muestrales se acerquen más a los parámetros poblacionales, ¿qué podemos hacer al respecto?</p>
+<p>La respuesta lógica sería recolectar más datos. Supongamos que hacemos un experimento más grande, en el cual medimos el CI de 10,000 personas. Si entrás <a class="reference external" href="https://leudave.shinyapps.io/sampling/">aquí</a> podrás hacer una simulación. El histograma de esta simulación se muestra en la Figura &#64;ref(fig:IQdistc). Una inspección rápida nos revelará que una muestra de mayor tamaño representa una mejor aproximación a la distribución poblacional real, especialmente si la comparamos con la muestra más pequeña. Esto también se ve reflejado en los estadísticos muestrales: el CI medio de la muestra grande es de 99.9 y su desviación estándar es de 15.1. Estos valores son muy cercanos a los valores reales de la población.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">estImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
+
+<span class="n">colour</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+
+	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	
+	<span class="c1"># plot</span>
+	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	
+	<span class="c1"># function to do all the work</span>
+	<span class="n">plotSamples</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span> <span class="p">{</span>
+		
+		<span class="n">IQ</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+		<span class="nf">hist</span><span class="p">(</span> <span class="n">IQ</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">180</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> 
+			<span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphColLight</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span>
+			<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;CI&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="m">140</span><span class="p">),</span>
+			<span class="n">main</span><span class="o">=</span><span class="s">&quot;&quot;</span>
+		<span class="p">)</span>
+		<span class="c1">#print( paste( &quot;n=&quot;,n,&quot;mean=&quot;,mean(IQ), &quot;sd=&quot;,sd(IQ) ) )</span>
+	<span class="p">}</span>
+	
+	<span class="c1"># plot two different sample sizes</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/32b3954aceffe3b0cf6cd2e6def9ecceaf15144537a29a55f5f67b40169172c2.png" src="../_images/32b3954aceffe3b0cf6cd2e6def9ecceaf15144537a29a55f5f67b40169172c2.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.6</span> <span class="pre">Muestra</span> <span class="pre">con</span> <span class="pre">10,000</span> <span class="pre">observaciones</span> <span class="pre">provenientes</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">previa.</span></code></p>
+<p>Con esto, podemos observar algo que parece obvio: entre más datos tengamos, mejores resultados obtendremos. Esta intuición tan evidente que compartimos todos, los estadísticos la definen como la <strong><em>ley de los grandes números</em></strong>. La ley de los grandes números es una ley matemática que aplica a muchos estadísticos muestrales, pero la forma más sencilla de entenderla es a través de la ley aplicada a las medias. Cuando se aplica a la media muestral, la ley de los grande números nos dice que conforme aumenta el tamaño de muestra, el valor de la media muestral se acercará al valor de la media poblacional real. O, para ser más precisos, conforme el tamaño muestral se aproxima al infinito (escrito como <span class="math notranslate nohighlight">\(N \rightarrow \infty\)</span>) la media nuestral se aproximará a la media poblacional (<span class="math notranslate nohighlight">\(\bar{X} \rightarrow \mu\)</span>).^[Técnicamente, la de ley de los grandes números es aplicable a cualquier estadístico muestral que pueda ser descrito como un promedio de cantidades independiente. La varianza muestral, por ejemplo, puede ser representado como un tipo de promedio y por ello, sujeto a la ley de los grandes números. Sin embargo, el valor mínimo muestral no puede ser interpretado como un promedio de nada, y por tanto, no es gobernado por la ley de los grandes números.]</p>
+<p>Espero que quede patente la importancia de la ley de los grandes números como una herramienta elemental en la teoría estadística. Esta ley de los grandes números es nuestro argumento para justificar nuestra creencia de que recolectar cada vez más y más datos nos acercará a la verdad. Para cualquier conjunto de datos, los estadísticos muestrales que calculemos estarán equivocados, pero la ley de los grandes números nos dice que si seguimos recolectando datos esos estadísticos muestrales tenderán a a acerca más y más a los parámetros poblacionales reales.</p>
+</section>
+<section id="distribuciones-muestrales-y-el-teorema-del-limite-central-samplesandclt">
+<h2>Distribuciones muestrales y el teorema del límite central{#samplesandclt}<a class="headerlink" href="#distribuciones-muestrales-y-el-teorema-del-limite-central-samplesandclt" title="Permalink to this heading">#</a></h2>
+<p>La ley de los grandes números es una herramienta muy poderosa, pero no será suficiente para responder a todas nuestras preguntas. Entre otras cosas, lo que nos da esta ley es una “garantía a largo plazo”. A largo plazo, si pudiéramos recolectar una cantidad infinita de datos, la ley de los grandes números nos garantiza que los estadísticos muestrales serán correctos.</p>
+<p>Sin embargo, esta “garantía a largo plazo” es de poca utilidad en la vida real: no basta con decir que <em>con el tiempo</em> llegaremos a la respuesta correcta cuando calculemos la media muestral. Saber que un conjunto de datos infinitamente largo me dará el valor exacto de la media poblacional es inconciliable con el <em>hecho</em> de que mi conjunto de datos tiene un tamaño de muestra de <span class="math notranslate nohighlight">\(N=100\)</span>. En la vida real, tenemos que saber algo más sobre el comportamiento de la media muestral de una muestra modesta como la nuestra.</p>
+<section id="distribucion-muestral-de-la-media-samplingdists">
+<h3>Distribución muestral de la media{#samplingdists}<a class="headerlink" href="#distribucion-muestral-de-la-media-samplingdists" title="Permalink to this heading">#</a></h3>
+<p>Abandonemos por un momento la idea de tener tamaños de muestra de 10,000 y pensemos en un experimento más modesto. Esta vez extraemos una muestra de <span class="math notranslate nohighlight">\(N=5\)</span> personas y medimos su CI. Este es el resultado:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">90</span>  <span class="mi">82</span>  <span class="mi">94</span>  <span class="mi">99</span> <span class="mi">110</span>
+</pre></div>
+</div>
+<p>El CI medio de esta muestra es exactamente 95. Esta muestra nos revela un valor mucho menos preciso que en el experimento previo. Ahora imagina que decides <strong><em>replicar</em></strong> este mismo experimento. Es decir, quieres repetir el mismo procedimiento de tal forma que selecciones una nueva muestra aleatoria de 5 personas y obtener su CI una vez más. Estos son los CI de nuestra nueva muestra:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">78</span>  <span class="mi">88</span> <span class="mi">111</span> <span class="mi">111</span> <span class="mi">117</span>
+</pre></div>
+</div>
+<p>Al calcular la media de esta muestra vemos que es de 101. Si repetimos el experimento 10 veces más obtendremos los resultados que se muestran en la siguiente Tabla. Con ella podrás ver que la media muestral cambia con cada replicación del experimento.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="n">.</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Rep 1&quot;</span><span class="p">,</span> <span class="s">&quot;Rep 2&quot;</span><span class="p">,</span> <span class="s">&quot;Rep 3&quot;</span><span class="p">,</span> <span class="s">&quot;Rep 4&quot;</span><span class="p">,</span>
+         <span class="s">&quot;Rep 5&quot;</span><span class="p">,</span> <span class="s">&quot;Rep 6&quot;</span><span class="p">,</span> <span class="s">&quot;Rep 7&quot;</span><span class="p">,</span> <span class="s">&quot;Rep 8&quot;</span><span class="p">,</span>
+         <span class="s">&quot;Rep 9&quot;</span><span class="p">,</span> <span class="s">&quot;Rep 10&quot;</span><span class="p">),</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">90</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">111</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">105</span><span class="p">,</span> <span class="m">81</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">107</span><span class="p">,</span> <span class="m">86</span><span class="p">,</span> <span class="m">95</span><span class="p">),</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">82</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">122</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">113</span><span class="p">,</span> <span class="m">89</span><span class="p">,</span> <span class="m">93</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">119</span><span class="p">,</span> <span class="m">126</span><span class="p">),</span>
+<span class="n">P3</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">94</span><span class="p">,</span> <span class="m">111</span><span class="p">,</span> <span class="m">91</span><span class="p">,</span> <span class="m">119</span><span class="p">,</span> <span class="m">103</span><span class="p">,</span> <span class="m">93</span><span class="p">,</span> <span class="m">108</span><span class="p">,</span> <span class="m">105</span><span class="p">,</span> <span class="m">108</span><span class="p">,</span> <span class="m">112</span><span class="p">),</span>
+<span class="n">P4</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">99</span><span class="p">,</span> <span class="m">111</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">99</span><span class="p">,</span> <span class="m">103</span><span class="p">,</span> <span class="m">85</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">117</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">120</span><span class="p">),</span>
+<span class="n">P5</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">110</span><span class="p">,</span> <span class="m">117</span><span class="p">,</span> <span class="m">86</span><span class="p">,</span> <span class="m">107</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">114</span><span class="p">,</span> <span class="m">133</span><span class="p">,</span> <span class="m">85</span><span class="p">,</span> <span class="m">116</span><span class="p">,</span> <span class="m">76</span><span class="p">),</span>
+<span class="n">Media.Muestral</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">95</span><span class="p">,</span> <span class="m">101</span><span class="p">,</span> <span class="m">101.6</span><span class="p">,</span> <span class="m">103.8</span><span class="p">,</span> <span class="m">104.4</span><span class="p">,</span> <span class="m">92.4</span><span class="p">,</span> <span class="m">106.4</span><span class="p">,</span> <span class="m">102.8</span><span class="p">,</span> <span class="m">100.4</span><span class="p">,</span>
+                  <span class="m">105.8</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|.      |  P1|  P2|  P3|  P4|  P5| Media.Muestral|
+|:------|---:|---:|---:|---:|---:|--------------:|
+|Rep 1  |  90|  82|  94|  99| 110|           95.0|
+|Rep 2  |  78|  88| 111| 111| 117|          101.0|
+|Rep 3  | 111| 122|  91|  98|  86|          101.6|
+|Rep 4  |  98|  96| 119|  99| 107|          103.8|
+|Rep 5  | 105| 113| 103| 103|  98|          104.4|
+|Rep 6  |  81|  89|  93|  85| 114|           92.4|
+|Rep 7  | 100|  93| 108|  98| 133|          106.4|
+|Rep 8  | 107| 100| 105| 117|  85|          102.8|
+|Rep 9  |  86| 119| 108|  73| 116|          100.4|
+|Rep 10 |  95| 126| 112| 120|  76|          105.8|
+</pre></div>
+</div>
+</div>
+</div>
+<p>Supongamos ahora que decidimos continuar con este procedimiento, replicando el experimento de “5 puntuaciones de CI” una y otra vez. Y cada vez, obtendremos una media muestral diferente, que en el caso de los 10 experimentos que ya hemos hecho corresponderían con los siguientes valores:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                      <span class="mf">95.0</span> <span class="mf">101.0</span> <span class="mf">101.6</span> <span class="mf">103.8</span> <span class="mf">104.4</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>¿Qué pasaría si continuamos y recolectamos 10,000 medias muestrales y trazamos un histograma con ellas? Obtendríamos un resultado como el que vemos en la Figura  &#64;ref(fig:sampdistmean). En esta imagen podemos apreciar que la media muestral de “5 puntuaciones de CI” se encuentra, por lo general, entre 90 y 110. Pero lo más interesante de esta Figura es que demuestra el hecho de que si repetimos el experimento una y otra vez, ¡lo que obtenemos es una <em>distribución</em> de las medias muestrales! Esta distribución recibe un nombre especial en estadística: se le llama <strong><em>distribución muestral de la media</em></strong>.</p>
+<p>Las distribuciones muestrales son una idea teórica importante en la estadística, y además, son cruciales si queremos entender cómo se comportan las muestras pequeñas. Por ejemplo, cuando realizamos el primer experimento con 5 puntuaciones de CI, la media muestral fue de 95. Sin embargo, lo que la distribución muestral nos dice en la Figura  &#64;ref(fig:sampdistmean), es que este experimento con 5 puntuaciones no es muy preciso. Si repetimos el experimento muchas veces, la distribución muestral nos dice que podemos esperar que la media muestral esté entre 80 y 120.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	
+	<span class="c1"># function to do all the work</span>
+	<span class="n">plotSamples</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+		
+		<span class="n">IQ</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+		<span class="nf">hist</span><span class="p">(</span> <span class="n">IQ</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">180</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+			<span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphColLight</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span>
+			<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;IQ&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="m">140</span><span class="p">),</span>
+			<span class="n">main</span><span class="o">=</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Tamaño de la muestra =&quot;</span><span class="p">,</span><span class="n">N</span><span class="p">),</span> <span class="n">axes</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+			<span class="n">font.main</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">.</span><span class="m">07</span><span class="p">)</span>
+		<span class="p">)</span>
+		<span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+	<span class="p">}</span>
+	
+	<span class="c1"># population distribution</span>
+	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	
+	<span class="c1"># plot two different sample sizes</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+	<span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/7e358ceb103db567a2ab79fa96bbe767f94d4249664174104c0dd2755aa77f68.png" src="../_images/7e358ceb103db567a2ab79fa96bbe767f94d4249664174104c0dd2755aa77f68.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.7</span> <span class="pre">La</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">en</span> <span class="pre">el</span> <span class="pre">experimento</span> <span class="pre">con</span> <span class="pre">5</span> <span class="pre">puntuaciones</span> <span class="pre">de</span> <span class="pre">CI.</span> <span class="pre">Si</span> <span class="pre">obtenemos</span> <span class="pre">una</span> <span class="pre">muestra</span> <span class="pre">aleatoria</span> <span class="pre">de</span> <span class="pre">5</span> <span class="pre">personas</span> <span class="pre">y</span> <span class="pre">calculamos</span> <span class="pre">la</span> <span class="pre">*media*</span> <span class="pre">de</span> <span class="pre">sus</span> <span class="pre">puntajes,</span> <span class="pre">obtendremos</span> <span class="pre">casi</span> <span class="pre">con</span> <span class="pre">seguridad</span> <span class="pre">un</span> <span class="pre">valor</span> <span class="pre">entre</span> <span class="pre">80</span> <span class="pre">y</span> <span class="pre">120,</span> <span class="pre">aunque</span> <span class="pre">existen</span> <span class="pre">individuos</span> <span class="pre">que</span> <span class="pre">tienen</span> <span class="pre">un</span> <span class="pre">CI</span> <span class="pre">mayor</span> <span class="pre">de</span> <span class="pre">120</span> <span class="pre">o</span> <span class="pre">menor</span> <span class="pre">de</span> <span class="pre">80.</span> <span class="pre">La</span> <span class="pre">línea</span> <span class="pre">negra</span> <span class="pre">dibuja</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">puntajes</span> <span class="pre">de</span> <span class="pre">CI</span> <span class="pre">para</span> <span class="pre">comparar.</span></code></p>
+</section>
+<section id="existen-distribuciones-muestrales-para-cualquier-estadistico-muestral">
+<h3>Existen distribuciones muestrales para cualquier estadístico muestral<a class="headerlink" href="#existen-distribuciones-muestrales-para-cualquier-estadistico-muestral" title="Permalink to this heading">#</a></h3>
+<p>Una cosa que debemos tener en cuenta cuando pensemos sobre las distribuciones muestrales es que es posible estimarlos a partir de <em>cualquier</em> estadístico muestral. Por ejemplo, supongamos que en cada una de las veces que replicamos el “experimento con 5 puntajes de CI” también tomamos nota del valor de CI máximo en cada experimento. Esto daría como resultado una serie de número que empezaría de esta forma:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                      <span class="mi">110</span> <span class="mi">117</span> <span class="mi">122</span> <span class="mi">119</span> <span class="mi">113</span> <span class="o">...</span> 
+</pre></div>
+</div>
+<p>Si hacemos esto una y otra vez obtendremos una distribución muestral muy diferente, concretamente la <em>distribución muestral del valor máximo</em>. La distribución muestral del valor máximo de 5 puntajes de CI se muestra en la Figura &#64;ref(fig:sampdistmax). No es de sorprender, que si escogemos a 5 personas al azar y seleccionamos a la persona con el puntaje más alto, este tenga un CI superior a la media. Y de hecho, la mayoría de las veces nos encontraremos con puntajes de CI en el rango entre 100 y 140.</p>
+<p><img alt="figure8" src="../_images/sampdistmax.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.8</span> <span class="pre">Distribución</span> <span class="pre">muestral</span> <span class="pre">del</span> <span class="pre">valor</span> <span class="pre">máximo</span> <span class="pre">de</span> <span class="pre">CI.</span></code></p>
+</section>
+<section id="el-teorema-del-limite-central-clt">
+<h3>El teorema del límite central{#clt}<a class="headerlink" href="#el-teorema-del-limite-central-clt" title="Permalink to this heading">#</a></h3>
+<p>A continuación verás una serie de ilustraciones en las que podremos observar como influye el tamaño de la muestra en las distribuciones muestrales. Estas distribuciones muestrales se han generado a partir 10,000 muestras de datos sobre el CI, donde se ha calculado la media muestral de cada una de esas muestras. Los histogramas muestran la distribución de esas medias muestrales (en otras palabras, son distribuciones muestrales de la media). Cada valor individual de CI fue extraído de una distribución normal con media de 100 y desviación estándar de 15, que se muestra como una línea sólida de color negro.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	
+	<span class="c1"># function to do all the work</span>
+	<span class="n">plotSamples</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+		
+		<span class="n">IQ</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+		<span class="nf">hist</span><span class="p">(</span> <span class="n">IQ</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">180</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+			<span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphColLight</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span>
+			<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;IQ&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="m">140</span><span class="p">),</span>
+			<span class="n">main</span><span class="o">=</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Tamaño de la muestra =&quot;</span><span class="p">,</span><span class="n">N</span><span class="p">),</span> <span class="n">axes</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+			<span class="n">font.main</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">.</span><span class="m">07</span><span class="p">)</span>
+		<span class="p">)</span>
+		<span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+	<span class="p">}</span>
+	
+	<span class="c1"># population distribution</span>
+	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	
+	<span class="c1"># plot two different sample sizes</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+	<span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/5fe2c6448a1db96e0d32c2f3f74d9512f9a0d64dc90d08f269eb22c78836b1ff.png" src="../_images/5fe2c6448a1db96e0d32c2f3f74d9512f9a0d64dc90d08f269eb22c78836b1ff.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.9</span> <span class="pre">Esta</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">parte</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">sola</span> <span class="pre">observación</span> <span class="pre">(tamaño</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">1),</span> <span class="pre">de</span> <span class="pre">forma</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">muestral</span> <span class="pre">es</span> <span class="pre">el</span> <span class="pre">puntaje</span> <span class="pre">de</span> <span class="pre">CI</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">persona.</span> <span class="pre">Como</span> <span class="pre">consecuencia,</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">es</span> <span class="pre">idéntica</span> <span class="pre">a</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">valores</span> <span class="pre">de</span> <span class="pre">CI.</span></code></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+
+		<span class="c1"># plot two different sample sizes</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+	<span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/047bc6990e8a9bf1634626d5439a72a3fff679788c48e2fb1efcbedc7826b34c.png" src="../_images/047bc6990e8a9bf1634626d5439a72a3fff679788c48e2fb1efcbedc7826b34c.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.10</span> <span class="pre">Cuando</span> <span class="pre">aumentamos</span> <span class="pre">el</span> <span class="pre">tamaño</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">muestra</span> <span class="pre">a</span> <span class="pre">2,</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">de</span> <span class="pre">cualquier</span> <span class="pre">muestra</span> <span class="pre">tiende</span> <span class="pre">a</span> <span class="pre">acercarse</span> <span class="pre">más</span> <span class="pre">a</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">poblacional</span> <span class="pre">que</span> <span class="pre">a</span> <span class="pre">un</span> <span class="pre">puntaje</span> <span class="pre">individual</span> <span class="pre">de</span> <span class="pre">CI,</span> <span class="pre">por</span> <span class="pre">lo</span> <span class="pre">que</span> <span class="pre">el</span> <span class="pre">histograma</span> <span class="pre">(distribución</span> <span class="pre">muestral)</span> <span class="pre">es</span> <span class="pre">un</span> <span class="pre">poco</span> <span class="pre">más</span> <span class="pre">estrecho</span> <span class="pre">que</span> <span class="pre">el</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">población.</span></code></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
+
+		<span class="c1"># plot two different sample sizes</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
+	<span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/9f20ebfb27ef27027b7043ccdc554a968393bee08c393aabb34419d02aa8c2ae.png" src="../_images/9f20ebfb27ef27027b7043ccdc554a968393bee08c393aabb34419d02aa8c2ae.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.11</span> <span class="pre">Cuando</span> <span class="pre">el</span> <span class="pre">tamaño</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">muestra</span> <span class="pre">es</span> <span class="pre">de</span> <span class="pre">10</span> <span class="pre">podemos</span> <span class="pre">ver</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">tiende</span> <span class="pre">a</span> <span class="pre">organizarse</span> <span class="pre">alrededor</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">(real)</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">población.</span></code></p>
+<p>Espero que con esta demostración, tengas un mejor idea de lo que son las distribuciones muestrales, y en particular lo que es la distribución muestral de la media. En esta sección hablaremos de cómo la distribución muestral de la media cambia en función del tamaño muestral. Intuitivamente tú ya conoces la respuesta: si tenemos sólo unas cuantas observaciones, es probable que la media muestral no sea muy precisa. Si replicas este experimento con una muestra pequeña y vuelves a calcular la media obtendrás, casi con seguridad, una respuesta muy diferente. En otras palabras, su distribución muestral es muy ancha. Por otro lado, si replicas un experimento con un tamaño muestral grande y calculas la media muestral varias veces, es muy probable que obtengas la misma respuesta, o al menos muy aproximada, por lo que la distribución muestral será muy estrecha. Esto lo puedes apreciar visualmente con las Figuras &#64;ref(fig:IQsampa), &#64;ref(fig:IQsampb) y &#64;ref(fig:IQsampc): entre más grande sea la muestra, más estrecha será la distribución muestral. Podemos cuantificar este efecto si calculamos la desviación estándar de la distribución muestral, mejor conocida como el <strong><em>error estándar</em></strong>. El error estándar de la media se denota como <span class="math notranslate nohighlight">\(\sigma\)</span> con el subíndice <span class="math notranslate nohighlight">\(\bar{X}\)</span> (o SEM en inglés). Y como puedes ver y confirmar con las figuras, conforme aumenta el tamaño muestral <span class="math notranslate nohighlight">\(N\)</span>, el error estándar disminuye.</p>
+<p>De momento hemos visto cómo se comportan las distribuciones muestrales de los puntajes de CI, que es un parámetro que tiene una distribución poblacional normal. Pero, ¿qué pasa con aquellos datos que no guardan una distribución normal? Esta es la clave: sin importar la forma de la distribución de la población, si aumentamos <span class="math notranslate nohighlight">\(N\)</span>, su distribución muestral siempre será como la que hemos visto con la distribución normal. Por ejemplo, en la Figura &#64;ref(fig:cltdemo) verás que una distribución poblacional que tiene forma de rampa (los valores más altos son los más frecuentes). Si comparas esta forma con la de la distribución normal (la línea sólida negra), podrás confirmar que no se parecen en nada. Si repetimos el mismo procedimiento que hemos hecho anteriormente, y extraemos un número elevado de muestras (10,000) con un tamaño muestral de <span class="math notranslate nohighlight">\(N=2\)</span> y calculamos sus medias muestrales, obtendremos la distribución muestral de la media que puedes ver en la Figura &#64;ref(fig:cltdemob). Esta distribución cambia de forma de manera importante, y aunque no es normal, se aproxima bastante, sobre todo si la comparamos con la distribución poblacional original (Figura &#64;ref(fig:cltdemoa)). Si aumentamos el tamaño muestral a <span class="math notranslate nohighlight">\(N=4\)</span>, la distribución muestral de la media se acerca más a una distribución normal (Figura &#64;ref(fig:cltdemoc), y con un tamaño muestral de <span class="math notranslate nohighlight">\(N=8\)</span> esta ya es perfectamente normal. En otras palabras, siempre y cuando el tamaño de tu muestra no sea diminuto, la distribución muestral de la media será normal, ¡sin importar la forma de la distribución poblacional!</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># needed for printing</span>
+	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">6</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">6</span>	
+	
+	<span class="c1"># parameters of the beta</span>
+	<span class="n">a</span> <span class="o">&lt;-</span> <span class="m">2</span>
+	<span class="n">b</span> <span class="o">&lt;-</span> <span class="m">1</span>
+	
+	<span class="c1"># mean and standard deviation of the beta</span>
+	<span class="n">s</span> <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="m">+1</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">m</span> <span class="o">&lt;-</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+	
+	<span class="c1"># define function to draw a plot</span>
+	<span class="n">plotOne</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="m">50000</span><span class="p">)</span> <span class="p">{</span>
+		
+		<span class="c1"># generate N random sample means of size n</span>
+		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rbeta</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">n</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">colMeans</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+		
+		<span class="c1"># plot the data</span>
+		<span class="nf">hist</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="n">.</span><span class="m">025</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+			<span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphColLight</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span>
+			<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Media muestral&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.2</span><span class="p">),</span>
+			<span class="n">main</span><span class="o">=</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Tamaño muestral =&quot;</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">axes</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+			<span class="n">font.main</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+		<span class="p">)</span>
+		<span class="nf">box</span><span class="p">()</span>
+		<span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+		<span class="c1">#axis(2)</span>
+		
+		<span class="c1"># plot the theoretical distribution</span>
+		<span class="nf">lines</span><span class="p">(</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.2</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">),</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">s</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)),</span> 
+			<span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span>
+		<span class="p">)</span>
+	<span class="p">}</span>
+	
+	<span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="n">in</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">8</span><span class="p">))</span> <span class="p">{</span>
+		<span class="nf">plotOne</span><span class="p">(</span><span class="n">i</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/edf9815630376f91d85d8dc3361a1be5b0ea74e7d2f7817fd8cfeb28ea055516.png" src="../_images/edf9815630376f91d85d8dc3361a1be5b0ea74e7d2f7817fd8cfeb28ea055516.png" />
+<img alt="../_images/859537b11000013b0c2cfebd770127ffa73120dfcd8cff3552ffe31904d8415e.png" src="../_images/859537b11000013b0c2cfebd770127ffa73120dfcd8cff3552ffe31904d8415e.png" />
+<img alt="../_images/8427be6b6962e9a40ab2a67eb9ca9b494dd92b900c66ac2d8fa7cbacfb123c5f.png" src="../_images/8427be6b6962e9a40ab2a67eb9ca9b494dd92b900c66ac2d8fa7cbacfb123c5f.png" />
+<img alt="../_images/2e8f810684ee856626b4e4635489bebfdbbeee2c6f992a52fbc7d84014f201e1.png" src="../_images/2e8f810684ee856626b4e4635489bebfdbbeee2c6f992a52fbc7d84014f201e1.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.12</span> <span class="pre">Una</span> <span class="pre">demostración</span> <span class="pre">del</span> <span class="pre">teorema</span> <span class="pre">del</span> <span class="pre">límite</span> <span class="pre">central.</span> <span class="pre">En</span> <span class="pre">el</span> <span class="pre">primer</span> <span class="pre">panel,</span> <span class="pre">tenemos</span> <span class="pre">a</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">con</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">no-normal;</span> <span class="pre">en</span> <span class="pre">los</span> <span class="pre">tres</span> <span class="pre">paneles</span> <span class="pre">siguientes</span> <span class="pre">se</span> <span class="pre">muestran</span> <span class="pre">distribuciones</span> <span class="pre">muestrales</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">para</span> <span class="pre">muestra</span> <span class="pre">de</span> <span class="pre">tamaño</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">2,</span> <span class="pre">4</span> <span class="pre">y</span> <span class="pre">8,</span> <span class="pre">extraídos</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">del</span> <span class="pre">primer</span> <span class="pre">panel.</span> <span class="pre">Como</span> <span class="pre">podrás</span> <span class="pre">ver,</span> <span class="pre">aunque</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">original</span> <span class="pre">es</span> <span class="pre">no-normal,</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">se</span> <span class="pre">acerca</span> <span class="pre">mucho</span> <span class="pre">a</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">normal</span> <span class="pre">incluso</span> <span class="pre">cuando</span> <span class="pre">la</span> <span class="pre">muestra</span> <span class="pre">tiene</span> <span class="pre">4</span> <span class="pre">observaciones.</span></code></p>
+<p>Con base en estas figuras, parece que tenemos evidencia suficiente para sustentar las siguientes afirmaciones sobre las distribuciones muestrales de la media:</p>
+<ul class="simple">
+<li><p>La media de una distribución muestral es igual a la media poblacional</p></li>
+<li><p>La desviación estándar de una distribución muestral (el error estándar) disminuye conforme aumenta el tamaño muestral</p></li>
+<li><p>La forma de una distribución muestral adquiere una forma normal o de campana conforme aumenta el tamaño muestral</p></li>
+</ul>
+<p>Estas tres afirmaciones que hemos deducido, pueden ser comprobadas a través de un teorema muy famoso en estadística, conocido como el <strong><em>teorema del límite central</em></strong>. Entre otras cosas, el teorema del límite central nos dice que si una distribución poblacional tiene una media <span class="math notranslate nohighlight">\(\mu\)</span> y una desviación estándar <span class="math notranslate nohighlight">\(\sigma\)</span>, entonces la distribución muestral de la media también tendra una media <span class="math notranslate nohighlight">\(\mu\)</span> y un error estándar de la media:</p>
+<div class="math notranslate nohighlight">
+\[
+\mbox{SEM} = \frac{\sigma}{ \sqrt{N} }
+\]</div>
+<p>Ya que en esta fórmula se divide la desviación estándar de la población <span class="math notranslate nohighlight">\(\sigma\)</span> por la raíz cuadrada del tamaño muestral <span class="math notranslate nohighlight">\(N\)</span>, el error estándar disminuye conforme aumenta el tamaño muestral. También nos dice que la forma de la distribución muestral se vuelve normal. ^[Hemos explicado el caso de la media muestral que satisface el teorema del límite central. Sin embargo, existen otros estadísticos muestrales que también lo hacen, y que no revisaremos, al ser esto una introducción.]</p>
+<p>Este resultado es útil por muchas razones. Nos dice porqué los experimentos con un tamaño muestral más grande son más confiables que aquellos con muestras pequeñas, además de darnos una fórmula para el error estándar que nos permite cuantificar <em>qué tanto</em> más confiable es ese experimento. Nos dice que porque la distribución normal, es… <em>normal</em>. Cuando hacemos un experimento, muchas de las cosas que medimos son en realidad un promedio de muchas otras medidas (por ejemplo, la inteligencia “general” que mide el CI es un promedio de un gran número de habilidades “específicas”), y cuando eso pasa, la cantidad promediada debe seguir una distribución normal. Es por esta ley matemática que la distribución normal aparace con tanta frecuencia en los datos que recogemos del mundo real.</p>
+</section>
+</section>
+<section id="estimando-parametros-poblacionales-pointestimates">
+<h2>Estimando parámetros poblacionales{#pointestimates}<a class="headerlink" href="#estimando-parametros-poblacionales-pointestimates" title="Permalink to this heading">#</a></h2>
+<p>En todos los ejemplos anteriores sobre el CI, hemos asumido que conocíamos los parámetros poblacionales. Los tests que miden el CI están <em>diseñados</em> para tener una media de 100 y una desviación estándar de 15: cuando se estudia el CI en una población, se obtienen datos de una muestra muy grande y después se “ajustan” los resultados de forma que la media sea de 100. Esto nos sirve para recordar que una media es representativa únicamente de su población. En ocasiones podremos encontrar “normas” que permiten aplicar esos parámetros en otras poblaciones diferentes (por ejemplo, grupos de edad diferente, nacionalidades, etc.).</p>
+<p>Supongamos que ahora queremos explorar el efecto que tiene la contaminación ambiental en el rendimiento académico a través del CI. Para ello obtendremos y compararemos los puntajes de CI de estudiantes de una ciudad con altos índices de contaminación -Albacete- y otra con baja contaminación ambiental -Vitoria- (evidentemente, existen muchos otros factores que pueden influir en el puntaje final de CI). Independientemente de la ciudad que escojamos, no podemos <em>asumir</em> que la media de su población es de 100. No se ha creado una “norma” que se aplique al nivel de contaminación ambiental de las ciudades y su relación con el CI. Por ello, tendremos que <strong><em>estimar</em></strong> los parámetros de la población a partir de una muestra.</p>
+<section id="estimando-la-media-poblacional">
+<h3>Estimando la media poblacional<a class="headerlink" href="#estimando-la-media-poblacional" title="Permalink to this heading">#</a></h3>
+<p>Supongamos que vamos a Albacete y conseguimos los puntajes de CI de una muestra de 100 amables albaceteños. Obtenemos que el puntaje medio de esas personas es de <span class="math notranslate nohighlight">\(\bar{X}=98.5\)</span>. Entonces, ¿cuál la media real del CI para la población entera de Albacete? Evidentemente, no conocemos la respuesta a esa pregunta. Podría ser <span class="math notranslate nohighlight">\(97.2\)</span>, pero también <span class="math notranslate nohighlight">\(103.5\)</span>. Nuestra muestra no es lo suficientemente grande como para darnos una respuesta definitiva. Sin embargo, si tuviera que apostar, diría que es <span class="math notranslate nohighlight">\(98.5\)</span>. Esta es la esencia de la estimación estadística: dar tu mejor predicción.</p>
+<p>En este ejemplo, estimar este parámetro de la población es muy sencillo. Calculamos la media muestral, y utilizo este mismo resultado como el <strong><em>estimador de la media poblacional</em></strong>. En la siguiente sección explicaré la justificación estadística para esta respuesta que parece intuitiva. Por lo pronto, lo que debes reconocer es que, conceptualmente, la media muestral y el estimador de la media poblacional son cosas diferentes. Un estadístico muestral es una descripción de los datos, mientras que un estimador es una predicción sobre la población. Con esto en mente, los estadísticos utilizan una notación diferente para referirse a cada una de ellas. Así, mientras que la media poblacional se denota como <span class="math notranslate nohighlight">\(\mu\)</span>, el estimador de la media poblacional utiliza <span class="math notranslate nohighlight">\(\hat\mu\)</span> (recuerda que para referirnos a la media muestral usamos <span class="math notranslate nohighlight">\(\bar{X}\)</span>). Sin embargo, en muestras simples aleatorias, el estimador de la media poblacional es idéntico a la media muestral: si obtenemos una media muestral de <span class="math notranslate nohighlight">\(\bar{X} = 98.5\)</span>, entonces mi estimador de la media poblacional será también de <span class="math notranslate nohighlight">\(\hat\mu = 98.5\)</span>. Esta tabla nos ayudará a guardar el registro:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+                   <span class="n">Simbolo</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$\\bar{X}$&quot;</span><span class="p">,</span> <span class="s">&quot;$\\mu$&quot;</span><span class="p">,</span> <span class="s">&quot;$\\hat{\\mu}$&quot;</span><span class="p">),</span>
+              <span class="n">Valor</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Media muestral&quot;</span><span class="p">,</span> <span class="s">&quot;Media poblacional&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Estimador de la media poblacional&quot;</span><span class="p">),</span>
+   <span class="n">Lo.conocemos</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Sí, lo calculamos a partir de datos&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Casi nunca&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Sí, idéntico a la media muestral&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|Simbolo     |Valor                             |Lo.conocemos                        |
+|:-----------|:---------------------------------|:-----------------------------------|
+|$\bar{X}$   |Media muestral                    |Sí, lo calculamos a partir de datos |
+|$\mu$       |Media poblacional                 |Casi nunca                          |
+|$\hat{\mu}$ |Estimador de la media poblacional |Sí, idéntico a la media muestral    |
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estimando-la-desviacion-estandar-poblacional">
+<h3>Estimando la desviación estándar poblacional<a class="headerlink" href="#estimando-la-desviacion-estandar-poblacional" title="Permalink to this heading">#</a></h3>
+<p>De momento, la estimación parece algo sencillo, por lo que te preguntarás porqué te hecho leer todo eso sobre la teoría de muestreo. En el caso de la media, nuestro estimador de la media poblacional <span class="math notranslate nohighlight">\(\hat\mu\)</span> resulta ser idéntico a la media muestral <span class="math notranslate nohighlight">\(\bar{X}\)</span>. Sin embargo, esto no aplica para todos los estadísticos muestrales. Como ejemplo, veamos como se construye el <strong><em>estimador de la desviación estándar poblacional</em></strong>, cuya notación es <span class="math notranslate nohighlight">\(\hat\sigma\)</span>. Si seguimos el mismo razonamiento que con el estimador de la media poblacional <span class="math notranslate nohighlight">\(\hat\mu\)</span>, cogeríamos a la desviación estándar muestral como nuestro estimador. Esto nos dará una respuesta aproximadamente correcta, pero no del todo.</p>
+<p>Veamos porqué. Supongamos que tenemos una muestra de puntajes de CI que contiene una única observación. Este único puntaje es de 99, por lo que tendremos la siguiente muestra:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">99</span>
+</pre></div>
+</div>
+<p>Esta es una muestra perfectamente legítima, aunque tenga un tamaño de muestra de <span class="math notranslate nohighlight">\(N=1\)</span>. Esta muestra tiene una media de 99, y al no haber ninguna otra observación en esta muestra, no existe dispersión de datos y por lo tanto tenemos una desviación estándar muestral de 0. Como descripción de una <em>muestra</em> esto es válido: la muestra contiene una sola observación y por lo tanto no hay variabilidad o dispersión dentro de la muestra. En este caso, decir que tenemos una desviación estándar muestral de <span class="math notranslate nohighlight">\(s = 0\)</span> es correcto. Pero si utilizamos este valor como estimador de la desviación estándar <em>poblacional</em> parece no tener sentido. No vemos variabilidad en esta <em>muestra</em> simplemente porque ¡la muestra es tan pequeña que no puede mostrar variabilidad! Por lo tanto, si tenemos un tamaño muestral de <span class="math notranslate nohighlight">\(N=1\)</span>, “no tenemos ni idea” del estimador de la desviación estándar poblacional.</p>
+<p>Observa como en este caso <em>no</em> has tenido la misma intuición que con la media muestral y su estimador. Aunque tengamos una media de 99 a partir de una única observación, es un valor <em>plausible</em>, y nos permite al menos, hacer una predicción.</p>
+<p>Vamos a dar un paso más en este ejemplo. Supongamos que ahora recolecto una segunda observación. Mi muestra tiene ahora <span class="math notranslate nohighlight">\(N=2\)</span> puntajes de CI, que son los siguientes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">99</span><span class="p">,</span> <span class="mi">101</span>
+</pre></div>
+</div>
+<p>Esta vez, la muestra es lo <em>suficientemente</em> grande para que podamos observar algo de variabilidad en ella: dos observaciones es el número mínimo necesario para observar cualquier variabilidad. Para esta nueva muestra, la media muestral es de <span class="math notranslate nohighlight">\(\bar{X}=100\)</span>, y su desviación estándar es de <span class="math notranslate nohighlight">\(s=1\)</span>. ¿Qué intuiciones o suposiciones podemos hacer de la población? Nuevamente, la mejor predicción que podemos hacer es con la media muestral: si tuviéramos que adivinar, diríamos que la media poblacional es de 100. ¿Y que hay de la desviación estándar? Aquí es un poco más complicado. La desviación estándar muestral está basada únicamente en dos observaciones, y es probable que con esto no hemos dado a la población “suficiente oportunidad” para mostrar cual es su variabilidad real. No es que simplemente sospechemos que utilizar este valor como estimador sea un <em>error</em>: después de todo, con dos observaciones esperamos que <em>esté</em> equivocado en cierto grado. El problema es que este error sea <em>sistemático</em>. Específicamente, sospechamos que la desviación estándar muestral sea menor que desviación estándar poblacional.</p>
+<p><img alt="figure13" src="../_images/samplingDistSampleSD.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.13</span> <span class="pre">Distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">desviación</span> <span class="pre">estándar</span> <span class="pre">del</span> <span class="pre">experimento</span> <span class="pre">con</span> <span class="pre">\&quot;dos</span> <span class="pre">puntajes</span> <span class="pre">de</span> <span class="pre">CI\&quot;.</span> <span class="pre">La</span> <span class="pre">media</span> <span class="pre">real</span> <span class="pre">poblacional</span> <span class="pre">es</span> <span class="pre">de</span> <span class="pre">15</span> <span class="pre">(línea</span> <span class="pre">punteada),</span> <span class="pre">pero</span> <span class="pre">como</span> <span class="pre">puedes</span> <span class="pre">ver</span> <span class="pre">en</span> <span class="pre">el</span> <span class="pre">histograma,</span> <span class="pre">la</span> <span class="pre">mayor</span> <span class="pre">parte</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">experimentos</span> <span class="pre">producirán</span> <span class="pre">un</span> <span class="pre">valor</span> <span class="pre">de</span> <span class="pre">desviación</span> <span class="pre">estándar</span> <span class="pre">muestral</span> <span class="pre">mucho</span> <span class="pre">más</span> <span class="pre">pequeño.</span> <span class="pre">En</span> <span class="pre">promedio,</span> <span class="pre">este</span> <span class="pre">experimento</span> <span class="pre">daría</span> <span class="pre">como</span> <span class="pre">resultado</span> <span class="pre">una</span> <span class="pre">desviación</span> <span class="pre">estándar</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">sólo</span> <span class="pre">8.5,</span> <span class="pre">muy</span> <span class="pre">por</span> <span class="pre">debajo</span> <span class="pre">del</span> <span class="pre">valor</span> <span class="pre">real.</span> <span class="pre">En</span> <span class="pre">otras</span> <span class="pre">palabras,</span> <span class="pre">la</span> <span class="pre">desviación</span> <span class="pre">estándar</span> <span class="pre">muestral</span> <span class="pre">es</span> <span class="pre">un</span> <span class="pre">estimador</span> <span class="pre">*sesgado*</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">desviación</span> <span class="pre">estándar</span> <span class="pre">poblacional.</span></code></p>
+<p>Aunque esta intuición pueda ser correcta, sería importante poder demostrarla. Si calculamos <em>la distribución muestral de la desviación estándar</em> para nuestro experimento de <span class="math notranslate nohighlight">\(N=2\)</span> puntajes de CI, veremos que el promedio de esas distribuciones estándar <em>muestrales</em> es de tan sólo 8.5 (puedes ver esta distribución en la Figura &#64;ref(fig:sampdistsd)), muy por debajo de la desviación estándar poblacional de 15. Observa que esta distribución es muy diferente a la distribución muestral de la media que vimos en la Figura &#64;ref(fig:IQsampb). En ella, la media poblacional es de 100, y el promedio de las medias muestrales también es de 100.</p>
+<p>Ahora extendamos un poco más esta simulación. En lugar de limitarnos a calcular la distribución muestral de la desviación de muestras de tamaño <span class="math notranslate nohighlight">\(N=2\)</span>, repitamos este ejercicio con tamaños muestrales del 1 al 10. Si graficamos como cambia el promedio de las medias muestrales y las desviaciones estándar muestrales en función del tamaño muestral, obtendremos lo que se enseña en la Figura &#64;ref(fig:estimatorbias). En la parte izquierda (a) vemos graficada los promedios de las medias muestrales y en la parte izquierda los promedios de las desviaciones estándar. Ambas gráficas son diferentes: <em>en promedio</em>, la media muestral es igual a la media poblacional. Esto lo convierte en un <strong><em>estimador insesgado</em></strong>, y es el motivo por el cual la media muestral es el mejor estimador de la media poblacional. En la parte derecha (b), vemos una gráfica distinta: <em>en promedio</em>, la desviación estándar muestral <span class="math notranslate nohighlight">\(s\)</span> es <em>menor</em> que la desviación estándar poblacional <span class="math notranslate nohighlight">\(\sigma\)</span>. Esto lo convierte en un <strong><em>estimador sesgado</em></strong>. En otras palabras, si queremos hacer nuestra mejor “predicción” <span class="math notranslate nohighlight">\(\hat\sigma\)</span> del valor de la desviación estándar poblacional <span class="math notranslate nohighlight">\(\sigma\)</span>, podríamos hacerlo aumentando el tamaño de la desviación estándar muestral <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p><img alt="figure14" src="../_images/biasMeanSD.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.14</span> <span class="pre">Demostración</span> <span class="pre">del</span> <span class="pre">hecho</span> <span class="pre">de</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">muestral</span> <span class="pre">es</span> <span class="pre">un</span> <span class="pre">estimador</span> <span class="pre">insesgado</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">poblacional</span> <span class="pre">(a),</span> <span class="pre">mientras</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">desviación</span> <span class="pre">estándar</span> <span class="pre">es</span> <span class="pre">un</span> <span class="pre">estimador</span> <span class="pre">sesgado</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">desviación</span> <span class="pre">estándar</span> <span class="pre">poblacional</span> <span class="pre">(b).</span> <span class="pre">*En</span> <span class="pre">promedio*,</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">muestral</span> <span class="pre">es</span> <span class="pre">100,</span> <span class="pre">independientemente</span> <span class="pre">del</span> <span class="pre">tamaño</span> <span class="pre">muestral</span> <span class="pre">(a).</span> <span class="pre">Sin</span> <span class="pre">embargo,</span> <span class="pre">la</span> <span class="pre">desviación</span> <span class="pre">estándar</span> <span class="pre">muestral</span> <span class="pre">es</span> <span class="pre">sistemáticamente</span> <span class="pre">menor</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">desviación</span> <span class="pre">estándar</span> <span class="pre">poblacional</span> <span class="pre">(b),</span> <span class="pre">sobre</span> <span class="pre">todo</span> <span class="pre">con</span> <span class="pre">tamaños</span> <span class="pre">de</span> <span class="pre">muestra</span> <span class="pre">pequeños.</span></code></p>
+<p>Arreglar este error sistemático es muy sencillo. Primero, recordemos la fórmula de la desviación estándar poblacional:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma = \sqrt\frac{\sum_{i=1}^N (X_i - \bar{X})^2}{N} 
+\]</div>
+<p>Sólo hace falta un pequeño cambio para corregir ese error sistemático. Lo único que tenemos que hacer dividir por <span class="math notranslate nohighlight">\(N-1\)</span> en lugar de por <span class="math notranslate nohighlight">\(N\)</span>. Si lo hacemos, obtendremos la siguiente fórmula:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat\sigma = \sqrt\frac{\sum_{i=1}^N (X_i - \bar{X})^2}{N-1} 
+\]</div>
+<p>Un último apunte: en la práctica, mucha gente se refiere a <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> (esta última fórmula) como la desviación estándar <em>muestral</em>. Técnicamente, esto es incorrecto: en la desviación estándar <em>muestral</em> se divide únicamente por <span class="math notranslate nohighlight">\(N\)</span>. Y es que no son lo mismo, ni conceptualmente ni numéricamente. Uno es una propiedad de una muestra, mientras que el otro es una característica estimada de la población. Sin embargo, lo normal es que nos interesemos por calcular el estimador de la población, por lo que solemos utilizar <span class="math notranslate nohighlight">\(\hat\sigma\)</span> en lugar de <span class="math notranslate nohighlight">\(s\)</span>. Quizás esta imprecisión se deba a que es más fácil escribir “desviación estándar muestral” que “estimador de la desviación estándar poblacional”. En la práctica, no suele haber mucha diferencia, sin embargo, es importante separar ambos <em>conceptos</em>: no debemos confundir las “características conocidas de tu muestra” con las “predicciones acerca de la población”.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+                      <span class="n">Simbolo</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;$s$&quot;</span><span class="p">,</span> <span class="s">&quot;$\\sigma$&quot;</span><span class="p">,</span> <span class="s">&quot;$\\hat{\\sigma}$&quot;</span><span class="p">),</span>
+              <span class="n">Valor</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Desviación estándar muestral&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Desviación estándar poblacional&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Estimador de la desviación estándar poblacional&quot;</span><span class="p">),</span>
+   <span class="n">Lo.sabemos</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Sí, lo calculamos a partir de datos&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Casi nunca&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Sí, pero no es igual a la desviación estándar muestral&quot;</span>
+                              <span class="p">)</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|Simbolo        |Valor                                           |Lo.sabemos                                             |
+|:--------------|:-----------------------------------------------|:------------------------------------------------------|
+|$s$            |Desviación estándar muestral                    |Sí, lo calculamos a partir de datos                    |
+|$\sigma$       |Desviación estándar poblacional                 |Casi nunca                                             |
+|$\hat{\sigma}$ |Estimador de la desviación estándar poblacional |Sí, pero no es igual a la desviación estándar muestral |
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="estimando-un-intervalo-de-confianza-ci">
+<h2>Estimando un intervalo de confianza{#ci}<a class="headerlink" href="#estimando-un-intervalo-de-confianza-ci" title="Permalink to this heading">#</a></h2>
+<p>Hasta este punto en esta 2ª Unidad, hemos revisado los conceptos básicos de la teoría de muestreo que los estadísticos utilizan para hacer predicciones sobre los parámetros poblacionales a partir de una muestra de datos. Una de las razones por las cuales necesitamos de esta teoría de muestro es que cada conjunto de datos nos deja con un cierto grado de incertidumbre, por lo que nuestros estimadores nunca serán precisos a la perfección. Sin embargo, nosotros somos capaces de <em>cuantificar</em> esa incertidumbre que va implícita en nuestros estimadores. No basta con predecir que el CI medio de mi muestra de estudiantes es de 105; también podemos expresar el grado de certeza que tenemos sobre esa predicción.<br />
+Nos gustaría, por ejemplo, decir que tenemos un 95% de probabilidad de que un rango de valores contenga la media real. Esta herramienta existe y recibe el nombre de <strong><em>intervalo de confianza</em></strong> de la media.</p>
+<p>Como ya conocemos y entendemos como funcionan las distribuciones muestrales, construir un intervalo de confianza resulta relativamente sencillo. Supongamos que la media real poblacional es <span class="math notranslate nohighlight">\(\mu\)</span> y la desviación estándar es <span class="math notranslate nohighlight">\(\sigma\)</span>. Hemos terminado un estudio que incluye a <span class="math notranslate nohighlight">\(N\)</span> participantes, y el CI medio de esos participantes es de <span class="math notranslate nohighlight">\(\bar{X}\)</span>. Por nuestra discusión sobre teorema del límite central (Sección &#64;ref(clt)), sabemos que la distribución muestral de la media es aproximadamente normal. También sabemos por nuestra discusión sobre la distribución normal (Sección &#64;ref(normal)) que existe un 95% de probabilidad de que una cantidad normalmente distribuida caiga dentro de dos desviaciones estándar alrededor de la media real (es decir, entre los percentiles 2.5 y 97.5). Aunque si vamos al detalle (con la ayuda de nuestra tabla z), vemos que no son dos desviaciones estándar exactamente, sino 1.96, que es el número que utilizaremos de aquí en adelante.</p>
+<p>Ahora, recordemos que cuando hablamos de la desviación estándar de una distribución muestral, nos estamos refiriendo al error estándar, en este caso, de la media (SEM). Si juntamos todos estos elementos, podemos decir que existe una probabilidad del 95% de que la media muestral <span class="math notranslate nohighlight">\(\bar{X}\)</span> caiga dentro de 1.96 desviaciones estándar de la media poblacional. Matemáticamente lo podemos expresar de la siguiente forma:</p>
+<div class="math notranslate nohighlight">
+\[
+\mu - \left( 1.96 \times \mbox{SEM} \right) \ \leq \  \bar{X}\  \leq \  \mu + \left( 1.96 \times \mbox{SEM} \right) 
+\]</div>
+<p>donde el error estándar (SEM) es igual a <span class="math notranslate nohighlight">\(\sigma / \sqrt{N}\)</span>. Sin embargo, esto no responde a nuestra pregunta original. La ecuación anterior nos dice lo que podemos esperar de la media muestral, dado que conocemos los parámetros poblacionales. En cambio, lo que nosotros <em>queremos</em> saber es justo lo contrario: queremos conocer qué creer de los parámetros poblacionales, dado lo observado a partir de una muestra. Por lo tanto, podemos aplicar nuestros conocimientos de álgebra y despejar esta ecuación de forma que nos de la respuesta que buscamos:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{X} -  \left( 1.96 \times \mbox{SEM} \right) \ \leq \ \mu  \ \leq  \ \bar{X} +  \left( 1.96 \times \mbox{SEM}\right)
+\]</div>
+<p>Lo que esta nueva ecuación nos dice, es que un rango de valores tiene un 95% de probabilidad de contener la media poblacional <span class="math notranslate nohighlight">\(\mu\)</span>. A este rango específico lo conocemos como el <strong><em>intervalo de confianza de 95%</em></strong>, y se denota como <span class="math notranslate nohighlight">\(\mbox{CI}_{95}\)</span>. Así, mientras el tamaño de muestra <span class="math notranslate nohighlight">\(N\)</span> sea lo suficientemente grande -suficientemente grande para creer que la distribución muestral de la media es normal-, entonces podemos escribir nuestra fórmula del intervalo de confianza de 95% de la siguiente forma:</p>
+<div class="math notranslate nohighlight">
+\[
+\mbox{CI}_{95} = \bar{X} \pm \left( 1.96 \times \frac{\sigma}{\sqrt{N}} \right)
+\]</div>
+<p>Es imporante aclarar que no hay nada de especial en el número 1.96; simplemente es el multiplicador para un nivel de confianza del 95% que suele ser el más utilizado cuando se calcula un intervalo de confianza. Dependiendo de las circunstancias, podemos disminuir o aumentar ese nivel de confianza (por ejemplo, un nivel de confianza de 70% nos da un valor de 1.04).</p>
+<section id="que-pasa-cuando-no-conocemos-los-parametros-poblacionales">
+<h3>¿Qué pasa cuando no conocemos los parámetros poblacionales?<a class="headerlink" href="#que-pasa-cuando-no-conocemos-los-parametros-poblacionales" title="Permalink to this heading">#</a></h3>
+<p>La fórmula que hemos utilizado para calcular el intervalo de confianza de 95% es aproximadente correcta. Sin embargo, no hemos explorado un detalle importante dentro de esta discusión. La fórmula requiere que usemos el error estándar de la media (SEM), que a su vez requiere que utilicemos la desviación estándar de la población <span class="math notranslate nohighlight">\(\sigma\)</span>. No obstante, en la Sección &#64;ref(pointestimates) vimos que, por lo general, nosotros no <em>conocemos</em> los parámetros poblacionales. Como no conocemos el valor verdadero de <span class="math notranslate nohighlight">\(\sigma\)</span>, tenemos que usar el estimador de la desviación estandar <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> en su lugar. Esto tiene como consecuencia que tenemos que usar los cuantiles de la distribución <span class="math notranslate nohighlight">\(t\)</span> en lugar de los de la distribución normal (valores <span class="math notranslate nohighlight">\(z\)</span>); y la elección de ese cuantil depende directamente del tamaño muestral. Si la <span class="math notranslate nohighlight">\(N\)</span> es muy grande, obtendremos prácticamente el mismo valor: para un nivel de confianza del 95%, una muestra de tamaño <span class="math notranslate nohighlight">\(N=10,000\)</span>, nos da un valor <span class="math notranslate nohighlight">\(t\)</span> de 1.96. Pero si la <span class="math notranslate nohighlight">\(N\)</span> es pequeña obtendremos un valor <span class="math notranslate nohighlight">\(t\)</span> mucho mayor: utilizando el mismo nivel de confianza, pero una muestra con <span class="math notranslate nohighlight">\(N=10\)</span>, el valor <span class="math notranslate nohighlight">\(t\)</span> es igual a 2.26.</p>
+<p>Un valor más grande nos dice que el intervalo de confianza es más ancho, lo cual indica mayor incertidumbre sobre dónde se encuentra la media real poblacional <span class="math notranslate nohighlight">\(\mu\)</span>. Cuando utilizamos la distribución <span class="math notranslate nohighlight">\(t\)</span> en lugar de la distribución normal, obtenemos números más grandes, lo que indica un mayor grado de incertidumbre. ¿Y esto a que se debe? Se debe simplemente a que el estimador de la desviación estándar poblacional <span class="math notranslate nohighlight">\(\hat\sigma\)</span> puede estar equivocado. Si está equivocado, implica que estamos un poco menos seguros sobre la forma de la distribución muestral de la media… y esta incertidumbre se ve reflejada en un intervalo de confianza más ancho.</p>
+</section>
+<section id="interpretando-un-intervalo-de-confianza">
+<h3>Interpretando un intervalo de confianza<a class="headerlink" href="#interpretando-un-intervalo-de-confianza" title="Permalink to this heading">#</a></h3>
+<p>Quizás lo más difícil sobre un intervalo de confianza es entender lo que en realidad <em>significa</em>. Cuando vemos por primera vez un intervalo de confianza, el primer instinto es decir “que existe un probabilidad del 95% de que la media real se encuentre dentro del intervalo de confianza”. Sin embargo, esta idea que parece acorde con el sentido común, está equivocada. Esta definición confía fuertemente en las <em>creencias</em> personales sobre el valor de la media poblacional: “yo creo que este valor tiene un 95% de probabilidad de entrar en este rango”. Si recuerdas lo que vimos en la Sección &#64;ref(probmeaning), te darás cuenta que cuando hablamos de creencias personales y confianza, estamos hablando de la estadística Bayesiana. Sin embargo, los intervalos de confianza <em>no</em> son herramientas Bayesianas. Como casi todo lo que hemos visto en este curso, los intervalos de confianza son herramientas <em>frecuentistas</em>, y como tal, debemos adoptar interpretaciones frecuentistas.</p>
+<p>Revisemos el concepto de probabilidad frecuentista: para poder hacer declaraciones de probabilidad, tenemos que referirnos a una serie de eventos, y contar las frecuencias de los diferentes tipos de eventos (como cuando lanzamos muchas veces una moneda y contamos el número de caras y de cruces). Desde esta perspectiva, la interpretación del intervalo de confianza de 95% tendrá que ver con la repetición de experimentos o replicación: si replicamos el experimento una y otra vez y calculamos el intervalo de confianza del 95% para cada replicación, entonces el 95% de esos <em>intervalos</em> contendrán la media real poblacional. Esta idea se ilustra en la Figura &#64;ref(fig:cirep), que muestra 50 intervalos de confianza construidos para un “experimento que mide 10 puntajes de CI” y otros 50 intervalos de confianza para un “experimento que mide 25 puntajes de CI”. En este ejemplo, vemos como exactamente el 95% de los intervalos de confianza contiene a la media real.</p>
+<p><img alt="figure15" src="../_images/biasMeanSD.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.15</span> <span class="pre">Intervalos</span> <span class="pre">de</span> <span class="pre">confianza</span> <span class="pre">de</span> <span class="pre">95%.</span> <span class="pre">En</span> <span class="pre">la</span> <span class="pre">parte</span> <span class="pre">superior</span> <span class="pre">(a)</span> <span class="pre">se</span> <span class="pre">muestran</span> <span class="pre">50</span> <span class="pre">replicaciones</span> <span class="pre">de</span> <span class="pre">un</span> <span class="pre">experimento</span> <span class="pre">que</span> <span class="pre">mide</span> <span class="pre">el</span> <span class="pre">CI</span> <span class="pre">de</span> <span class="pre">10</span> <span class="pre">personas.</span> <span class="pre">Los</span> <span class="pre">puntos</span> <span class="pre">indican</span> <span class="pre">la</span> <span class="pre">localización</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">muestral,</span> <span class="pre">y</span> <span class="pre">las</span> <span class="pre">líneas</span> <span class="pre">indican</span> <span class="pre">el</span> <span class="pre">intervalo</span> <span class="pre">de</span> <span class="pre">confianza</span> <span class="pre">de</span> <span class="pre">95%.</span> <span class="pre">En</span> <span class="pre">un</span> <span class="pre">47</span> <span class="pre">de</span> <span class="pre">50</span> <span class="pre">replicaciones,</span> <span class="pre">el</span> <span class="pre">intervalo</span> <span class="pre">de</span> <span class="pre">confianza</span> <span class="pre">contiene</span> <span class="pre">a</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">real</span> <span class="pre">poblacional</span> <span class="pre">(i.e.</span> <span class="pre">100),</span> <span class="pre">mientras</span> <span class="pre">que</span> <span class="pre">tres</span> <span class="pre">intervalos</span> <span class="pre">no</span> <span class="pre">la</span> <span class="pre">contienen</span> <span class="pre">(marcados</span> <span class="pre">con</span> <span class="pre">un</span> <span class="pre">asterisco).</span> <span class="pre">En</span> <span class="pre">la</span> <span class="pre">parte</span> <span class="pre">inferior</span> <span class="pre">(b)</span> <span class="pre">se</span> <span class="pre">muestra</span> <span class="pre">una</span> <span class="pre">simulación</span> <span class="pre">similar,</span> <span class="pre">pero</span> <span class="pre">con</span> <span class="pre">la</span> <span class="pre">replicación</span> <span class="pre">de</span> <span class="pre">un</span> <span class="pre">experimento</span> <span class="pre">que</span> <span class="pre">mide</span> <span class="pre">el</span> <span class="pre">CI</span> <span class="pre">de</span> <span class="pre">25</span> <span class="pre">personas.</span> <span class="pre">Observa</span> <span class="pre">con</span> <span class="pre">los</span> <span class="pre">intervalos</span> <span class="pre">de</span> <span class="pre">confianza</span> <span class="pre">son</span> <span class="pre">más</span> <span class="pre">pequeños</span> <span class="pre">con</span> <span class="pre">muestras</span> <span class="pre">más</span> <span class="pre">grandes.</span></code></p>
+<p>La diferencia clave es que la pretensión Bayesiana es hacer una declaración de probabilidad sobre la media poblacional, lo cual no está permitido bajo una interpretación de la probilidad frecuentista ya que no se puede “replicar” una población. Desde el punto de vista frecuentista, la media poblacional es fija y no se pueden hacer declaraciones de probabilidad sobre ella. Sin embargo, los intervalos de confianza sí que son repetibles, y por lo tanto, podemos replicar experimentos. Así, un frecuentista puede hablar sobre la probabilidad de que el <em>intervalo de confianza</em> (una variable aleatoria) contenga la media poblacional; pero no puede hablar sobre la probabilidad de que la <em>media real poblacional</em> (un evento no repetible) caiga dentro de un intervalo de confianza.</p>
+</section>
+</section>
+<section id="estimando-el-tamano-muestral-samplesize">
+<h2>Estimando el tamaño muestral{#samplesize}<a class="headerlink" href="#estimando-el-tamano-muestral-samplesize" title="Permalink to this heading">#</a></h2>
+<p>Hasta este punto, hemos aprendido a utilizar las herramientas que nos permiten reducir el nivel de incertidumbre cuando queremos conocer los parámetros de una población a partir de los resultados de una muestra. Sabemos estimar un parámetro poblacional y establecer su intervalo de confianza. También hemos aprendido, gracias a la ley de los grandes números, que el <em>grado de incertidumbre</em> depende particularmente del tamaño de la muestra: mientras tengamos un mayor tamaño muestral, los estimadores se aproximarán más a los parámetros reales poblacionales y sus intervalos de confianza serán más estrechos.</p>
+<p>Sin embargo, sabemos que en muchas ocasiones no podremos aspirar a un tamaño muestral tan grande como los que hemos utilizados en nuestors ejemplos. Es habitual que un investigador se vea limitado a recolectar una muestra pequeña por motivos económicos, de accesibilidad, prácticos, o porque simplemente no tiene el tiempo para ello. Por todo esto, espero que entiendas la importancia que tiene calcular el tamaño de una muestra que, nos de resultados de los que cuales nos podamos fiar, y a su vez, no se convierta en una tarea imposible para el investigador.</p>
+<p>Por suerte, calcularlo no es muy complicado y podemos reutilizar los conceptos que hemos aprendido en esta Unidad. Para ello, tomemos nuestra fórmula del intervalo de confianza de 95%:</p>
+<div class="math notranslate nohighlight">
+\[
+\mbox{CI}_{95} = \bar{X} \pm \left( 1.96 \times \frac{\sigma}{\sqrt{N}} \right)
+\]</div>
+<p>Si te fijas bien, observarás que está fórmula necesita del tamaño muestral <span class="math notranslate nohighlight">\(N\)</span> para poder ser resuelta. Para llegar a ella, podemos empezar por separar los elementos que conforman a la fórmula del intervalo de confianza (media muestral y margen de error), y quedarnos con el <strong><em>margen de error</em></strong> (<span class="math notranslate nohighlight">\(ME\)</span>) que es el resultado de multiplicar el nivel de confianza (en este caso 1.96), por el error estándar:</p>
+<div class="math notranslate nohighlight">
+\[
+ME = 1.96 \times \frac{\sigma}{\sqrt{N}} \
+\]</div>
+<p>A partir de aquí, calcular <span class="math notranslate nohighlight">\(N\)</span> es muy sencillo. Si conocemos el resto de elementos que integran la ecuación, podemos despejar <span class="math notranslate nohighlight">\(N\)</span> y obtener la siguiente fórmula para el cálculo del <strong><em>tamaño muestral</em></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+N = \left( 1.96 \times \frac{\sigma}{ME} \right)^2
+\]</div>
+<p>Al observar esta fórmula, vemos que nos enfrentamos al mismo problema que tuvimos al calcular el intervalo de confianza: en muchas ocasiones no podremos conocer el valor de la desviación estándar poblacional <span class="math notranslate nohighlight">\(\sigma\)</span>. Adicionalmente, tampoco sabemos cuál es nuestro margen de error (<span class="math notranslate nohighlight">\(ME\)</span>).</p>
+<p>Para resolver el problema con la desviación estándar <span class="math notranslate nohighlight">\(\sigma\)</span> contamos con dos opciones. Por un lado, podemos utilizar un valor de desviación estándar <em>aproximado</em>, que puede estar basado en los hallazgos encontrados en poblaciones similares a nuestra población de interés, en la teoría o puede ser simplemente un cálculo conservador que denote el grado de incertidumbre que realmente tenemos sobre esa población. Por otro lado, podemos llevar a cabo un <strong><em>estudio piloto</em></strong>, en el cual recolectemos los datos de una muestra pequeña que nos permitan estimar un media <span class="math notranslate nohighlight">\(\bar{X}\)</span> y una desviación estándar muestrales <span class="math notranslate nohighlight">\(s\)</span> que después podamos utilizar en el cálculo del tamaño muestral para un estudio más grande.</p>
+<p>En el caso del margen de error, la solución es un poco más fácil. Así como el nivel de confianza que se utiliza con más frecuencia es el del 95%, podemos aplicar este mismo criterio para el <span class="math notranslate nohighlight">\(ME\)</span>. En investigación se suele utilizar un margen de error de entre el 3% y el 10%, dependiendo de la necesidad o importancia de tener resultados más o menos precisos. Una buena regla general, es utilizar el <strong>5% de la media</strong> como margen de error. De esta forma, aseguramos que los intervalos de confianza que obtengamos a partir de esa muestra sean estrechos y nos permitan esgrimir conclusiones con mayor seguridad.</p>
+</section>
 <section id="resumen">
 <h2>Resumen<a class="headerlink" href="#resumen" title="Permalink to this heading">#</a></h2>
+<p>En esta Unidad hemos cubierto dos grandes temas. En la primera mitad, hablamos sobre la teoría de muestreo, y en la segunda hemos visto cómo podemos usar la teoría de muestreo para construir estimadores de los parámetros poblacionales. El contenido lo podemos organizar en las siguientes ideas:</p>
+<ul class="simple">
+<li><p>Ideas básicas sobre las muestras, muestreo y poblaciones (Sección &#64;ref(srs))</p></li>
+<li><p>Teoría estadística del muestreo: la ley de los grandes números (Sección &#64;ref(lawlargenumbers)), las distribuciones muestrales y el teorema del límite central (Sección &#64;ref(samplesandclt)).</p></li>
+<li><p>Estimar medias y desviaciones estándar (Sección &#64;ref(pointestimates))</p></li>
+<li><p>Estimar intervalos de confianza (Sección &#64;ref(ci))</p></li>
+<li><p>Estimar el tamaño muestral (Sección &#64;ref(samplesize))</p></li>
+</ul>
+<hr class="docutils" />
+<p>``</p>
+<hr class="docutils" />
 </section>
 </section>
 
@@ -476,8 +1104,29 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muestras-poblaciones-y-muestreo-srs">Muestras, poblaciones y muestreo{#srs}</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-una-poblacion-pop">Definición de una población{#pop}</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#muestras-aleatorias-simples">Muestras aleatorias simples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-mayoria-de-las-muestras-no-son-muestras-aleatorias-simples">La mayoría de las muestras no son muestras aleatorias simples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuanto-importa-si-no-se-tiene-una-muestra-aleatoria-simple">¿Cuánto importa si no se tiene una muestra aleatoria simple?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-poblacionales-y-estadisticos-muestrales">Parámetros poblacionales y estadísticos muestrales</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-ley-de-los-grandes-numeros-lawlargenumbers">La ley de los grandes números{#lawlargenumbers}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-muestrales-y-el-teorema-del-limite-central-samplesandclt">Distribuciones muestrales y el teorema del límite central{#samplesandclt}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-muestral-de-la-media-samplingdists">Distribución muestral de la media{#samplingdists}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#existen-distribuciones-muestrales-para-cualquier-estadistico-muestral">Existen distribuciones muestrales para cualquier estadístico muestral</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-teorema-del-limite-central-clt">El teorema del límite central{#clt}</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-parametros-poblacionales-pointestimates">Estimando parámetros poblacionales{#pointestimates}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-la-media-poblacional">Estimando la media poblacional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-la-desviacion-estandar-poblacional">Estimando la desviación estándar poblacional</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-un-intervalo-de-confianza-ci">Estimando un intervalo de confianza{#ci}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-pasa-cuando-no-conocemos-los-parametros-poblacionales">¿Qué pasa cuando no conocemos los parámetros poblacionales?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretando-un-intervalo-de-confianza">Interpretando un intervalo de confianza</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-el-tamano-muestral-samplesize">Estimando el tamaño muestral{#samplesize}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
 </ul>
   </nav></div>
