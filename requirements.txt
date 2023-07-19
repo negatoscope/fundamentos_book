@@ -4,3 +4,4 @@ matplotlib
 quantecon
 jupyter-book
 numpy
+ir
