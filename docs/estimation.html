@@ -411,38 +411,15 @@ document.write(`
 <hr class="docutils" />
 <section id="muestras-aleatorias-simples">
 <h3>Muestras aleatorias simples<a class="headerlink" href="#muestras-aleatorias-simples" title="Permalink to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.1</span> <span class="pre">Muestreo</span> <span class="pre">aleatorio</span> <span class="pre">simple</span> <span class="pre">*sin*</span> <span class="pre">reemplazo</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">finita.</span></code></p>
+<p><img alt="figure1" src="docs/srs1.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.1</span> <span class="pre">Muestreo</span> <span class="pre">aleatorio</span> <span class="pre">simple</span> <span class="pre">*sin*</span> <span class="pre">reemplazo</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">finita.</span></code></p>
 <p>Independientemente de cómo definamos a una población, la clave es que la muestra es un subgrupo de esa población, y nuestro objetivo es utilizar nuestro conocimiento de la muestra para hacer inferencias sobre las propiedades de la población. La relación que exista entre los dos dependerá del <em>procedimiento</em> mediante el cual se seleccionó la muestra. Este procedimiento se conoce como <strong><em>método de muestreo</em></strong> y es importante comprender su importancia.</p>
 <p>Pongamos un ejemplo sencillo. Imaginemos que tenemos una bolsa que contiene 10 fichas. Cada ficha tiene una letra única impresa, con la que la podemos distinguir de entre las otras 10 fichas. Las fichas vienen en dos colores, blanco y negro. Este conjunto de fichas es la población de interés y se muestra gráficamente a la izquierda de la Figura &#64;ref(fig:srs1). Como podrás ver en la imagen, tenemos 4 fichas negras y 6 fichas blancas, pero recuerda que en la vida real esto no lo sabríamos a menos que miráramos en la bolsa. Ahora imagina que realizas el siguiente “experimento”: agitas la bolsa, cierras los ojos y sacas 4 fichas sin devolver ninguna de ellas a la bolsa. Primero sale la ficha <span class="math notranslate nohighlight">\(a\)</span> (negra), seguida de la ficha <span class="math notranslate nohighlight">\(c\)</span> (blanca), luego la <span class="math notranslate nohighlight">\(j\)</span> (blanca) y finalmente la ficha <span class="math notranslate nohighlight">\(b\)</span> (negra). Una vez extraídas 4 fichas, podrás volver a poner todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la Figura &#64;ref(fig:srs1). Cada vez que repites el experimento obtienes resultados diferentes, pero el procedimiento es idéntico en cada caso. El hecho de que el mismo procedimiento pueda dar lugar a resultados diferentes cada vez, lo define como un proceso <em>aleatorio</em>. Y debido a que hemos agitado la bolsa antes de sacar las fichas, parece razonable pensar que todas las fichas tienen las mismas posibilidades de ser seleccionadas. Un procedimiento en el que todos los miembros de la población tienen las mismas posibilidades de ser seleccionados se denomina <strong><em>muestra aleatoria simple</em></strong>. El hecho de que se <em>no</em> se devuelvan las fichas a la bolsa después de salir, significa que no podremos observar la misma ficha dos veces, y en tales casos se dice que ha habido un muestreo <strong><em>sin reemplazo</em></strong>.</p>
 <p>Para comprender la importancia del procedimiento de muestreo, consideremos ahora una forma alternativa en la que podría haberse realizado el experimento. Supongamos que mi sobrino de 3 años coge la bolsa y decide sacar las cuatro fichas negras (le gusta el color negro) sin devolverlas la bolsa. Este esquema de muestreo <em>sesgado</em> se muestra en la Figura &#64;ref(fig:brs). Ahora considera el valor que tiene obtener una muestra con 4 fichas negras y 0 fichas blancas siguiendo el procedimiento de mi sobrino. Vemos pues, como el valor dependerá mucho del método de muestreo. Si sabemos que el método de muestreo está sesgado para seleccionar únicamente fichas negras, entonces una muestra que consta únicamente de fichas negras no dice mucho sobre nuestra población de fichas. Por esta razón, los estadísticos prefieren que un conjunto de datos provenga de una muestra aleatoria simple, ya que facilita <em>mucho</em> el análisis de los datos.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">knitr</span><span class="o">::</span><span class="nf">include_graphics</span><span class="p">(</span><span class="nf">file.path</span><span class="p">(</span><span class="s">&quot;_static/img/brs.png&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.2</span> <span class="pre">Muestreo</span> <span class="pre">sesgado</span> <span class="pre">sin</span> <span class="pre">reemplazo</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">finita.</span></code></p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="p">[</span><span class="n">figure3</span><span class="p">](</span><span class="o">/</span><span class="n">mini_book</span><span class="o">/</span>_<span class="n">static</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">srs2.png</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.2</span> <span class="pre">Muestreo</span> <span class="pre">aleatorio</span> <span class="pre">simple</span> <span class="pre">*con*</span> <span class="pre">reemplazo</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">finita.</span></code></p>
+<p><img alt="figure2" src="docs/brs.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.2</span> <span class="pre">Muestreo</span> <span class="pre">sesgado</span> <span class="pre">sin</span> <span class="pre">reemplazo</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">finita.</span></code></p>
+<p><img alt="figure3" src="../_images/srs2.png" />
+<code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.3</span> <span class="pre">Muestreo</span> <span class="pre">aleatorio</span> <span class="pre">simple</span> <span class="pre">*con*</span> <span class="pre">reemplazo</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">finita.</span></code></p>
 <p>Vale la pena mencionar un tercer procedimiento. Esta vez cerramos los ojos, agitamos la bolsa y sacamos una ficha. Sin embargo, esta vez registramos la observación y luego volvemos a poner la ficha dentro de la bolsa. Nuevamente, cerramos los ojos, agitamos la bolsa y sacamos otra ficha. Repetimos este procedimiento hasta que tengamos 4 fichas. Los conjuntos de datos que hemos generado de esta manera siguen siendo muestras aleatorias simples, pero debido a que volvemos a meter las fichas dentro de la bolsa inmediatamente después de haberlas sacado, se denomina como una muestra <strong><em>con reemplazo</em></strong>. La diferencia entre este caso y el primero es que es posible observar al mismo elemento de la población varias veces (en este caso la misma ficha), tal como se ilustra en la Figura &#64;ref(fig:srs2).</p>
 <p>Por lo general, la mayoría de los experimentos que veamos en ciencias de la educación tienden a tomar muestras sin reemplazo, ya que la misma persona no puede participar en el experimento dos veces. Sin embargo, una gran parte de la teoría estadística se basa en el supuesto de que los datos surgen de una muestra aleatoria simple <em>con</em> reemplazo. En la vida real, esto rara vez importa. Si la población de interés es grande, la diferencia entre el muestreo con y sin reemplazo es demasiado pequeña como para preocuparnos. Sin embargo, la diferencia que existe entre muestras aleatorias simples y muestras sesgadas no es algo no es algo que podemos ignorar tan facilmente.</p>
 </section>
@@ -492,6 +469,9 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="../_images/b122f33872864d73d9a9a4f8ac45705c8bbca28f068da610bf7536aef1c5da0b.png" src="../_images/b122f33872864d73d9a9a4f8ac45705c8bbca28f068da610bf7536aef1c5da0b.png" />
+</div>
 </div>
 <hr class="docutils" />
 </section>

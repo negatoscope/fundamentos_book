@@ -45,10 +45,7 @@ Cada una de estas opciones define un grupo real de personas, las cuales podrían
 
 ### Muestras aleatorias simples
 
-```{code-cell} ir
-:tags: ["remove-cell"]
-knitr::include_graphics(file.path("img/srs1.png"))
-```
+![figure1](srs1.png)
 `Figura 1.1 Muestreo aleatorio simple *sin* reemplazo de una población finita.`
 
 Independientemente de cómo definamos a una población, la clave es que la muestra es un subgrupo de esa población, y nuestro objetivo es utilizar nuestro conocimiento de la muestra para hacer inferencias sobre las propiedades de la población. La relación que exista entre los dos dependerá del *procedimiento* mediante el cual se seleccionó la muestra. Este procedimiento se conoce como **_método de muestreo_** y es importante comprender su importancia.
@@ -57,17 +54,11 @@ Pongamos un ejemplo sencillo. Imaginemos que tenemos una bolsa que contiene 10 f
 
 Para comprender la importancia del procedimiento de muestreo, consideremos ahora una forma alternativa en la que podría haberse realizado el experimento. Supongamos que mi sobrino de 3 años coge la bolsa y decide sacar las cuatro fichas negras (le gusta el color negro) sin devolverlas la bolsa. Este esquema de muestreo *sesgado* se muestra en la Figura \@ref(fig:brs). Ahora considera el valor que tiene obtener una muestra con 4 fichas negras y 0 fichas blancas siguiendo el procedimiento de mi sobrino. Vemos pues, como el valor dependerá mucho del método de muestreo. Si sabemos que el método de muestreo está sesgado para seleccionar únicamente fichas negras, entonces una muestra que consta únicamente de fichas negras no dice mucho sobre nuestra población de fichas. Por esta razón, los estadísticos prefieren que un conjunto de datos provenga de una muestra aleatoria simple, ya que facilita *mucho* el análisis de los datos.
 
-```{code-cell} ir
-:tags: ["hide-input"]
-knitr::include_graphics(file.path("_static/img/brs.png"))
-```
+![figure2](brs.png)
 `Figura 1.2 Muestreo sesgado sin reemplazo de una población finita.`
 
-```{code-cell} ir
-:tags: ["hide-input"]
-![figure3](/mini_book/_static/img/srs2.png)
-```
-`Figura 1.2 Muestreo aleatorio simple *con* reemplazo de una población finita.`
+![figure3](srs2.png)
+`Figura 1.3 Muestreo aleatorio simple *con* reemplazo de una población finita.`
 
 Vale la pena mencionar un tercer procedimiento. Esta vez cerramos los ojos, agitamos la bolsa y sacamos una ficha. Sin embargo, esta vez registramos la observación y luego volvemos a poner la ficha dentro de la bolsa. Nuevamente, cerramos los ojos, agitamos la bolsa y sacamos otra ficha. Repetimos este procedimiento hasta que tengamos 4 fichas. Los conjuntos de datos que hemos generado de esta manera siguen siendo muestras aleatorias simples, pero debido a que volvemos a meter las fichas dentro de la bolsa inmediatamente después de haberlas sacado, se denomina como una muestra **_con reemplazo_**. La diferencia entre este caso y el primero es que es posible observar al mismo elemento de la población varias veces (en este caso la misma ficha), tal como se ilustra en la Figura \@ref(fig:srs2).
 
