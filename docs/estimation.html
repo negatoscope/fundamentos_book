@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Jupyter Notebook Example &#8212; Apuntes Fundamentos de Investigación II</title>
+    <title>Estimación{#estimation} &#8212; Apuntes Fundamentos de Investigación II</title>
   
   
   
@@ -61,9 +61,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/notebook1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/estimation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Introducción a la probabilidad" href="probability.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -146,9 +147,9 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="probability.html">Introducción a la probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="estimation.html">Estimación{#estimation}</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Estimación{#estimation}</a></li>
 </ul>
 
     </div>
@@ -203,7 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/negatoscope/fundamentos_book/master?urlpath=tree/mini_book/docs/notebook1.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/negatoscope/fundamentos_book/master?urlpath=tree/mini_book/docs/estimation.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -252,7 +253,24 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/docs/notebook1.ipynb" target="_blank"
+      <li><a href="../_sources/docs/estimation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/docs/estimation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -262,7 +280,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -321,7 +339,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -332,11 +352,24 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Jupyter Notebook Example</h1>
+    <h1>Estimación{#estimation}</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muestras-poblaciones-y-muestreo-srs">Muestras, poblaciones y muestreo{#srs}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-una-poblacion-pop">Definición de una población{#pop}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#muestras-aleatorias-simples">Muestras aleatorias simples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -346,38 +379,40 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="jupyter-notebook-example">
-<h1>Jupyter Notebook Example<a class="headerlink" href="#jupyter-notebook-example" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, World!
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">std</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=-</span><span class="mi">4</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/f7bf662b2299c28ffb04a7c44fac72a4530f11852a967827233b769884e769ed.png" src="../_images/f7bf662b2299c28ffb04a7c44fac72a4530f11852a967827233b769884e769ed.png" />
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="estimacion-estimation">
+<span id="estimation"></span><h1>Estimación{#estimation}<a class="headerlink" href="#estimacion-estimation" title="Permalink to this heading">#</a></h1>
+<p>Al comienzo del capítulo inicial, vimos la distinción que existe entre la <em>estadística descriptiva</em> y la <em>estadística inferencial</em>. El papel de la estadística descriptiva es resumir de manera concisa lo que <em>ya sabemos</em>. Por otro lado, el propósito de la estadística inferencial es “aprender lo que no sabemos a partir de lo que hacemos”. Ahora que tenemos cierto conocimiento sobre la teoría de la probabilidad, podemos pensar en el problema de la inferencia estadística. ¿Qué tipo de información nos gustaría conocer o aprender? ¿Y cómo lo aprendemos? Estas son las preguntas que se encuentran en el corazón de la estadística inferencial y tradicionalmente se dividen en dos “grandes ideas”: la estimación y la prueba o contraste de hipótesis. El objetivo de este capítulo es presentar la primera de estas grandes ideas, la teoría de la estimación. Pero antes, hablaré sobre la teoría del muestreo, ya que la teoría de la estimación no tiene sentido hasta que no se comprende el muestreo. Como consecuencia, este capítulo se divide en dos partes, las secciones &#64;ref(srs) a &#64;ref(samplesandclt) se centran en la teoría del muestreo, y las secciones &#64;ref(pointestimates) y &#64;ref(ci) hacen uso de esa teoría del muestreo para discutir cómo piensan los estadísticos sobre la estimación.</p>
+<hr class="docutils" />
+<section id="muestras-poblaciones-y-muestreo-srs">
+<h2>Muestras, poblaciones y muestreo{#srs}<a class="headerlink" href="#muestras-poblaciones-y-muestreo-srs" title="Permalink to this heading">#</a></h2>
+<p>Antes hemos hablado sobre el proceso de inducción inferencial, donde recalcamos que <em>todo</em> aprendizaje (o aquello que queremos llegar a conocer) requiere que hagamos suposiciones. Aceptando que esto es cierto, hemos de aceptar algunas suposiciones generales sobre los datos que hemos adquirido para poder utilizarlos. Aquí es donde entra en juego la <strong><em>teoría del muestreo</em></strong>. Si la teoría de la probabilidad representa los cimientos sobre los que se construye toda la teoría estadística, la teoría del muestreo es el marco alrededor del cual se puede construir el resto de la casa. La teoría del muestreo juega un papel muy importante en la especificación de los supuestos en los que se basan sus inferencias estadísticas. Y para hablar sobre “hacer inferencias” de la forma en que los estadísticos lo piensan, debemos ser un poco más explícitos acerca de <em>qué</em> es lo que estamos extrayendo  (la muestra) y <em>sobre qué</em> es de lo que estamos haciendo inferencias (la población).</p>
+<p>En casi todas las situaciones de interés, lo que tenemos a nuestra disposición como investigadores es una <em>muestra</em> de datos. Podríamos, por ejemplo, haber realizado un experimento con un cierto número de participantes; una empresa de encuestas podría haber telefoneado a algunas personas para hacer preguntas sobre las intenciones de voto, etc. Independientemente de cual sea el caso, el conjunto de datos disponibles que tengamos es finito e incompleto. No podemos conseguir que todas las personas del mundo realicen nuestro experimento; una empresa de encuestas no tiene el tiempo ni el dinero para llamar a todos los votantes del país, etc. Para la estadística descriptiva esta muestra es lo único que importa. Con la estadística inferencial daremos un paso más allá.</p>
+<hr class="docutils" />
+<section id="definicion-de-una-poblacion-pop">
+<h3>Definición de una población{#pop}<a class="headerlink" href="#definicion-de-una-poblacion-pop" title="Permalink to this heading">#</a></h3>
+<p>Una muestra es una cosa muy concreta. Puedes abrir un archivo de Excel y ahí podrás encontrar los datos de una muestra. Una <strong><em>población</em></strong>, por otro lado, es una idea más abstracta. Se refiere al conjunto de todas las personas posibles, o todas las observaciones posibles, sobre las que desea sacar conclusiones y, en general, es <em>mucho</em> más grande que la muestra. En un mundo ideal, el investigador comenzaría el estudio con una idea clara de cuál es la población de interés, ya que el proceso de diseñar un estudio y probar una hipótesis sobre los datos que produce depende de la población sobre la que se quiere hacer afirmaciones. Sin embargo, en la práctica esto no sucede siempre: por lo general, el investigador tiene una idea bastante vaga de lo que es la población y diseña el estudio lo mejor que puede sobre esa base.</p>
+<p>A veces es fácil indicar cuál es la población de interés. En el ejemplo de la “empresa de encuestas” que vimos en el capítulo anterior, la población consistía en todos los votantes inscritos en un momento del estudio: varios millones de personas. En cambio, la muestra fue un conjunto de 1,000 personas que pertenecen todas a esa población. Sin embargo, en la mayoría de los casos, definir esta muestra/población no es tan fácil. En estudios o experimentos con seres humanos, determinar la población de interés es un poco más complicado. Supongamos que realizo un experimento con 100 estudiantes de pregrado que representan mi muestra. Mi objetivo es, por ejemplo, intentar aprender algo sobre cómo una intervención educativa modifica la dinámica de una clase. Tomando en cuento a la muestra que tenemos, ¿cuál de las siguientes opciones contará como “la población”?:</p>
+<ul class="simple">
+<li><p>¿Todos los estudiantes de educación de la Universidad de Navarra?</p></li>
+<li><p>¿Estudiantes de grado en educación en general, de cualquier parte del mundo?</p></li>
+<li><p>¿Españoles vivos actualmente?</p></li>
+<li><p>¿Españoles de edades similares a las de mi muestra?</p></li>
+<li><p>¿Hispanoparlantes?</p></li>
+<li><p>¿Cualquier persona viva actualmente?</p></li>
+<li><p>¿Cualquier ser humano, pasado, presente o futuro?</p></li>
+</ul>
+<p>Cada una de estas opciones define un grupo real de personas, las cuales podrían ser todas de interés para mí como investigador en educación, y no es tan obvio cuál debería ser la verdadera población de interés.</p>
+</section>
+<hr class="docutils" />
+<section id="muestras-aleatorias-simples">
+<h3>Muestras aleatorias simples<a class="headerlink" href="#muestras-aleatorias-simples" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+</section>
+</section>
+<hr class="docutils" />
+<section id="resumen">
+<h2>Resumen<a class="headerlink" href="#resumen" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -389,16 +424,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "r"
         },
         kernelOptions: {
-            name: "python3",
+            name: "ir",
             path: "./docs"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'ir'</script>
 
                 </article>
               
@@ -411,6 +446,15 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="probability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introducción a la probabilidad</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
@@ -420,6 +464,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muestras-poblaciones-y-muestreo-srs">Muestras, poblaciones y muestreo{#srs}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-una-poblacion-pop">Definición de una población{#pop}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#muestras-aleatorias-simples">Muestras aleatorias simples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
