@@ -17,14 +17,15 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-knitr::include_graphics(file.path("img/srs1.png"))
+``
+
+```{code-cell} r
+:tags: ["remove-cell"]
 ------------------
 
-Error in knitr::include_graphics(file.path("img/srs1.png")): Cannot find the file(s): "img/srs1.png"
+Error in parse(text = x, srcfile = src): attempt to use zero-length variable name
 Traceback:
 
-1. knitr::include_graphics(file.path("img/srs1.png"))
-2. stop("Cannot find the file(s): ", quote_vec(p))
-ERROR: Error in knitr::include_graphics(file.path("img/srs1.png")): Cannot find the file(s): "img/srs1.png"
+ERROR: Error in parse(text = x, srcfile = src): attempt to use zero-length variable name
 
 
