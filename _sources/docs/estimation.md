@@ -58,7 +58,7 @@ Pongamos un ejemplo sencillo. Imaginemos que tenemos una bolsa que contiene 10 f
 Para comprender la importancia del procedimiento de muestreo, consideremos ahora una forma alternativa en la que podría haberse realizado el experimento. Supongamos que mi sobrino de 3 años coge la bolsa y decide sacar las cuatro fichas negras (le gusta el color negro) sin devolverlas la bolsa. Este esquema de muestreo *sesgado* se muestra en la Figura \@ref(fig:brs). Ahora considera el valor que tiene obtener una muestra con 4 fichas negras y 0 fichas blancas siguiendo el procedimiento de mi sobrino. Vemos pues, como el valor dependerá mucho del método de muestreo. Si sabemos que el método de muestreo está sesgado para seleccionar únicamente fichas negras, entonces una muestra que consta únicamente de fichas negras no dice mucho sobre nuestra población de fichas. Por esta razón, los estadísticos prefieren que un conjunto de datos provenga de una muestra aleatoria simple, ya que facilita *mucho* el análisis de los datos.
 
 ```{code-cell} ir
-:tags: ["remove-cell"]
+:tags: ["hide-input"]
 knitr::include_graphics(file.path("img/brs.png"))
 ```
 `Figura 1.2 Muestreo sesgado sin reemplazo de una población finita.`
