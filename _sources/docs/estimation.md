@@ -65,7 +65,7 @@ knitr::include_graphics(file.path("img/brs.png"))
 
 ```{code-cell} ir
 :tags: ["remove-cell"]
-knitr::include_graphics(file.path("img/srs2.png"))
+![](img/srs2.png)
 ```
 `Figura 1.2 Muestreo aleatorio simple *con* reemplazo de una población finita.`
 
