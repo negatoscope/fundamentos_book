@@ -4,9 +4,9 @@ jupytext:
     extension: .md
     format_name: myst
 kernelspec:
-  display_name: R
+  display_name: R 3.3
   language: R
-  name: ir
+  name: ir33
 ---
 
 (probability)=
