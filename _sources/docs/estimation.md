@@ -59,13 +59,13 @@ Para comprender la importancia del procedimiento de muestreo, consideremos ahora
 
 ```{code-cell} ir
 :tags: ["hide-input"]
-knitr::include_graphics(file.path("img/brs.png"))
+knitr::include_graphics(file.path("_static/img/brs.png"))
 ```
 `Figura 1.2 Muestreo sesgado sin reemplazo de una población finita.`
 
 ```{code-cell} ir
 :tags: ["remove-cell"]
-![](img/srs2.png)
+![](_static/img/srs2.png)
 ```
 `Figura 1.2 Muestreo aleatorio simple *con* reemplazo de una población finita.`
 
