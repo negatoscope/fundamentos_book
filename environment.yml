@@ -10,4 +10,5 @@ dependencies:
   - numpy
   - pip:
     - quantecon
+    - ir
     - jupyter-book
