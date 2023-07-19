@@ -6,7 +6,7 @@ jupytext:
 kernelspec:
   display_name: R
   language: R
-  name: r
+  name: ir
 ---
 
 (probability)=

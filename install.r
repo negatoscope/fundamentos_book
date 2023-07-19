@@ -1,3 +1,4 @@
+install.packages("IRkernel")
 install.packages("tidyverse")
 install.packages("rmarkdown")
 install.packages("httr")
