@@ -64,7 +64,7 @@ knitr::include_graphics(file.path("_static/img/brs.png"))
 `Figura 1.2 Muestreo sesgado sin reemplazo de una población finita.`
 
 ```{code-cell} ir
-:tags: ["remove-cell"]
+:tags: ["hide-input"]
 ![](_static/img/srs2.png)
 ```
 `Figura 1.2 Muestreo aleatorio simple *con* reemplazo de una población finita.`
