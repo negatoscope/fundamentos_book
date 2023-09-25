@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>3 Contraste de hipótesis &#8212; Apuntes Fundamentos de Investigación II</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/hypothesis';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4 Introducción a R" href="introR.html" />
+    <link rel="prev" title="2 Estimación" href="estimation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/qe-logo-large.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/qe-logo-large.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="probability.html">1 Probabilidad y Distribuciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimation.html">2 Estimación</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3 Contraste de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introR.html">4 Introducción a R</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/negatoscope/fundamentos_book/main?urlpath=tree/mini_book/docs/hypothesis.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/hypothesis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/docs/hypothesis.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3 Contraste de hipótesis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#una-coleccion-de-hipotesis-en-plural">Una colección de hipótesis (en plural)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipotesis-de-investigacion-vs-hipotesis-estadisticas">Hipótesis de investigación vs. hipótesis estadísticas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipotesis-nula-e-hipotesis-alternativa">Hipótesis nula e hipótesis alternativa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dos-tipos-de-errores">Dos tipos de errores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests-estadisticos-y-distribuciones-muestrales">Tests estadísticos y distribuciones muestrales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tomando-decisiones">Tomando decisiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regiones-criticas-y-valores-criticos">Regiones críticas y valores críticos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-diferencia-entre-test-de-una-y-dos-colas">La diferencia entre test de una y dos colas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-valor-p-de-un-test-estadistico">El valor <span class="math notranslate nohighlight">\(p\)</span> de un test estadístico</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-probabilidad-de-obtener-datos-extremos">La probabilidad de obtener datos extremos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-reportar-los-resultados-de-un-test-de-hipotesis">¿Cómo reportar los resultados de un test de hipótesis?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="contraste-de-hipotesis">
+<span id="hypothesis"></span><h1>3 Contraste de hipótesis<a class="headerlink" href="#contraste-de-hipotesis" title="Permalink to this heading">#</a></h1>
+<p>En la Unidad 2 discutimos sobre las ideas que existen detrás del proceso de estimación, que es una de las “grandes ideas” de la estadística inferencial. Ahora toca poner nuestra atención en la otra gran idea, que es el <em>contraste de hipótesis</em>. En su forma más abstracta, el contraste de hipótesis consiste en una idea muy sencilla: un investigador/a tiene una teoría sobre el mundo, y quiere determinar si los datos que tiene apoyan o no su teoría. A pesar de su simplicidad, en el contraste de hipótesis los detalles pueden ser complejos, razón por la que muchos piensan que la teoría sobre el contraste de hipótesis es la parte más frustrante en estadística. Esta tercera Unidad seguirá la siguiente estructura. Primero, comenzaremos con una descripción -iremos un poco al detalle- sobre cómo funciona el contraste de hipótesis, utilizando un ejemplo que emplearemos una y otra vez con el objetivo de entender como se “construye” un test de hipótesis. Enseguida, revisaremos cuáles son algunos de los dogmas, reglas y “herejías” que rodean a la teoría del contraste de hipótesis.</p>
+<hr class="docutils" />
+<section id="una-coleccion-de-hipotesis-en-plural">
+<h2>Una colección de hipótesis (en plural)<a class="headerlink" href="#una-coleccion-de-hipotesis-en-plural" title="Permalink to this heading">#</a></h2>
+<p>Para ilustrar algunos de los conceptos sobre el contraste de hipótesis vamos a utilizar como referencia una línea de investigación en psicología que fue muy popular hace algunos años y nuevamente recientemente por todo lo que prometía y que finalmente acabo por ser desmentido (aunque a día de hoy, hay algunos que todavía se dedican a ello). Me refiero al estudio de la percepción extrasensorial (PES), conocido coloquialmente como el “sexto sentido”.</p>
+<p>Supongamos que la Asociación para las Artes Oscuras nos ha dado financiación para hacer el experimento definitivo que nos permitirá decidir de una vez por todos si la PES es real o no. Para empezar realizaremos el experimento más sencillo de la serie. En este experimento cada participante se sienta en una mesa, donde le es mostrada una tarjeta por parte del experimentador. La tarjeta es negra por un lado y blanca por el otro. El experimentado retira la tarjeta y y se la lleva a una habitación adyacente. En esa habitación hay otra mesa, y sobre ella, el experimentador coloca la tarjeta mostrando alguno de los dos lados complementamente al azar. Entonces, un segundo experimentador entra en la habitación donde está el participante y le pide que diga qué lado de la tarjeta está boca arriba, negro o blanco. El participante sólo tiene una oportunidad. En ningún momento vuelve a tener contacto con el primer experimentador que se llevado la tarjeta momentos antes. Así, los datos que obtenemos son bastante simples. Hemos preguntado a un número <span class="math notranslate nohighlight">\(N\)</span> de personas sobre el color de la tarjeta, y algún número <span class="math notranslate nohighlight">\(X\)</span> de ellos contestará correctamente. Ahora imaginemos, que esta prueba la hemos hecho a <span class="math notranslate nohighlight">\(N = 100\)</span> personas, de las cuales <span class="math notranslate nohighlight">\(X = 62\)</span> han contestado correctamente… un número sorprendemente alto (si fuera completamente al azar habríamos de esperar sólo un 50%, es decir 50 respuestas correctas). ¿Consideras este resultado como prueba definitiva de que la PES es real y existe? Es en este tipo de casos cuando los tests de hipótesis son útiles. Sin embargo, para hablar de <em>tests</em> de hipótesis, primero hemos de tener claro qué es una hipótesis.</p>
+<hr class="docutils" />
+<section id="hipotesis-de-investigacion-vs-hipotesis-estadisticas">
+<h3>Hipótesis de investigación vs. hipótesis estadísticas<a class="headerlink" href="#hipotesis-de-investigacion-vs-hipotesis-estadisticas" title="Permalink to this heading">#</a></h3>
+<p>La primera distinción que tenemos que tener clara es aquella entra las hipótesis de investigación y las hipótesis estadísticas. En nuestro estudio la PES, mi objetivo final es demostrar que el “sexto sentido” <em>sí existe</em>. Para ello, tengo un objetivo de investigación claro: descubrir evidencia sobre la existencia de la PES. En otros escenarios, podría ser un poco más neutral, por ejemplo diciendo que mi objetivo es saber el “sexto sentido” existe <em>o no</em>. Independientemente de cuál sea mi intención, lo que quiero dejar claro es que una hipótesis de investigación implica hacer una afirmación científica sustantiva y comprobable. En el caso de la Psicología, la hipótesis de investigación serán fundamentalmente sobre constructos psicológicos; en Educación las hipótesis deben de tender a resolver preguntas de cualquiera de sus distintas sub-áreas. Las siguientes son algunos ejemplos de <strong><em>hipótesis de investigación</em></strong>:</p>
+<ul class="simple">
+<li><p><em>El uso de móvil en clase reduce la habilidad de prestar atención en clase.</em> Esta es una afirmación sobre la relación causal que existe entre dos conceptos (uso de móvil afecta a la atención en clase y no al revés).</p></li>
+<li><p><em>El uso de móvil está asociado con la nota obtenida al final del curso.</em> Esta afirmación también implica una relación, aunque este caso la conexión entre ambas ideas es correlacional y no causal.</p></li>
+<li><p><em>El uso de móvil es una pérdida de tiempo</em>. Esta hipótesis tiene una implicación diferente a las dos anteriores: no plantea una relación entre las dos ideas, sino que pretende hacer una afirmación ontológica sobre el uso de móvil (es una pérdida de tiempo). Probar esta hipótesis es posible, pero no es tan fácil como en las afirmaciones previas. Por ejemplo, ¿qué es “una pérdida de tiempo”? ¿Cómo la definimos? ¿Cómo la medimos? Si podemos responder a estar preguntas, quizás podamos responder también a la afirmación original.</p></li>
+</ul>
+<p>Volviendo a la PES, si lo pensamos bien, la hipótesis de investigación que he planteado no es muy concisa. He dicho que pretendo demostrar que la PES <em>existe</em>, pero esto no describe qué es la <em>existencia</em>. Quizás sea más fácil si restrinjo mi hipótesis de investigación a algo como “quiero demostrar que algunas personas tienen poderes adivinatorios”. Faltaría definir qué personas, o qué son y cómo se miden los poderes adivinatorios, pero al menos ya hemos dado un primer paso.</p>
+<p>Sin embargo, es importante mencionar que hay algunas cosas que no cuentan como hipótesis de investigación demostrables:</p>
+<ul class="simple">
+<li><p><em>Lisboa es increíble.</em> Aunque es verdad que la capital portuguesa es una ciudad que todos tenemos que visitar, esa afirmación es muy vaga para funcionar como una hipótesis de investigación. Para empezar, tendríamos que <em>operacionalizar</em> o definir mejor sus elementos: ¿Qué es Lisboa? ¿Su gente, sus tradiciones, su superficie, su arquitectura, todo? ¿Qué significa que alguna de estas cosas sea “increíble”? Es muy posible que ante conceptos como estos nos equivoquemos, o que simplemente no podamos <em>operacionalizarlos</em>.</p></li>
+<li><p><em>Existen una tetera tan pequeña que no puede ser vista con telescopios que orbita alrededor del sol.</em> Este es un ejemplo (absurdo) de una afirmación infalsificable -que no se puede demostrar como falsa-. Como no tenemos herramientas que nos permitan ver esa tetera, no podemos decir que sea falso que exista una tetera girando alrededor del sol. No hay alternativa, por lo tanto, no puede ser un hipótesis de investigación.</p></li>
+<li><p><em>Más alumnos responderán que SI al ítem 3 de mi cuestionario, que NO.</em> Esta afirmación no es una hipótesis de investigación porque hace una referencia directa a los datos obtenidos, y no su significado (en este caso, del ítem 3). Sin embargo, esto se parece más a otro tipo de hipótesis que veremos a continuación.</p></li>
+</ul>
+<p>Como habrás podido comprobar, las hipótesis de investigación pueden ser confusas aunque siempre son afirmaciones <em>científicas</em>. Sin embargo, las <strong><em>hipótesis estadísticas</em></strong> no son lo uno ni lo otro. Las hipótesis estadísticas deben ser matemáticamente precisas y deben corresponderse con afirmaciones específicas sobre las características de aquello que ha de generar los datos (en nuestro caso, casi siempre, “los participantes”). La intención es que las hipótesis estadísticas tengan una relación muy clara con la hipótesis de investigación planteada previamente. Por ejemplo, en mi estudio de la PES, mi hipótesis de investigación es que algunas personas tienen poderes adivinatorios. Lo que tengo que hacer ahora es “traducirla” a una idea o frase que describa cómo se generan estos datos. Pensemos un momento cómo sería esta idea. Yo estoy interesado en saber cuantas personas del total contestan correctamente a mi pregunta, es decir una probabilidad <span class="math notranslate nohighlight">\(P(\mbox{&quot;correcto&quot;})\)</span>. Vamos a usar la letra griega <span class="math notranslate nohighlight">\(\theta\)</span> (theta) para referirnos a esta probabilidad. Con esto, podríamos plantear alguna de las siguientes hipótesis de investigación:</p>
+<ul class="simple">
+<li><p>Supongo que la PES no existe (y me experimento está bien diseñado), entonces estarán adivinando. Por lo tanto, esperaría que acertaran la mitad de las veces, por lo que mi hipótesis estadística sería que la probabilidad de escoger correctamente es de <span class="math notranslate nohighlight">\(\theta = 0.5\)</span>.</p></li>
+<li><p>Supongo que la PES existe y los participantes pueden ver la tarjeta. Si esto es verdad, los participantes acertarán <em>más</em> de la mitad de las veces. Por lo tanto la probabilidad de escoger correctamente es de <span class="math notranslate nohighlight">\(\theta &gt; 0.5\)</span>.</p></li>
+<li><p>Supongo que la PES existe, pero una vez que los participantes han contestado yo le doy la vuelta a la tarjeta otra vez. Si esto fuese así, esperaría que los participantes acertasen menos del 50% de las veces. Por lo tanto, la hipótesis estadística sería <span class="math notranslate nohighlight">\(\theta &lt; 0.5\)</span>.</p></li>
+<li><p>Supongo que la PES existe, pero no tengo idea si los participantes están viendo el color correcto o no. En este caso, la única afirmación que puedo hacer es que la probailidad de escoger correctamente <em>no</em> es el 50% (es decir, puede ser más o menos). Esto correspondería con la hipótesis de estadística <span class="math notranslate nohighlight">\(\theta \neq 0.5\)</span>.</p></li>
+</ul>
+<p>Todas estas afirmaciones son ejemplos de hipótesis estadísticas porque son declaraciones sobre un parámetros de una poblaciones (respuestas de participantes) relacionado con mi experimento (conocer o no el color de la tarjeta).</p>
+<p>Lo que espero haber dejado claro es que al intentar construir un test de hipótesis estadísticas tiene que considerar dos tipos de hipótesis. Una hipótesis de investigación (una afirmación sobre algún fenómeno observable) que se corresponda con una hipótesis estadística (una afirmación matemática sobre la población que genera los datos). En nuestro ejemplo estos podrían ser:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Hipótesis.de.investigación</p></th>
+<th class="head text-left"><p>Hipótesis.estadísticathesis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>PES.existe</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\theta \neq 0.5\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Un aspecto fundamente que tienes que reconocer es el siguiente: <em>un test de hipótesis (estadísticas) es un test de una hipótesis estadística, no de una hipótesis de investigación</em>. Si un estudio está mal diseñado, el vínculo entre la hipótesis de investigación y la hipótesis estadística se habrá roto. Si en nuestro estudio sobre la PES, por ejemplo, el participante pudiese ver el color de la carta a través del reflejo de una ventana, encontraremos evidencia de que <span class="math notranslate nohighlight">\(\theta \neq 0.5\)</span> o incluso que <span class="math notranslate nohighlight">\(\theta &gt; 0.5\)</span>., sin embargo, como es lógico, eso no nos dirá nada sobre si la PES existe o no (ya que están haciendo “trampa”).</p>
+</section>
+<hr class="docutils" />
+<section id="hipotesis-nula-e-hipotesis-alternativa">
+<h3>Hipótesis nula e hipótesis alternativa<a class="headerlink" href="#hipotesis-nula-e-hipotesis-alternativa" title="Permalink to this heading">#</a></h3>
+<p>De momento, tenemos una hipótesis de investigación sobre algún fenómeno que yo creo que es así, que se corresponde con una hipótesis estadística que describe cómo se generan los datos que dan lugar a ese fenómeno. Hasta aquí el camino es fácil. Es partir de aquí donde el asunte se volve confuso o contraintuitivo para muchos. Y es que lo que debemos de hacer a continuación es crear una nueva hipótesis estadística (la hipótesis “nula” <span class="math notranslate nohighlight">\(H_0\)</span>) que corresponda con lo <em>opuesto</em> a lo que yo creo, usar casi exclusivamente esta nueva hipótesis, y “deshacernos” de la hipótesis que describe aquello en lo que estamos interesados de verdad (a partir de ahora, la hipótesis “alternativa” <span class="math notranslate nohighlight">\(H_1\)</span>). En nuestro ejemplo de la PES, la hipótesis nula es que <span class="math notranslate nohighlight">\(\theta = 0.5\)</span>, que se refiere a lo que esperaríamos si la PES <em>no</em> existiese. Mi apuesta, está claro, es que la PES exista, y por lo tanto, la <em>alternativa</em> a esta hipótesis nula es que <span class="math notranslate nohighlight">\(\theta \neq 0.5\)</span>. En pocas palabras, lo que estamos haciendo es dividir los valores posibles de <span class="math notranslate nohighlight">\(\theta\)</span> en dos grupos: aquellos que espero que no sean verdad (la nula) y aquellos valores con los que estaría feliz de obtener (la alternativa). Si lo hacemos así, tenemos que saber reconocer que el objetivo de un test de hipótesis <em>no</em> es demostrar que la hipótesis alternativa (quizás) sea verdad; el objetivo final es demostrar que la hipótesis nula es (probablemente) falsa. Es justo esto lo que a muchos les parece contraintuitivo.</p>
+<p>Una metáfora que nos puede ayudar a entender mejor este problema, es imaginar que el test de hipótesis es como un juicio penal… <em>el juicio de la hipótesis nula</em>. En este caso, la hipótesis nula es la defensa, el investigador es el fiscal y el test de hipótesis es el juez. Como en cualquier juicio, existe la presunción de inocencia: la hipótesis nula es considerada <em>verdadera</em> a menos que el investigador consiga demuestrar lo contrario. Así, puedes diseñar el experimento de la forma que más convenga, siempre y cuando maximice la probabilidad de obtener datos que <em>encausen</em> o demuestren que la hipótesis nula es falsa. También como en cualquier juicio, existen reglas para el test de hipótesis que hace las veces de juez, y estas reglas están diseñadas para proteger a la hipótesis nula (al igual que un juicio se protege al acusado), con el objetivo de que en el caso de que la hipótesis nula sea verdadera, las probilidades de condenarla injustamente (decir que es falsa) sean lo más bajas posible. Esto es clave, ya que ante un investigador que busca a toda costa demostrar que la hipótesis nula es falsa, <em>alguien</em> tenía que protegerla.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="dos-tipos-de-errores">
+<h2>Dos tipos de errores<a class="headerlink" href="#dos-tipos-de-errores" title="Permalink to this heading">#</a></h2>
+<p>Antes entrar en detalles sobre cómo se construye un test estadístico, es útil entender la filosofía que hay detrás de ellos. Idealmente nos gustaría construir que nunca cometa errores. Desafortunadamente el mundo en el que vivimos en impredecible, por lo que en la práctica esto es no es posible. A veces simplemente es mala (o buena) suerte: por ejemplo, si lanzas una moneda 10 veces y las 10 veces sale cara. Esto parece evidencia contundente de que hay algo raro con esa moneda, pero también sabemos que este escenario es posible en 1 de 1024 intentos en los que lanzamos 10 veces una moneda que sabemos que es justa. En otras palabras, en la vida real hemos de aceptar que <em>siempre</em> existe la probabilidad de hacer las cosas mal. En consecuencia, el objetivo detrás de los test de hipótesis estadísticas no es <em>eliminar</em> los errores, sino <em>minimizarlos</em> lo más posible.</p>
+<p>Aquí debemos ser un poco más preciso al decir a qué nos referimos cuando hablamos de errores. En primer lugar, establezcamos lo obvio: la hipótesis nula o es verdadera, o es falsa; nuestro test <em>rechazará</em> la hipótesis nula o la <em>mantendrá</em><a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Así, como la tabla a continuación nos indica, después de llevar a cabo un test de hipótesis, alguna de las siguientes cuatro cosas puede haber pasado:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p>mantener <span class="math notranslate nohighlight">\(H_0\)</span></p></th>
+<th class="head text-left"><p>rechazar <span class="math notranslate nohighlight">\(H_0\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(H_0\)</span> es verdadera</p></td>
+<td class="text-left"><p>decisión correcta</p></td>
+<td class="text-left"><p>error (tipo I)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(H_0\)</span> es falsa</p></td>
+<td class="text-left"><p>error (tipo II)</p></td>
+<td class="text-left"><p>decisión correcta</p></td>
+</tr>
+</tbody>
+</table>
+<p>Podemos ver que existen <em>dos</em> tipos de error diferentes. Si rechazamos la hipótesis nula cuando, de hecho, es verdadera, estamos cometiendo un <strong><em>error tipo I</em></strong>. Por otro lado, si mantenemos la hipótesis nula cuando, de hecho, es falsa, entonces cometemos un <strong><em>error tipo II</em></strong>.</p>
+<p>¿Recuerdas como antes hemos dicho que los tests de hipótesis son como juicios penales? Un juicio penal requiere que demuestres que el acusado es culpable “más allá de toda duda razonable”. Las reglas que rigen el proceso están diseñadas (en teoría, al menos) para asegurar que (casi) es imposible condenar equivocadamente a un acusado que es inocente. Los juicios han sido diseñados de forma que protejan los derechos del acusado: ya lo insinuaba el jurista William Blackstone con su famosa fórmula donde dice que “es mejor que diez personas culpable escapen a que un inocente sufra”. Esto significa que en un juicio no se tratan de igual manera los dos tipos de errores… castigar al inocente se percibe como algo mucho peor que dejar a un culpable libre. En un test estadístico pasa algo parecido: el objetivo más importante de un test es <em>controlar</em> la probabilidad de cometer errores tipo I, manteniéndolo debajo de una probabilidad predeterminada. Esta probabilidad, que se denota como <span class="math notranslate nohighlight">\(\alpha\)</span>, es usualmente referida como el <strong><em>nivel de significación</em></strong> de un test. Por lo tanto, se dice que un test de hipótesis tiene un nivel de significación <span class="math notranslate nohighlight">\(\alpha\)</span> si la tasa de error tipo I es menor que <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>¿Y qué hay de la tasa de error de tipo II? También estamos interesados en tenerla bajo control, denotando esta probabilidad como by <span class="math notranslate nohighlight">\(\beta\)</span>. Sin embargo, es mucho más probable que nos encontremos este valor bajo el nombre de <strong><em>poder</em></strong> estadístico o del test, que es la probabilidad con la que rechazamos la hipótesis nula cuando realmente es falsa, calculada como <span class="math notranslate nohighlight">\(1-\beta\)</span>. Para tener todo esto en orden, actualicemos la tabla anterior con estos valores:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p>mantener <span class="math notranslate nohighlight">\(H_0\)</span></p></th>
+<th class="head text-left"><p>rechazar <span class="math notranslate nohighlight">\(H_0\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(H_0\)</span> es verdadera</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(1-\alpha\)</span> (probabilidad de mantener correctamente)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\alpha\)</span> (tasa de error tipo I)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(H_0\)</span> es falsa</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\beta\)</span> (tasa de error tipo II)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(1-\beta\)</span>  (poder del test)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Un “buen” test de hipótesis es aquel que tenga un valor bajo de <span class="math notranslate nohighlight">\(\beta\)</span>, manteniendo un valor fijo (bajo) de <span class="math notranslate nohighlight">\(\alpha\)</span>. Por convención, los científicos suelen usar tres nivel distintos de <span class="math notranslate nohighlight">\(\alpha\)</span>: <span class="math notranslate nohighlight">\(.05\)</span>, <span class="math notranslate nohighlight">\(.01\)</span> y <span class="math notranslate nohighlight">\(.001\)</span>. Nótese la asimetría aquí… los tests se han diseñado para <em>asegurar</em> un nivel bajo de <span class="math notranslate nohighlight">\(\alpha\)</span>, pero no hay valores correspondientes para <span class="math notranslate nohighlight">\(\beta\)</span>. Es cierto que nos <em>gustaría</em> tener una tasa de error tipo II baja también, y debemos intentar diseñar tests estadísticos que cumplan con ellos, sin embargo, este aspecto es secundario en comparación con la difícil tarea de controlar la tasa de error tipo I. Como Blackstone habría dicho si se hubiese dedicado a la estadística, “es mejor mantener 10 hipótesis nulas falsas que rechazar una sola que sea verdadera”. Esta es la “filosofía” de los test estadísticos frecuentistas.</p>
+</section>
+<hr class="docutils" />
+<section id="tests-estadisticos-y-distribuciones-muestrales">
+<h2>Tests estadísticos y distribuciones muestrales<a class="headerlink" href="#tests-estadisticos-y-distribuciones-muestrales" title="Permalink to this heading">#</a></h2>
+<p>Llegados a este punto necesitamos concretar cómo es que se construye un test de hipótesis. Para ello, volvamos a nuestro ejemplo sobre la PES. Ignoremos, de momento, los resultados que hayamos podido obtener, y pensemos sobre la estructura del experimento. Sin importar cuáles sean las cifras, la <em>forma</em> que tendrán nuestros datos es que <span class="math notranslate nohighlight">\(X\)</span> de <span class="math notranslate nohighlight">\(N\)</span> personas habrán identificado correctamente el color de la tarjeta. Ahora <em>supongamos</em> por un momento que la hipótesis nula es verdadera: la PES no existe y por lo tanto la probabilidad de que alguien escoja el color correcto es exactamente <span class="math notranslate nohighlight">\(\theta = 0.5\)</span>. ¿Cómo <em>esperamos</em> que sean los datos? Como es obvio, esperaríamos que la proporción de personas que den la respuesta correcta sea muy cercana al 50%. O, en términos matemáticos, diríamos que <span class="math notranslate nohighlight">\(X/N\)</span> es aproximadamente <span class="math notranslate nohighlight">\(0.5\)</span>. Es claro que no esperaríamos que esta fracción o porcentaje sea <em>exactamente</em> del 50%: si evalúamos a <span class="math notranslate nohighlight">\(N=100\)</span> personas y obtenemos que <span class="math notranslate nohighlight">\(X = 53\)</span> han contestado correctamente, el resultado parece alinearse con nuestra hipótesis nula. Por otro lado, si  <span class="math notranslate nohighlight">\(X = 99\)</span> participantes contestan correctamente, podemos decir con cierta autoridad que la hipótesis nula es falsa. Llegaríamos a la misma conclusión si sólo  <span class="math notranslate nohighlight">\(X = 3\)</span> contestan correctamente. Si somos un poco más técnicos lo que esto nos dice es: tenemos una cantidad <span class="math notranslate nohighlight">\(X\)</span> que obtenemos al mirar nuestros datos; después de mirar el valor de <span class="math notranslate nohighlight">\(X\)</span>, tomamos una decisión sobre si la hipótesis es verdadera, o si rechazamos la hipótesis nula en favor de la alternativa. Este número que hemos calculado y que nos sirve como guía en nuestra toma de decisiones le llamamos <strong><em>estadístico de contraste</em></strong>.</p>
+<p>Una vez que hemos calculado nuestro estadístico de contraste, el siguiente paso es establecer precisamente qué valores de este estadístico de contraste nos llevarían a rechazar la hipótesis nula y qué valores a mantenerla. Para poder hacerlo, necesitamos determinas cómo es la <strong><em>distribución muestral del estadístico de contraste</em></strong> suponiendo que la hipótesis nula es verdadera (recuerda que el concepto de distribuciones muestrales lo revisamos en la Unidad 2). ¿Por qué necesitamos saber esto? Porque es la distribución misma la que nos dirá qué valores de <span class="math notranslate nohighlight">\(X\)</span> deberíamos esperar de nuestra hipótesis nula. Por ello, podemos utilizar esta distribución como una herramienta para evaluar qué tanto concuerdan nuestros datos con la hipótesis nula.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nhstImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
+
+<span class="n">eps</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+<span class="n">colour</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">8</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">5.5</span>
+	
+	<span class="c1"># distribution</span>
+	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="m">100</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
+	
+	<span class="c1"># plot</span>
+	<span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;h&quot;</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span>
+		<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Número de respuestas correctas (X)&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Probabilidad&quot;</span><span class="p">,</span>
+		<span class="n">main</span><span class="o">=</span><span class="s">&quot;Distribución muestral de X si la hipótesis nula es verdadera&quot;</span><span class="p">,</span>
+		<span class="n">font.main</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">frame.plot</span><span class="o">=</span><span class="kc">FALSE</span>
+	<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/b8015a3b47dd9362dc3ac34a2f2e78a5487a758d706bdd8137eb018cba237450.png" src="../_images/b8015a3b47dd9362dc3ac34a2f2e78a5487a758d706bdd8137eb018cba237450.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.1</span> <span class="pre">La</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">nuestro</span> <span class="pre">estadístico</span> <span class="pre">de</span> <span class="pre">contraste</span> <span class="pre">$X$</span> <span class="pre">cuando</span> <span class="pre">la</span> <span class="pre">hipótesis</span> <span class="pre">nula</span> <span class="pre">es</span> <span class="pre">verdadera.</span> <span class="pre">Para</span> <span class="pre">nuestro</span> <span class="pre">ejemplo</span> <span class="pre">con</span> <span class="pre">la</span> <span class="pre">PES,</span> <span class="pre">esta</span> <span class="pre">es</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">binomial.</span> <span class="pre">No</span> <span class="pre">es</span> <span class="pre">de</span> <span class="pre">sorprender</span> <span class="pre">que</span> <span class="pre">si</span> <span class="pre">la</span> <span class="pre">hipótesis</span> <span class="pre">nula</span> <span class="pre">dice</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">de</span> <span class="pre">obtener</span> <span class="pre">una</span> <span class="pre">respuesta</span> <span class="pre">correcta</span> <span class="pre">es</span> <span class="pre">de</span> <span class="pre">$\\theta</span> <span class="pre">=</span> <span class="pre">.5$,</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">nos</span> <span class="pre">diga</span> <span class="pre">que</span> <span class="pre">el</span> <span class="pre">valor</span> <span class="pre">más</span> <span class="pre">probable</span> <span class="pre">sea</span> <span class="pre">50</span> <span class="pre">(de</span> <span class="pre">100)</span> <span class="pre">respuestas</span> <span class="pre">correctas.</span> <span class="pre">Nota</span> <span class="pre">cómo</span> <span class="pre">la</span> <span class="pre">mayor</span> <span class="pre">parte</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">se</span> <span class="pre">encuentra</span> <span class="pre">entre</span> <span class="pre">40</span> <span class="pre">y</span> <span class="pre">60</span></code></p>
+<p>¿Y cómo sabemos cuál es la distribución muestral de un estadístico de contraste? Este es un paso complicado en el caso de muchos tests de hipótesis, sin embargo, en esta asignatura revisaremos únicamente los tests más básicos (y más utilizados) por lo que será relativamente sencillo. Y si seguimos con el ejemplo de la PES, encontraremos uno de los casos más sencillos. Nuestro parámetro poblacional <span class="math notranslate nohighlight">\(\theta\)</span> es la probabilidad de contestar correctamente a la pregunta, y nuestro estadístico de contraste <span class="math notranslate nohighlight">\(X\)</span> es la <em>cuenta</em> del número de personas que lo han hecho correctamente de un total (tamaño de muestra) <span class="math notranslate nohighlight">\(N\)</span>. Esto es justo lo que describe la distribución binomial que hemos visto anteriormente. Si quisieramos denotar en este caso que la hipótesis nula predice que <span class="math notranslate nohighlight">\(X\)</span> sigue una distribución binomial, lo escribiríamos de la siguiente manera:</p>
+<div class="math notranslate nohighlight">
+\[
+X \sim \mbox{Binomial}(\theta,N)
+\]</div>
+<p>Ya que la hipótesis nula establece que <span class="math notranslate nohighlight">\(\theta = 0.5\)</span> y nuestro experimento incluye a <span class="math notranslate nohighlight">\(N=100\)</span> personas, ya tenemos la distribución muestral que necesitamos (Figura 1.1). El resultado no nos sorprende: la hipótesis nula que dice que <span class="math notranslate nohighlight">\(X=50\)</span> y es 50 el valor más probable, además de saber que lo más seguro es que encontremos un valor entre 40 y 60.</p>
+</section>
+<hr class="docutils" />
+<section id="tomando-decisiones">
+<h2>Tomando decisiones<a class="headerlink" href="#tomando-decisiones" title="Permalink to this heading">#</a></h2>
+<p>Recapitulemos brevemente. Hemos elegido y construído un estadístico de contraste (<span class="math notranslate nohighlight">\(X\)</span>) que nos permite afirmar con cierta seguridad que si el valor de <span class="math notranslate nohighlight">\(X\)</span> es cercano a <span class="math notranslate nohighlight">\(N/2\)</span>, entonces podemos mantener la hipótesis nula y si no, podemos rechazarla. La cuestión es la siguiente: exactamente ¿qué valores del estadístico de contraste debemos asociar con la hipótesis nula, y cuáles valores con la hipótesis alternativa? En el estudio de la PES, por ejemplo, observamos un valor de <span class="math notranslate nohighlight">\(X=62\)</span>. ¿Qué decisión debemos tomar? ¿Forma parte de los valores de la hipótesis nula o de la hipótesis alternativa?</p>
+</section>
+<section id="regiones-criticas-y-valores-criticos">
+<h2>Regiones críticas y valores críticos<a class="headerlink" href="#regiones-criticas-y-valores-criticos" title="Permalink to this heading">#</a></h2>
+<p>Para a estas preguntas, tenemos que presentar el concepto de <strong><em>región crítica</em></strong> para el estadístico de contraste <span class="math notranslate nohighlight">\(X\)</span>. La región crítica de un test se corresponde con los valores de <span class="math notranslate nohighlight">\(X\)</span> que nos llevarían a rechazar la hipótesis nula (razón por la que la región crítica a veces es llamada como región de rechazo). ¿Y cómo encontramos esa región crítica? Consideremos lo que ya sabemos:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span> debería ser o muy grande o muy pequeña para poder rechazar la hipótesis nula.</p></li>
+<li><p>Si la hipótesis nula es verdadera, la distribución muestral de <span class="math notranslate nohighlight">\(X\)</span> es Binomial<span class="math notranslate nohighlight">\((0.5, N)\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(\alpha =.05\)</span>, el valor crítico deberá cubrir un 5% de esta distribución muestral.</p></li>
+</ul>
+<p>Es importante tener bien claro este último punto: la región crítica representa los valores de <span class="math notranslate nohighlight">\(X\)</span> que nos van a permitir rechazar la hipótesis nula, y la distrubución muestral en cuestión describe la probabilidad de que obtengamos un valor particular de <span class="math notranslate nohighlight">\(X\)</span> asumiendo que la hipótesis nula es de hecho verdadera. Ahora supongamos que escogemos una región crítica que cubra un 20% de la distribución muestral, y supongamos que la hipótesis nula es verdadera. ¿Cuál sería la probabilidad de rechazar incorrectamente la hipótesis nula? La respuesta, por supuesto, es del 20%. Así entonces habremos construído un test que tiene un nivel <span class="math notranslate nohighlight">\(\alpha\)</span> de <span class="math notranslate nohighlight">\(0.2\)</span>. Si quisiéramos un <span class="math notranslate nohighlight">\(\alpha = .05\)</span>, la región crítica sólo podría cubrir un 5% de la distribución muestral de nuestro estadístico de contraste.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># needed for printing</span>
+	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">8</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">5.5</span>
+	
+	<span class="n">setUpPlot</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">()</span> <span class="p">{</span>
+		
+		<span class="nf">plot.new</span><span class="p">()</span>
+		<span class="nf">plot.window</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">),</span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">.</span><span class="m">08</span><span class="p">))</span>
+		<span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+		<span class="nf">title</span><span class="p">(</span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Número de respuestas correctas (X)&quot;</span><span class="p">)</span>
+		
+	<span class="p">}</span>
+	
+	<span class="n">addDistPlot</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+		
+		<span class="c1"># colour key</span>
+		<span class="n">col.key</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span>
+			 <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">9</span><span class="p">),</span>
+			 <span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">)</span>
+		<span class="p">)</span>
+		
+		<span class="c1"># plot</span>
+		<span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">col.key</span><span class="p">[</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="m">+1</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;h&quot;</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+		
+	<span class="p">}</span>
+	
+	<span class="n">addArrow</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">h</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+		
+		<span class="nf">arrows</span><span class="p">(</span><span class="n">x0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">],</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">h</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="p">],</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">h</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="n">.</span><span class="m">1</span><span class="p">)</span>
+		<span class="nf">lines</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">]),</span><span class="nf">c</span><span class="p">(</span><span class="n">h</span><span class="m">-.002</span><span class="p">,</span><span class="n">h</span><span class="m">+.002</span><span class="p">),</span><span class="s">&#39;type&#39;</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+		
+	<span class="p">}</span>
+	
+	<span class="c1"># distribution</span>
+	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="m">100</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
+	
+	<span class="c1"># plot 1</span>
+	<span class="nf">setUpPlot</span><span class="p">()</span>
+	<span class="n">z</span> <span class="o">&lt;-</span> <span class="n">x</span><span class="o">&lt;=</span><span class="m">40</span> <span class="o">|</span> <span class="n">x</span><span class="o">&gt;=</span><span class="m">60</span>
+	<span class="nf">addDistPlot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+	<span class="n">h</span> <span class="o">&lt;-</span> <span class="n">.</span><span class="m">03</span>
+	<span class="nf">addArrow</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">40</span><span class="p">,</span><span class="m">20</span><span class="p">),</span><span class="n">h</span><span class="p">)</span>
+	<span class="nf">addArrow</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="m">80</span><span class="p">),</span><span class="n">h</span><span class="p">)</span>	
+	<span class="nf">text</span><span class="p">(</span><span class="m">22</span><span class="p">,</span><span class="n">h</span><span class="m">+.013</span><span class="p">,</span><span class="s">&quot;región crítica inferior&quot;</span><span class="p">)</span>
+	<span class="nf">text</span><span class="p">(</span><span class="m">22</span><span class="p">,</span><span class="n">h</span><span class="m">+.007</span><span class="p">,</span><span class="s">&quot;(2.5% de la distribución)&quot;</span><span class="p">)</span>
+	<span class="nf">text</span><span class="p">(</span><span class="m">75</span><span class="p">,</span><span class="n">h</span><span class="m">+.013</span><span class="p">,</span><span class="s">&quot;región crítica superior&quot;</span><span class="p">)</span>
+	<span class="nf">text</span><span class="p">(</span><span class="m">75</span><span class="p">,</span><span class="n">h</span><span class="m">+.007</span><span class="p">,</span><span class="s">&quot;(2.5% de la distribución)&quot;</span><span class="p">)</span>
+	<span class="nf">title</span><span class="p">(</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Regiones Críticas para un test de dos colas&quot;</span><span class="p">,</span><span class="n">font.main</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/83249092aa5f3d35c7b2b3d13fea33d7694402ce535b471aac38973c20ae0cb9.png" src="../_images/83249092aa5f3d35c7b2b3d13fea33d7694402ce535b471aac38973c20ae0cb9.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.12</span> <span class="pre">Región</span> <span class="pre">crítica</span> <span class="pre">asociada</span> <span class="pre">con</span> <span class="pre">el</span> <span class="pre">test</span> <span class="pre">de</span> <span class="pre">hipótesis</span> <span class="pre">para</span> <span class="pre">el</span> <span class="pre">estudio</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">PES,</span> <span class="pre">con</span> <span class="pre">nivel</span> <span class="pre">de</span> <span class="pre">significancia</span> <span class="pre">de</span> <span class="pre">$\\alpha</span> <span class="pre">=</span> <span class="pre">.05$.</span> <span class="pre">La</span> <span class="pre">figura</span> <span class="pre">muestra</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">$X$</span> <span class="pre">bajo</span> <span class="pre">la</span> <span class="pre">hipótesis</span> <span class="pre">nula:</span> <span class="pre">las</span> <span class="pre">barras</span> <span class="pre">grises</span> <span class="pre">corresponden</span> <span class="pre">con</span> <span class="pre">los</span> <span class="pre">valores</span> <span class="pre">de</span> <span class="pre">$X$</span> <span class="pre">con</span> <span class="pre">los</span> <span class="pre">que</span> <span class="pre">mantendríamos</span> <span class="pre">la</span> <span class="pre">hipótesis</span> <span class="pre">nula.</span> <span class="pre">Las</span> <span class="pre">barras</span> <span class="pre">negras</span> <span class="pre">muestran</span> <span class="pre">la</span> <span class="pre">región</span> <span class="pre">crítica:</span> <span class="pre">valores</span> <span class="pre">de</span> <span class="pre">$X$</span> <span class="pre">con</span> <span class="pre">los</span> <span class="pre">cuales</span> <span class="pre">rechazaríamos</span> <span class="pre">la</span> <span class="pre">hipótesis</span> <span class="pre">nula.</span> <span class="pre">Ya</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">hipótesis</span> <span class="pre">alternativa</span> <span class="pre">es</span> <span class="pre">de</span> <span class="pre">dos</span> <span class="pre">colas</span> <span class="pre">(contemplamos</span> <span class="pre">tanto</span> <span class="pre">$\\theta</span> <span class="pre">&lt;.5$</span> <span class="pre">como</span> <span class="pre">$\\theta</span> <span class="pre">&gt;.5$),</span> <span class="pre">la</span> <span class="pre">región</span> <span class="pre">crítica</span> <span class="pre">cubre</span> <span class="pre">ambos</span> <span class="pre">extremos</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución.</span> <span class="pre">Para</span> <span class="pre">asegurar</span> <span class="pre">un</span> <span class="pre">valor</span> <span class="pre">de</span> <span class="pre">$\\alpha$</span> <span class="pre">de</span> <span class="pre">$.05$,</span> <span class="pre">necesitamos</span> <span class="pre">que</span> <span class="pre">las</span> <span class="pre">dos</span> <span class="pre">regiones</span> <span class="pre">contengan</span> <span class="pre">a</span> <span class="pre">un</span> <span class="pre">2.5%</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral.</span></code></p>
+<p>The critical region associated with the hypothesis test for the ESP study, for a hypothesis test with a significance level of <span class="math notranslate nohighlight">\(\\alpha = .05\)</span>. The plot itself shows the sampling distribution of <span class="math notranslate nohighlight">\(X\)</span> under the null hypothesis: the grey bars correspond to those values of <span class="math notranslate nohighlight">\(X\)</span> for which we would retain the null hypothesis. The black bars show the critical region: those values of <span class="math notranslate nohighlight">\(X\)</span> for which we would reject the null. Because the alternative hypothesis is two sided (i.e., allows both <span class="math notranslate nohighlight">\(\\theta &lt;.5\)</span> and <span class="math notranslate nohighlight">\(\\theta &gt;.5\)</span>), the critical region covers both tails of the distribution. To ensure an <span class="math notranslate nohighlight">\(\\alpha\)</span> level of <span class="math notranslate nohighlight">\(.05\)</span>, we need to ensure that each of the two regions encompasses 2.5% of the sampling distribution.</p>
+<p>Como podemos ver, estos tres aspectos resuelven nuestro problema: la región crítica consiste de los <em>valores más extremos</em>, mejor conocidos como las <strong><em>colas</em></strong> de la distribución. Esto queda ilustrado en la Figura 1.2. Por lo tanto, si queremos un <span class="math notranslate nohighlight">\(\alpha = .05\)</span>, entonces nuestras regiones críticas corresponden con <span class="math notranslate nohighlight">\(X \leq 40\)</span> y <span class="math notranslate nohighlight">\(X \geq 60\)</span>. Esto quiere decir que si el número de personas que “aciertan” está entre 41 y 59 entonces mantenemos la hipótesis nula. Si por el contrario, el número está entre 0 y 40 o entre 60 y 100, entonces podemos rechazar la hipótesis nula. Los número 40 y 60 suelen ser llamados como <strong><em>valores críticos</em></strong>, ya que definen los límites de la región crítica.</p>
+<p>Llegados a este punto, hemos completado nuestro test de hipótesis: (1) hemos escogido un nivel <span class="math notranslate nohighlight">\(\alpha\)</span> (p.e., <span class="math notranslate nohighlight">\(\alpha = .05\)</span>), (2) hemos creado un estadístico de contraste (p.e. <span class="math notranslate nohighlight">\(X\)</span>) que cumple con su rol de comparar <span class="math notranslate nohighlight">\(H_0\)</span> con <span class="math notranslate nohighlight">\(H_1\)</span>, (3) hemos descifrado la distribución muestral de este estadístico de contraste bajo la suposición de que la hipótesis nula es verdadera (en este caso, binomial o a dos colar) y finalmente (4) hemos calculado la región crítica que produce un nivel <span class="math notranslate nohighlight">\(\alpha\)</span> adecuado (0-40 y 60-100). Lo único que nos queda por hacer es calcular el valor del estadístico de contraste para los datos que tenemos (<span class="math notranslate nohighlight">\(X = 62\)</span>) y luego compararlo con los valores críticos y tomar una decisión. En este caso el estadístico de contraste está calculado -<span class="math notranslate nohighlight">\(X = 62\)</span>-, y como es mayor que el valor crítico de 60, rechazaríamos la hipótesis nula. En otras palabras, y como encontrarás en cualquier estudio científico, este test de hipótesis ha producido un resultado <strong><em>estadísticamente significativo</em></strong><a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+<section id="la-diferencia-entre-test-de-una-y-dos-colas">
+<h3>La diferencia entre test de una y dos colas<a class="headerlink" href="#la-diferencia-entre-test-de-una-y-dos-colas" title="Permalink to this heading">#</a></h3>
+<p>Antes de continuar, me gustaría señalar un aspecto sobre el test de hipótesis que hemos construído. Si recordamos cuáles son las hipótesis estadísticas que hemos utilizado,</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{array}{cc}
+H_0 : &amp; \theta = .5 \\
+H_1 : &amp; \theta \neq .5 
+\end{array}
+\)</span></p>
+<p>veremos que la hipótesis alternativa es la posibilidad de que <span class="math notranslate nohighlight">\(\theta &lt; .5\)</span> pero <em>también</em> la posibilidad de que <span class="math notranslate nohighlight">\(\theta &gt; .5\)</span>. Esto tiene sentido que nosotros creemos que la PES puede producir un resultado superior al azar (&gt;50%) <em>o</em> inferior al azar (&lt;50%). En lenguaje estadístico, esto es un ejemplo de <strong><em>test de dos colas</em></strong>. Se le llama así porque la hipótesis alternativa cubre el área a ambos <em>lados</em> de la hipótesis nula, y como consecuencia, la región crítica del test cubre ambas colas de la distribución muestral (2.5% a cada lado en caso de <span class="math notranslate nohighlight">\(\alpha =.05\)</span>), como se muestra en la Figura 1.12.</p>
+<p>Sin embargo, no es la única posibilidad. Por ejemplo, también podría darse el caso de que yo crea que la PES produce resultados mejores que el azar. En este caso, mi hipótesis alternativa deberá cubrir unicamente la posibilidad de que <span class="math notranslate nohighlight">\(\theta &gt; .5\)</span>, y en consecuencia la hipótesis nula ahora se convierte en <span class="math notranslate nohighlight">\(\theta \leq .5\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{array}{cc}
+H_0 : &amp; \theta \leq .5 \\
+H_1 : &amp; \theta &gt; .5 
+\end{array}
+\)</span></p>
+<p>Este es el caso de un <strong><em>test de una cola</em></strong>, y aquí la región crítica cubre sólo un extremo de la distribución muestral. Esto se ilustra en la Figura 1.13.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">setUpPlot</span><span class="p">()</span>
+	<span class="n">z</span> <span class="o">&lt;-</span> <span class="n">x</span><span class="o">&gt;=</span><span class="m">58</span>
+	<span class="nf">addDistPlot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+	<span class="n">h</span> <span class="o">&lt;-</span> <span class="n">.</span><span class="m">03</span>
+	<span class="nf">addArrow</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">58</span><span class="p">,</span><span class="m">80</span><span class="p">),</span><span class="n">h</span><span class="p">)</span>	
+	<span class="nf">text</span><span class="p">(</span><span class="m">75</span><span class="p">,</span><span class="n">h</span><span class="m">+.013</span><span class="p">,</span><span class="s">&quot;región crítica&quot;</span><span class="p">)</span>
+	<span class="nf">text</span><span class="p">(</span><span class="m">75</span><span class="p">,</span><span class="n">h</span><span class="m">+.007</span><span class="p">,</span><span class="s">&quot;(5% de la distribución)&quot;</span><span class="p">)</span>
+	<span class="nf">title</span><span class="p">(</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Región crítica para un test de una cola&quot;</span><span class="p">,</span><span class="n">font.main</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/3b84b9a2ca0827bee029627f6dc67286ba22902405d78df3d9ddd8baaa1abf4b.png" src="../_images/3b84b9a2ca0827bee029627f6dc67286ba22902405d78df3d9ddd8baaa1abf4b.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.13</span> <span class="pre">Región</span> <span class="pre">crítica</span> <span class="pre">para</span> <span class="pre">un</span> <span class="pre">test</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">cola.</span> <span class="pre">En</span> <span class="pre">este</span> <span class="pre">caso,</span> <span class="pre">la</span> <span class="pre">hipótesis</span> <span class="pre">alternativa</span> <span class="pre">es</span> <span class="pre">que</span> <span class="pre">$\\theta</span> <span class="pre">&gt;</span> <span class="pre">.05$,</span> <span class="pre">por</span> <span class="pre">lo</span> <span class="pre">que</span> <span class="pre">solo</span> <span class="pre">podemos</span> <span class="pre">rechazar</span> <span class="pre">la</span> <span class="pre">hipótesis</span> <span class="pre">nula</span> <span class="pre">con</span> <span class="pre">valores</span> <span class="pre">altos</span> <span class="pre">de</span> <span class="pre">$X$.</span> <span class="pre">En</span> <span class="pre">consecuencia,</span> <span class="pre">la</span> <span class="pre">región</span> <span class="pre">crítica</span> <span class="pre">sólo</span> <span class="pre">cubre</span> <span class="pre">la</span> <span class="pre">parte</span> <span class="pre">superior</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral;</span> <span class="pre">específicamente</span> <span class="pre">el</span> <span class="pre">5%</span> <span class="pre">superior</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución.</span> <span class="pre">Compara</span> <span class="pre">esto</span> <span class="pre">con</span> <span class="pre">el</span> <span class="pre">test</span> <span class="pre">de</span> <span class="pre">dos</span> <span class="pre">colas.</span></code></p>
+</section>
+</section>
+<section id="el-valor-p-de-un-test-estadistico">
+<h2>El valor <span class="math notranslate nohighlight">\(p\)</span> de un test estadístico<a class="headerlink" href="#el-valor-p-de-un-test-estadistico" title="Permalink to this heading">#</a></h2>
+<p>Hasta aquí, parece que hemos completado nuestro test de hipótesis; hemos construído un estadístico de contraste, hemos encontrado cúal es su distribución muestral si la hipótesis nula es verdadera y hemos calculado los valores críticos de delimitan las regiones críticas del test. Sin embargo, he omitido el valor más importante de todos: <strong><em>el valor <span class="math notranslate nohighlight">\(p\)</span></em></strong>.</p>
+<section id="la-probabilidad-de-obtener-datos-extremos">
+<h3>La probabilidad de obtener datos extremos<a class="headerlink" href="#la-probabilidad-de-obtener-datos-extremos" title="Permalink to this heading">#</a></h3>
+<p>Si recuerdas, cuando construíamos nuestras regiones críticas, vimos que estas correspondían con las <em>colas</em> (los valores extremos) de la distribución muestral. Esto no es una coincidencia: una región crítica adecuada es aquella que se corresponde con los valores menos probables del estadístico de contraste, asumiendo que la hipótesis nula es verdadera. Si esta regla es verdadera, entonces podemos definir al valor-<span class="math notranslate nohighlight">\(p\)</span> como <strong><em>la probabilidad de observar un valor de estadístico de contraste igual o más extremo que el que hemos obtenido</em></strong>. Es decir, si los datos que hemos obtenidos son extremadamente poco probables para nuestra hipótesis nula, pues quizás la hipótesis nula sea incorrecta.</p>
+<p>Para saber qué valores de esta probabilidad -valor-<span class="math notranslate nohighlight">\(p\)</span>- corresponden con qué valor del estadístico de contraste podemos recurrir a las <em>tablas de probabilidad</em> para dicho estadístico de contraste (p.e. <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(F\)</span>, etc.). Estos valores de probabilidad son siempre los mismos para cada estadístico de contraste ya que están extraídos de una distribución muestral que cumple con ciertos supuestos necesarios (por ejemplo, que los datos se distribuyan de forma normal). Por lo tanto, es muy importante usar la tabla que correcta, ya que un valor de estadístico de contraste puede tener distintas probabilidades en diferentes tablas.</p>
+<p>Ahora que sabemos cuál es una definición correcta del valor-<span class="math notranslate nohighlight">\(p\)</span>, me gustaría dedicar este párrafo para explicar lo que <em>no</em> es un valor-<span class="math notranslate nohighlight">\(p\)</span>, ya que, como seguro habrás pensado, no es una definición intuitiva y tiende a ser malinterpretada con frecuencia. Muchas veces se entiende -repito, <em>equivocadamente</em>- que el valor-<span class="math notranslate nohighlight">\(p\)</span> es “la probabilidad de que la hipótesis nula sea verdadera”. Aunque es una forma más intuitiva de interpretar este valor, es una aproximación errónea por una razón que nos resultará familiar: (1) los tests de contraste de hipótesis son herramientas frecuentistas, y hemos visto que una aproximación frecuentista a la probabilidad <em>no</em> permite asignar probabilidades a la hipótesis nula (recuerda que sólo se asignan probabilidades a la larga, después de muchas repeticiones), sino que la hipótesis nula en cuestión es verdadera o no lo es.</p>
+</section>
+</section>
+<section id="como-reportar-los-resultados-de-un-test-de-hipotesis">
+<h2>¿Cómo reportar los resultados de un test de hipótesis?<a class="headerlink" href="#como-reportar-los-resultados-de-un-test-de-hipotesis" title="Permalink to this heading">#</a></h2>
+<p>Estamos al final del proceso de construcción de nuestro test de hipótesis, y lo único que falta es reportar el resultado final. Para fines de la asignatura, esta conclusión deberá contener 3 elementos:</p>
+<ol class="arabic simple">
+<li><p>Si el resultado del test estadístico es estadísticamente significativo o no. Esto depende de si se rechaza la hipótesis nula (sí es significativo) o de si se mantiene (no es significativo)</p></li>
+<li><p>El valor-<span class="math notranslate nohighlight">\(p\)</span> o si el resultado es mayor o menor al valor <span class="math notranslate nohighlight">\(\alpha\)</span> que hemos establecido previamente (usualmente, 0.05).</p></li>
+</ol>
+<p>Por ejemplo, podemos decir algo así como “Nuestro test muestra un resultado estadísticamente significativo, con un valor-<span class="math notranslate nohighlight">\(p\)</span> de 0.03”. Esto significa que nuestro test de hipótesis rechaza la hipótesis nula, ya que la probabilidad que tenemos de encontrar estos datos asumiendo que la hipótesis nula es verdadera es muy baja, de tan sólo el 3%.</p>
+<p>Compara ese ejemplo con este otro: “Nuestro test muestra un resultado que <em>no</em> es estadísticamente significativo, con un valor-<span class="math notranslate nohighlight">\(p\)</span> de 0.27”. Aquí se nos dice que mantenemos la hipótesis nula (o que no la podemos rechazar) ya que la probabilidad de encontrar estos datos asumiendo que esa hipótesis nula es verdadera es muy alta, del 27%.</p>
+</section>
+<section id="resumen">
+<h2>Resumen<a class="headerlink" href="#resumen" title="Permalink to this heading">#</a></h2>
+<p>Los tests de hipótesis son uno de los elementos omnipresentes en la teoría estadística. La gran mayoría de los estudios reportan sus resultados utilizando algún tipo de test estadístico. En consecuencia, es casi imposible impartir una clase y aprender sobre los fundamentos de investigación sin incluir una explicación de los tests estadísticos. Estos son algunos de los puntos clave revisados en esta Unidad:</p>
+<ul class="simple">
+<li><p>Hipótesis de investigación e hipótesis estadísticas</p></li>
+<li><p>Hipótesis nula e hipótesis alternativa</p></li>
+<li><p>Estadísticos de contraste y sus distribuciones muestrales</p></li>
+<li><p>Tests estadísticos y el proceso de toma de decisiones</p></li>
+<li><p>El valor-<span class="math notranslate nohighlight">\(p\)</span> y su importancia</p></li>
+</ul>
+<p>En realidad, esta tercera Unidad no termina aquí: ahora pondremos en práctica lo que hemos aprendido sobre los tests de hipótesis y aplicarlo según los datos que tengamos. Esto será lo que determine si debemos utilizar un test de chi-cuadrada, un test-t o un análisis factorial. Aunque existen muchos otros tipos de tests estadísticos, estos son los más elementales y además, los más frecuentemente utilizados en investigación.</p>
+<hr class="docutils" />
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Me gustaría hacer un apunte respecto al lenguaje que se utiliza al reportar los resultados de test estadísticos. <em>Rechazar</em> la hipótesis nula se refiere a cuando los datos parecen indicar que aquello que nosotros creemos (hipótesis alternativa) es verdadera; <em>mantener</em> o <em>no rechazar</em> la hipótesis nula nos indica que los datos parecen favorer a la hipótesis nula o que los datos no son concluyentes. Es importante que notes que nunca hablamos sobre si se acepta, mantiene o rechaza la hipótesis alternativa, sólo lo hacemos con la hipótesis nula.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Sólo una observación. En esta frase, la palabra <strong><em>signficativo</em></strong> no es sinónimo de importancia o relevancia (como lo podríamos entender en español), simplemente se refiere a que el resultado a superado un umbral que ha sido indicado con anterioridad. En este caso, el umbral está determino por nuestro <span class="math notranslate nohighlight">\(\alpha = .05\)</span>.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "negatoscope/fundamentos_book",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="estimation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2 Estimación</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="introR.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4 Introducción a R</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#una-coleccion-de-hipotesis-en-plural">Una colección de hipótesis (en plural)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipotesis-de-investigacion-vs-hipotesis-estadisticas">Hipótesis de investigación vs. hipótesis estadísticas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipotesis-nula-e-hipotesis-alternativa">Hipótesis nula e hipótesis alternativa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dos-tipos-de-errores">Dos tipos de errores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests-estadisticos-y-distribuciones-muestrales">Tests estadísticos y distribuciones muestrales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tomando-decisiones">Tomando decisiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regiones-criticas-y-valores-criticos">Regiones críticas y valores críticos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-diferencia-entre-test-de-una-y-dos-colas">La diferencia entre test de una y dos colas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-valor-p-de-un-test-estadistico">El valor <span class="math notranslate nohighlight">\(p\)</span> de un test estadístico</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-probabilidad-de-obtener-datos-extremos">La probabilidad de obtener datos extremos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-reportar-los-resultados-de-un-test-de-hipotesis">¿Cómo reportar los resultados de un test de hipótesis?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Luis Eudave
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
