@@ -153,6 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1 Probabilidad y Distribuciones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="estimation.html">2 Estimación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypothesis.html">3 Contraste de hipótesis</a></li>
 </ul>
 
     </div>
@@ -207,7 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/negatoscope/fundamentos_book/master?urlpath=tree/mini_book/docs/probability.md" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/negatoscope/fundamentos_book/main?urlpath=tree/mini_book/docs/probability.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -552,32 +553,33 @@ P(\mbox{cara}) = 0.5
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-<span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-<span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># muestra 4 simulaciones diferentes de lanzar una moneda 1000 veces. Cada vez imprime un resultado diferente</span>
+<span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span> <span class="c1">#color negro del marco</span>
+<span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span> <span class="c1">#color azul de la línea de simulación</span>
+<span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span> <span class="c1">#color gris de línea punteada</span>
 <span class="n">eps</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
 <span class="n">colour</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
-	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">12</span>
-	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">8</span>
+	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">12</span> <span class="c1">#anchura de cada figura</span>
+	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">8</span> <span class="c1">#altura de cada figura</span>
 	<span class="n">def.par</span> <span class="o">&lt;-</span> <span class="nf">par</span><span class="p">(</span><span class="n">no.readonly</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
-	<span class="nf">layout</span><span class="p">(</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span> <span class="p">)</span>
+	<span class="nf">layout</span><span class="p">(</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span> <span class="p">)</span> <span class="c1">#distribución de las figuras en 2x2</span>
 	<span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">4</span> <span class="p">)</span> <span class="p">{</span>
 		
-		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span> <span class="nf">runif</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">.</span><span class="m">5</span> <span class="p">)</span>
-		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">cumsum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">)</span>
-		<span class="nf">plot</span><span class="p">(</span> <span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">.</span><span class="m">3</span><span class="p">,</span><span class="n">.</span><span class="m">7</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span>
+		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span> <span class="nf">runif</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">.</span><span class="m">5</span> <span class="p">)</span> <span class="c1">#calcula 1000 lanzamientos</span>
+		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">cumsum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">)</span> <span class="c1">#probabilidad acumulada de los 1000 lanzamientos</span>
+		<span class="nf">plot</span><span class="p">(</span> <span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">.</span><span class="m">3</span><span class="p">,</span><span class="n">.</span><span class="m">7</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span> <span class="c1"># dibuja la figura con la probabilidad acumuluda de los 1000 lanzamientos</span>
 			<span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Número de lanzadas&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Proporción de caras&quot;</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span>
 			<span class="p">)</span> 
 		<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">emphGrey</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 		
 	<span class="p">}</span>
-	<span class="nf">par</span><span class="p">(</span><span class="n">def.par</span><span class="p">)</span><span class="c1">#- reset to default</span>
+	<span class="nf">par</span><span class="p">(</span><span class="n">def.par</span><span class="p">)</span> <span class="c1">#reinicia parámetros</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/d896629ceea2cb0bc571d014ec6e08b0428d6badf06c84d4b619a6285a39a415.png" src="../_images/d896629ceea2cb0bc571d014ec6e08b0428d6badf06c84d4b619a6285a39a415.png" />
+<img alt="../_images/b72cd0688ad913fbe372bd3298180b6e074c4f59d5ceda842307a9fe423a8fbe.png" src="../_images/b72cd0688ad913fbe372bd3298180b6e074c4f59d5ceda842307a9fe423a8fbe.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.1</span> <span class="pre">Una</span> <span class="pre">imagen</span> <span class="pre">de</span> <span class="pre">cómo</span> <span class="pre">funciona</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">frecuentista.</span> <span class="pre">Si</span> <span class="pre">lanzas</span> <span class="pre">una</span> <span class="pre">moneda</span> <span class="pre">justa</span> <span class="pre">una</span> <span class="pre">y</span> <span class="pre">otra</span> <span class="pre">vez,</span> <span class="pre">la</span> <span class="pre">proporción</span> <span class="pre">de</span> <span class="pre">caras</span> <span class="pre">deja</span> <span class="pre">de</span> <span class="pre">fluctuar</span> <span class="pre">y</span> <span class="pre">converge</span> <span class="pre">hacia</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">real</span> <span class="pre">de</span> <span class="pre">0.5.</span> <span class="pre">Cada</span> <span class="pre">panel</span> <span class="pre">muestra</span> <span class="pre">uno</span> <span class="pre">de</span> <span class="pre">las</span> <span class="pre">cuatro</span> <span class="pre">simulaciones</span> <span class="pre">con</span> <span class="pre">1.000</span> <span class="pre">lanzamientos</span> <span class="pre">cada</span> <span class="pre">uno.</span> <span class="pre">Aunque</span> <span class="pre">ninguna</span> <span class="pre">de</span> <span class="pre">estas</span> <span class="pre">simulaciones</span> <span class="pre">terminó</span> <span class="pre">con</span> <span class="pre">un</span> <span class="pre">valor</span> <span class="pre">exacto</span> <span class="pre">de</span> <span class="pre">.5,</span> <span class="pre">si</span> <span class="pre">hubiéramos</span> <span class="pre">extendido</span> <span class="pre">el</span> <span class="pre">experimento</span> <span class="pre">por</span> <span class="pre">un</span> <span class="pre">número</span> <span class="pre">infinito</span> <span class="pre">de</span> <span class="pre">lanzamientos</span> <span class="pre">lo</span> <span class="pre">habríamos</span> <span class="pre">conseguido.</span></code></p>
@@ -642,18 +644,19 @@ P(\mbox{cara}) = 0.5
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">probabilities</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span> <span class="n">.</span><span class="m">5</span><span class="p">,</span> <span class="n">.</span><span class="m">3</span><span class="p">,</span> <span class="n">.</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">.</span><span class="m">1</span><span class="p">)</span>
-	<span class="n">eventNames</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span> <span class="s">&quot;V. azules&quot;</span><span class="p">,</span> <span class="s">&quot;V. grises&quot;</span><span class="p">,</span> <span class="s">&quot;V. negros&quot;</span><span class="p">,</span> 
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># figura con distribución de pantalones. </span>
+<span class="n">probabilities</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span> <span class="n">.</span><span class="m">5</span><span class="p">,</span> <span class="n">.</span><span class="m">3</span><span class="p">,</span> <span class="n">.</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">.</span><span class="m">1</span><span class="p">)</span> <span class="c1"># establece la probabilidad de cada tipo de pantalón</span>
+	<span class="n">eventNames</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span> <span class="s">&quot;V. azules&quot;</span><span class="p">,</span> <span class="s">&quot;V. grises&quot;</span><span class="p">,</span> <span class="s">&quot;V. negros&quot;</span><span class="p">,</span> <span class="c1"># nombres de pantalones</span>
 					 <span class="s">&quot;Traje negro&quot;</span><span class="p">,</span> <span class="s">&quot;Chándal azul&quot;</span> <span class="p">)</span>
 	
-	<span class="c1"># draw the plot</span>
+	<span class="c1"># dibuja la figura</span>
 	<span class="nf">barplot</span><span class="p">(</span> 
-		<span class="n">height</span><span class="o">=</span> <span class="n">probabilities</span><span class="p">,</span> 
-		<span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Evento&quot;</span><span class="p">,</span>
-		<span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Probabilidad del evento&quot;</span><span class="p">,</span>
+		<span class="n">height</span><span class="o">=</span> <span class="n">probabilities</span><span class="p">,</span> <span class="c1"># en el eje y acomoda las probabilidades de antes</span>
+		<span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Evento&quot;</span><span class="p">,</span> <span class="c1"># nombre del eje x</span>
+		<span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Probabilidad del evento&quot;</span><span class="p">,</span> <span class="c1"># nombre del eje y</span>
 		<span class="n">names.arg</span> <span class="o">=</span> <span class="n">eventNames</span><span class="p">,</span>
-		<span class="n">density</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
-		<span class="n">col</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">)</span>
+		<span class="n">density</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="c1"># número de pantalones</span>
+		<span class="n">col</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">)</span> <span class="c1"># usa colores definidos en la figura anterior</span>
 	<span class="p">)</span>
 </pre></div>
 </div>
@@ -738,25 +741,25 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plots the three examples of a binomial distribution</span>
-<span class="c1"># needed for printing</span>
-<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">8</span>
-<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">6</span>
-<span class="c1"># function to produce a styled binomial plot</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># dibuja un ejemplo de una distribución binomial</span>
+<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">8</span> <span class="c1"># ancho de cada figura</span>
+<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">6</span> <span class="c1"># alto de cada figura</span>
+
+<span class="c1"># función que integra el cálculo de una probabilidad binomial y la dibuja</span>
 <span class="n">binomPlot</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span> <span class="kc">...</span> <span class="p">)</span> <span class="p">{</span>
   
-  <span class="c1"># probabilities of each outcome</span>
+  <span class="c1"># define la probabilidad de cada resultado</span>
   <span class="n">out</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="n">n</span>
-  <span class="n">prob</span> <span class="o">&lt;-</span> <span class="nf">dbinom</span><span class="p">(</span> <span class="n">x</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="n">p</span> <span class="p">)</span>
+  <span class="n">prob</span> <span class="o">&lt;-</span> <span class="nf">dbinom</span><span class="p">(</span> <span class="n">x</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="n">p</span> <span class="p">)</span> <span class="c1"># función de R para el cálculo de una probabilidad: necesita el tamaño de muestra y probabilidad</span>
   
-  <span class="c1"># plot</span>
+  <span class="c1"># dibuja la figura</span>
   <span class="nf">plot</span><span class="p">(</span> 
     <span class="n">out</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Probabilidad&quot;</span><span class="p">,</span> 
     <span class="n">frame.plot</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="kc">...</span>
   <span class="p">)</span>
   
 <span class="p">}</span>
-<span class="c1"># skulls image...</span>
+<span class="c1"># una vez creada la función binomPlot ahora la podemos usar, incluyendo el tamaño de muestra (n) y la probabilidad (p)</span>
 <span class="nf">binomPlot</span><span class="p">(</span> <span class="n">n</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="m">6</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Número de calaveras observadas&quot;</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -775,22 +778,24 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span>  <span class="c1"># plots the three examples of a binomial distribution</span>
-  	<span class="c1"># needed for printing</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span>  <span class="c1"># dibuja un ejemplo de una distribución binomial, parecido al anterior</span>
   	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">8</span>
   	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">6</span>
-  	<span class="c1"># function to produce a styled binomial plot</span>
+  	
+    <span class="c1"># función que integra el cálculo de una probabilidad binomial y la dibuja</span>
   	<span class="n">binomPlot</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span> <span class="kc">...</span> <span class="p">)</span> <span class="p">{</span>
-  		<span class="c1"># probabilities of each outcome</span>
+  		
+      <span class="c1"># define la probabilidad de cada resultado</span>
   		<span class="n">out</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="n">n</span>
   		<span class="n">prob</span> <span class="o">&lt;-</span> <span class="nf">dbinom</span><span class="p">(</span> <span class="n">x</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="n">p</span> <span class="p">)</span>
-  		<span class="c1"># plot</span>
+  		
+      <span class="c1"># dibuja la figura</span>
   		<span class="nf">plot</span><span class="p">(</span>
   			<span class="n">out</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Probabilidad&quot;</span><span class="p">,</span>
   			<span class="n">frame.plot</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="kc">...</span>
   		<span class="p">)</span>
   	<span class="p">}</span>
-  	<span class="c1"># coins image #1...</span>
+  	<span class="c1"># usa función binomPlot</span>
   	<span class="nf">binomPlot</span><span class="p">(</span> <span class="n">n</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Número de caras observadas&quot;</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -808,22 +813,24 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span>  <span class="c1"># plots the three examples of a binomial distribution</span>
-  	<span class="c1"># needed for printing</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span>  <span class="c1"># dibuja un ejemplo de una distribución binomial, parecido al anterior</span>
   	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">8</span>
   	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">6</span>
-  	<span class="c1"># function to produce a styled binomial plot</span>
+  	
+    <span class="c1"># función que integra el cálculo de una probabilidad binomial y la dibuja</span>
   	<span class="n">binomPlot</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span> <span class="kc">...</span> <span class="p">)</span> <span class="p">{</span>
-  		<span class="c1"># probabilities of each outcome</span>
+  		
+      <span class="c1"># define la probabilidad de cada resultado</span>
   		<span class="n">out</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="n">n</span>
   		<span class="n">prob</span> <span class="o">&lt;-</span> <span class="nf">dbinom</span><span class="p">(</span> <span class="n">x</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="n">p</span> <span class="p">)</span>
-  		<span class="c1"># plot</span>
+  		
+      <span class="c1"># dibuja la figura</span>
   		<span class="nf">plot</span><span class="p">(</span>
   			<span class="n">out</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Probabilidad&quot;</span><span class="p">,</span>
   			<span class="n">frame.plot</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="kc">...</span>
   		<span class="p">)</span>
   	<span class="p">}</span>
-  	<span class="c1"># coins image #2...</span>
+  	<span class="c1"># usa función binomPlot</span>
   	<span class="nf">binomPlot</span><span class="p">(</span> <span class="n">n</span><span class="o">=</span><span class="m">100</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Número de caras observadas&quot;</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -853,14 +860,14 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plots the standard normal</span>
-<span class="c1"># needed for printing</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># dibuja una distribución normal</span>
 <span class="n">width</span> <span class="o">&lt;-</span> <span class="m">8</span>
 <span class="n">height</span> <span class="o">&lt;-</span> <span class="m">6</span>
 <span class="n">fileName</span> <span class="o">&lt;-</span> <span class="s">&quot;standardNormal.eps&quot;</span>	
-<span class="c1"># draw the plot</span>
-<span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-3</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span>
-<span class="n">yval</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+<span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-3</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span> <span class="c1"># establece los límites del eje x, desde -3 hasta 3 en intervalos de 0.01</span>
+<span class="n">yval</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="c1"># función que calcula la probabilidad de valores dentro de una distribución normal, que incluye la probabilidad para los valores especificados arriba (-3 a 3) centrados en 0, con valor de desviación típica igual a 1</span>
+
+<span class="c1"># dibuja la imagen </span>
 <span class="nf">plot</span><span class="p">(</span> 	<span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Densidad de probabilidad&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Valor observado&quot;</span><span class="p">,</span>
        <span class="n">frame.plot</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span>
 <span class="p">)</span>
@@ -881,13 +888,17 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># draw the plot</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># dibuja una figura con dos distribuciones con medias diferentes</span>
 <span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">11</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span>
-<span class="n">yval.1</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
-<span class="n">yval.2</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+<span class="n">yval.1</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="c1"># distribución normal con valores xval (definidos arriba) centrados en valor (media) de 4 y donde el valor de la desviación típica es igual a 1</span>
+<span class="n">yval.2</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="c1"># la misma distribución pero ahora con una media centrada en 7</span>
+
+<span class="c1"># dibuja figura con primera distribución</span>
 <span class="nf">plot</span><span class="p">(</span> 	<span class="n">xval</span><span class="p">,</span> <span class="n">yval.1</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Densidad de probabilidad&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Valor observado&quot;</span><span class="p">,</span>
        <span class="n">frame.plot</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span>
 <span class="p">)</span>
+
+<span class="c1"># dibuja la segunda distribución (punteada)</span>
 <span class="nf">lines</span><span class="p">(</span>	<span class="n">xval</span><span class="p">,</span> <span class="n">yval.2</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -905,13 +916,17 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># draw the plot</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># dibuja una figura con dos distribuciones con desviaciones típicas diferentes</span>
 <span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span>
-<span class="n">yval.1</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
-<span class="n">yval.2</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+<span class="n">yval.1</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="c1"># distribución normal con valores xval (definidos arriba) centrados en valor (media) de 5 y donde el valor de la desviación típica es igual a 1</span>
+<span class="n">yval.2</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="c1"># la misma distribución pero ahora con una desviación típica de 2</span>
+
+<span class="c1"># dibuja figura con primera distribución</span>
 <span class="nf">plot</span><span class="p">(</span> 	<span class="n">xval</span><span class="p">,</span> <span class="n">yval.1</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Densidad de probabilidad&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Valor observado&quot;</span><span class="p">,</span>
        <span class="n">frame.plot</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span>
 <span class="p">)</span>
+
+<span class="c1"># dibuja la segunda distribución (punteada)</span>
 <span class="nf">lines</span><span class="p">(</span>	<span class="n">xval</span><span class="p">,</span> <span class="n">yval.2</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -930,7 +945,10 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># dibuja distribuciones el área que cubren 1 y 3 desviaciones típicas</span>
+<span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+
+<span class="c1"># función que dibuja el área que cubre un valor de desviación típica en la distribución</span>
 <span class="n">plotOne</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="p">)</span> <span class="p">{</span>
   <span class="nf">plot.new</span><span class="p">()</span>
   <span class="n">w</span><span class="o">&lt;-</span><span class="m">4</span>
@@ -938,8 +956,8 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
   <span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span> <span class="nf">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="o">-</span><span class="n">w</span><span class="p">),</span><span class="nf">min</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">w</span><span class="p">),</span><span class="n">.</span><span class="m">01</span><span class="p">)</span>
   <span class="n">yval</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
   <span class="n">end</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">xval</span><span class="p">)</span>
-  <span class="nf">polygon</span><span class="p">(</span> <span class="nf">c</span><span class="p">(</span><span class="n">xval</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="n">xval</span><span class="p">,</span><span class="n">xval</span><span class="p">[</span><span class="n">end</span><span class="p">]),</span> 
-           <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="m">0</span><span class="p">),</span>
+  <span class="nf">polygon</span><span class="p">(</span> <span class="nf">c</span><span class="p">(</span><span class="n">xval</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="n">xval</span><span class="p">,</span><span class="n">xval</span><span class="p">[</span><span class="n">end</span><span class="p">]),</span> <span class="c1">#determina el límite horizontal del área que es el valor de desviaciones típicas</span>
+           <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="m">0</span><span class="p">),</span> <span class="c1">#determina el límite vértica, según las probabilidades de una distribución normal</span>
            <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span>
            <span class="n">density</span> <span class="o">=</span> <span class="m">10</span> 
   <span class="p">)</span>
@@ -951,8 +969,8 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
   <span class="nf">title</span><span class="p">(</span> <span class="n">main</span><span class="o">=</span> <span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Área bajo la curva = &quot;</span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">area</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="s">&quot;%&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">),</span> <span class="n">font.main</span><span class="o">=</span><span class="m">1</span> <span class="p">)</span>
   
 <span class="p">}</span>
-<span class="nf">plotOne</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-<span class="nf">plotOne</span><span class="p">(</span><span class="m">-3</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="nf">plotOne</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span> <span class="c1"># dibuja el área bajo la curva (o probabilidad) de que una observación se encuentre entre 1 desviación típica alreadedor de la media (por encima y por debajo)</span>
+<span class="nf">plotOne</span><span class="p">(</span><span class="m">-3</span><span class="p">,</span><span class="m">3</span><span class="p">)</span> <span class="c1"># dibuja el área bajo la curva (o probabilidad) de que una observación se encuentre entre 3 desviaciones típicas alreadedor de la media</span>
 <span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -971,8 +989,8 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-<span class="nf">plotOne</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
-<span class="nf">plotOne</span><span class="p">(</span><span class="m">-50</span><span class="p">,</span><span class="m">-1</span><span class="p">)</span>
+<span class="nf">plotOne</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span> <span class="c1"># dibuja el área bajo la curva (o probabilidad) de que una observación se encuentre hasta 1 desviación típica por debajo de la media</span>
+<span class="nf">plotOne</span><span class="p">(</span><span class="m">-50</span><span class="p">,</span><span class="m">-1</span><span class="p">)</span> <span class="c1"># dibuja el área bajo la curva (o probabilidad) de que una observación sea igual o mayor que 1 desviación típica por debajo de la media</span>
 <span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1008,12 +1026,13 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span>
-<span class="n">yval</span> <span class="o">&lt;-</span> <span class="nf">dt</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># dibuja una distribución t teórica (con valores infinitos)</span>
+<span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span> <span class="c1"># eje x con valores t entre -5 y 5</span>
+<span class="n">yval</span> <span class="o">&lt;-</span> <span class="nf">dt</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="c1"># tres grados de libertad en la distribución t</span>
 <span class="nf">plot</span><span class="p">(</span> 	<span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Densidad de probabilidad&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Valor observado&quot;</span><span class="p">,</span>
        <span class="n">frame.plot</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">.</span><span class="m">4</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="nf">lines</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">emphGrey</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">emphGrey</span><span class="p">)</span> <span class="c1"># dibuja la distribución t por encima de una distribución normal</span>
 </pre></div>
 </div>
 </div>
@@ -1033,10 +1052,11 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span>
-<span class="n">yval</span> <span class="o">&lt;-</span> <span class="nf">dchisq</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># dibuja una distribución chi-cuadrada teórica (con valores infinitos)</span>
+<span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span> <span class="c1"># eje x con valores chi-cuadrado entre 0 y 10</span>
+<span class="n">yval</span> <span class="o">&lt;-</span> <span class="nf">dchisq</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="c1"># distribución con tres grados de libertad</span>
 <span class="nf">plot</span><span class="p">(</span> 	<span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Densidad de probabilidad&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Valor observado&quot;</span><span class="p">,</span>
-       <span class="n">frame.plot</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span>
+       <span class="n">frame.plot</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span> <span class="c1"># dibuja la distribución</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1057,11 +1077,11 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># draw the plot</span>
-<span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span>
-<span class="n">yval</span> <span class="o">&lt;-</span> <span class="nf">df</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="n">df1</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">df2</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># dibuja una distribución F teórica (con valores infinitos)</span>
+<span class="n">xval</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">)</span> <span class="c1"># eje x con valores F entre 0 y 10</span>
+<span class="n">yval</span> <span class="o">&lt;-</span> <span class="nf">df</span><span class="p">(</span> <span class="n">xval</span><span class="p">,</span> <span class="n">df1</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">df2</span><span class="o">=</span><span class="m">5</span><span class="p">)</span> <span class="c1"># distribución con 3 y 5 grados de libertad</span>
 <span class="nf">plot</span><span class="p">(</span> 	<span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Densidad de probabilidad&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Valor observado&quot;</span><span class="p">,</span>
-       <span class="n">frame.plot</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span>
+       <span class="n">frame.plot</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span> <span class="c1"># dibuja la distribución</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1081,17 +1101,19 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate the data </span>
-<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">1000</span>
-<span class="n">normal.a</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
-<span class="n">normal.b</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
-<span class="n">normal.c</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
-<span class="n">chi.sq.3</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">normal.a</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">normal.b</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">normal.c</span><span class="p">)</span><span class="o">^</span><span class="m">2</span>	
-<span class="n">normal.d</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
-<span class="n">t.3</span> <span class="o">&lt;-</span> <span class="n">normal.d</span> <span class="o">/</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span> <span class="p">)</span>
-<span class="n">chi.sq.20</span> <span class="o">&lt;-</span> <span class="nf">rchisq</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
-<span class="bp">F</span><span class="n">.</span><span class="m">3.20</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">chi.sq.20</span> <span class="o">/</span> <span class="m">20</span><span class="p">)</span>
-<span class="c1"># histogram for the normal data</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># crea una distribución normal con un número finito de datos</span>
+  
+<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">1000</span> <span class="c1"># tamaño de la muestra o datos</span>
+<span class="n">normal.a</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span> <span class="c1"># muestra 1</span>
+<span class="n">normal.b</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span> <span class="c1"># muestra 2</span>
+<span class="n">normal.c</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span> <span class="c1"># muestra 3</span>
+<span class="n">chi.sq.3</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">normal.a</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">normal.b</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">normal.c</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="c1"># agrupa 3 muestras para cálculo de chi cuadrada</span>
+<span class="n">normal.d</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span> <span class="c1"># muestra 4</span>
+<span class="n">t.3</span> <span class="o">&lt;-</span> <span class="n">normal.d</span> <span class="o">/</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span> <span class="p">)</span> <span class="c1"># calcula valores t de muestra 4</span>
+<span class="n">chi.sq.20</span> <span class="o">&lt;-</span> <span class="nf">rchisq</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span> <span class="c1"># calcula valores de chi-cuadrada de muestras 1, 2 y 3</span>
+<span class="bp">F</span><span class="n">.</span><span class="m">3.20</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">chi.sq.20</span> <span class="o">/</span> <span class="m">20</span><span class="p">)</span> <span class="c1"># calcula valores F </span>
+
+<span class="c1"># dibuja histrograma para datos de distribución normal</span>
 <span class="n">bw</span> <span class="o">&lt;-</span> <span class="n">.</span><span class="m">25</span>
 <span class="nf">hist</span><span class="p">(</span> 	<span class="n">normal.a</span><span class="p">,</span> <span class="nf">seq</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">normal.a</span><span class="p">)</span><span class="o">-</span><span class="n">bw</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">normal.a</span><span class="p">)</span><span class="o">+</span><span class="n">bw</span><span class="p">,</span><span class="n">bw</span><span class="p">),</span>
        <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">-4</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> 
@@ -1107,7 +1129,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/60651a66ebe65338287b51b45ae3d6d6c162ed9134774b1526fa1246890e7bb5.png" src="../_images/60651a66ebe65338287b51b45ae3d6d6c162ed9134774b1526fa1246890e7bb5.png" />
+<img alt="../_images/13298494a4394c23401470ae4cb919bb0dc1d2240be037df50d142f2d2513720.png" src="../_images/13298494a4394c23401470ae4cb919bb0dc1d2240be037df50d142f2d2513720.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.14</span> <span class="pre">Distribución</span> <span class="pre">normal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">Muestra</span> <span class="pre">A</span> <span class="pre">(histograma),</span> <span class="pre">junto</span> <span class="pre">con</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">normal</span> <span class="pre">verdadera</span> <span class="pre">(línea</span> <span class="pre">sólida)</span></code></p>
@@ -1119,8 +1141,9 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate the data </span>
-<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">1000</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># crea una distribución chi-cuadrada con un número finito de datos</span>
+
+<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">1000</span> <span class="c1"># tamaño de muestra</span>
 <span class="n">normal.a</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
 <span class="n">normal.b</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
 <span class="n">normal.c</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
@@ -1129,7 +1152,8 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="n">t.3</span> <span class="o">&lt;-</span> <span class="n">normal.d</span> <span class="o">/</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span> <span class="p">)</span>
 <span class="n">chi.sq.20</span> <span class="o">&lt;-</span> <span class="nf">rchisq</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
 <span class="bp">F</span><span class="n">.</span><span class="m">3.20</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">chi.sq.20</span> <span class="o">/</span> <span class="m">20</span><span class="p">)</span>
-<span class="c1"># histogram for the chisquared</span>
+
+<span class="c1"># dibuja histrograma para datos de distribución de chi cuadrada</span>
 <span class="n">bw</span><span class="o">&lt;-</span> <span class="n">.</span><span class="m">5</span>
 <span class="nf">hist</span><span class="p">(</span> 	<span class="n">chi.sq.3</span><span class="p">,</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">chi.sq.3</span><span class="p">)</span><span class="o">+</span><span class="n">bw</span><span class="p">,</span><span class="n">bw</span><span class="p">),</span>
        <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">16</span><span class="p">),</span> 
@@ -1145,7 +1169,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/ed58a51d6a4c632b63633e60bc89688cf021977e3b323dbab3cd71ad08e7e454.png" src="../_images/ed58a51d6a4c632b63633e60bc89688cf021977e3b323dbab3cd71ad08e7e454.png" />
+<img alt="../_images/1dcf8cc57bf181bd82f65c8881ebff697b0a079a9659a4f6ba2c12320643eee7.png" src="../_images/1dcf8cc57bf181bd82f65c8881ebff697b0a079a9659a4f6ba2c12320643eee7.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.15</span> <span class="pre">Distribución</span> <span class="pre">chi-cuadrada.</span> <span class="pre">Incluye</span> <span class="pre">a</span> <span class="pre">las</span> <span class="pre">Muestras</span> <span class="pre">A,</span> <span class="pre">B</span> <span class="pre">y</span> <span class="pre">C</span> <span class="pre">(3</span> <span class="pre">grados</span> <span class="pre">de</span> <span class="pre">libertad)</span></code></p>
@@ -1159,8 +1183,9 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate the data </span>
-<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">1000</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># crea una distribución t con un número finito de datos</span>
+ 
+<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">1000</span> <span class="c1"># tamaño de muestra</span>
 <span class="n">normal.a</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
 <span class="n">normal.b</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
 <span class="n">normal.c</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
@@ -1169,7 +1194,8 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="n">t.3</span> <span class="o">&lt;-</span> <span class="n">normal.d</span> <span class="o">/</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span> <span class="p">)</span>
 <span class="n">chi.sq.20</span> <span class="o">&lt;-</span> <span class="nf">rchisq</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
 <span class="bp">F</span><span class="n">.</span><span class="m">3.20</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">chi.sq.20</span> <span class="o">/</span> <span class="m">20</span><span class="p">)</span>
-<span class="c1"># histogram for the t data</span>
+
+<span class="c1"># dibuja histrograma para datos de distribución t</span>
 <span class="n">bw</span> <span class="o">&lt;-</span> <span class="n">.</span><span class="m">3</span>
 <span class="nf">hist</span><span class="p">(</span> 	<span class="n">t.3</span><span class="p">,</span> <span class="nf">seq</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">t.3</span><span class="p">)</span><span class="o">-</span><span class="n">bw</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">t.3</span><span class="p">)</span><span class="o">+</span><span class="n">bw</span><span class="p">,</span><span class="n">bw</span><span class="p">),</span>
        <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> 
@@ -1185,7 +1211,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/a37dfac81314ff50bdf74927b48a5001fccec121236bcd46b134a249bd1d4f0d.png" src="../_images/a37dfac81314ff50bdf74927b48a5001fccec121236bcd46b134a249bd1d4f0d.png" />
+<img alt="../_images/9f873623d72f2d8abfa7800613b751bc1d022c23f8907918ccddf04f392ed7b2.png" src="../_images/9f873623d72f2d8abfa7800613b751bc1d022c23f8907918ccddf04f392ed7b2.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.16</span> <span class="pre">Distribución</span> <span class="pre">t.</span> <span class="pre">Es</span> <span class="pre">el</span> <span class="pre">resultado</span> <span class="pre">de</span> <span class="pre">dividir</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">normal</span> <span class="pre">(en</span> <span class="pre">este</span> <span class="pre">caso</span> <span class="pre">la</span> <span class="pre">Muestra</span> <span class="pre">D)</span> <span class="pre">entre</span> <span class="pre">una</span> <span class="pre">variable</span> <span class="pre">chi-cuadrada</span> <span class="pre">escalada</span></code></p>
@@ -1197,8 +1223,9 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate the data </span>
-<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">1000</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># crea una distribución F con un número finito de datos</span>
+ 
+<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">1000</span> <span class="c1"># tamaño de muestra</span>
 <span class="n">normal.a</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
 <span class="n">normal.b</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
 <span class="n">normal.c</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span>
@@ -1207,7 +1234,8 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <span class="n">t.3</span> <span class="o">&lt;-</span> <span class="n">normal.d</span> <span class="o">/</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span> <span class="p">)</span>
 <span class="n">chi.sq.20</span> <span class="o">&lt;-</span> <span class="nf">rchisq</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
 <span class="bp">F</span><span class="n">.</span><span class="m">3.20</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">chi.sq.3</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">chi.sq.20</span> <span class="o">/</span> <span class="m">20</span><span class="p">)</span>
-<span class="c1"># histogram for the F dist data</span>
+
+<span class="c1"># dibuja histrograma para datos de distribución F</span>
 <span class="n">bw</span> <span class="o">&lt;-</span> <span class="n">.</span><span class="m">2</span>
 <span class="nf">hist</span><span class="p">(</span> 	<span class="bp">F</span><span class="n">.</span><span class="m">3.20</span><span class="p">,</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="bp">F</span><span class="n">.</span><span class="m">3.20</span><span class="p">)</span><span class="o">+</span><span class="n">bw</span><span class="p">,</span><span class="n">bw</span><span class="p">),</span>
        <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">6</span><span class="p">),</span> 
@@ -1223,7 +1251,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/0d9a9cdb0a86225de89109ae12fca68a2c7f99ad9fa57e1f6f20355914d4d4be.png" src="../_images/0d9a9cdb0a86225de89109ae12fca68a2c7f99ad9fa57e1f6f20355914d4d4be.png" />
+<img alt="../_images/65ccbf0b925451a10747dc1541bcf6f009bd83f82f067b50c154a21e4b1020b0.png" src="../_images/65ccbf0b925451a10747dc1541bcf6f009bd83f82f067b50c154a21e4b1020b0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.17</span> <span class="pre">Distribución</span> <span class="pre">F.</span> <span class="pre">En</span> <span class="pre">este</span> <span class="pre">ejemplo</span> <span class="pre">hipotético,</span> <span class="pre">se</span> <span class="pre">compara</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">chi-cuadrada</span> <span class="pre">de</span> <span class="pre">3</span> <span class="pre">grados</span> <span class="pre">de</span> <span class="pre">libertad</span> <span class="pre">previa</span> <span class="pre">con</span> <span class="pre">otra</span> <span class="pre">distribución</span> <span class="pre">chi-cuadrada</span> <span class="pre">con</span> <span class="pre">20</span> <span class="pre">grados</span> <span class="pre">de</span> <span class="pre">libertad</span> <span class="pre">(es</span> <span class="pre">decir,</span> <span class="pre">que</span> <span class="pre">incluye</span> <span class="pre">20</span> <span class="pre">muestras</span> <span class="pre">o</span> <span class="pre">variables)</span></code></p>
@@ -1258,7 +1286,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
         requestKernel: true,
         binderOptions: {
             repo: "negatoscope/fundamentos_book",
-            ref: "master",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",

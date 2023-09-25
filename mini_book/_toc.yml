@@ -3,3 +3,5 @@ root: docs/index
 sections:
 - file: docs/probability
 - file: docs/estimation
+- file: docs/hypothesis
+#- file: docs/introR

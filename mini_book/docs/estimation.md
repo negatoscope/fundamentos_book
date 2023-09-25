@@ -415,6 +415,7 @@ Estas tres afirmaciones que hemos deducido, pueden ser comprobadas a través de 
 $$
 \mbox{SEM} = \frac{\sigma}{ \sqrt{N} }
 $$ 
+
 Ya que en esta fórmula se divide la desviación estándar de la población $\sigma$ por la raíz cuadrada del tamaño muestral $N$, el error estándar disminuye conforme aumenta el tamaño muestral. También nos dice que la forma de la distribución muestral se vuelve normal[^1].
 
 [^1]: Hemos explicado el caso de la media muestral que satisface el teorema del límite central. Sin embargo, existen otros estadísticos muestrales que también lo hacen, y que no revisaremos, al ser esto una introducción. 

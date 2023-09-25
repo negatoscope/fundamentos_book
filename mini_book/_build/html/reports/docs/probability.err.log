@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "C:\Users\Luis\anaconda3\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Luis\anaconda3\lib\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\Luis\anaconda3\lib\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\Luis\anaconda3\lib\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\Luis\anaconda3\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\Luis\anaconda3\lib\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Luis\anaconda3\lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Luis\anaconda3\lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# dibuja una distribución F teórica (con valores infinitos)
+xval <- seq(0,10,.01) # eje x con valores F entre 0 y 10
+yval <- df( xval, df1=3, df2=5) distribución con 3 y 5 grados de libertad
+plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
+       frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l" # dibuja la distribución
+)
+------------------
+
+Error in parse(text = x, srcfile = src): <text>:3:33: unexpected symbol
+2: xval <- seq(0,10,.01) # eje x con valores F entre 0 y 10
+3: yval <- df( xval, df1=3, df2=5) distribución
+                                   ^
+Traceback:
+
+ERROR: Error in parse(text = x, srcfile = src): <text>:3:33: unexpected symbol
+2: xval <- seq(0,10,.01) # eje x con valores F entre 0 y 10
+3: yval <- df( xval, df1=3, df2=5) distribución
+                                   ^
+
+

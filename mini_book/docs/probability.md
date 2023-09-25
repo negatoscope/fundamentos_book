@@ -116,27 +116,27 @@ Tengamos en cuenta que al comienzo de esta secuencia, la *proporción* de caras 
 
 ```{code-cell} ir
 :tags: ["hide-input"]
-
-emphCol <- rgb(0,0,1)
-emphColLight <- rgb(.5,.5,1)
-emphGrey <- grey(.5)
+# muestra 4 simulaciones diferentes de lanzar una moneda 1000 veces. Cada vez imprime un resultado diferente
+emphCol <- rgb(0,0,1) #color negro del marco
+emphColLight <- rgb(.5,.5,1) #color azul de la línea de simulación
+emphGrey <- grey(.5) #color gris de línea punteada
 eps <- TRUE
 colour <- TRUE
-	width <- 12
-	height <- 8
+	width <- 12 #anchura de cada figura
+	height <- 8 #altura de cada figura
 	def.par <- par(no.readonly = TRUE)
-	layout( matrix(1:4,2,2) )
+	layout( matrix(1:4,2,2) ) #distribución de las figuras en 2x2
 	for( i in 1:4 ) {
 		
-		X <- as.numeric( runif(1000) > .5 )
-		X <- cumsum(X) / (1:1000)
-		plot( 1:1000, X, type="l", ylim=c(.3,.7), col=ifelse(colour,emphCol,emphGrey),
+		X <- as.numeric( runif(1000) > .5 ) #calcula 1000 lanzamientos
+		X <- cumsum(X) / (1:1000) #probabilidad acumulada de los 1000 lanzamientos
+		plot( 1:1000, X, type="l", ylim=c(.3,.7), col=ifelse(colour,emphCol,emphGrey), # dibuja la figura con la probabilidad acumuluda de los 1000 lanzamientos
 			xlab = "Número de lanzadas", ylab = "Proporción de caras", lwd=3
 			) 
 		abline(h=.5,lty=2,col=emphGrey,lwd=2)
 		
 	}
-	par(def.par)#- reset to default
+	par(def.par) #reinicia parámetros
 ```
 `Figura 1.1 Una imagen de cómo funciona la probabilidad frecuentista. Si lanzas una moneda justa una y otra vez, la proporción de caras deja de fluctuar y converge hacia la probabilidad real de 0.5. Cada panel muestra uno de las cuatro simulaciones con 1.000 lanzamientos cada uno. Aunque ninguna de estas simulaciones terminó con un valor exacto de .5, si hubiéramos extendido el experimento por un número infinito de lanzamientos lo habríamos conseguido.`
 
@@ -195,18 +195,19 @@ Cada uno de estos eventos tiene una probabilidad que se encuentra entre 0 y 1, y
 
 ```{code-cell} r
 :tags: ["hide-input"]
-probabilities <- c( .5, .3, .1, 0, .1)
-	eventNames <- c( "V. azules", "V. grises", "V. negros", 
+# figura con distribución de pantalones. 
+probabilities <- c( .5, .3, .1, 0, .1) # establece la probabilidad de cada tipo de pantalón
+	eventNames <- c( "V. azules", "V. grises", "V. negros", # nombres de pantalones
 					 "Traje negro", "Chándal azul" )
 	
-	# draw the plot
+	# dibuja la figura
 	barplot( 
-		height= probabilities, 
-		xlab = "Evento",
-		ylab = "Probabilidad del evento",
+		height= probabilities, # en el eje y acomoda las probabilidades de antes
+		xlab = "Evento", # nombre del eje x
+		ylab = "Probabilidad del evento", # nombre del eje y
 		names.arg = eventNames,
-		density = 10,
-		col = ifelse(colour,emphCol,emphGrey)
+		density = 10, # número de pantalones
+		col = ifelse(colour,emphCol,emphGrey) # usa colores definidos en la figura anterior
 	)
 ```
 `Figura 1.2: Demostración visual de la distribución de probabilidad de los “pantalones”. Existen 5 “eventos elementales”, que se corresponden con mis 5 pares de pantalones. Cada evento tiene una probabilidad de ocurrir: esta probabilidad es un número entre 0 y 1. La suma de estas probabilidades es 1.`
@@ -279,25 +280,25 @@ knitr::kable(data.frame(stringsAsFactors=FALSE, Binomial = c("$P(X | \\theta, N)
 
 ```{code-cell} r
 :tags: ["hide-input"]
-# plots the three examples of a binomial distribution
-# needed for printing
-width <- 8
-height <- 6
-# function to produce a styled binomial plot
+# dibuja un ejemplo de una distribución binomial
+width <- 8 # ancho de cada figura
+height <- 6 # alto de cada figura
+
+# función que integra el cálculo de una probabilidad binomial y la dibuja
 binomPlot <- function( n,p, ... ) {
   
-  # probabilities of each outcome
+  # define la probabilidad de cada resultado
   out <- 0:n
-  prob <- dbinom( x=out, size=n, prob=p )
+  prob <- dbinom( x=out, size=n, prob=p ) # función de R para el cálculo de una probabilidad: necesita el tamaño de muestra y probabilidad
   
-  # plot
+  # dibuja la figura
   plot( 
     out, prob, type="h", lwd=3, ylab="Probabilidad", 
     frame.plot=FALSE, col=ifelse(colour,emphCol,"black"), ...
   )
   
 }
-# skulls image...
+# una vez creada la función binomPlot ahora la podemos usar, incluyendo el tamaño de muestra (n) y la probabilidad (p)
 binomPlot( n=20, p=1/6, xlab="Número de calaveras observadas" )
 ```
 `Figura 1.3: La distribución binomial con parámetro de tamaño de N=20 y una probabilidad de éxito de theta=1/6. Cada barra vertical representa la probabilidad de un resultado específico (un valor posible de X). Ya que esta es una distribución de probabilidad, cada una de las probabilidades debe ser un número entre 0 y 1, y la altura de las barras también deben sumar 1.`
@@ -306,44 +307,48 @@ Para darte una idea de cómo cambia la distribución binomial cuando modificamos
 
 ```{code-cell} r
 :tags: ["hide-input"]
-  # plots the three examples of a binomial distribution
-  	# needed for printing
+  # dibuja un ejemplo de una distribución binomial, parecido al anterior
   	width <- 8
   	height <- 6
-  	# function to produce a styled binomial plot
+  	
+    # función que integra el cálculo de una probabilidad binomial y la dibuja
   	binomPlot <- function( n,p, ... ) {
-  		# probabilities of each outcome
+  		
+      # define la probabilidad de cada resultado
   		out <- 0:n
   		prob <- dbinom( x=out, size=n, prob=p )
-  		# plot
+  		
+      # dibuja la figura
   		plot(
   			out, prob, type="h", lwd=3, ylab="Probabilidad",
   			frame.plot=FALSE, col=ifelse(colour,emphCol,"black"), ...
   		)
   	}
-  	# coins image #1...
+  	# usa función binomPlot
   	binomPlot( n=20, p=1/2, xlab="Número de caras observadas" )
 ```
 `Figura 1.4`
 
 ```{code-cell} r
 :tags: ["hide-input"]
-  # plots the three examples of a binomial distribution
-  	# needed for printing
+  # dibuja un ejemplo de una distribución binomial, parecido al anterior
   	width <- 8
   	height <- 6
-  	# function to produce a styled binomial plot
+  	
+    # función que integra el cálculo de una probabilidad binomial y la dibuja
   	binomPlot <- function( n,p, ... ) {
-  		# probabilities of each outcome
+  		
+      # define la probabilidad de cada resultado
   		out <- 0:n
   		prob <- dbinom( x=out, size=n, prob=p )
-  		# plot
+  		
+      # dibuja la figura
   		plot(
   			out, prob, type="h", lwd=3, ylab="Probabilidad",
   			frame.plot=FALSE, col=ifelse(colour,emphCol,"black"), ...
   		)
   	}
-  	# coins image #2...
+  	# usa función binomPlot
   	binomPlot( n=100, p=1/2, xlab="Número de caras observadas" )
 ```
 `Figura 1.5`
@@ -366,14 +371,14 @@ Vamos intentar descifrar lo que significa que una variable esté normalmente dis
 
 ```{code-cell} r
 :tags: ["hide-input"]
-# plots the standard normal
-# needed for printing
+# dibuja una distribución normal
 width <- 8
 height <- 6
 fileName <- "standardNormal.eps"	
-# draw the plot
-xval <- seq(-3,3,.01)
-yval <- dnorm( xval, 0, 1)
+xval <- seq(-3,3,.01) # establece los límites del eje x, desde -3 hasta 3 en intervalos de 0.01
+yval <- dnorm( xval, 0, 1) # función que calcula la probabilidad de valores dentro de una distribución normal, que incluye la probabilidad para los valores especificados arriba (-3 a 3) centrados en 0, con valor de desviación típica igual a 1
+
+# dibuja la imagen 
 plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
        frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l"
 )
@@ -384,26 +389,34 @@ Una vez visto esto, vamos a analizar cómo funciona una distribución normal. En
 
 ```{code-cell} r
 :tags: ["hide-input"]
-# draw the plot
+# dibuja una figura con dos distribuciones con medias diferentes
 xval <- seq(0,11,.01)
-yval.1 <- dnorm( xval, 4, 1)
-yval.2 <- dnorm( xval, 7, 1)
+yval.1 <- dnorm( xval, 4, 1) # distribución normal con valores xval (definidos arriba) centrados en valor (media) de 4 y donde el valor de la desviación típica es igual a 1
+yval.2 <- dnorm( xval, 7, 1) # la misma distribución pero ahora con una media centrada en 7
+
+# dibuja figura con primera distribución
 plot( 	xval, yval.1, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
        frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l"
 )
+
+# dibuja la segunda distribución (punteada)
 lines(	xval, yval.2, lwd=3, col=ifelse(colour,emphCol,"black"), lty=2 )
 ```
 `Figura 1.7 Gráfica que demuestra lo que sucede cuando se cambia la media de una distribución normal. La línea sólida representa una distribución normal con media de mu=4. La línea discontinua muestra una distribución normal con una media de mu=7. En ambos casos, la desviación típica es de sigma=1. Vemos como las dos distribuciones tienen la misma forma, pero la distribución con la línea discontinua se desplaza hacia la derecha`
 
 ```{code-cell} r
 :tags: ["hide-input"]
-# draw the plot
+# dibuja una figura con dos distribuciones con desviaciones típicas diferentes
 xval <- seq(0,10,.01)
-yval.1 <- dnorm( xval, 5, 1)
-yval.2 <- dnorm( xval, 5, 2)
+yval.1 <- dnorm( xval, 5, 1) # distribución normal con valores xval (definidos arriba) centrados en valor (media) de 5 y donde el valor de la desviación típica es igual a 1
+yval.2 <- dnorm( xval, 5, 2) # la misma distribución pero ahora con una desviación típica de 2
+
+# dibuja figura con primera distribución
 plot( 	xval, yval.1, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
        frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l"
 )
+
+# dibuja la segunda distribución (punteada)
 lines(	xval, yval.2, lwd=3, col=ifelse(colour,emphCol,"black"), lty=2 )
 ```
 `Figura 1.8 Una ilustración de lo que sucede cuando cambia la desviación estándar de una distribución normal. Ambas distribuciones tienen una media de mu=5, pero diferentes desviaciones estándar. La línea continua dibuja una distribución con una desviación estándar sigma=1, y la línea discontinua muestra una distribución con desviación estándar de sigma=2. Como consecuencia, ambas distribuciones están centradas en el mismo lugar, pero la distribución con la línea discontinua es más ancha que la otra.`
@@ -412,7 +425,10 @@ Antes de seguir adelante, quiero señalar una característica importante de la d
 
 ```{code-cell} r
 :tags: ["hide-input"]
+# dibuja distribuciones el área que cubren 1 y 3 desviaciones típicas
 par(mfrow=c(1,2))
+
+# función que dibuja el área que cubre un valor de desviación típica en la distribución
 plotOne <- function( a,b ) {
   plot.new()
   w<-4
@@ -420,8 +436,8 @@ plotOne <- function( a,b ) {
   xval <- seq( max(a,-w),min(b,w),.01)
   yval <- dnorm(xval,0,1)
   end <- length(xval)
-  polygon( c(xval[1],xval,xval[end]), 
-           c(0,yval,0),
+  polygon( c(xval[1],xval,xval[end]), #determina el límite horizontal del área que es el valor de desviaciones típicas
+           c(0,yval,0), #determina el límite vértica, según las probabilidades de una distribución normal
            col=ifelse(colour,emphCol,"black"),
            density = 10 
   )
@@ -433,8 +449,8 @@ plotOne <- function( a,b ) {
   title( main= paste("Área bajo la curva = ",round(area*100,1),"%", sep=""), font.main=1 )
   
 }
-plotOne(-1,1)
-plotOne(-3,3)
+plotOne(-1,1) # dibuja el área bajo la curva (o probabilidad) de que una observación se encuentre entre 1 desviación típica alreadedor de la media (por encima y por debajo)
+plotOne(-3,3) # dibuja el área bajo la curva (o probabilidad) de que una observación se encuentre entre 3 desviaciones típicas alreadedor de la media
 par(mfrow=c(1,1))
 ```
 `Figura 1.9 El área bajo la curva indica la probabilidad de que una observación se encuentre dentro de un rango determinado. Las línea continua traza una distribución normal con media mu=0 y desviación típica sigma=1. El área sombreada ilustra el ‘área bajo la curva’ para dos casos importantes. En el panel izquierdo, podemos ver que hay es un 68.3% de probabilidad de que una observación caiga dentro de 1 desviación estándar sobre la media. En el panel derecho, vemos que existe una probabilidad del 95.4% de que una observación se encuentre dentro de 2 desviaciones estándar sobre la media.`
@@ -442,8 +458,8 @@ par(mfrow=c(1,1))
 ```{code-cell} r
 :tags: ["hide-input"]
 par(mfrow=c(1,2))
-plotOne(-1,0)
-plotOne(-50,-1)
+plotOne(-1,0) # dibuja el área bajo la curva (o probabilidad) de que una observación se encuentre hasta 1 desviación típica por debajo de la media
+plotOne(-50,-1) # dibuja el área bajo la curva (o probabilidad) de que una observación sea igual o mayor que 1 desviación típica por debajo de la media
 par(mfrow=c(1,1))
 ```
 `Figura 1.10 Dos ejemplos más sobre el concepto del ‘área bajo la curva’. Existe un 15.9% de probabilidad de que una observación se encuentre 1 desviación estándar o menos por debajo de la media (panel izquierdo), y una probabilidad del 34.1% de que una observación sea mayor que una desviación estándar por debajo de la media pero menor que la media (panel derecho). Si sumamos estos dos valores, obtendremos 15.9% + 34.1% = 50%. Para datos que estén normalmente distribuidos, existe un 50% de probabilidad de que una observación caiga por debajo de la media. Esto implica que existe un 50% de probabilidad de que caiga por encima de la media.`
@@ -474,12 +490,13 @@ La distribución normal es la distribución más utilizada por los estadísticos
 
 ```{code-cell} r
 :tags: ["hide-input"]
-xval <- seq(-5,5,.01)
-yval <- dt( xval, df=3)
+# dibuja una distribución t teórica (con valores infinitos)
+xval <- seq(-5,5,.01) # eje x con valores t entre -5 y 5
+yval <- dt( xval, df=3) # tres grados de libertad en la distribución t
 plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
        frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l", ylim=c(0,.4)
 )
-lines( xval, dnorm(xval,0,1), lty=2, col=emphGrey)
+lines( xval, dnorm(xval,0,1), lty=2, col=emphGrey) # dibuja la distribución t por encima de una distribución normal
 ```
 `Figura 1.11 Una distribución t con 3 grados de libertad (línea continua). Se asemeja a una distribución normal, pero no es igual (línea discontinua). Ten en cuenta que las “colas” de la distribución t son más “pesadas” (es decir, se extienden más hacia afuera, conteniendo más valores que se alejan de la media) que las colas de la distribución normal.`
 
@@ -487,10 +504,11 @@ lines( xval, dnorm(xval,0,1), lty=2, col=emphGrey)
 
 ```{code-cell} r
 :tags: ["hide-input"]
-xval <- seq(0,10,.01)
-yval <- dchisq( xval, df=3)
+# dibuja una distribución chi-cuadrada teórica (con valores infinitos)
+xval <- seq(0,10,.01) # eje x con valores chi-cuadrado entre 0 y 10
+yval <- dchisq( xval, df=3) # distribución con tres grados de libertad
 plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
-       frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l"
+       frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l" # dibuja la distribución
 )
 ```
 `Figura 1.12 Una distribución $\chi^2$_** con 3 grados de libertad (3 repeticiones, lo explicaremos más adelante). Observa que los valores siempre deben ser mayores que cero (los valores se elevan al cuadrado y se suman), y que la distribución es bastante sesgada (en este caso hacia la derecha). Estas son las características clave de una distribución chi-cuadrado.`
@@ -499,11 +517,11 @@ plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado
 
 ```{code-cell} r
 :tags: ["hide-input"]
-# draw the plot
-xval <- seq(0,10,.01)
-yval <- df( xval, df1=3, df2=5)
+# dibuja una distribución F teórica (con valores infinitos)
+xval <- seq(0,10,.01) # eje x con valores F entre 0 y 10
+yval <- df( xval, df1=3, df2=5) # distribución con 3 y 5 grados de libertad
 plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
-       frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l"
+       frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l" # dibuja la distribución
 )
 ```
 `Figura 1.13 Una distribución F con 3 y 5 grados de libertad. Cualitativamente hablando, es similar a una distribución de chi-cuadrado, pero por lo general el significado no es el mismo.`
@@ -514,17 +532,19 @@ Esta "Muestra A" es una variable que contiene 1,000 números que se distribuyen 
 
 ```{code-cell} r
 :tags: ["hide-input"]
-# generate the data 
-n <- 1000
-normal.a <- rnorm( n )
-normal.b <- rnorm( n )
-normal.c <- rnorm( n )
-chi.sq.3 <- (normal.a)^2 + (normal.b)^2 + (normal.c)^2	
-normal.d <- rnorm( n )
-t.3 <- normal.d / sqrt( chi.sq.3 / 3 )
-chi.sq.20 <- rchisq( n, 20)
-F.3.20 <- (chi.sq.3 / 3) / (chi.sq.20 / 20)
-# histogram for the normal data
+# crea una distribución normal con un número finito de datos
+  
+n <- 1000 # tamaño de la muestra o datos
+normal.a <- rnorm( n ) # muestra 1
+normal.b <- rnorm( n ) # muestra 2
+normal.c <- rnorm( n ) # muestra 3
+chi.sq.3 <- (normal.a)^2 + (normal.b)^2 + (normal.c)^2 # agrupa 3 muestras para cálculo de chi cuadrada
+normal.d <- rnorm( n ) # muestra 4
+t.3 <- normal.d / sqrt( chi.sq.3 / 3 ) # calcula valores t de muestra 4
+chi.sq.20 <- rchisq( n, 20) # calcula valores de chi-cuadrada de muestras 1, 2 y 3
+F.3.20 <- (chi.sq.3 / 3) / (chi.sq.20 / 20) # calcula valores F 
+
+# dibuja histrograma para datos de distribución normal
 bw <- .25
 hist( 	normal.a, seq(min(normal.a)-bw,max(normal.a)+bw,bw),
        freq=FALSE, xlim=c(-4,4), 
@@ -542,8 +562,9 @@ En la Figura anterior podemos observar cómo han sido generados muchos valores d
 
 ```{code-cell} r
 :tags: ["hide-input"]
-# generate the data 
-n <- 1000
+# crea una distribución chi-cuadrada con un número finito de datos
+
+n <- 1000 # tamaño de muestra
 normal.a <- rnorm( n )
 normal.b <- rnorm( n )
 normal.c <- rnorm( n )
@@ -552,7 +573,8 @@ normal.d <- rnorm( n )
 t.3 <- normal.d / sqrt( chi.sq.3 / 3 )
 chi.sq.20 <- rchisq( n, 20)
 F.3.20 <- (chi.sq.3 / 3) / (chi.sq.20 / 20)
-# histogram for the chisquared
+
+# dibuja histrograma para datos de distribución de chi cuadrada
 bw<- .5
 hist( 	chi.sq.3, seq(0,max(chi.sq.3)+bw,bw),
        freq=FALSE, xlim=c(0,16), 
@@ -574,8 +596,10 @@ Si tomamos un conjunto de variables normalmente distribuidas (pensemos ahora en 
 
 ```{code-cell} r
 :tags: ["hide-input"]
-# generate the data 
-n <- 1000
+
+# crea una distribución t con un número finito de datos
+ 
+n <- 1000 # tamaño de muestra
 normal.a <- rnorm( n )
 normal.b <- rnorm( n )
 normal.c <- rnorm( n )
@@ -584,7 +608,8 @@ normal.d <- rnorm( n )
 t.3 <- normal.d / sqrt( chi.sq.3 / 3 )
 chi.sq.20 <- rchisq( n, 20)
 F.3.20 <- (chi.sq.3 / 3) / (chi.sq.20 / 20)
-# histogram for the t data
+
+# dibuja histrograma para datos de distribución t
 bw <- .3
 hist( 	t.3, seq(min(t.3)-bw,max(t.3)+bw,bw),
        freq=FALSE, xlim=c(-5,5), 
@@ -602,8 +627,10 @@ Del mismo modo, podemos obtener una distribución $F$ al dividir dos distribucio
 
 ```{code-cell} r
 :tags: ["hide-input"]
-# generate the data 
-n <- 1000
+
+# crea una distribución F con un número finito de datos
+ 
+n <- 1000 # tamaño de muestra
 normal.a <- rnorm( n )
 normal.b <- rnorm( n )
 normal.c <- rnorm( n )
@@ -612,7 +639,8 @@ normal.d <- rnorm( n )
 t.3 <- normal.d / sqrt( chi.sq.3 / 3 )
 chi.sq.20 <- rchisq( n, 20)
 F.3.20 <- (chi.sq.3 / 3) / (chi.sq.20 / 20)
-# histogram for the F dist data
+
+# dibuja histrograma para datos de distribución F
 bw <- .2
 hist( 	F.3.20, seq(0,max(F.3.20)+bw,bw),
        freq=FALSE, xlim=c(0,6), 
