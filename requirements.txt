@@ -5,3 +5,4 @@ quantecon
 jupyter-book
 numpy
 ir
+nbinteract

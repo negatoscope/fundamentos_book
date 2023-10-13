@@ -4,4 +4,5 @@ sections:
 - file: docs/probability
 - file: docs/estimation
 - file: docs/hypothesis
-#- file: docs/introR
+- file: docs/introR
+- file: docs/evaluation

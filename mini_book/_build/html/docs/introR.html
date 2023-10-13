@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/introR';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5 Ejercicios de evaluación" href="evaluation.html" />
+    <link rel="prev" title="3 Contraste de hipótesis" href="hypothesis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -146,10 +148,12 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="probability.html">1 Probabilidad y Distribuciones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="estimation.html">2 Estimación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypothesis.html">3 Contraste de hipótesis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4 Introducción a R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">5 Ejercicios de evaluación</a></li>
 </ul>
 
     </div>
@@ -339,7 +343,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -355,6 +361,20 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-r">4.1 ¿Qué es R?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-e-ideas-basicas-sobre-programacion-con-r">4.2 Conceptos e ideas básicas sobre programación con R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones">4.2.1 Funciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores-y-variables">4.2.2 Vectores y variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-resolver-los-ejercicios-en-r-de-la-asignatura">4.3 ¿Cómo resolver los ejercicios en R de la asignatura?</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -366,6 +386,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-r">
 <span id="probability"></span><h1>4 Introducción a R<a class="headerlink" href="#introduccion-a-r" title="Permalink to this heading">#</a></h1>
+<p>Esta sección tiene como objetivo que conozcas los fundamentos más básicos del lenguaje de programación R que nos puedan servir para el desarrollo de las clases de nuestra asignatura. No pretendo que te conviertas en un/a programador/a al terminar este curso; busco presentar una herramienta alternativa muy utilizada para el análisis estadístico y su enseñanza, y si esto despertará tu interés, encontrarás más adelante enlaces con recursos educativos formales muy buenos y estaré encantado de ayudarte si así lo deseas.</p>
+<section id="que-es-r">
+<h2>4.1 ¿Qué es R?<a class="headerlink" href="#que-es-r" title="Permalink to this heading">#</a></h2>
+<p>R es un lenguaje de programación, que a diferencia de otros, se especializa en sus aplicaciones para el análisis estadístico y gráfico. Es ampliamente utilizado tanto por matemáticos e ingenieros, como científicos de ciencias sociales incluidos los que hacen investigación en Educación.</p>
+<p>En realidad, R por sí mismo consiste en una serie de reglas y comandos pre-establecidos que permiten la creación de pequeños “programas” para resolver alguna cuestión específica. Por ejemplo, es posible crear un “programa” que te permita subir tus propios datos, realice un test estadístico, realice un informe con los resultados y que dibuje una figura que nos permita visualizarlos. A diferencia de otros lenguajes de programación, este procedimiento es relativamente sencillo y no requiere muchos pasos o <em>líneas de código</em>.</p>
+<p>Otra ventaja que tiene R, es el hecho de ser una herramienta gratuita y abierta a todo el mundo, lo cual significa que cualquier usuario puede crear nuevos “programas” o pequeñas aplicaciones y compartirlas con aquellos que estén interesados. Esto se hace a través de <em>paquetes</em> que un usuario puede crear y subir para que otro usuario lo pueda descargar y utilizar.</p>
+<p>Para poder utilizar el lenguaje R es necesario utilizar un programa que pueda ejecutarlo. En los ordenadores tenemos la aplicación <a class="reference external" href="https://posit.co/download/rstudio-desktop/">RStudio</a>, que es una interfaz gráfica (término técnico para un programa de ordenador que puedes ver y con el que puedes interactuar) que puedes tener instalada y usar en cualquier momento. Además, existen plataformas online como <a class="reference external" href="https://posit.cloud/">Posit Cloud</a>, que es lo mismo que RStudio pero almacenado en una página web. Esta segunda opción es un poco más limitada, pero para el usuario promedio (como nosotros) suele ser más que suficiente.</p>
+<p>Para nuestra clase de Fundamentos de Investigación II lo he puesto un poco más fácil. Debajo encontrarás una caja de texto que llamamos <strong><em>terminal</em></strong>. La he programado de forma que puedas escribir en lenguaje R directamente sin tener que descargar ninguna aplicación. Para que funcione, selecciona en la parte superior de esta página sobre el símbolo de un cohete la opción que pone “Live Code”. Si es la primera vez que lo haces, este proceso puede durar unos 10 minutos, por lo que te pido paciencia. Una vez que esté listo verás la leyenda “Launching from mybinder.org: <strong><em>ready</em></strong>”. Esto significa que podemos empezar a programar. Intenta hacer alguna operación matemática (por ejemplo, copia y pega 2023*2022), dando clic en el botón “run” para que la ejecute.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Escribe líneas de código aquí. Para ejecutar el código, presiona el botón de &quot;Play&quot;</span>
@@ -373,7 +401,124 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Esta sección tiene como objetivo que conozcas los fundamentos más básicos del lenguaje de programación R que nos puedan servir para el desarrollo de las clases de nuestra asignatura. No pretendo que te conviertas en un/a programador/a al terminar este curso; busco presentar una herramienta alternativa muy utilizada para el análisis estadístico y su enseñanza, y si esto despertará tu interés, encontrarás más adelante enlaces con recursos educativos formales muy buenos y estaré encantado de ayudarte si así lo deseas.</p>
+<p>Si todo funciona correctamente, en la parte inferior de la caja deberás observar el resultado de la operación (4090506). ¡Felicidades, ahora tienes R en tus apuntes! Como habrás notado, puedes utilizarlo una calculadora, pero lo interesante es que podemos utilizarlo para hacer cálculos más demandantes (como los tests estadístico), y, sobre todo, para crear imágenes y gráficos sobre los datos y los cálculos que hagamos, lo cuál nos permitirá entender mejor los conceptos de la asignatura.</p>
+</section>
+<section id="conceptos-e-ideas-basicas-sobre-programacion-con-r">
+<h2>4.2 Conceptos e ideas básicas sobre programación con R<a class="headerlink" href="#conceptos-e-ideas-basicas-sobre-programacion-con-r" title="Permalink to this heading">#</a></h2>
+<p>Como he dicho, esta no es una asignatura sobre programación. Sin embargo, creo que es importante que al menos conozcas algúnos de los conceptos y comandos de R más elementales. De cualquier forma, si observar el código que he escrito para estos apuntes, verás que la mayor parte de las líneas de código que hacer algo importante están explicadas tienen un comentario (que inicia con este signo #) que explica brevemente para qué funciona esa línea en concreto.</p>
+<section id="funciones">
+<h3>4.2.1 Funciones<a class="headerlink" href="#funciones" title="Permalink to this heading">#</a></h3>
+<p>Las funciones son objetos que contienen líneas de código interrelacionadas y con un orden predefinido que se ejecutan cada vez que el usuario “llama” o “pide” a R esa función. Esto se explica mejor con un ejemplo.</p>
+<p>Imagina que quieres sumar los números 5, 11, 2, 7 y 8. Ya sabes que R puede funcionar como una calculadora, por lo que lo único que tendrías que hacer es:</p>
+<p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">+</span> <span class="pre">11</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">7</span> <span class="pre">+</span> <span class="pre">8</span></code></p>
+<p>Sin embargo, tenemos una función específica para sumar <code class="docutils literal notranslate"><span class="pre">sum()</span></code>. Si queremos sumar los mismos números utilizando esta función escribiríamos:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sum(5,11,2,7,8)</span></code></p>
+<p>Si lo ejecutas, comprobarás que el resultado es el mismo. Y así como tenemos una función para sumar, tener funciones para cualquier operación matemática, y en realidad, para casi cualquier cosa que te puedas imaginar: dibujar un mapa que muestre volcanes activos, buscar y contar en un archivo de Excel los datos que contengan un número, etc…</p>
+<p>Utilizar esta función con sólo 5 números te podrá resultar redundante o poco útil; sin embargo, las funciones cumplen mejor con su función cuando las utilizamos en conjunto con los <em>vectores</em> y <em>variables</em>.</p>
+</section>
+<section id="vectores-y-variables">
+<h3>4.2.2 Vectores y variables<a class="headerlink" href="#vectores-y-variables" title="Permalink to this heading">#</a></h3>
+<p>Un vector es el tipo de objeto más sencillo de R. Un vector es esencialmente un conjunto de elementos (números, nombres, etc.), que agrupados nos permite realizar operaciones de forma más sencilla. Para definir un vector utilizamos la función <code class="docutils literal notranslate"><span class="pre">c()</span></code>. Siguiendo el ejemplo anterior:</p>
+<p><code class="docutils literal notranslate"><span class="pre">c(5,11,2,7,8)</span></code></p>
+<p>Un vector es más útil cuando le ponemos un nombre, es decir, <em>cuando lo convertimos en una variable</em>. Esto es porque es más fácil referirnos al nombre del conjunto (variable), que escribir todos los números cada vez que los necesitemos. Por ejemplo, pongamos el nombre “a” para definir nuestra variable de 4 numeros:</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;-</span> <span class="pre">c(5,11,2,7,8)</span></code></p>
+<p>Generalmente, los vectores y las variables los utilizamos en el contexto de una función cuando queremos que sean un elemento más dentro de muchos otros. Imagina que ahora tenemos una nueva variable “b” con 4 nuevos números:</p>
+<p><code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">&lt;-</span> <span class="pre">c(12,4,10,6)</span></code></p>
+<p>Si quisieras usar la función <code class="docutils literal notranslate"><span class="pre">sum()</span></code> podrías meter uno a uno los números de los vectores y obtener así la suma. O si no, puedes simplemente incluir “a” y “b” dentro de la función, y así sumar sus elementos:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sum(a,b)</span></code></p>
+<p>Podemos aprovechar y obtener la media de cada variable:</p>
+<p><code class="docutils literal notranslate"><span class="pre">mean(a)</span></code></p>
+<p>Como puedes ver, usar variables puede facilitar nuestro trabajo cuando trabajemos con una función. Esto se hace más evidente cuando los vectores o variables tiene más elementos.</p>
+<p>Además de <code class="docutils literal notranslate"><span class="pre">sum()</span></code> y <code class="docutils literal notranslate"><span class="pre">mean()</span></code> existen muchísimas más funciones por defecto ya incluidas en R y que nos ayudan a calcular/crear prácticamente cualquier cosa (<a class="reference external" href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwjv2vqB9syBAxUkTaQEHe0VBYoQFnoECBQQAQ&amp;url=https%3A%2F%2Fraw.githubusercontent.com%2Frstudio%2Fcheatsheets%2Fmain%2Ftranslations%2Fspanish%2Fbase-r_es.pdf&amp;usg=AOvVaw3vYU2o5apla4SkYUTEEfgn&amp;opi=89978449">aquí</a> puedes consultar algunas de ellas y cómo usarlas). Además, tú puedes crear también tus propias funciones para resolver problemas específicos que puedas tener.</p>
+</section>
+</section>
+<section id="como-resolver-los-ejercicios-en-r-de-la-asignatura">
+<h2>4.3 ¿Cómo resolver los ejercicios en R de la asignatura?<a class="headerlink" href="#como-resolver-los-ejercicios-en-r-de-la-asignatura" title="Permalink to this heading">#</a></h2>
+<p>Seguramente habrás notado que estos apuntes de la asignatura vienen acompañados de algunas figuras o imágenes que ayudar a ilustrar los conceptos que han sido presentados. Sin embargo, ¡cada una de esas figuras fue construída utilizando R! Esto significa que si modificamos los parámetros del código que las producen podríamos observar, por ejemplo, cómo cambia una distribución si modificamos la media o la desviación típica.</p>
+<p>Para facilitar la accesabilidad, y poder utilizar R sin tener que descargar e instalar programas (con los riesgos que ello conlleva), he adaptado esta página web de tal forma que podamos editar directamente el código R que construye las figuras.</p>
+<p>Para activar esta funcionalidad deberás seguir los siguientes pasos:</p>
+<ol class="arabic simple">
+<li><p>Hacer clic en el “cohete” localizado en la parte superior de la página web y seleccionar la opción <em>Live Code</em>. Esto iniciará una serie de procesos remotos (básicamente, conectarse con un ordenador que ejecutará el código). Si lo haces por primera vez (o si ha pasado mucho tiempo desde la última vez) esto puede tardar unos 5-10 minutos. El proceso habrá terminado cuando veas en la parte superior de la página el mensaje: “Launching from mybinder.org: <strong><em>ready</em></strong>”.</p></li>
+<li><p>En cada Figura verás un botón desplegable, que al hacer clic en él, muestra una caja con el código que construye esa figura. Si has seguido el paso 1. verás también 3 botones: <em>run</em>, <em>restart</em> y <em>restart &amp; run all</em>. De estos tres, el que más nos importa es el botón de <strong><em>run</em></strong> que ejecutará el código presente en la caja.</p></li>
+<li><p>Puedes ejecutar el código y obtener la imagen original de los apuntes. Sin embargo, y esto lo interesante, puedes modificar alguno de los elementos del código y explorar cómo eso afecta la visualización resultante. Para saber qué elementos puedes cambiar, verás que he puesto un comentario encima o al final de cada línea (seguido por el símbolo #), indicando en pocas palabras lo que hace esa línea. Así, tendrás una guía sobre qué elementos cambiar y pensar sobre cuáles serán los posibles efectos de ellos.</p></li>
+</ol>
+<p>Intenta seguir estos pasos con el siguiente ejemplo:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># vamos a crear una variable &quot;datos&quot; que contenga un vector con 10 números que representan la edad de 10 participantes</span>
+<span class="n">datos</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">35</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">45</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">60</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">70</span><span class="p">)</span>
+
+<span class="c1"># con la siguiente función podremos dibujar una gráfica que de dibuje un histograma con los elementos de la variable &quot;datos&quot; y sobre el eje horizontal describimos que estos datos hacen referencia a la &quot;Edad&quot; de los participantes</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Edad&quot;</span><span class="p">)</span>
+
+<span class="c1"># verás que el histograma resultante es uniforme (barras con el mismo número de elementos o altura). Edita la variable &quot;datos&quot; de forma que el histograma adquiera una forma de distribución normal (o de campana de Gauss)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/ffc50a3c9fa1c7c2a0fda1fb7bc4aae8a32a2bc2936d7ed9646cddd6effc7be8.png" src="../_images/ffc50a3c9fa1c7c2a0fda1fb7bc4aae8a32a2bc2936d7ed9646cddd6effc7be8.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">learnr</span><span class="p">)</span>
+
+<span class="nf">question</span><span class="p">(</span><span class="s">&quot;What number is the letter A in the English alphabet?&quot;</span><span class="p">,</span>
+  <span class="nf">answer</span><span class="p">(</span><span class="s">&quot;8&quot;</span><span class="p">),</span>
+  <span class="nf">answer</span><span class="p">(</span><span class="s">&quot;14&quot;</span><span class="p">),</span>
+  <span class="nf">answer</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="n">correct</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),</span>
+  <span class="nf">answer</span><span class="p">(</span><span class="s">&quot;23&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+&quot;package &#39;learnr&#39; was built under R version 4.2.3&quot;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Question: &quot;What number is the letter A in the English alphabet?&quot;
+  type: &quot;learnr_radio&quot;
+  allow_retry: FALSE
+  random_answer_order: FALSE
+  answers:
+    X: &quot;8&quot;
+    X: &quot;14&quot;
+    ✔: &quot;1&quot;
+    X: &quot;23&quot;
+  messages:
+    correct: &quot;Correct!&quot;
+    incorrect: &quot;Incorrect&quot; 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">note</span> <span class="o">=</span> <span class="s">&quot;Python syntax highlighting&quot;</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Python syntax highlighting&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -407,6 +552,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="hypothesis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3 Contraste de hipótesis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="evaluation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5 Ejercicios de evaluación</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -416,6 +579,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-r">4.1 ¿Qué es R?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-e-ideas-basicas-sobre-programacion-con-r">4.2 Conceptos e ideas básicas sobre programación con R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones">4.2.1 Funciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores-y-variables">4.2.2 Vectores y variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-resolver-los-ejercicios-en-r-de-la-asignatura">4.3 ¿Cómo resolver los ejercicios en R de la asignatura?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

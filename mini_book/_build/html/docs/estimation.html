@@ -154,6 +154,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="probability.html">1 Probabilidad y Distribuciones</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2 Estimación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypothesis.html">3 Contraste de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introR.html">4 Introducción a R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">5 Ejercicios de evaluación</a></li>
 </ul>
 
     </div>
@@ -537,10 +539,10 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;n= 100 mean= 99.1066188395543 sd= 15.6712985288404&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;n= 100 mean= 100.112912054849 sd= 15.1684575798646&quot;
 </pre></div>
 </div>
-<img alt="../_images/e56d3c22c5d88ea62beddb12458fa330207954b5413356448fab11c743965a86.png" src="../_images/e56d3c22c5d88ea62beddb12458fa330207954b5413356448fab11c743965a86.png" />
+<img alt="../_images/0584f54fab96fceb2cfbee2e95b9fe9fc9b7d3e8692aa4322056cd37084c251e.png" src="../_images/0584f54fab96fceb2cfbee2e95b9fe9fc9b7d3e8692aa4322056cd37084c251e.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.5</span> <span class="pre">Muestra</span> <span class="pre">con</span> <span class="pre">100</span> <span class="pre">observaciones</span> <span class="pre">provenientes</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">previa</span></code></p>
@@ -596,7 +598,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/51adece24fe729bdba127cfd326e2b1591c9193177a75873116fc51dbb5448ce.png" src="../_images/51adece24fe729bdba127cfd326e2b1591c9193177a75873116fc51dbb5448ce.png" />
+<img alt="../_images/82cf47ab5167d6fc55df4fb930197f896bdd6295a9f6627cce548256c8df1e37.png" src="../_images/82cf47ab5167d6fc55df4fb930197f896bdd6295a9f6627cce548256c8df1e37.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.6</span> <span class="pre">Muestra</span> <span class="pre">con</span> <span class="pre">10,000</span> <span class="pre">observaciones</span> <span class="pre">provenientes</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">previa.</span></code></p>
@@ -755,7 +757,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/a1746c28b3086140b97aa7cfa6642e53a6f28b42db37e36d02c821a9420b0f17.png" src="../_images/a1746c28b3086140b97aa7cfa6642e53a6f28b42db37e36d02c821a9420b0f17.png" />
+<img alt="../_images/c0e3c0e9f5cebb5a70508e7e311cabb0864bf52be2233eb70427112ce1c8157f.png" src="../_images/c0e3c0e9f5cebb5a70508e7e311cabb0864bf52be2233eb70427112ce1c8157f.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.7</span> <span class="pre">La</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">en</span> <span class="pre">el</span> <span class="pre">experimento</span> <span class="pre">con</span> <span class="pre">5</span> <span class="pre">puntuaciones</span> <span class="pre">de</span> <span class="pre">CI.</span> <span class="pre">Si</span> <span class="pre">obtenemos</span> <span class="pre">una</span> <span class="pre">muestra</span> <span class="pre">aleatoria</span> <span class="pre">de</span> <span class="pre">5</span> <span class="pre">personas</span> <span class="pre">y</span> <span class="pre">calculamos</span> <span class="pre">la</span> <span class="pre">*media*</span> <span class="pre">de</span> <span class="pre">sus</span> <span class="pre">puntajes,</span> <span class="pre">obtendremos</span> <span class="pre">casi</span> <span class="pre">con</span> <span class="pre">seguridad</span> <span class="pre">un</span> <span class="pre">valor</span> <span class="pre">entre</span> <span class="pre">80</span> <span class="pre">y</span> <span class="pre">120,</span> <span class="pre">aunque</span> <span class="pre">existen</span> <span class="pre">individuos</span> <span class="pre">que</span> <span class="pre">tienen</span> <span class="pre">un</span> <span class="pre">CI</span> <span class="pre">mayor</span> <span class="pre">de</span> <span class="pre">120</span> <span class="pre">o</span> <span class="pre">menor</span> <span class="pre">de</span> <span class="pre">80.</span> <span class="pre">La</span> <span class="pre">línea</span> <span class="pre">negra</span> <span class="pre">dibuja</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">puntajes</span> <span class="pre">de</span> <span class="pre">CI</span> <span class="pre">para</span> <span class="pre">comparar.</span></code></p>
@@ -810,7 +812,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/8b79167df65601d685230bba0a4b0ebd9d8ae959a7793780d1cc48c8078f7175.png" src="../_images/8b79167df65601d685230bba0a4b0ebd9d8ae959a7793780d1cc48c8078f7175.png" />
+<img alt="../_images/2bce1fd743318aa11cce2bc5c5253a8d6b28c4ac6556d4088cc5598f659b5bc2.png" src="../_images/2bce1fd743318aa11cce2bc5c5253a8d6b28c4ac6556d4088cc5598f659b5bc2.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.9</span> <span class="pre">Esta</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">parte</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">sola</span> <span class="pre">observación</span> <span class="pre">(tamaño</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">1),</span> <span class="pre">de</span> <span class="pre">forma</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">muestral</span> <span class="pre">es</span> <span class="pre">el</span> <span class="pre">puntaje</span> <span class="pre">de</span> <span class="pre">CI</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">persona.</span> <span class="pre">Como</span> <span class="pre">consecuencia,</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">es</span> <span class="pre">idéntica</span> <span class="pre">a</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">valores</span> <span class="pre">de</span> <span class="pre">CI.</span></code></p>
@@ -832,7 +834,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/bf93ade1bcd1d4d24e97e656b17d10c949a9d4a7ccde0350cbe6b576c11712d3.png" src="../_images/bf93ade1bcd1d4d24e97e656b17d10c949a9d4a7ccde0350cbe6b576c11712d3.png" />
+<img alt="../_images/2851541d00e7e9f02cc541cb7eed508a40b263456d628ee429be34a0e27ccdac.png" src="../_images/2851541d00e7e9f02cc541cb7eed508a40b263456d628ee429be34a0e27ccdac.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.10</span> <span class="pre">Cuando</span> <span class="pre">aumentamos</span> <span class="pre">el</span> <span class="pre">tamaño</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">muestra</span> <span class="pre">a</span> <span class="pre">2,</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">de</span> <span class="pre">cualquier</span> <span class="pre">muestra</span> <span class="pre">tiende</span> <span class="pre">a</span> <span class="pre">acercarse</span> <span class="pre">más</span> <span class="pre">a</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">poblacional</span> <span class="pre">que</span> <span class="pre">a</span> <span class="pre">un</span> <span class="pre">puntaje</span> <span class="pre">individual</span> <span class="pre">de</span> <span class="pre">CI,</span> <span class="pre">por</span> <span class="pre">lo</span> <span class="pre">que</span> <span class="pre">el</span> <span class="pre">histograma</span> <span class="pre">(distribución</span> <span class="pre">muestral)</span> <span class="pre">es</span> <span class="pre">un</span> <span class="pre">poco</span> <span class="pre">más</span> <span class="pre">estrecho</span> <span class="pre">que</span> <span class="pre">el</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">población.</span></code></p>
@@ -854,7 +856,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/69b7709b80f3ebc45a9e6b01fddbd9b8af5e15766f2e2df61ccf654589a180aa.png" src="../_images/69b7709b80f3ebc45a9e6b01fddbd9b8af5e15766f2e2df61ccf654589a180aa.png" />
+<img alt="../_images/237b3ea2b8a7802087ac710af53595467dde02aed513dfcbc9e304ea9f18d88a.png" src="../_images/237b3ea2b8a7802087ac710af53595467dde02aed513dfcbc9e304ea9f18d88a.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.11</span> <span class="pre">Cuando</span> <span class="pre">el</span> <span class="pre">tamaño</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">muestra</span> <span class="pre">es</span> <span class="pre">de</span> <span class="pre">10</span> <span class="pre">podemos</span> <span class="pre">ver</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">tiende</span> <span class="pre">a</span> <span class="pre">organizarse</span> <span class="pre">alrededor</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">(real)</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">población.</span></code></p>
@@ -910,10 +912,10 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/68988b87882327bb909ce51ef9f1e417135ace4af68af8d81dfec0135e21dfe9.png" src="../_images/68988b87882327bb909ce51ef9f1e417135ace4af68af8d81dfec0135e21dfe9.png" />
-<img alt="../_images/f0a426421f624e13583919b4d919771510fef71fb491e1122599a26e713fd23f.png" src="../_images/f0a426421f624e13583919b4d919771510fef71fb491e1122599a26e713fd23f.png" />
-<img alt="../_images/47c826e5d578b8c65011c7fb32fba3a3a8b295214479f1123432d6e00f474c13.png" src="../_images/47c826e5d578b8c65011c7fb32fba3a3a8b295214479f1123432d6e00f474c13.png" />
-<img alt="../_images/41f76e786efe471c8dc6a77db96241ba03c72df0f2f0a2f312c4b0082ef488fb.png" src="../_images/41f76e786efe471c8dc6a77db96241ba03c72df0f2f0a2f312c4b0082ef488fb.png" />
+<img alt="../_images/56eb5efd849992964acca7a1215340e04bade3ac3624fab0c7cc44eef5a3c7c3.png" src="../_images/56eb5efd849992964acca7a1215340e04bade3ac3624fab0c7cc44eef5a3c7c3.png" />
+<img alt="../_images/738272cab30ded776a9441ca8742eb54a3d2ca061ccbb14bf46bb3760df233c9.png" src="../_images/738272cab30ded776a9441ca8742eb54a3d2ca061ccbb14bf46bb3760df233c9.png" />
+<img alt="../_images/89415ddc5a145d0a8d539e18d41e864581ac91629a16e0c9765bf57539934a13.png" src="../_images/89415ddc5a145d0a8d539e18d41e864581ac91629a16e0c9765bf57539934a13.png" />
+<img alt="../_images/9d25e36fc781d8b0177e3c8e53a0c96e6e950a45f8a2128a65d444c1b6a30a99.png" src="../_images/9d25e36fc781d8b0177e3c8e53a0c96e6e950a45f8a2128a65d444c1b6a30a99.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.12</span> <span class="pre">Una</span> <span class="pre">demostración</span> <span class="pre">del</span> <span class="pre">teorema</span> <span class="pre">del</span> <span class="pre">límite</span> <span class="pre">central.</span> <span class="pre">En</span> <span class="pre">el</span> <span class="pre">primer</span> <span class="pre">panel,</span> <span class="pre">tenemos</span> <span class="pre">a</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">con</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">no-normal;</span> <span class="pre">en</span> <span class="pre">los</span> <span class="pre">tres</span> <span class="pre">paneles</span> <span class="pre">siguientes</span> <span class="pre">se</span> <span class="pre">muestran</span> <span class="pre">distribuciones</span> <span class="pre">muestrales</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">para</span> <span class="pre">muestra</span> <span class="pre">de</span> <span class="pre">tamaño</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">2,</span> <span class="pre">4</span> <span class="pre">y</span> <span class="pre">8,</span> <span class="pre">extraídos</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">del</span> <span class="pre">primer</span> <span class="pre">panel.</span> <span class="pre">Como</span> <span class="pre">podrás</span> <span class="pre">ver,</span> <span class="pre">aunque</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">original</span> <span class="pre">es</span> <span class="pre">no-normal,</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">se</span> <span class="pre">acerca</span> <span class="pre">mucho</span> <span class="pre">a</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">normal</span> <span class="pre">incluso</span> <span class="pre">cuando</span> <span class="pre">la</span> <span class="pre">muestra</span> <span class="pre">tiene</span> <span class="pre">4</span> <span class="pre">observaciones.</span></code></p>
