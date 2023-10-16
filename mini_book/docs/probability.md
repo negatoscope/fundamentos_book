@@ -128,7 +128,7 @@ colour <- TRUE
 	layout( matrix(1:4,2,2) ) #distribución de las figuras en 2x2
 	for( i in 1:4 ) {
 		
-		X <- as.numeric( runif(1000) > .5 ) #calcula 1000 lanzamientos
+		X <- as.numeric( runif(1000) > .5 ) #calcula 1000 lanzamientos con una probabilidad de 0.5 de obtener cruz
 		X <- cumsum(X) / (1:1000) #probabilidad acumulada de los 1000 lanzamientos
 		plot( 1:1000, X, type="l", ylim=c(.3,.7), col=ifelse(colour,emphCol,emphGrey), # dibuja la figura con la probabilidad acumuluda de los 1000 lanzamientos
 			xlab = "Número de lanzadas", ylab = "Proporción de caras", lwd=3
@@ -670,3 +670,25 @@ En este capítulo hemos hablado de probabilidad. Hemos hablado de lo que signifi
 Esto es una simple introducción dentro de un gran tema. La teoría de la probabilidad es una rama de las matemáticas, completamente separada de su aplicación a la estadística y al análisis de datos. Como tales, hay miles de libros escritos sobre el tema y las universidades generalmente ofrecen clases dedicadas por completo a la teoría de la probabilidad. En este capítulo se han descrito cinco distribuciones de probabilidad estándar, pero existen *muchas* más que esas. Afortunadamente, estas distribuciones bastarán por el momento.
 
 Los conceptos básicos que hemos adquirido en este capítulo servirán como fundamento para los siguientes dos. Existen muchas reglas sobre lo que se nos "permite" decir cuando hacemos inferencia estadística, y muchas de ellas pueden parecer arbitrarias. Sin embargo, veremos que comienzan a tener sentido si tenemos en cuenta estos conceptos básicos que hemos aprendido. 
+
+## Evaluación
+
+1. Vuelve a la Figura 1.1. ¿A partir de cuantas lanzadas consideras que la probabilidad de obtener caras de vuelve *estable* (es decir, que se mantiene sobre la probabilidad de 0.5 o muy cerca de ella)? Repite la simulaciones algunas veces, aumentando o disminuyendo el número de lanzadas.
+
+2. Vuelve a la Figura 1.2. Imagina que los pantalones los usas con la misma frecuencia. ¿Cuál sería la probabilidad de usar cada par de pantalones? Con tu respuesta, edita la probabilidades que dibujan la distribución de probabilidad de este ejemplo. ¿Qué forma adquiere su distribución? 
+
+3. Vuelve a la Figura 1.3. Otro tipo de dado muy utilizado en juegos de mesa es el *dodecaedro*. Imagina que en una de sus caras tiene una calavera, mientras que en resto no hay nada. Crea la distribución de probabilidad (binomial) para este dado, sabiendo que lo lanzamos 20 veces. ¿Qué diferencia tiene respecto a la distribución del dado original de 6 caras? ¿Cuál es el número de éxitos más probable en 20 lanzadas?
+
+4. Siguiendo con este ejemplo, ¿cómo cambia la distribución si aumentamos el número de lanzadas, por ejemplo a 100? ¿Cuál es el número de éxitos más probable en este caso?
+
+5. Vuelve a la Figura 1.7. ¿Qué distancia tiene que haber entre las medias de ambas distribuciones para que no se solape una sobre la otra? Suponiendo que estas distribuciones representan la altura entre 1-hombres y 2-mujeres, ante esta separación de distribuciones, ¿esperarías valores de altura compartidos entre hombres y mujeres? ¿Ninguno, pocos, muchos? ¿Cómo tendrían que ser las distribuciones para tener el caso contrario?
+
+6. Vuelve a la Figura 1.8. Edita la figura de forma que la distribución con la línea punteada tenga una desviación típica de 10. ¿Qué forma adquiere esta distribución? ¿Qué significado tiene? ¿Es más o menos variable que la otra distribución?
+
+7. Vuelve a la Figura 1.9. ¿Qué valor de desviación típica se corresponde con un área bajo la curva del 50% (es decir, que incluye a la mitad de la población)? Edita el valor de desviación típica (negativa y positiva) con el valor que más se acerque al 50%.
+
+8. Vuelve a la Figura 1.11. ¿Qué valor mínimo de grados de libertad hace que la distribución t (línea continua) sea igual que la de la distribución normal (línea punteada)? Ante esa situación y esos grados de libertad, ¿crees que compense seguir tratando a esa muestra como de una distribución t o mejor como de una distribución normal? ¿Por qué?
+
+9. Vuelve a la Figura 1.12. Edita la figura de forma que modifiques los grados de libertad (de 1 a 10) en la distribución. ¿Según aumentan los grados de libertad, que pasa con la probabilidad y el valor chi-cuadrada? ¿Aumenta, disminuye, se mantiene igual?
+
+10. Observa las figuras 1.14 (distribución normal), 1.15 (distribución chi-cuadrada), 1.16 (distribución t) y 1.17 (distribución F). ¿A partir de que tamaño muestral consideras que la forma de la distribución (histograma) se asemeja lo suficiente a la distribución teórica (línea sólida)? Edita en cada figura el número del tamaño de muestra para descubrirlo.

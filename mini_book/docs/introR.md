@@ -12,7 +12,7 @@ runtime: shiny_prerendered
 description: Tutorial
 ---
 
-(probability)=
+(introR)=
 
 # 4 Introducción a R
 

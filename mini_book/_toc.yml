@@ -6,3 +6,4 @@ sections:
 - file: docs/hypothesis
 - file: docs/introR
 - file: docs/evaluation
+- file: docs/evaluation_jupyter
