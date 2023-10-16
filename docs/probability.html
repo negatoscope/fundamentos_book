@@ -156,6 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="hypothesis.html">3 Contraste de hipótesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introR.html">4 Introducción a R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">5 Ejercicios de evaluación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation_jupyter.html">5 Ejercicios de Evaluación</a></li>
 </ul>
 
     </div>
@@ -389,6 +390,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-distribuciones-utiles">Otras distribuciones útiles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion">Evaluación</a></li>
 </ul>
             </nav>
         </div>
@@ -567,7 +569,7 @@ P(\mbox{cara}) = 0.5
 	<span class="nf">layout</span><span class="p">(</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span> <span class="p">)</span> <span class="c1">#distribución de las figuras en 2x2</span>
 	<span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">4</span> <span class="p">)</span> <span class="p">{</span>
 		
-		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span> <span class="nf">runif</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">.</span><span class="m">5</span> <span class="p">)</span> <span class="c1">#calcula 1000 lanzamientos</span>
+		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span> <span class="nf">runif</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">.</span><span class="m">5</span> <span class="p">)</span> <span class="c1">#calcula 1000 lanzamientos con una probabilidad de 0.5 de obtener cruz</span>
 		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">cumsum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">)</span> <span class="c1">#probabilidad acumulada de los 1000 lanzamientos</span>
 		<span class="nf">plot</span><span class="p">(</span> <span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">.</span><span class="m">3</span><span class="p">,</span><span class="n">.</span><span class="m">7</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span> <span class="c1"># dibuja la figura con la probabilidad acumuluda de los 1000 lanzamientos</span>
 			<span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Número de lanzadas&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Proporción de caras&quot;</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">3</span>
@@ -581,7 +583,7 @@ P(\mbox{cara}) = 0.5
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/8f0d5a3ca80fb1bc6d4a82e7abf36cb4f3cf36c4b9ce457b3a9248d10a150494.png" src="../_images/8f0d5a3ca80fb1bc6d4a82e7abf36cb4f3cf36c4b9ce457b3a9248d10a150494.png" />
+<img alt="../_images/43107880c50266cc1363396ba4409e117f88ff8547b27c8c8590ced0b09d1f2d.png" src="../_images/43107880c50266cc1363396ba4409e117f88ff8547b27c8c8590ced0b09d1f2d.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.1</span> <span class="pre">Una</span> <span class="pre">imagen</span> <span class="pre">de</span> <span class="pre">cómo</span> <span class="pre">funciona</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">frecuentista.</span> <span class="pre">Si</span> <span class="pre">lanzas</span> <span class="pre">una</span> <span class="pre">moneda</span> <span class="pre">justa</span> <span class="pre">una</span> <span class="pre">y</span> <span class="pre">otra</span> <span class="pre">vez,</span> <span class="pre">la</span> <span class="pre">proporción</span> <span class="pre">de</span> <span class="pre">caras</span> <span class="pre">deja</span> <span class="pre">de</span> <span class="pre">fluctuar</span> <span class="pre">y</span> <span class="pre">converge</span> <span class="pre">hacia</span> <span class="pre">la</span> <span class="pre">probabilidad</span> <span class="pre">real</span> <span class="pre">de</span> <span class="pre">0.5.</span> <span class="pre">Cada</span> <span class="pre">panel</span> <span class="pre">muestra</span> <span class="pre">uno</span> <span class="pre">de</span> <span class="pre">las</span> <span class="pre">cuatro</span> <span class="pre">simulaciones</span> <span class="pre">con</span> <span class="pre">1.000</span> <span class="pre">lanzamientos</span> <span class="pre">cada</span> <span class="pre">uno.</span> <span class="pre">Aunque</span> <span class="pre">ninguna</span> <span class="pre">de</span> <span class="pre">estas</span> <span class="pre">simulaciones</span> <span class="pre">terminó</span> <span class="pre">con</span> <span class="pre">un</span> <span class="pre">valor</span> <span class="pre">exacto</span> <span class="pre">de</span> <span class="pre">.5,</span> <span class="pre">si</span> <span class="pre">hubiéramos</span> <span class="pre">extendido</span> <span class="pre">el</span> <span class="pre">experimento</span> <span class="pre">por</span> <span class="pre">un</span> <span class="pre">número</span> <span class="pre">infinito</span> <span class="pre">de</span> <span class="pre">lanzamientos</span> <span class="pre">lo</span> <span class="pre">habríamos</span> <span class="pre">conseguido.</span></code></p>
@@ -1131,7 +1133,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/1b9638c92464c9146e7f36b06d8d72a538fe3456c59d17527bde84a414a80201.png" src="../_images/1b9638c92464c9146e7f36b06d8d72a538fe3456c59d17527bde84a414a80201.png" />
+<img alt="../_images/57644aa2553911b69237b3f94aa6cac5180d421d4f8a049bb9c7724cf211fbe7.png" src="../_images/57644aa2553911b69237b3f94aa6cac5180d421d4f8a049bb9c7724cf211fbe7.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.14</span> <span class="pre">Distribución</span> <span class="pre">normal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">Muestra</span> <span class="pre">A</span> <span class="pre">(histograma),</span> <span class="pre">junto</span> <span class="pre">con</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">normal</span> <span class="pre">verdadera</span> <span class="pre">(línea</span> <span class="pre">sólida)</span></code></p>
@@ -1171,7 +1173,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/a10f5b417852b68bd77d94d6adf255ddc7904e1f1d67072e49ebddaf07aa8492.png" src="../_images/a10f5b417852b68bd77d94d6adf255ddc7904e1f1d67072e49ebddaf07aa8492.png" />
+<img alt="../_images/bc0fdff96ce7e9a19dcf5eb1466c2fac39c54c5fa4840c9c92ceee6c3129cb5c.png" src="../_images/bc0fdff96ce7e9a19dcf5eb1466c2fac39c54c5fa4840c9c92ceee6c3129cb5c.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.15</span> <span class="pre">Distribución</span> <span class="pre">chi-cuadrada.</span> <span class="pre">Incluye</span> <span class="pre">a</span> <span class="pre">las</span> <span class="pre">Muestras</span> <span class="pre">A,</span> <span class="pre">B</span> <span class="pre">y</span> <span class="pre">C</span> <span class="pre">(3</span> <span class="pre">grados</span> <span class="pre">de</span> <span class="pre">libertad)</span></code></p>
@@ -1213,7 +1215,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/6b78cd4d84e32c7088336a65af2d54e12270973a2c77f5b9b9df342c4d8fcbdd.png" src="../_images/6b78cd4d84e32c7088336a65af2d54e12270973a2c77f5b9b9df342c4d8fcbdd.png" />
+<img alt="../_images/d8edf976d93061bc8a658b404bce191d80b1fc1523a5865fd1b53982f21ae810.png" src="../_images/d8edf976d93061bc8a658b404bce191d80b1fc1523a5865fd1b53982f21ae810.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.16</span> <span class="pre">Distribución</span> <span class="pre">t.</span> <span class="pre">Es</span> <span class="pre">el</span> <span class="pre">resultado</span> <span class="pre">de</span> <span class="pre">dividir</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">normal</span> <span class="pre">(en</span> <span class="pre">este</span> <span class="pre">caso</span> <span class="pre">la</span> <span class="pre">Muestra</span> <span class="pre">D)</span> <span class="pre">entre</span> <span class="pre">una</span> <span class="pre">variable</span> <span class="pre">chi-cuadrada</span> <span class="pre">escalada</span></code></p>
@@ -1253,7 +1255,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/369b4b9ac7f37b01dde40bd09b7cead6b9796010bcf43ad0cb65ac9dc1b6bf85.png" src="../_images/369b4b9ac7f37b01dde40bd09b7cead6b9796010bcf43ad0cb65ac9dc1b6bf85.png" />
+<img alt="../_images/1b5c62782acbbff678b058daf1224bcfbb649f0a49776146b0f63a42ed6a9bc3.png" src="../_images/1b5c62782acbbff678b058daf1224bcfbb649f0a49776146b0f63a42ed6a9bc3.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.17</span> <span class="pre">Distribución</span> <span class="pre">F.</span> <span class="pre">En</span> <span class="pre">este</span> <span class="pre">ejemplo</span> <span class="pre">hipotético,</span> <span class="pre">se</span> <span class="pre">compara</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">chi-cuadrada</span> <span class="pre">de</span> <span class="pre">3</span> <span class="pre">grados</span> <span class="pre">de</span> <span class="pre">libertad</span> <span class="pre">previa</span> <span class="pre">con</span> <span class="pre">otra</span> <span class="pre">distribución</span> <span class="pre">chi-cuadrada</span> <span class="pre">con</span> <span class="pre">20</span> <span class="pre">grados</span> <span class="pre">de</span> <span class="pre">libertad</span> <span class="pre">(es</span> <span class="pre">decir,</span> <span class="pre">que</span> <span class="pre">incluye</span> <span class="pre">20</span> <span class="pre">muestras</span> <span class="pre">o</span> <span class="pre">variables)</span></code></p>
@@ -1271,6 +1273,21 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </ul>
 <p>Esto es una simple introducción dentro de un gran tema. La teoría de la probabilidad es una rama de las matemáticas, completamente separada de su aplicación a la estadística y al análisis de datos. Como tales, hay miles de libros escritos sobre el tema y las universidades generalmente ofrecen clases dedicadas por completo a la teoría de la probabilidad. En este capítulo se han descrito cinco distribuciones de probabilidad estándar, pero existen <em>muchas</em> más que esas. Afortunadamente, estas distribuciones bastarán por el momento.</p>
 <p>Los conceptos básicos que hemos adquirido en este capítulo servirán como fundamento para los siguientes dos. Existen muchas reglas sobre lo que se nos “permite” decir cuando hacemos inferencia estadística, y muchas de ellas pueden parecer arbitrarias. Sin embargo, veremos que comienzan a tener sentido si tenemos en cuenta estos conceptos básicos que hemos aprendido.</p>
+</section>
+<section id="evaluacion">
+<h2>Evaluación<a class="headerlink" href="#evaluacion" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Vuelve a la Figura 1.1. ¿A partir de cuantas lanzadas consideras que la probabilidad de obtener caras de vuelve <em>estable</em> (es decir, que se mantiene sobre la probabilidad de 0.5 o muy cerca de ella)? Repite la simulaciones algunas veces, aumentando o disminuyendo el número de lanzadas.</p></li>
+<li><p>Vuelve a la Figura 1.2. Imagina que los pantalones los usas con la misma frecuencia. ¿Cuál sería la probabilidad de usar cada par de pantalones? Con tu respuesta, edita la probabilidades que dibujan la distribución de probabilidad de este ejemplo. ¿Qué forma adquiere su distribución?</p></li>
+<li><p>Vuelve a la Figura 1.3. Otro tipo de dado muy utilizado en juegos de mesa es el <em>dodecaedro</em>. Imagina que en una de sus caras tiene una calavera, mientras que en resto no hay nada. Crea la distribución de probabilidad (binomial) para este dado, sabiendo que lo lanzamos 20 veces. ¿Qué diferencia tiene respecto a la distribución del dado original de 6 caras? ¿Cuál es el número de éxitos más probable en 20 lanzadas?</p></li>
+<li><p>Siguiendo con este ejemplo, ¿cómo cambia la distribución si aumentamos el número de lanzadas, por ejemplo a 100? ¿Cuál es el número de éxitos más probable en este caso?</p></li>
+<li><p>Vuelve a la Figura 1.7. ¿Qué distancia tiene que haber entre las medias de ambas distribuciones para que no se solape una sobre la otra? Suponiendo que estas distribuciones representan la altura entre 1-hombres y 2-mujeres, ante esta separación de distribuciones, ¿esperarías valores de altura compartidos entre hombres y mujeres? ¿Ninguno, pocos, muchos? ¿Cómo tendrían que ser las distribuciones para tener el caso contrario?</p></li>
+<li><p>Vuelve a la Figura 1.8. Edita la figura de forma que la distribución con la línea punteada tenga una desviación típica de 10. ¿Qué forma adquiere esta distribución? ¿Qué significado tiene? ¿Es más o menos variable que la otra distribución?</p></li>
+<li><p>Vuelve a la Figura 1.9. ¿Qué valor de desviación típica se corresponde con un área bajo la curva del 50% (es decir, que incluye a la mitad de la población)? Edita el valor de desviación típica (negativa y positiva) con el valor que más se acerque al 50%.</p></li>
+<li><p>Vuelve a la Figura 1.11. ¿Qué valor mínimo de grados de libertad hace que la distribución t (línea continua) sea igual que la de la distribución normal (línea punteada)? Ante esa situación y esos grados de libertad, ¿crees que compense seguir tratando a esa muestra como de una distribución t o mejor como de una distribución normal? ¿Por qué?</p></li>
+<li><p>Vuelve a la Figura 1.12. Edita la figura de forma que modifiques los grados de libertad (de 1 a 10) en la distribución. ¿Según aumentan los grados de libertad, que pasa con la probabilidad y el valor chi-cuadrada? ¿Aumenta, disminuye, se mantiene igual?</p></li>
+<li><p>Observa las figuras 1.14 (distribución normal), 1.15 (distribución chi-cuadrada), 1.16 (distribución t) y 1.17 (distribución F). ¿A partir de que tamaño muestral consideras que la forma de la distribución (histograma) se asemeja lo suficiente a la distribución teórica (línea sólida)? Edita en cada figura el número del tamaño de muestra para descubrirlo.</p></li>
+</ol>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id3" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
@@ -1371,6 +1388,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-distribuciones-utiles">Otras distribuciones útiles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion">Evaluación</a></li>
 </ul>
   </nav></div>
 
