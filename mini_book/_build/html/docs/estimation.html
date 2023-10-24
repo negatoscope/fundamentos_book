@@ -155,8 +155,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2 Estimación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypothesis.html">3 Contraste de hipótesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introR.html">4 Introducción a R</a></li>
-<li class="toctree-l1"><a class="reference internal" href="evaluation.html">5 Ejercicios de evaluación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="evaluation_jupyter.html">5 Ejercicios de Evaluación</a></li>
 </ul>
 
     </div>
@@ -396,6 +394,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-el-tamano-muestral">Estimando el tamaño muestral</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion">Evaluación</a></li>
 </ul>
             </nav>
         </div>
@@ -475,7 +474,8 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">estImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crea una distribución normal con valores de CI</span>
+<span class="n">estImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
 <span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 <span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 <span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
@@ -485,9 +485,9 @@ document.write(`
 	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 	
-	<span class="c1"># plot</span>
-	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
-	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	<span class="c1"># Dibuja el gráfico</span>
+	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span> <span class="c1"># Rango del eje-x (de 60 a 140)</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span> <span class="c1"># Dibuja distribución con media 100 y desviación típica 15 </span>
 	<span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphCol</span><span class="p">,</span><span class="s">&quot;black&quot;</span><span class="p">),</span>
 		<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;CI&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Densidad de probabilidad&quot;</span><span class="p">,</span><span class="n">frame.plot</span><span class="o">=</span><span class="kc">FALSE</span>
 	<span class="p">)</span>
@@ -507,7 +507,8 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">estImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crea una distribución con N valores de CI</span>
+<span class="n">estImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
 <span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 <span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 <span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
@@ -519,9 +520,9 @@ document.write(`
 	
 	<span class="c1"># plot</span>
 	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
-	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span> <span class="c1"># Dibuja distribución con media 100 y desviación típica 15 </span>
 	
-	<span class="c1"># function to do all the work</span>
+	<span class="c1"># Función que calcula y dibuja distribución</span>
 	<span class="n">plotSamples</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span> <span class="p">{</span>
 		
 		<span class="n">IQ</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
@@ -533,17 +534,17 @@ document.write(`
 		<span class="nf">print</span><span class="p">(</span> <span class="nf">paste</span><span class="p">(</span> <span class="s">&quot;n=&quot;</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="s">&quot;mean=&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">IQ</span><span class="p">),</span> <span class="s">&quot;sd=&quot;</span><span class="p">,</span><span class="nf">sd</span><span class="p">(</span><span class="n">IQ</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
 	<span class="p">}</span>
 	
-	<span class="c1"># plot two different sample sizes</span>
-	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">100</span><span class="p">)</span>
+	<span class="c1"># Distribución con N número de valores de CI</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">100</span><span class="p">)</span> <span class="c1"># Número de valores de CI (100)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;n= 100 mean= 99.5569012959373 sd= 14.1414180327541&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;n= 100 mean= 101.493127627635 sd= 14.3242004468648&quot;
 </pre></div>
 </div>
-<img alt="../_images/a3c61b5cf34c9445a9d2a658d32ab6c5e6edf1a14824ba821b89c658eed76e43.png" src="../_images/a3c61b5cf34c9445a9d2a658d32ab6c5e6edf1a14824ba821b89c658eed76e43.png" />
+<img alt="../_images/f3b710bd36bd37754e4c0b6ff7f2d07dcd34121dec038fb93ab653e310962763.png" src="../_images/f3b710bd36bd37754e4c0b6ff7f2d07dcd34121dec038fb93ab653e310962763.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.5</span> <span class="pre">Muestra</span> <span class="pre">con</span> <span class="pre">100</span> <span class="pre">observaciones</span> <span class="pre">provenientes</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">previa</span></code></p>
@@ -566,7 +567,8 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">estImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crea una distribución con N valores de CI</span>
+<span class="n">estImg</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
 <span class="n">emphCol</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 <span class="n">emphColLight</span> <span class="o">&lt;-</span> <span class="nf">rgb</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 <span class="n">emphGrey</span> <span class="o">&lt;-</span> <span class="nf">grey</span><span class="p">(</span><span class="n">.</span><span class="m">5</span><span class="p">)</span>
@@ -578,9 +580,9 @@ document.write(`
 	
 	<span class="c1"># plot</span>
 	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
-	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span> <span class="c1"># Dibuja distribución con media 100 y desviación típica 15 </span>
 	
-	<span class="c1"># function to do all the work</span>
+	<span class="c1"># Función que calcula y dibuja distribución</span>
 	<span class="n">plotSamples</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span> <span class="p">{</span>
 		
 		<span class="n">IQ</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
@@ -589,17 +591,17 @@ document.write(`
 			<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;CI&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="m">140</span><span class="p">),</span>
 			<span class="n">main</span><span class="o">=</span><span class="s">&quot;&quot;</span>
 		<span class="p">)</span>
-		<span class="c1">#print( paste( &quot;n=&quot;,n,&quot;mean=&quot;,mean(IQ), &quot;sd=&quot;,sd(IQ) ) )</span>
+		<span class="c1">#print( paste( &quot;n=&quot;,n,&quot;Media=&quot;,mean(IQ), &quot;Desviación típica=&quot;,sd(IQ) ) )</span>
 	<span class="p">}</span>
 	
-	<span class="c1"># plot two different sample sizes</span>
-	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10000</span><span class="p">)</span>
+	<span class="c1"># Distribución con N número de valores de C</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10000</span><span class="p">)</span> <span class="c1"># Número de valores de CI (10000)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/313b939ab90f906df9a89e57ac9d77249f16fc0846b831bbcea41c8007b60caa.png" src="../_images/313b939ab90f906df9a89e57ac9d77249f16fc0846b831bbcea41c8007b60caa.png" />
+<img alt="../_images/d8d65307cd9f142fb88c17e7a7a228e5a1268cc013f2ded08fce2747c80eadb3.png" src="../_images/d8d65307cd9f142fb88c17e7a7a228e5a1268cc013f2ded08fce2747c80eadb3.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.6</span> <span class="pre">Muestra</span> <span class="pre">con</span> <span class="pre">10,000</span> <span class="pre">observaciones</span> <span class="pre">provenientes</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">previa.</span></code></p>
@@ -733,11 +735,11 @@ document.write(`
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 	
-	<span class="c1"># function to do all the work</span>
+	<span class="c1"># Función que hace el cálculo</span>
 	<span class="n">plotSamples</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
 		
 		<span class="n">IQ</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
-		<span class="nf">hist</span><span class="p">(</span> <span class="n">IQ</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">180</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+		<span class="nf">hist</span><span class="p">(</span> <span class="n">IQ</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">180</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="c1">#cambia a breaks=seq(10,180,2)</span>
 			<span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphColLight</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span>
 			<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;IQ&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="m">140</span><span class="p">),</span>
 			<span class="n">main</span><span class="o">=</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Tamaño de la muestra =&quot;</span><span class="p">,</span><span class="n">N</span><span class="p">),</span> <span class="n">axes</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
@@ -746,19 +748,19 @@ document.write(`
 		<span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 	<span class="p">}</span>
 	
-	<span class="c1"># population distribution</span>
+	<span class="c1"># Distribución de la muestra/población</span>
 	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
-	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span> <span class="c1"># Rango de valores, media, desviación típica</span>
 	
-	<span class="c1"># plot two different sample sizes</span>
-	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+	<span class="c1"># Dibuja la muestra</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="m">5</span><span class="p">)</span> <span class="c1"># Distribución de 10000 muestras de tamaño muestral 5</span>
 	<span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/1207693e2a36fd2233371d8ef8e2e7b8a2c53208529d3c158a09d269b269426b.png" src="../_images/1207693e2a36fd2233371d8ef8e2e7b8a2c53208529d3c158a09d269b269426b.png" />
+<img alt="../_images/d146df39f3c1249b2261ef1c4feac58cdba0012dc317f82bb939cb4a8741a7a8.png" src="../_images/d146df39f3c1249b2261ef1c4feac58cdba0012dc317f82bb939cb4a8741a7a8.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.7</span> <span class="pre">La</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">en</span> <span class="pre">el</span> <span class="pre">experimento</span> <span class="pre">con</span> <span class="pre">5</span> <span class="pre">puntuaciones</span> <span class="pre">de</span> <span class="pre">CI.</span> <span class="pre">Si</span> <span class="pre">obtenemos</span> <span class="pre">una</span> <span class="pre">muestra</span> <span class="pre">aleatoria</span> <span class="pre">de</span> <span class="pre">5</span> <span class="pre">personas</span> <span class="pre">y</span> <span class="pre">calculamos</span> <span class="pre">la</span> <span class="pre">*media*</span> <span class="pre">de</span> <span class="pre">sus</span> <span class="pre">puntajes,</span> <span class="pre">obtendremos</span> <span class="pre">casi</span> <span class="pre">con</span> <span class="pre">seguridad</span> <span class="pre">un</span> <span class="pre">valor</span> <span class="pre">entre</span> <span class="pre">80</span> <span class="pre">y</span> <span class="pre">120,</span> <span class="pre">aunque</span> <span class="pre">existen</span> <span class="pre">individuos</span> <span class="pre">que</span> <span class="pre">tienen</span> <span class="pre">un</span> <span class="pre">CI</span> <span class="pre">mayor</span> <span class="pre">de</span> <span class="pre">120</span> <span class="pre">o</span> <span class="pre">menor</span> <span class="pre">de</span> <span class="pre">80.</span> <span class="pre">La</span> <span class="pre">línea</span> <span class="pre">negra</span> <span class="pre">dibuja</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">puntajes</span> <span class="pre">de</span> <span class="pre">CI</span> <span class="pre">para</span> <span class="pre">comparar.</span></code></p>
@@ -788,7 +790,7 @@ document.write(`
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 	
-	<span class="c1"># function to do all the work</span>
+	<span class="c1"># Función que hace el cálculo</span>
 	<span class="n">plotSamples</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
 		
 		<span class="n">IQ</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
@@ -801,19 +803,19 @@ document.write(`
 		<span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 	<span class="p">}</span>
 	
-	<span class="c1"># population distribution</span>
+	<span class="c1"># Distribución de la muestra/población</span>
 	<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">60</span><span class="o">:</span><span class="m">140</span>
-	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span>
+	<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">15</span><span class="p">)</span> <span class="c1"># Rango de valores, media, desviación típica</span>
 	
-	<span class="c1"># plot two different sample sizes</span>
-	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+	<span class="c1"># Dibuja la muestra</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="m">1</span><span class="p">)</span> <span class="c1"># Distribución de 10000 muestras de tamaño muestral 1</span>
 	<span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/91b321a7f459c72e303c08e14470b7f76b1e37ccbfeb3d1fee25f03e24be1008.png" src="../_images/91b321a7f459c72e303c08e14470b7f76b1e37ccbfeb3d1fee25f03e24be1008.png" />
+<img alt="../_images/e6a2b3eedab9aa769b2cc064245029fcad747498c7b28ed714e78d34daca708e.png" src="../_images/e6a2b3eedab9aa769b2cc064245029fcad747498c7b28ed714e78d34daca708e.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.9</span> <span class="pre">Esta</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">parte</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">sola</span> <span class="pre">observación</span> <span class="pre">(tamaño</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">1),</span> <span class="pre">de</span> <span class="pre">forma</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">muestral</span> <span class="pre">es</span> <span class="pre">el</span> <span class="pre">puntaje</span> <span class="pre">de</span> <span class="pre">CI</span> <span class="pre">de</span> <span class="pre">una</span> <span class="pre">persona.</span> <span class="pre">Como</span> <span class="pre">consecuencia,</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">es</span> <span class="pre">idéntica</span> <span class="pre">a</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">valores</span> <span class="pre">de</span> <span class="pre">CI.</span></code></p>
@@ -827,15 +829,15 @@ document.write(`
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 
-		<span class="c1"># plot two different sample sizes</span>
-	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+		<span class="c1"># Dibuja la muestra</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="m">2</span><span class="p">)</span> <span class="c1"># Distribución de 10000 muestras de tamaño muestral 2</span>
 	<span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/706f5dbb9d4421779546d6a75eb3d9dce2691f353b5b53dfa021daf8bc5b018a.png" src="../_images/706f5dbb9d4421779546d6a75eb3d9dce2691f353b5b53dfa021daf8bc5b018a.png" />
+<img alt="../_images/77cd0cebd622957fda8df416c5ade1b99bc48369f6a6ff5ddca68b9fdb284f0e.png" src="../_images/77cd0cebd622957fda8df416c5ade1b99bc48369f6a6ff5ddca68b9fdb284f0e.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.10</span> <span class="pre">Cuando</span> <span class="pre">aumentamos</span> <span class="pre">el</span> <span class="pre">tamaño</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">muestra</span> <span class="pre">a</span> <span class="pre">2,</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">de</span> <span class="pre">cualquier</span> <span class="pre">muestra</span> <span class="pre">tiende</span> <span class="pre">a</span> <span class="pre">acercarse</span> <span class="pre">más</span> <span class="pre">a</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">poblacional</span> <span class="pre">que</span> <span class="pre">a</span> <span class="pre">un</span> <span class="pre">puntaje</span> <span class="pre">individual</span> <span class="pre">de</span> <span class="pre">CI,</span> <span class="pre">por</span> <span class="pre">lo</span> <span class="pre">que</span> <span class="pre">el</span> <span class="pre">histograma</span> <span class="pre">(distribución</span> <span class="pre">muestral)</span> <span class="pre">es</span> <span class="pre">un</span> <span class="pre">poco</span> <span class="pre">más</span> <span class="pre">estrecho</span> <span class="pre">que</span> <span class="pre">el</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">población.</span></code></p>
@@ -849,15 +851,15 @@ document.write(`
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">4.5</span>
 
-		<span class="c1"># plot two different sample sizes</span>
-	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
+		<span class="c1"># Dibuja la muestra</span>
+	<span class="nf">plotSamples</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="m">10</span><span class="p">)</span> <span class="c1"># Distribución de 10000 muestras de tamaño muestral 10</span>
 	<span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/2bf7e050206edb263628c66652f416fb75a5f4294c489ae6755e501e846b9b7d.png" src="../_images/2bf7e050206edb263628c66652f416fb75a5f4294c489ae6755e501e846b9b7d.png" />
+<img alt="../_images/cac922a7289867fc7a9765ce3735e5700860ee8df5be18aea423cf1675c6b670.png" src="../_images/cac922a7289867fc7a9765ce3735e5700860ee8df5be18aea423cf1675c6b670.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.11</span> <span class="pre">Cuando</span> <span class="pre">el</span> <span class="pre">tamaño</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">muestra</span> <span class="pre">es</span> <span class="pre">de</span> <span class="pre">10</span> <span class="pre">podemos</span> <span class="pre">ver</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">tiende</span> <span class="pre">a</span> <span class="pre">organizarse</span> <span class="pre">alrededor</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">(real)</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">población.</span></code></p>
@@ -870,26 +872,26 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># needed for printing</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tamaño del gráfico</span>
 	<span class="n">width</span> <span class="o">&lt;-</span> <span class="m">6</span>
 	<span class="n">height</span> <span class="o">&lt;-</span> <span class="m">6</span>	
 	
-	<span class="c1"># parameters of the beta</span>
+	<span class="c1"># Parámetros necesarios para la distribució no-normal (beta)</span>
 	<span class="n">a</span> <span class="o">&lt;-</span> <span class="m">2</span>
 	<span class="n">b</span> <span class="o">&lt;-</span> <span class="m">1</span>
 	
-	<span class="c1"># mean and standard deviation of the beta</span>
+	<span class="c1"># Media y desviación típica de la distribución beta</span>
 	<span class="n">s</span> <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="m">+1</span><span class="p">)</span> <span class="p">)</span>
 	<span class="n">m</span> <span class="o">&lt;-</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
 	
-	<span class="c1"># define function to draw a plot</span>
+	<span class="c1"># Dibuja la figura</span>
 	<span class="n">plotOne</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="m">50000</span><span class="p">)</span> <span class="p">{</span>
 		
-		<span class="c1"># generate N random sample means of size n</span>
-		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rbeta</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">n</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+		<span class="c1"># Genera un número (N) de muestras de tamaño n</span>
+		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rbeta</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">n</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> 
 		<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">colMeans</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 		
-		<span class="c1"># plot the data</span>
+		<span class="c1"># Dibuja el histograma</span>
 		<span class="nf">hist</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="n">.</span><span class="m">025</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
 			<span class="n">col</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span><span class="n">emphColLight</span><span class="p">,</span><span class="n">emphGrey</span><span class="p">),</span>
 			<span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Media muestral&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.2</span><span class="p">),</span>
@@ -900,23 +902,23 @@ document.write(`
 		<span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 		<span class="c1">#axis(2)</span>
 		
-		<span class="c1"># plot the theoretical distribution</span>
+		<span class="c1"># Dibuja la distribución teórica</span>
 		<span class="nf">lines</span><span class="p">(</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.2</span><span class="p">,</span><span class="n">.</span><span class="m">01</span><span class="p">),</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">s</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)),</span> 
 			<span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span>
 		<span class="p">)</span>
 	<span class="p">}</span>
 	
-	<span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="n">in</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">8</span><span class="p">))</span> <span class="p">{</span>
+	<span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="n">in</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">8</span><span class="p">))</span> <span class="p">{</span> <span class="c1"># Dibuja cuatro distribuciones con tamaño muestral 1, 2, 4 y 8</span>
 		<span class="nf">plotOne</span><span class="p">(</span><span class="n">i</span><span class="p">)}</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/fb50e246a131acd6c4e94eb2f7829d7401d82fda9aa751b37fed186e8e4570ab.png" src="../_images/fb50e246a131acd6c4e94eb2f7829d7401d82fda9aa751b37fed186e8e4570ab.png" />
-<img alt="../_images/cb4187c0068f2771064a50b51e47aad02cfe929542621c2d82cb3e4a81b0058f.png" src="../_images/cb4187c0068f2771064a50b51e47aad02cfe929542621c2d82cb3e4a81b0058f.png" />
-<img alt="../_images/458bee0db47242e4bb7977f715cb6bdce65d9573d842443ed28fb6f2f3dbfb6b.png" src="../_images/458bee0db47242e4bb7977f715cb6bdce65d9573d842443ed28fb6f2f3dbfb6b.png" />
-<img alt="../_images/8c8c2be22e00603c11a1d50faebdc1d58daa4c1abee2c7be977ff702402c50e5.png" src="../_images/8c8c2be22e00603c11a1d50faebdc1d58daa4c1abee2c7be977ff702402c50e5.png" />
+<img alt="../_images/fd4172e8f823d7bee8da7ba72f54f11e72869147ee083584cb5ef92e395e4f5f.png" src="../_images/fd4172e8f823d7bee8da7ba72f54f11e72869147ee083584cb5ef92e395e4f5f.png" />
+<img alt="../_images/5af23096c5e1c79e0765ef3811a6e3ab2118add3e8d5fc9c1f902674833641c8.png" src="../_images/5af23096c5e1c79e0765ef3811a6e3ab2118add3e8d5fc9c1f902674833641c8.png" />
+<img alt="../_images/0390615395b61db3ca577385d0d81fb831a244fd6b30a5d50e93a01035f4a641.png" src="../_images/0390615395b61db3ca577385d0d81fb831a244fd6b30a5d50e93a01035f4a641.png" />
+<img alt="../_images/17e269b92767de0ad2d593bbf3aa43f971451f9a352fb39a838190df540cfba0.png" src="../_images/17e269b92767de0ad2d593bbf3aa43f971451f9a352fb39a838190df540cfba0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Figura</span> <span class="pre">1.12</span> <span class="pre">Una</span> <span class="pre">demostración</span> <span class="pre">del</span> <span class="pre">teorema</span> <span class="pre">del</span> <span class="pre">límite</span> <span class="pre">central.</span> <span class="pre">En</span> <span class="pre">el</span> <span class="pre">primer</span> <span class="pre">panel,</span> <span class="pre">tenemos</span> <span class="pre">a</span> <span class="pre">una</span> <span class="pre">población</span> <span class="pre">con</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">no-normal;</span> <span class="pre">en</span> <span class="pre">los</span> <span class="pre">tres</span> <span class="pre">paneles</span> <span class="pre">siguientes</span> <span class="pre">se</span> <span class="pre">muestran</span> <span class="pre">distribuciones</span> <span class="pre">muestrales</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">para</span> <span class="pre">muestra</span> <span class="pre">de</span> <span class="pre">tamaño</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">2,</span> <span class="pre">4</span> <span class="pre">y</span> <span class="pre">8,</span> <span class="pre">extraídos</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">del</span> <span class="pre">primer</span> <span class="pre">panel.</span> <span class="pre">Como</span> <span class="pre">podrás</span> <span class="pre">ver,</span> <span class="pre">aunque</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">poblacional</span> <span class="pre">original</span> <span class="pre">es</span> <span class="pre">no-normal,</span> <span class="pre">la</span> <span class="pre">distribución</span> <span class="pre">muestral</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">media</span> <span class="pre">se</span> <span class="pre">acerca</span> <span class="pre">mucho</span> <span class="pre">a</span> <span class="pre">una</span> <span class="pre">distribución</span> <span class="pre">normal</span> <span class="pre">incluso</span> <span class="pre">cuando</span> <span class="pre">la</span> <span class="pre">muestra</span> <span class="pre">tiene</span> <span class="pre">4</span> <span class="pre">observaciones.</span></code></p>
@@ -1096,7 +1098,95 @@ N = \left( 1.96 \times \frac{\sigma}{ME} \right)^2
 <li><p>Estimar intervalos de confianza.</p></li>
 <li><p>Estimar el tamaño muestral.</p></li>
 </ul>
+</section>
 <hr class="docutils" />
+<section id="evaluacion">
+<h2>Evaluación<a class="headerlink" href="#evaluacion" title="Permalink to this heading">#</a></h2>
+<p><em>ATENCIÓN: Para ejecutar algunas celdas, es necesario que se haya ejecutado alguna celda anterior. Te recomiendo que ejecutes todas, comenzando por el principio, hasta llegar a la que desees ejecutar.</em></p>
+<ol class="arabic simple">
+<li><p>Observa la Figura 1.7. Esta figura nos permite observar cómo una muestra pequeña se comporta visualizando su distribución muestral.  ¿Cuál es el tamaño muestral mínimo para que TODAS las medias se encuentren entre 90 y 110 (dos barras centrales)? Edita el valor de <em>tamaño muestral</em> para descubrirlo.</p></li>
+<li><p>Vamos a aumentar la resolución de la gráfica haciendo que cada barra represente 2 puntos de CI (esto está representado por el tercer valor del elemento <em>breaks=seq()</em> que se encuentra dentro de la función <em>hist</em>). ¿Cuál es el tamaño muestral mínimo para que TODAS las medias se encuentren entre 98 y 102 (dos barras centrales)?</p></li>
+<li><p>Modifica nuevamente el número de barras, de forma que cada barra represente 1 punto de CI. ¿Cuál es el tamaño muestral mínimo para que TODAS las medias se encuentren entre 99 y 100 (dos barras centrales)?</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simula un número N de datos (tamaño muestral) con media 100 y desviación típica 15</span>
+<span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="m">15</span><span class="p">)</span> <span class="c1"># Tamaño muestral, media, desviación típica</span>
+
+<span class="c1"># Calcula la media e intervalo de confianza</span>
+<span class="n">mean_value</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># Calcula media</span>
+<span class="n">ci</span> <span class="o">&lt;-</span> <span class="nf">t.test</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">conf.level</span> <span class="o">=</span> <span class="m">0.95</span><span class="p">)</span><span class="o">$</span><span class="n">conf.int</span> <span class="c1"># Calcula intervalo de confianza (95%)</span>
+
+<span class="c1"># Crea un gráfico para los datos</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;n&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Muestra&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Valor de CI&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Intervalo de cofianza&quot;</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pch</span> <span class="o">=</span> <span class="m">19</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;blue&quot;</span><span class="p">)</span> <span class="c1"># Puntos con los N puntuaciones de CI (rojo)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="n">mean_value</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># Media de los N puntos (azul)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> <span class="n">ci</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;green&quot;</span><span class="p">)</span> <span class="c1"># Intervalo de confianza (verde)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/28c51a62545413f93064967b593454009faac7cd9b1a22d83ed8dddd59efe31d.png" src="../_images/28c51a62545413f93064967b593454009faac7cd9b1a22d83ed8dddd59efe31d.png" />
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Examina el código del bloque anterior. Permite simular 10 puntuaciones de CI (media 100, desviación típica 15) junto con una estimación del intervalo de confianza (línea verde). ¿Qué pasa con el intervalo de confianza si aumentamos el <em>tamaño muestral</em>?</p></li>
+<li><p>Recuerda la interpretación de los intervalos de confianza y simula (presiona <em>run</em>) 20 muestras, fijándote en el intervalo de confianza (línea verde). ¿Alguno de los intervalos de confianza no incluye la media? Razona tu respuesta.</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establece los parámetros para el cálculo del tamaño muestral</span>
+<span class="n">effect_size</span> <span class="o">&lt;-</span> <span class="m">0.5</span>  <span class="c1"># Tamaño del efecto deseado</span>
+<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="m">0.05</span>       <span class="c1"># Nivel de significancia estadística (error alfa)</span>
+<span class="n">power</span> <span class="o">&lt;-</span> <span class="m">0.80</span>       <span class="c1"># Poder estadístico deseado</span>
+
+<span class="c1"># Función que permite calcular el poder estadístico para un tamaño muestral dado</span>
+<span class="n">calculate_power</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">se</span> <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">((</span><span class="m">1</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="m">1</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
+  <span class="n">z</span> <span class="o">&lt;-</span> <span class="nf">qnorm</span><span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span>
+  <span class="n">power</span> <span class="o">&lt;-</span> <span class="m">1</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">effect_size</span> <span class="o">/</span> <span class="n">se</span><span class="p">)</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">power</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Calcula el tamaño muestral requerido </span>
+<span class="n">n_values</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">200</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>  <span class="c1"># Rango de tamaños muestrales a considerar (puedes aumentar el número para que considere tamaños muestrales mayores de 200)</span>
+<span class="n">power_values</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">n_values</span><span class="p">,</span> <span class="n">calculate_power</span><span class="p">)</span>
+
+<span class="c1"># Encuentra el tamaño muestral para el tamaño del efecto y poder estadísticos deseados</span>
+<span class="n">required_n</span> <span class="o">&lt;-</span> <span class="n">n_values</span><span class="p">[</span><span class="nf">which.min</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">power_values</span> <span class="o">-</span> <span class="n">power</span><span class="p">))]</span>
+<span class="n">required_n</span> <span class="c1"># Imprime el valor, puedes verlo encima del gráfico</span>
+
+<span class="c1"># Crea el gráfico con la curva de tamaños muestrales</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">n_values</span><span class="p">,</span> <span class="n">power_values</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tamaño muestral&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Poder estadístico&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="n">power</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="n">lty</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="n">n_values</span><span class="p">[</span><span class="nf">which.min</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">power_values</span> <span class="o">-</span> <span class="n">power</span><span class="p">))],</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;green&quot;</span><span class="p">,</span> <span class="n">lty</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="n">n_values</span><span class="p">[</span><span class="nf">which.min</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">power_values</span> <span class="o">-</span> <span class="n">power</span><span class="p">))],</span> <span class="n">power</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="nf">paste</span><span class="p">(</span><span class="s">&quot;n =&quot;</span><span class="p">,</span> <span class="n">n_values</span><span class="p">[</span><span class="nf">which.min</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">power_values</span> <span class="o">-</span> <span class="n">power</span><span class="p">))]),</span> <span class="n">pos</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;green&quot;</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topright&quot;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Curva de tamaños muestrales&quot;</span><span class="p">,</span> <span class="s">&quot;Poder estadístico deseado&quot;</span><span class="p">,</span> <span class="s">&quot;Tamaño muestral requerido&quot;</span><span class="p">),</span> <span class="n">col</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">),</span> <span class="n">lty</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">65</div><img alt="../_images/01aa54d5ef349f0d347e4fccddd084b62661674e0ee0e89a6c4ba83849ad5268.png" src="../_images/01aa54d5ef349f0d347e4fccddd084b62661674e0ee0e89a6c4ba83849ad5268.png" />
+</div>
+</div>
+<p>En clase has aprendido una forma de calcular tamaños muestrales basados en un margen de error <em>ideal</em> (5% de la media). Esta aproximación es válida cuando hacemos un análisis de una muestra única, sin embargo, muchas veces necesitamos hacer comparaciones entre diferentes grupos o entre poblaciones. Para ello utilizamos una medida llamada el <strong><em>tamaño del efecto</em></strong>, relacionada con el margen de error, que nos habla sobre la diferencia esperada entre dos grupos (entre mayor sea este valor, mayor diferencia existe entre grupos). Además, require de otra medida llamada <strong><em>potencia estadística</em></strong> que describe la capacidad de una prueba de detectar ese efecto. Idealmente, esta potencia debería ser del 100%; sin embargo, no existe las herramientas perfectas por lo que debemos estimar ligeramente a la baja (por convención, 80 o 90%).</p>
+<p>El bloque de código encima de esta explicación, permite crear visualizar una curva con los distintos tamaños de muestra para un tamaño del efecto de 0.5 (efecto intermedio), dependiendo del poder estadístico (de 0 a 1). La línea roja simboliza la potencia estadística (0.80) e intersecta con la curva de valores de tamaño muestral, revelando que es necesario un tamaño muestral de 65 para observar un tamaño de efecto de 0.5 con una potencia estadística de 0.80.</p>
+<ol class="arabic simple" start="6">
+<li><p>Modifica el tamaño del efecto y calcula el tamaño muestral necesario para un tamaño del efecto grande (0.8) y un tamaño del efecto pequeño (0.3). ¿Qué pasa con el tamaño muestra? Razona tu respuesta.</p></li>
+<li><p>Imagina que utilizas una herramienta <em>perfecta</em> capaz de detectar los efectos un 100% de las veces. Modifica la potencia estadística a 1 y observa qué sucede con los tamaños muestrales para los tamaños de efecto anteriores (0.3, 0.5, 0.8). Quizás tengas que cambiar el número de tamaño muestral a considerar para poder visualizarlo en la gráfica.</p></li>
+</ol>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
@@ -1199,6 +1289,7 @@ N = \left( 1.96 \times \frac{\sigma}{ME} \right)^2
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimando-el-tamano-muestral">Estimando el tamaño muestral</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion">Evaluación</a></li>
 </ul>
   </nav></div>
 

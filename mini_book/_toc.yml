@@ -5,5 +5,5 @@ sections:
 - file: docs/estimation
 - file: docs/hypothesis
 - file: docs/introR
-- file: docs/evaluation
-- file: docs/evaluation_jupyter
+#- file: docs/evaluation
+#- file: docs/evaluation_jupyter

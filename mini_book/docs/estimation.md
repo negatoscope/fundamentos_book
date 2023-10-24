@@ -96,6 +96,7 @@ La idea es muy simple. Digamos que estamos hablando (otra vez) de puntajes de co
 
 ```{code-cell} ir
 :tags: ["hide-input"]
+# Crea una distribución normal con valores de CI
 estImg <- list()
 emphCol <- rgb(0,0,1)
 emphColLight <- rgb(.5,.5,1)
@@ -106,9 +107,9 @@ colour <- TRUE
 	width <- 4.5
 	height <- 4.5
 	
-	# plot
-	x <- 60:140
-	y <- dnorm(x,100,15)
+	# Dibuja el gráfico
+	x <- 60:140 # Rango del eje-x (de 60 a 140)
+	y <- dnorm(x,100,15) # Dibuja distribución con media 100 y desviación típica 15 
 	plot(x,y,lwd=3,type="l",col=ifelse(colour,emphCol,"black"),
 		xlab="CI", ylab="Densidad de probabilidad",frame.plot=FALSE
 	)
@@ -117,6 +118,7 @@ colour <- TRUE
 
 ```{code-cell} ir
 :tags: ["hide-input"]
+# Crea una distribución con N valores de CI
 estImg <- list()
 emphCol <- rgb(0,0,1)
 emphColLight <- rgb(.5,.5,1)
@@ -129,9 +131,9 @@ colour <- TRUE
 	
 	# plot
 	x <- 60:140
-	y <- dnorm(x,100,15)
+	y <- dnorm(x,100,15) # Dibuja distribución con media 100 y desviación típica 15 
 	
-	# function to do all the work
+	# Función que calcula y dibuja distribución
 	plotSamples <- function( n ) {
 		
 		IQ <- rnorm(n, 100, 15)
@@ -143,8 +145,8 @@ colour <- TRUE
 		print( paste( "n=",n,"mean=",mean(IQ), "sd=",sd(IQ) ) )
 	}
 	
-	# plot two different sample sizes
-	plotSamples(100)
+	# Distribución con N número de valores de CI
+	plotSamples(100) # Número de valores de CI (100)
 ```
 `Figura 1.5 Muestra con 100 observaciones provenientes de la distribución poblacional previa`
 
@@ -165,6 +167,7 @@ La respuesta lógica sería recolectar más datos. Supongamos que hacemos un exp
 
 ```{code-cell} ir
 :tags: ["hide-input"]
+# Crea una distribución con N valores de CI
 estImg <- list()
 emphCol <- rgb(0,0,1)
 emphColLight <- rgb(.5,.5,1)
@@ -177,9 +180,9 @@ colour <- TRUE
 	
 	# plot
 	x <- 60:140
-	y <- dnorm(x,100,15)
+	y <- dnorm(x,100,15) # Dibuja distribución con media 100 y desviación típica 15 
 	
-	# function to do all the work
+	# Función que calcula y dibuja distribución
 	plotSamples <- function( n ) {
 		
 		IQ <- rnorm(n, 100, 15)
@@ -188,11 +191,11 @@ colour <- TRUE
 			xlab="CI", ylab="Frecuencia", xlim=c(60,140),
 			main=""
 		)
-		#print( paste( "n=",n,"mean=",mean(IQ), "sd=",sd(IQ) ) )
+		#print( paste( "n=",n,"Media=",mean(IQ), "Desviación típica=",sd(IQ) ) )
 	}
 	
-	# plot two different sample sizes
-	plotSamples(10000)
+	# Distribución con N número de valores de C
+	plotSamples(10000) # Número de valores de CI (10000)
 ```
 `Figura 1.6 Muestra con 10,000 observaciones provenientes de la distribución poblacional previa.`
 
@@ -265,11 +268,11 @@ Las distribuciones muestrales son una idea teórica importante en la estadístic
 width <- 4.5
 	height <- 4.5
 	
-	# function to do all the work
+	# Función que hace el cálculo
 	plotSamples <- function( n, N) {
 		
 		IQ <- rnorm(n, 100,15/sqrt(N))
-		hist( IQ, breaks=seq(10,180,5), border="white", freq=FALSE,
+		hist( IQ, breaks=seq(10,180,5), border="white", freq=FALSE, #cambia a breaks=seq(10,180,2)
 			col=ifelse(colour,emphColLight,emphGrey),
 			xlab="IQ", ylab="", xlim=c(60,140),
 			main=paste("Tamaño de la muestra =",N), axes=FALSE,
@@ -278,12 +281,12 @@ width <- 4.5
 		axis(1)
 	}
 	
-	# population distribution
+	# Distribución de la muestra/población
 	x <- 60:140
-	y <- dnorm(x,100,15)
+	y <- dnorm(x,100,15) # Rango de valores, media, desviación típica
 	
-	# plot two different sample sizes
-	plotSamples(10000,5)
+	# Dibuja la muestra
+	plotSamples(10000,5) # Distribución de 10000 muestras de tamaño muestral 5
 	lines(x,y,lwd=2,col="black",type="l")
 ```
 `Figura 1.7 La distribución muestral de la media en el experimento con 5 puntuaciones de CI. Si obtenemos una muestra aleatoria de 5 personas y calculamos la *media* de sus puntajes, obtendremos casi con seguridad un valor entre 80 y 120, aunque existen individuos que tienen un CI mayor de 120 o menor de 80. La línea negra dibuja la distribución poblacional de los puntajes de CI para comparar.`
@@ -312,7 +315,7 @@ A continuación verás una serie de ilustraciones en las que podremos observar c
 width <- 4.5
 	height <- 4.5
 	
-	# function to do all the work
+	# Función que hace el cálculo
 	plotSamples <- function( n, N) {
 		
 		IQ <- rnorm(n, 100,15/sqrt(N))
@@ -325,12 +328,12 @@ width <- 4.5
 		axis(1)
 	}
 	
-	# population distribution
+	# Distribución de la muestra/población
 	x <- 60:140
-	y <- dnorm(x,100,15)
+	y <- dnorm(x,100,15) # Rango de valores, media, desviación típica
 	
-	# plot two different sample sizes
-	plotSamples(10000,1)
+	# Dibuja la muestra
+	plotSamples(10000,1) # Distribución de 10000 muestras de tamaño muestral 1
 	lines(x,y,lwd=2,col="black",type="l")
 ```
 `Figura 1.9 Esta distribución muestral parte de una sola observación (tamaño muestral de 1), de forma que la media muestral es el puntaje de CI de una persona. Como consecuencia, la distribución muestral de la media es idéntica a la distribución poblacional de los valores de CI.`
@@ -340,8 +343,8 @@ width <- 4.5
 width <- 4.5
 	height <- 4.5
 
-		# plot two different sample sizes
-	plotSamples(1000,2)
+		# Dibuja la muestra
+	plotSamples(1000,2) # Distribución de 10000 muestras de tamaño muestral 2
 	lines(x,y,lwd=2,col="black",type="l")
 ```
 `Figura 1.10 Cuando aumentamos el tamaño de la muestra a 2, la media de cualquier muestra tiende a acercarse más a la media poblacional que a un puntaje individual de CI, por lo que el histograma (distribución muestral) es un poco más estrecho que el de la distribución de la población.`
@@ -351,8 +354,8 @@ width <- 4.5
 width <- 4.5
 	height <- 4.5
 
-		# plot two different sample sizes
-	plotSamples(1000,10)
+		# Dibuja la muestra
+	plotSamples(1000,10) # Distribución de 10000 muestras de tamaño muestral 10
 	lines(x,y,lwd=2,col="black",type="l")
 ```
 `Figura 1.11 Cuando el tamaño de la muestra es de 10 podemos ver que la distribución muestral de la media tiende a organizarse alrededor de la media (real) de la población.`
@@ -363,26 +366,26 @@ De momento hemos visto cómo se comportan las distribuciones muestrales de los p
 
 ```{code-cell} ir
 :tags: ["hide-input"]
-# needed for printing
+# Tamaño del gráfico
 	width <- 6
 	height <- 6	
 	
-	# parameters of the beta
+	# Parámetros necesarios para la distribució no-normal (beta)
 	a <- 2
 	b <- 1
 	
-	# mean and standard deviation of the beta
+	# Media y desviación típica de la distribución beta
 	s <- sqrt( a*b / (a+b)^2 / (a+b+1) )
 	m <- a / (a+b)
 	
-	# define function to draw a plot
+	# Dibuja la figura
 	plotOne <- function(n,N=50000) {
 		
-		# generate N random sample means of size n
-		X <- matrix(rbeta(n*N,a,b),n,N)
+		# Genera un número (N) de muestras de tamaño n
+		X <- matrix(rbeta(n*N,a,b),n,N) 
 		X <- colMeans(X)
 		
-		# plot the data
+		# Dibuja el histograma
 		hist( X, breaks=seq(0,1,.025), border="white", freq=FALSE,
 			col=ifelse(colour,emphColLight,emphGrey),
 			xlab="Media muestral", ylab="", xlim=c(0,1.2),
@@ -393,13 +396,13 @@ De momento hemos visto cómo se comportan las distribuciones muestrales de los p
 		axis(1)
 		#axis(2)
 		
-		# plot the theoretical distribution
+		# Dibuja la distribución teórica
 		lines( x <- seq(0,1.2,.01), dnorm(x,m,s/sqrt(n)), 
 			lwd=2, col="black", type="l"
 		)
 	}
 	
-	for( i in c(1,2,4,8)) {
+	for( i in c(1,2,4,8)) { # Dibuja cuatro distribuciones con tamaño muestral 1, 2, 4 y 8
 		plotOne(i)}
 ```
 `Figura 1.12 Una demostración del teorema del límite central. En el primer panel, tenemos a una población con una distribución no-normal; en los tres paneles siguientes se muestran distribuciones muestrales de la media para muestra de tamaño muestral de 2, 4 y 8, extraídos de la distribución poblacional del primer panel. Como podrás ver, aunque la distribución poblacional original es no-normal, la distribución muestral de la media se acerca mucho a una distribución normal incluso cuando la muestra tiene 4 observaciones.`
@@ -615,3 +618,79 @@ En esta Unidad hemos cubierto dos grandes temas. En la primera mitad, hablamos s
 
 ## Evaluación
 
+*ATENCIÓN: Para ejecutar algunas celdas, es necesario que se haya ejecutado alguna celda anterior. Te recomiendo que ejecutes todas, comenzando por el principio, hasta llegar a la que desees ejecutar.*
+
+1. Observa la Figura 1.7. Esta figura nos permite observar cómo una muestra pequeña se comporta visualizando su distribución muestral.  ¿Cuál es el tamaño muestral mínimo para que TODAS las medias se encuentren entre 90 y 110 (dos barras centrales)? Edita el valor de *tamaño muestral* para descubrirlo. 
+
+
+2. Vamos a aumentar la resolución de la gráfica haciendo que cada barra represente 2 puntos de CI (esto está representado por el tercer valor del elemento *breaks=seq()* que se encuentra dentro de la función *hist*). ¿Cuál es el tamaño muestral mínimo para que TODAS las medias se encuentren entre 98 y 102 (dos barras centrales)? 
+
+
+3. Modifica nuevamente el número de barras, de forma que cada barra represente 1 punto de CI. ¿Cuál es el tamaño muestral mínimo para que TODAS las medias se encuentren entre 99 y 100 (dos barras centrales)? 
+
+
+```{code-cell} ir
+:tags: ["hide-input"]
+# Simula un número N de datos (tamaño muestral) con media 100 y desviación típica 15
+data <- rnorm(10, mean = 100, sd = 15) # Tamaño muestral, media, desviación típica
+
+# Calcula la media e intervalo de confianza
+mean_value <- mean(data) # Calcula media
+ci <- t.test(data, conf.level = 0.95)$conf.int # Calcula intervalo de confianza (95%)
+
+# Crea un gráfico para los datos
+plot(data, type = "n", xlab = "Muestra", ylab = "Valor de CI", main = "Intervalo de cofianza")
+points(data, pch = 19, col = "blue") # Puntos con los N puntuaciones de CI (rojo)
+abline(h = mean_value, col = "red") # Media de los N puntos (azul)
+lines(c(1, 1), ci, col = "green") # Intervalo de confianza (verde)
+
+```
+
+
+4. Examina el código del bloque anterior. Permite simular 10 puntuaciones de CI (media 100, desviación típica 15) junto con una estimación del intervalo de confianza (línea verde). ¿Qué pasa con el intervalo de confianza si aumentamos el *tamaño muestral*?
+
+
+5. Recuerda la interpretación de los intervalos de confianza y simula (presiona *run*) 20 muestras, fijándote en el intervalo de confianza (línea verde). ¿Alguno de los intervalos de confianza no incluye la media? Razona tu respuesta.
+
+
+```{code-cell} ir
+:tags: ["hide-input"]
+# Establece los parámetros para el cálculo del tamaño muestral
+effect_size <- 0.5  # Tamaño del efecto deseado
+alpha <- 0.05       # Nivel de significancia estadística (error alfa)
+power <- 0.80       # Poder estadístico deseado
+
+# Función que permite calcular el poder estadístico para un tamaño muestral dado
+calculate_power <- function(n) {
+  se <- sqrt((1 / n) + 1 / n)
+  z <- qnorm(1 - alpha / 2)
+  power <- 1 - pnorm(z - effect_size / se)
+  return(power)
+}
+
+# Calcula el tamaño muestral requerido 
+n_values <- seq(10, 200, by = 5)  # Rango de tamaños muestrales a considerar (puedes aumentar el número para que considere tamaños muestrales mayores de 200)
+power_values <- sapply(n_values, calculate_power)
+
+# Encuentra el tamaño muestral para el tamaño del efecto y poder estadísticos deseados
+required_n <- n_values[which.min(abs(power_values - power))]
+required_n # Imprime el valor, puedes verlo encima del gráfico
+
+# Crea el gráfico con la curva de tamaños muestrales
+plot(n_values, power_values, type = "l", col = "blue", xlab = "Tamaño muestral", ylab = "Poder estadístico")
+abline(h = power, col = "red", lty = 2)
+abline(v = n_values[which.min(abs(power_values - power))], col = "green", lty = 2)
+text(n_values[which.min(abs(power_values - power))], power, labels = paste("n =", n_values[which.min(abs(power_values - power))]), pos = 3, col = "green")
+legend("topright", legend = c("Curva de tamaños muestrales", "Poder estadístico deseado", "Tamaño muestral requerido"), col = c("blue", "red", "green"), lty = c(1, 2, 2))
+```
+
+
+En clase has aprendido una forma de calcular tamaños muestrales basados en un margen de error *ideal* (5% de la media). Esta aproximación es válida cuando hacemos un análisis de una muestra única, sin embargo, muchas veces necesitamos hacer comparaciones entre diferentes grupos o entre poblaciones. Para ello utilizamos una medida llamada el **_tamaño del efecto_**, relacionada con el margen de error, que nos habla sobre la diferencia esperada entre dos grupos (entre mayor sea este valor, mayor diferencia existe entre grupos). Además, require de otra medida llamada **_potencia estadística_** que describe la capacidad de una prueba de detectar ese efecto. Idealmente, esta potencia debería ser del 100%; sin embargo, no existe las herramientas perfectas por lo que debemos estimar ligeramente a la baja (por convención, 80 o 90%). 
+
+El bloque de código encima de esta explicación, permite crear visualizar una curva con los distintos tamaños de muestra para un tamaño del efecto de 0.5 (efecto intermedio), dependiendo del poder estadístico (de 0 a 1). La línea roja simboliza la potencia estadística (0.80) e intersecta con la curva de valores de tamaño muestral, revelando que es necesario un tamaño muestral de 65 para observar un tamaño de efecto de 0.5 con una potencia estadística de 0.80.
+
+
+6. Modifica el tamaño del efecto y calcula el tamaño muestral necesario para un tamaño del efecto grande (0.8) y un tamaño del efecto pequeño (0.3). ¿Qué pasa con el tamaño muestra? Razona tu respuesta. 
+
+
+7. Imagina que utilizas una herramienta *perfecta* capaz de detectar los efectos un 100% de las veces. Modifica la potencia estadística a 1 y observa qué sucede con los tamaños muestrales para los tamaños de efecto anteriores (0.3, 0.5, 0.8). Quizás tengas que cambiar el número de tamaño muestral a considerar para poder visualizarlo en la gráfica.
